@@ -46,23 +46,27 @@ namespace Absa.Web.Controllers
 		{
 			if (model.UserName != null)
 			{
+				// check if the user IsActive
 				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password == model.Password);
 				if (data != null)
 				{
-					this.Session["ID"] = data.UserID;
-					this.Session["UserName"] = data.UserName;
-					this.Session["FirstName"] = data.FirstName;
-					this.Session["LastName"] = data.LastName;
-					ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
-					return RedirectToAction("Index", "Orders");
+					if (data.IsActive == false)
+					{
+					  ViewBag.ErroMessage = "Your acccount is not active please ask your line manager to activate your account";
+					}
+					else {
+						this.Session["ID"] = data.UserID;
+						this.Session["UserName"] = data.UserName;
+						this.Session["FirstName"] = data.FirstName;
+						this.Session["LastName"] = data.LastName;
+						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
+						return RedirectToAction("Index", "Orders");
+					}
 				}
 				else
 				{
-					ViewBag.ErroMessage = "Your logged in details are incorrect.";
+					ViewBag.ErroMessage = "Incorrect login detail provided.";
 				}
-			}
-			{
-				ViewBag.ErroMessage = "Please provide correct login detaials.";
 			}
 			return View("Login");
 		}
@@ -82,7 +86,7 @@ namespace Absa.Web.Controllers
 					Datelogged = DateTime.Now,
 					ContactNumber = model.ContactNumber,
 					DepartmentID = Convert.ToInt32(model.Department),
-					IsActive = true
+					IsActive = false
 				});
 				context.SaveChanges();
 				/*
