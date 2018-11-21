@@ -34,7 +34,7 @@ namespace Absa.Web.Models
 		public string UserName { get; set; }
 		[Required(ErrorMessage = "Password is a required")]
 		[Display(Name = "Password")]
-		[RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,15}", ErrorMessage = "Password should at least contain Upper And Lower Case , Numbers and Special characters.")]
+		[RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,15}", ErrorMessage = "Password should contain Upper And Lower Case , Numbers and Special characters.")]
 		public string Password { get; set; }
 		[RegularExpression(@"(?<!\d)\d{10}(?!\d)", ErrorMessage = "Please enter a valid phone number")]
 		[Display(Name = "Cellphone Number")]

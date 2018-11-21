@@ -60,7 +60,7 @@ namespace Absa.Web.Controllers
 						this.Session["FirstName"] = data.FirstName;
 						this.Session["LastName"] = data.LastName;
 						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
-						return RedirectToAction("Index", "Orders");
+						return RedirectToAction("Index", "Home");
 					}
 				}
 				else
@@ -112,7 +112,7 @@ namespace Absa.Web.Controllers
 
 				   */
 					ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
-					return this.RedirectToAction("Index", "DashBord");
+					return this.RedirectToAction("Login", "Account");
 				}
 			}
 			

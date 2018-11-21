@@ -97,15 +97,15 @@
 							@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 						</div>
 					</div>
+					<input type="submit" value="Submit" class="btn btn-danger btn-lg" />
+					@Html.ActionLink("Sign In", "Login", "Account", new { @class = "btn btn-danger btn-lg btn-space" })
+					<br />
 					@if (ViewBag.ErrorMessage != null)
 					{
 						<div class="alert alert-success" role="alert">
 							ViewBag.ErrorMessage
 						</div>
 					}
-                    <br />
-					<input type="submit" value="Submit" class="btn btn-danger btn-lg" />
-					@Html.ActionLink("Sign In", "Login", "Account", new { @class = "btn btn-danger btn-lg btn-space" })
 				</form>
 			}
 		</div>
