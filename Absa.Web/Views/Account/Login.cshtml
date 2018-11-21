@@ -1,0 +1,127 @@
+﻿
+
+@using Absa.Web.Models
+@model UserModel
+
+@{
+	ViewBag.Title = "Log in";
+	Layout = null;
+	ViewBag.color = "red";
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<style>
+	.back {
+		background: #DC143C;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+	}
+
+	.div-center {
+		width: 500px;
+		height: 400px;
+		background-color: #fff;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		max-width: 150%;
+		max-height: 100%;
+		overflow: auto;
+		padding: 1em 2em;
+		border-bottom: 2px solid #ccc;
+		display: table;
+	}
+
+	div.content {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.btn-space {
+         margin-right: 15px;
+    }
+	.size-alr {
+	    width: 500px;
+	}
+
+</style>
+<script type="text/javascript">
+    function openRegisterView() {
+        ajax({
+            type: 'GET',
+            url: "Register/Account",
+            success: function (view) {
+                }
+            });
+    }
+</script>
+<div class="back">
+	<div class="div-center">
+		<div class="content">
+			<div class="alert alert-dark size-alr" role="alert" style="background-color: #DC143C;">
+				<h3>Sign In</h3>
+			</div>
+			<section id="loginForm">
+				@using (Html.BeginForm("GetUserAccess", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+				{
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<p>Enter the your login details in order to gain access. As the first time user Sign Up !</p>
+						</div>
+					</div>
+					@Html.AntiForgeryToken()
+					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					<div class="form-group">
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.UserName, new { @class = "form-control", autocomplete = "off" , placeholder = "Username" })
+							@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-10">
+							@Html.PasswordFor(m => m.Password, new { @class = "form-control" , placeholder = "Password" })
+							@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<div class="checkbox">
+								@*@Html.CheckBoxFor(m => m.RememberMe)
+								@Html.LabelFor(m => m.RememberMe)*@
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							@Html.ActionLink("Recover Password", "RecoverPassword", "Account")
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<input type="submit" value="Log in" class="btn btn-danger btn-lg btn-space" />
+							@Html.ActionLink("Sign Up", "Register", "Account", new { @class = "btn btn-danger btn-lg btn-space" })
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<font color="@ViewBag.color">@ViewBag.ErroMessage</font>
+						</div>
+					</div>
+				}
+			</section>
+		</div>
+	</div>
+</div>

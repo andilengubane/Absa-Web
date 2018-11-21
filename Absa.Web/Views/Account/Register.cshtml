@@ -1,0 +1,113 @@
+﻿@using Absa.Web.Models
+@model UserModel
+
+@{
+	ViewBag.Title = "Register";
+	Layout = null;
+	ViewBag.color = "red";
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<style>
+	.back {
+		background: #DC143C;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+	}
+
+	.div-center {
+		width: 800px;
+		height: 450px;
+		background-color: #fff;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		max-width: 200%;
+		max-height: 150%;
+		overflow: auto;
+		padding: 1em 2em;
+		border-bottom: 2px solid #ccc;
+		display: table;
+	}
+
+	div.content {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+    .btn-space {
+         margin-right: 25px;
+    }
+</style>
+
+<h2>Register</h2>
+<div class="back">
+	<div class="div-center">
+		<div class="content">
+			<div class="alert alert-dark size-alr" role="alert" style="background-color: #DC143C;">
+				<h3>Sign Up</h3>
+			</div>
+			@using (Html.BeginForm("AddNewUser", "Account", FormMethod.Post))
+			{
+				@Html.AntiForgeryToken()
+			    <form>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" , autocomplete = "off" } })
+							@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+						</div>
+						<div class="form-group col-md-6">
+							@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Names" , autocomplete = "off" } })
+							@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+								@Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Address" , autocomplete = "off" } })
+								@Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+						</div>
+						<div class="form-group col-md-6">
+							@Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Contact Number" , autocomplete = "off" } })
+							@Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="form-group">
+						@Html.DropDownListFor(model => model.Department, Model.StatusList, "Select Department", new { @class = "form-control" })
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "UserName" , autocomplete = "off" } })
+							@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+						</div>
+						<div class="form-group col-md-6">
+							@Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", autocomplete = "off" })
+							@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					@if (ViewBag.ErrorMessage != null)
+					{
+						<div class="alert alert-success" role="alert">
+							ViewBag.ErrorMessage
+						</div>
+					}
+                    <br />
+					<input type="submit" value="Submit" class="btn btn-danger btn-lg" />
+					@Html.ActionLink("Sign In", "Login", "Account", new { @class = "btn btn-danger btn-lg btn-space" })
+				</form>
+			}
+		</div>
+	</div>
+</div>
