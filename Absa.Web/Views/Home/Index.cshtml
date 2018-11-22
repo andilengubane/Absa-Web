@@ -3,4 +3,308 @@
     ViewBag.Title = "DashBord";
 }
 
-<h2>Application List</h2>
+<script>
+	var changeColor = $('#dashBord').val();
+</script>
+<h3>T100R</h3>
+<br>
+<div class="card w-100">
+	<div class="card-body">
+		<h5 class="card-title">Business Unit</h5>
+		@using (Html.BeginForm())
+		{
+		  @Html.DropDownListFor(model => model.BusinessUnit, Model.StatusList, "Select Bussiness Unit", new { @class = "form-control" })
+		  <br />
+		  <input type="submit" value="Search" class="btn btn-danger" />
+		}
+	</div>
+</div>
+<br />
+<div class="card-deck">
+	<div class="card" id="dashBord">
+		<div class="card-header">Disater Recover</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Disater Recover</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">BackUp - Data</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Data</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">BackUp - Configuration</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Configuration</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">High Availability</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">High Availability</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Single Point of Failure</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Single Point of Failure</button>
+		</div>
+	</div>
+</div>
+<br>
+<div class="card-deck">
+	<div class="card" id="dashBord">
+		<div class="card-header">Monitoring</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Monitoring</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Unsupported Infrastruture</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Unsupported Infrastruture</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Strategic Fit</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Strategic Fit</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Operational Monitoring</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Monitoring</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Security Monitoring</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Security Monitoring</button>
+		</div>
+	</div>
+</div>
+<br />
+<div class="card-deck">
+	<div class="card" id="dashBord">
+		<div class="card-header">Internal OLA</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Internal OLA</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">External SLA</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">External SLA</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Archicteture Documentation</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Archicteture Documentation</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Operational Documentation</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Documentation</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Integrated to AD</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Integrated to AD</button>
+		</div>
+	</div>
+</div>
+<br />
+<div class="card-deck">
+	<div class="card" id="dashBord">
+		<div class="card-header">JML Process</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">JML Process</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Recertification Process</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Recertification Process</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Privileged Access Management</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Privileged Access Management</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">OS Patching Level</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">OS Patching Level</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Application Patching Level</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Application Patching Level</button>
+		</div>
+	</div>
+</div>
+<br />
+<div class="card-deck">
+	<div class="card" id="dashBord">
+		<div class="card-header">Middleware Patching Level</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Middleware Patching Level</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Supported Application</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Application</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Supported OS</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported OS</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Supported Java</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Java</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Supported Middleware</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Middleware</button>
+		</div>
+	</div>
+</div>
+<br />
+<div class="card-deck" id="dashBord">
+	<div class="card">
+		<div class="card-header">Supported Database</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Database</button>
+		</div>
+	</div>
+	<div class="card" id="dashBord">
+		<div class="card-header">Open Vulnerabilities</div>
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Open Vulnerabilities</button>
+		</div>
+	</div>
+</div>
+<br />

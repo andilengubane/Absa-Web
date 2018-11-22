@@ -13,6 +13,8 @@ namespace Absa.Web.Models
 
 	public class DashBord
 	{
+		public IEnumerable<SelectListItem> StatusList { get; set; }
+		public string BusinessUnit { get; set; }
 	}
 
 	public class UserModel

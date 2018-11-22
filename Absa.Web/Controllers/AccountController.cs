@@ -25,6 +25,34 @@ namespace Absa.Web.Controllers
 			return View();
 		}
 
+		public ActionResult UserList()
+		{
+			var model = new List<UserModel>();
+			try
+			{
+				var data = from dashBordList in context.Users
+						   select dashBordList;
+				foreach (var item in data)
+				{
+					model.Add(new UserModel()
+					{
+						ID = item.UserID,
+						FirstName = item.FirstName,
+						LastName = item.LastName,
+						EmailAddress = item.EmailAddress,
+						UserName = item.UserName,
+						ContactNumber = item.ContactNumber,
+						IsActive = Convert.ToBoolean(item.IsActive)
+	              });
+				}
+			}
+			catch (Exception ex)
+			{
+				string error = ex.Message;
+			}
+			return this.View("UserList", model);
+		}
+
 		// GET: Register
 		public ActionResult Register()
 		{
