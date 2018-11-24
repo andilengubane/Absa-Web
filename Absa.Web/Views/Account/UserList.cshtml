@@ -38,6 +38,39 @@
             });
         });
 </script>
+
+<script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Create",
+                width: 600
+            });
+            $("#UserList .EditUser").click(function () {
+            	var userID = $("#userID").val();//$(this).closest("tr").find("td").eq(0).html();
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/EditUser",
+                    data: '{userID: "' + userID + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#dialog').html(response);
+                        $('#dialog').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+
+
 }
 <div id="dialog" style="display: none"></div>
 	<h3 class="modal-title" id="myModalLabel">Users</h3>
@@ -68,6 +101,7 @@
 		@foreach (var item in Model)
 		{
 			<tr>
+				@Html.HiddenFor(modelItem => item.ID , new { id = "userID" })
 				<td>
 					@Html.DisplayFor(modelItem => item.FirstName)
 				</td>
@@ -88,6 +122,7 @@
 				</td>
 				<td>
 					<button class="details btn btn-sm btn-outline-success" type="button" id="userList" href="javascript:;">CREATE</button>
+					<button class="EditUser btn btn-sm btn-outline-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
 					<button class="btn btn-sm btn-outline-primary" type="button" id="userList" onclick="location.href='@Url.Action("Edit", "Edit", new { id = item.ID })'">MODIFY</button>
 					<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Delete", "Delete", new { id=item.ID })'">DELETE</button>
 				</td>

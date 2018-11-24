@@ -85,33 +85,51 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult Edit(int userID)
+		public ActionResult EditUser(string userID)
 		{
 			var model = new UserModel();
+			int id = Convert.ToInt16(userID);
 			var items = context.DataLookUps.Where(x => x.LookUpNameID == 1).ToList();
 			if (items != null)
 			{
 				ViewBag.data = items;
 			}
-			if (userID != 0)
+			if (id != 0)
 			{
 				try
 				{
-					var data = context.Users.Where(m => m.UserID == userID);
+					var data = context.Users.Where(m => m.UserID == id);
 					foreach (var result in data)
 					{
 						model.ID = result.UserID;
 						model.FirstName = result.FirstName;
 						model.LastName = result.LastName;
+						model.EmailAddress = result.EmailAddress;
+						model.ContactNumber = result.ContactNumber;
+						model.UserName = result.UserName;
+						model.Password = result.Password;
+						model.IsActive = Convert.ToBoolean(result.IsActive);
 					}
 				}
 				catch (Exception ex)
 				{
 					var error = ex.Message;
 				}
+				model.BusinestUnitList = context.Departments.Select(x => new SelectListItem
+				{
+					Value = x.DepartmentID.ToString(),
+					Text = x.DepartmentName
+				});
+
+				model.RolesPermissionList = context.RolesPermissions.Select(x => new SelectListItem
+				{
+					Value = x.RolesPermissionsID.ToString(),
+					Text = x.Type
+				});
 			}
 			return PartialView(model);
 		}
+
 		// POST: Account
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
