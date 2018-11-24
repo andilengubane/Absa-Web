@@ -13,13 +13,14 @@ namespace Absa.Web.Models
 
 	public class DashBord
 	{
-		public IEnumerable<SelectListItem> StatusList { get; set; }
+		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
 		public string BusinessUnit { get; set; }
 	}
 
 	public class UserModel
 	{
-		public IEnumerable<SelectListItem> StatusList { get; set; }
+		public IEnumerable<SelectListItem> BusinestUnitList { get; set; }
+		public IEnumerable<SelectListItem> RolesPermissionList { get; set; }
 		public int ID { get; set; }
 		[Required(ErrorMessage = "First Name is a required")]
 		[Display(Name = "First Name")]
@@ -42,6 +43,7 @@ namespace Absa.Web.Models
 		[Display(Name = "Cellphone Number")]
 		public string ContactNumber { get; set; }
 		public bool IsActive { get; set; }
-		public string Department { get; set; }
+		public string BusinessUnit { get; set; }
+		public string RolesPermission { get; set; }
 	}
 }

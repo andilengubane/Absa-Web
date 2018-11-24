@@ -47,6 +47,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="AbsaDataModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -76,6 +77,15 @@
           <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
           <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
           <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolesPermissions">
+      <EntityTypeMapping TypeName="AbsaDataModel.RolesPermission">
+        <MappingFragment StoreEntitySet="RolesPermissions">
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

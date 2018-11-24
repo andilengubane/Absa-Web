@@ -15,7 +15,7 @@ namespace Absa.Web.Controllers
 		{
 			var model = new DashBord()
 			{
-				StatusList = context.Departments.Select(x => new SelectListItem
+				BusinessUnitList = context.Departments.Select(x => new SelectListItem
 				{
 					Value = x.DepartmentID.ToString(),
 					Text = x.DepartmentName

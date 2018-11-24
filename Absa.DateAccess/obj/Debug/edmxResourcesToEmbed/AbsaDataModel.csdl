@@ -56,6 +56,8 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="Datelogged" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Department" Relationship="Self.FK__Users__Departmen__22AA2996" FromRole="Users" ToRole="Department" />
+    <Property Name="RolesPermissionsID" Type="Int32" />
+    <NavigationProperty Name="RolesPermission" Relationship="AbsaDataModel.fk_RolesPermissions_id" FromRole="User" ToRole="RolesPermission" />
   </EntityType>
   <EntityType Name="UsersAudit">
     <Key>
@@ -115,5 +117,31 @@
       <End Role="Department" EntitySet="Departments" />
       <End Role="UsersAudit" EntitySet="UsersAudits" />
     </AssociationSet>
+    <EntitySet Name="RolesPermissions" EntityType="AbsaDataModel.RolesPermission" />
+    <AssociationSet Name="fk_RolesPermissions_id" Association="AbsaDataModel.fk_RolesPermissions_id">
+      <End Role="RolesPermission" EntitySet="RolesPermissions" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="RolesPermission">
+    <Key>
+      <PropertyRef Name="RolesPermissionsID" />
+    </Key>
+    <Property Name="RolesPermissionsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DateLogged" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="AbsaDataModel.fk_RolesPermissions_id" FromRole="RolesPermission" ToRole="User" />
+  </EntityType>
+  <Association Name="fk_RolesPermissions_id">
+    <End Type="AbsaDataModel.RolesPermission" Role="RolesPermission" Multiplicity="0..1" />
+    <End Type="AbsaDataModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RolesPermission">
+        <PropertyRef Name="RolesPermissionsID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RolesPermissionsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

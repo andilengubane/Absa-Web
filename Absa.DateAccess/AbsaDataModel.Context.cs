@@ -31,5 +31,6 @@ namespace Absa.DateAccess
         public virtual DbSet<LookUpName> LookUpNames { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersAudit> UsersAudits { get; set; }
+        public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
     }
 }

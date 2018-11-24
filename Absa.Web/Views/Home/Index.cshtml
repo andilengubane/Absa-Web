@@ -4,8 +4,9 @@
 }
 
 <script>
-	var changeColor = $('#dashBord').val();
+	//var changeColor = $('#dashBord').val();
 </script>
+
 <h3>T100R</h3>
 <br>
 <div class="card w-100">
@@ -13,7 +14,7 @@
 		<h5 class="card-title">Business Unit</h5>
 		@using (Html.BeginForm())
 		{
-		  @Html.DropDownListFor(model => model.BusinessUnit, Model.StatusList, "Select Bussiness Unit", new { @class = "form-control" })
+		  @Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, "Select Bussiness Unit", new { @class = "form-control" })
 		  <br />
 		  <input type="submit" value="Search" class="btn btn-danger" />
 		}

@@ -24,7 +24,9 @@ namespace Absa.DateAccess
         public Nullable<int> DepartmentID { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> Datelogged { get; set; }
+        public Nullable<int> RolesPermissionsID { get; set; }
     
         public virtual Department Department { get; set; }
+        public virtual RolesPermission RolesPermission { get; set; }
     }
 }

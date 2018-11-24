@@ -59,7 +59,7 @@ namespace Absa.Web.Controllers
 			
 			var model = new UserModel()
 			{
-				StatusList = context.Departments.Select(x => new SelectListItem
+				BusinestUnitList = context.Departments.Select(x => new SelectListItem
 				{
 					Value = x.DepartmentID.ToString(),
 					Text = x.DepartmentName
@@ -68,6 +68,50 @@ namespace Absa.Web.Controllers
 			return View(model);
 		}
 
+		public ActionResult CreateUser()
+		{
+			UserModel model = new UserModel();
+			model.BusinestUnitList = context.Departments.Select(x => new SelectListItem
+			{
+				Value = x.DepartmentID.ToString(),
+				Text = x.DepartmentName
+			});
+
+			model.RolesPermissionList = context.RolesPermissions.Select(x => new SelectListItem
+			{
+				Value = x.RolesPermissionsID.ToString(),
+				Text = x.Type
+			});
+			return PartialView(model);
+		}
+
+		public ActionResult Edit(int userID)
+		{
+			var model = new UserModel();
+			var items = context.DataLookUps.Where(x => x.LookUpNameID == 1).ToList();
+			if (items != null)
+			{
+				ViewBag.data = items;
+			}
+			if (userID != 0)
+			{
+				try
+				{
+					var data = context.Users.Where(m => m.UserID == userID);
+					foreach (var result in data)
+					{
+						model.ID = result.UserID;
+						model.FirstName = result.FirstName;
+						model.LastName = result.LastName;
+					}
+				}
+				catch (Exception ex)
+				{
+					var error = ex.Message;
+				}
+			}
+			return PartialView(model);
+		}
 		// POST: Account
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
@@ -120,7 +164,7 @@ namespace Absa.Web.Controllers
 						EmailAddress = model.EmailAddress,
 						Datelogged = DateTime.Now,
 						ContactNumber = model.ContactNumber,
-						DepartmentID = Convert.ToInt32(model.Department),
+						DepartmentID = Convert.ToInt32(model.BusinessUnit),
 						IsActive = true
 					});
 					context.SaveChanges();
@@ -146,7 +190,7 @@ namespace Absa.Web.Controllers
 			
 			var models = new UserModel()
 			{
-				StatusList = context.Departments.Select(x => new SelectListItem
+				BusinestUnitList = context.Departments.Select(x => new SelectListItem
 				{
 					Value = x.DepartmentID.ToString(),
 					Text = x.DepartmentName

@@ -1,0 +1,70 @@
+﻿@model Absa.Web.Models.UserModel
+@{
+	ViewBag.Title = "CreateUser";
+	Layout = null;
+
+}
+@section scripts{
+	<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+	<script src="~/Scripts/bootstrap.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+}
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<form>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" , placeholder = "First Name", autocomplete = "off" } })
+				@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group col-md-6">
+				@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" , placeholder = "Last Name", autocomplete = "off" } })
+				@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				@Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Name", autocomplete = "off" } })
+				@Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group col-md-6">
+				@Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Contact Number", autocomplete = "off" } })
+				@Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username", autocomplete = "off" } })
+				@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group col-md-6">
+				@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinestUnitList, "Select Department", new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				@Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", autocomplete = "off" })
+				@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group col-md-6">
+			@Html.DropDownListFor(model => model.RolesPermission, Model.RolesPermissionList, "Select Department", new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="form-check">
+				<div class="checkbox">
+					@Html.EditorFor(model => model.IsActive)
+					@Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+					IsActive
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create"  class="btn btn-success btn-lg"/>
+			</div>
+		</div>
+	</form>
+}
+
