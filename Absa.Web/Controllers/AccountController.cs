@@ -30,8 +30,7 @@ namespace Absa.Web.Controllers
 			var model = new List<UserModel>();
 			try
 			{
-				var data = from dashBordList in context.Users
-						   select dashBordList;
+				var data = context.GetUsersList();
 				foreach (var item in data)
 				{
 					model.Add(new UserModel()
@@ -40,8 +39,9 @@ namespace Absa.Web.Controllers
 						FirstName = item.FirstName,
 						LastName = item.LastName,
 						EmailAddress = item.EmailAddress,
-						UserName = item.UserName,
 						ContactNumber = item.ContactNumber,
+						RolesPermission = item.Type,
+						BusinessUnit = item.DepartmentName,
 						IsActive = Convert.ToBoolean(item.IsActive)
 	              });
 				}
@@ -85,10 +85,10 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult EditUser(string userID)
+		public ActionResult EditUser(string userId)
 		{
 			var model = new UserModel();
-			int id = Convert.ToInt16(userID);
+			int id = Convert.ToInt16(userId);
 			var items = context.DataLookUps.Where(x => x.LookUpNameID == 1).ToList();
 			if (items != null)
 			{
@@ -109,6 +109,8 @@ namespace Absa.Web.Controllers
 						model.UserName = result.UserName;
 						model.Password = result.Password;
 						model.IsActive = Convert.ToBoolean(result.IsActive);
+						model.RolesPermission = Convert.ToString(result.RolesPermissionsID);
+						model.BusinessUnit = Convert.ToString(result.DepartmentID);
 					}
 				}
 				catch (Exception ex)
@@ -130,6 +132,67 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
+
+		public ActionResult AddUpdateUser(UserModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				if (model.ID == 0)
+				{
+					context.Users.Add(new User
+					{
+						FirstName = model.FirstName,
+						LastName = model.LastName,
+						EmailAddress = model.EmailAddress,
+						ContactNumber = model.ContactNumber,
+						UserName = model.UserName,
+						Password = model.Password,
+						Datelogged = DateTime.Now,
+						IsActive = model.IsActive,
+						DepartmentID = int.Parse(model.BusinessUnit),
+						RolesPermissionsID = int.Parse(model.RolesPermission)
+					});
+				}
+				else
+				{
+					var data = context.Users.FirstOrDefault(x => x.UserID == model.ID);
+					data.UserID = model.ID;
+					data.FirstName = model.FirstName;
+					data.LastName = model.LastName;
+					data.EmailAddress = model.EmailAddress;
+					data.ContactNumber = model.ContactNumber;
+					data.UserName = model.UserName;
+					data.Password = model.Password;
+					data.Datelogged = DateTime.Now;
+					data.IsActive = model.IsActive;
+					// if the value is null returns error 
+					data.DepartmentID = int.Parse(model.BusinessUnit);
+					data.RolesPermissionsID = int.Parse(model.RolesPermission);
+				}
+				context.SaveChanges();
+			}
+			return View("Index", "Home");
+		}
+
+		public ActionResult DeleteUser(string userId)
+		{
+			var id = Convert.ToInt32(userId);
+			var model = new List<UserModel>();
+			try {
+				var data = context.Users.Where(x=>x.UserID == id);
+				foreach (var item in data)
+				{
+					model.Add(new UserModel()
+					{
+						ID = item.UserID,
+						FirstName = item.FirstName,
+						LastName = item.LastName,
+					});
+				}
+			} catch (Exception ex) {
+			}
+			return View(model);
+		}
 		// POST: Account
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
@@ -187,19 +250,7 @@ namespace Absa.Web.Controllers
 					});
 					context.SaveChanges();
 					/*
-					 
-				     MailMessage msg = new MailMessage();
-				     msg.From = new MailAddress("joe@contoso.com");
-				     msg.To.Add(new MailAddress(model.EmailAddress));
-				     msg.Subject = "User Request Access";
-				     msg.Body = " Please see Activate the user account " + model.FirstName +" "+ model.LastName + ".";
-				     
-				     SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-				     System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("joe@contoso.com", "XXXXXX");
-				     smtpClient.Credentials = credentials;
-				     smtpClient.EnableSsl = true;
-				     smtpClient.Send(msg);
-
+				    TODO: Send email to supervisor or line manager
 				   */
 					ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
 					return this.RedirectToAction("Login", "Account");

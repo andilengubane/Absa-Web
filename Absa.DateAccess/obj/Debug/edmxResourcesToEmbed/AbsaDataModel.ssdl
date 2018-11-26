@@ -80,6 +80,7 @@
     <Property Name="Datelogged" Type="datetime" />
     <Property Name="UpdatedBy" Type="nvarchar" MaxLength="150" />
     <Property Name="UpdateOn" Type="datetime" />
+    <Property Name="RolePermissionID" Type="int" />
   </EntityType>
   <Association Name="FK__Users__Departmen__22AA2996">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -117,6 +118,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="AbsaDataModelStoreContainer">
     <EntitySet Name="DataLookUp" EntityType="Self.DataLookUp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />

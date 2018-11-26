@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Absa.Web.Models.UserModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteUser</title>
+</head>
+<body>
+    <div> 
+		
+		@foreach (var item in Model)
+		{
+		  @Html.HiddenFor(modelItem => item.ID,new { id ="userId"})
+		 <p>Are you sure,you want to delete @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</p>
+		}
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<input type="submit" value="Delete" class="btn btn-success btn-lg btn-block" />
+			</div>
+		</div>
+    </div>
+</body>
+</html>

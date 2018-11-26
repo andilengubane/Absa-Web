@@ -75,6 +75,9 @@
     <Compile Include="DepartmentAudit.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetUsersList_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LookUpName.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>

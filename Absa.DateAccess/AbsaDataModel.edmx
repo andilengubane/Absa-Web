@@ -85,6 +85,7 @@
           <Property Name="Datelogged" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="150" />
           <Property Name="UpdateOn" Type="datetime" />
+          <Property Name="RolePermissionID" Type="int" />
         </EntityType>
         <Association Name="FK__Users__Departmen__22AA2996">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -122,6 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="AbsaDataModelStoreContainer">
           <EntitySet Name="DataLookUp" EntityType="Self.DataLookUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
@@ -224,6 +226,7 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="UpdateOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Department" Relationship="Self.FK__UsersAudi__Depar__276EDEB3" FromRole="UsersAudit" ToRole="Department" />
+          <Property Name="RolePermissionID" Type="Int32" />
         </EntityType>
         <Association Name="FK__Users__Departmen__22AA2996">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -269,6 +272,7 @@
             <End Role="RolesPermission" EntitySet="RolesPermissions" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDataModel.GetUsersList_Result)" />
         </EntityContainer>
         <EntityType Name="RolesPermission">
           <Key>
@@ -291,6 +295,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetUsersList_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="150" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -360,6 +375,7 @@
           <EntitySetMapping Name="UsersAudits">
             <EntityTypeMapping TypeName="AbsaDataModel.UsersAudit">
               <MappingFragment StoreEntitySet="UsersAudit">
+                <ScalarProperty Name="RolePermissionID" ColumnName="RolePermissionID" />
                 <ScalarProperty Name="UserAuditID" ColumnName="UserAuditID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -385,6 +401,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUsersList" FunctionName="AbsaDataModel.Store.GetUsersList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AbsaDataModel.GetUsersList_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

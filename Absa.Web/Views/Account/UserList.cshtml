@@ -13,7 +13,7 @@
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
-                title: "Create",
+                title: "User",
                 width: 600
             });
             $("#UserList .details").click(function () {
@@ -44,11 +44,12 @@
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
-                title: "Create",
+                title: "User",
                 width: 600
             });
             $("#UserList .EditUser").click(function () {
-            	var userID = $("#userID").val();//$(this).closest("tr").find("td").eq(0).html();
+            	debugger
+            	var userID = $("#userID").val();
                 $.ajax({
                     type: "POST",
                     url: "/Account/EditUser",
@@ -69,8 +70,38 @@
             });
         });
 </script>
-
-
+<script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "User",
+                width: 600
+            });
+            $("#UserList .DeleteUser").click(function () {
+            	debugger
+            	var userID = $("#userID").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/DeleteUser",
+                    data: '{userID: "' + userID + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#dialog').html(response);
+                        $('#dialog').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+	
 }
 <div id="dialog" style="display: none"></div>
 	<h3 class="modal-title" id="myModalLabel">Users</h3>
@@ -78,22 +109,25 @@
 	<table class="table table-bordered" id="UserList">
 		<tr>
 			<th>
-				@Html.DisplayNameFor(model => model.FirstName)
+				First Name
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.LastName)
+				Last Name
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.EmailAddress)
+				Email Address
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.UserName)
+			    Contact Number
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.ContactNumber)
+				IsActive
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.IsActive)
+				Business Unit
+			</th>
+			<th>
+			   Role
 			</th>
 			<th></th>
 		</tr>
@@ -101,7 +135,7 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				@Html.HiddenFor(modelItem => item.ID , new { id = "userID" })
+				@Html.HiddenFor(modelItem => item.ID, new { id = "userID" })
 				<td>
 					@Html.DisplayFor(modelItem => item.FirstName)
 				</td>
@@ -112,19 +146,21 @@
 					@Html.DisplayFor(modelItem => item.EmailAddress)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.UserName)
-				</td>
-				<td>
 					@Html.DisplayFor(modelItem => item.ContactNumber)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.IsActive)
 				</td>
 				<td>
-					<button class="details btn btn-sm btn-outline-success" type="button" id="userList" href="javascript:;">CREATE</button>
-					<button class="EditUser btn btn-sm btn-outline-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
-					<button class="btn btn-sm btn-outline-primary" type="button" id="userList" onclick="location.href='@Url.Action("Edit", "Edit", new { id = item.ID })'">MODIFY</button>
-					<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Delete", "Delete", new { id=item.ID })'">DELETE</button>
+					@Html.DisplayFor(modelItem => item.BusinessUnit)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.RolesPermission)
+				</td>
+				<td>
+					<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
+					<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
+					<button class="DeleteUser btn-sm btn-danger" type="button" id="userList" href="javascript:;">DELETE</button>
 				</td>
 			</tr>
 		}

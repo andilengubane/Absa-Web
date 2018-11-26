@@ -10,25 +10,17 @@
 namespace Absa.DateAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class UsersAudit
+    public partial class GetUsersList_Result
     {
-        public int UserAuditID { get; set; }
-        public Nullable<int> UserID { get; set; }
+        public int UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
         public string ContactNumber { get; set; }
-        public Nullable<int> DepartmentID { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> Datelogged { get; set; }
-        public string UpdatedBy { get; set; }
-        public Nullable<System.DateTime> UpdateOn { get; set; }
-        public Nullable<int> RolePermissionID { get; set; }
-    
-        public virtual Department Department { get; set; }
+        public string Type { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

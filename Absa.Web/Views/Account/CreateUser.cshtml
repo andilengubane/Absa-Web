@@ -5,11 +5,23 @@
 
 }
 @section scripts{
-	<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-	<script src="~/Scripts/bootstrap.js"></script>
-	<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+// <![CDATA[
+	$().ready(function () {
+		var firstName = $('#firstname').val();
+		if (firstName == null) {
+			alert("Fisrt Name is required");
+		}
+    });
+// ]]>
+</script>
+
 }
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("AddUpdateUser", "Account", FormMethod.Post, new { id = "frmId" }))
 {
 	@Html.AntiForgeryToken()
 	<form>
@@ -39,16 +51,7 @@
 				@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 			</div>
 			<div class="form-group col-md-6">
-				@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinestUnitList, "Select Department", new { @class = "form-control" })
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				@Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", autocomplete = "off" })
-				@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-			</div>
-			<div class="form-group col-md-6">
-			@Html.DropDownListFor(model => model.RolesPermission, Model.RolesPermissionList, "Select Department", new { @class = "form-control" })
+				@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinestUnitList, "Select Business Unit", new { @class = "form-control" })
 			</div>
 		</div>
 		<div class="form-group">
@@ -60,11 +63,22 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Create"  class="btn btn-success btn-lg"/>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				@Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", autocomplete = "off" })
+				@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group col-md-6">
+			@Html.DropDownListFor(model => model.RolesPermission, Model.RolesPermissionList, "Select  Role Permission", new { @class = "form-control" })
 			</div>
 		</div>
+		<br />
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<input type="submit" value="Create" class="btn btn-success btn-lg btn-block" />
+			</div>
+		</div>
+
 	</form>
 }
 
