@@ -197,16 +197,17 @@ namespace Absa.Web.Controllers
 		}
 
 		// POST: Delete
+		[HttpPost]
 		public ActionResult Delete(string userId)
 		{
 			if (userId != null)
 			{
-				int id = Convert.ToInt16(userId);
+				int id = Convert.ToInt32(userId);
 				var data = context.Users.Find(id);
 				context.Users.Remove(data);
 				context.SaveChanges();
 			}
-			return RedirectToAction("UserList", "Account");
+			return RedirectToAction("Index", "Home");
 		}
 
 		// POST: Account
