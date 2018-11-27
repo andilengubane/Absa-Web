@@ -7,7 +7,6 @@
 
 @using (Html.BeginForm("AddUpdateUser", "Account", FormMethod.Post, new { id = "frmId"}))
 {
-	//
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">

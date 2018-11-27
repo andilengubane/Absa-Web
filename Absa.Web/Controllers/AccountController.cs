@@ -67,7 +67,7 @@ namespace Absa.Web.Controllers
 			};
 			return View(model);
 		}
-
+		// Get: Create user
 		public ActionResult CreateUser()
 		{
 			UserModel model = new UserModel();
@@ -84,11 +84,12 @@ namespace Absa.Web.Controllers
 			});
 			return PartialView(model);
 		}
-
+		// Get: Edit User
 		public ActionResult EditUser(string userId)
 		{
 			var model = new UserModel();
-			int id = Convert.ToInt16(userId);
+			string number = System.Text.RegularExpressions.Regex.Replace(userId, @"\D+", string.Empty);
+			int id = Convert.ToInt16(number);
 			var items = context.DataLookUps.Where(x => x.LookUpNameID == 1).ToList();
 			if (items != null)
 			{
@@ -132,7 +133,7 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-
+		// POST: Adding and Update user details
 		public ActionResult AddUpdateUser(UserModel model)
 		{
 			if (ModelState.IsValid)
@@ -165,15 +166,15 @@ namespace Absa.Web.Controllers
 					data.Password = model.Password;
 					data.Datelogged = DateTime.Now;
 					data.IsActive = model.IsActive;
-					// if the value is null returns error 
 					data.DepartmentID = int.Parse(model.BusinessUnit);
 					data.RolesPermissionsID = int.Parse(model.RolesPermission);
 				}
 				context.SaveChanges();
 			}
-			return View("Index", "Home");
+			return RedirectToAction("UserList", "Account");
 		}
 
+		// Get: Delete
 		public ActionResult DeleteUser(string userId)
 		{
 			var id = Convert.ToInt32(userId);
@@ -189,10 +190,25 @@ namespace Absa.Web.Controllers
 						LastName = item.LastName,
 					});
 				}
-			} catch (Exception ex) {
+			} catch (Exception ex)
+			{
 			}
 			return View(model);
 		}
+
+		// POST: Delete
+		public ActionResult Delete(string userId)
+		{
+			if (userId != null)
+			{
+				int id = Convert.ToInt16(userId);
+				var data = context.Users.Find(id);
+				context.Users.Remove(data);
+				context.SaveChanges();
+			}
+			return RedirectToAction("UserList", "Account");
+		}
+
 		// POST: Account
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
