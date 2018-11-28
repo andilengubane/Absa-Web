@@ -71,16 +71,11 @@
 <div class="back">
 	<div class="div-center">
 		<div class="content">
-			<div class="alert alert-dark size-alr" role="alert" style="background-color: #DC143C;">
-				<h3>Sign In</h3>
-			</div>
 			<section id="loginForm">
 				@using (Html.BeginForm("GetUserAccess", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 				{
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<p>Enter the your login details in order to gain access. As the first time user Sign Up !</p>
-						</div>
+						<p>Enter the your login details in order to gain access. As the first time user Sign Up !</p>
 					</div>
 					@Html.AntiForgeryToken()
 					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -98,21 +93,13 @@
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-10">
-							<div class="checkbox">
-								@*@Html.CheckBoxFor(m => m.RememberMe)
-								@Html.LabelFor(m => m.RememberMe)*@
-							</div>
+							@*@Html.ActionLink("Recover Password", "RecoverPassword", "Account")*@
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-10">
-							@Html.ActionLink("Recover Password", "RecoverPassword", "Account")
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<input type="submit" value="Log in" class="btn btn-danger btn-lg btn-space" />
-							@Html.ActionLink("Sign Up", "Register", "Account", new { @class = "btn btn-danger btn-lg btn-space" })
+							<input type="submit" value="Log in" class="btn btn-danger btn-lg btn-block" />
+							@*@Html.ActionLink("Sign Up", "Register", "Account", new { @class = "btn btn-danger btn-lg btn-space" })*@
 						</div>
 					</div>
 					<div class="form-group">

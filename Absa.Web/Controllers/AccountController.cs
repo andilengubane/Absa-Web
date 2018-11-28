@@ -171,6 +171,7 @@ namespace Absa.Web.Controllers
 				}
 				context.SaveChanges();
 			}
+			ViewBag.ErrorMessage = "Date required";
 			return RedirectToAction("UserList", "Account");
 		}
 
