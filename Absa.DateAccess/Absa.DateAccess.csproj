@@ -75,10 +75,16 @@
     <Compile Include="DepartmentAudit.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetUsersList_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LookUpName.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolesPermission.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>

@@ -14,26 +14,31 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 			<a class="navbar-brand" href="#">
-				<img src="~/Content/image/ae27564ec7594689a4cf1ed44ebef592.png" width="60" height="40" alt="">
+				<img src="~/Content/image/ae27564ec7594689a4cf1ed44ebef592.png" width="70" height="40" alt="">
 			</a>
-			<a class="navbar-brand" href="#">Absa</a>
+			<a class="navbar-brand" href="#"></a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					@*@Html.ActionLink("Absa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-					<button class="btn btn-sm btn-outline-secondary" type="button">DashBord</button>
+					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">DashBord</button>
 				</li>
 				<li class="nav-item active">
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<button class="btn btn-sm btn-outline-secondary" type="button">Approvals</button>
+					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("Approval", "Home")'">Approval</button>
 				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("UserList", "Account")'">Users</button>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" onclick="serch" type="submit">Search</button>
+				<button class="btn btn-success my-2 my-sm-0" onclick="serch" type="submit">Search</button>
+				<button class="btn btn-primary my-2 my-sm-0" style='margin-Left:16px' onclick="serch" type="submit">LOGOUT</button>
 			</form>
 		</div>
 	</nav>

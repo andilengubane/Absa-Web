@@ -13,11 +13,14 @@ namespace Absa.Web.Models
 
 	public class DashBord
 	{
+		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
+		public string BusinessUnit { get; set; }
 	}
 
 	public class UserModel
 	{
-		public IEnumerable<SelectListItem> StatusList { get; set; }
+		public IEnumerable<SelectListItem> BusinestUnitList { get; set; }
+		public IEnumerable<SelectListItem> RolesPermissionList { get; set; }
 		public int ID { get; set; }
 		[Required(ErrorMessage = "First Name is a required")]
 		[Display(Name = "First Name")]
@@ -34,12 +37,13 @@ namespace Absa.Web.Models
 		public string UserName { get; set; }
 		[Required(ErrorMessage = "Password is a required")]
 		[Display(Name = "Password")]
-		[RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,15}", ErrorMessage = "Incorrect password enter a valid password!.")]
+		[RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,15}", ErrorMessage = "Password should contain Upper And Lower Case , Numbers and Special characters.")]
 		public string Password { get; set; }
 		[RegularExpression(@"(?<!\d)\d{10}(?!\d)", ErrorMessage = "Please enter a valid phone number")]
 		[Display(Name = "Cellphone Number")]
 		public string ContactNumber { get; set; }
 		public bool IsActive { get; set; }
-		public string Department { get; set; }
+		public string BusinessUnit { get; set; }
+		public string RolesPermission { get; set; }
 	}
 }

@@ -12,6 +12,8 @@ namespace Absa.DateAccess
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class AbsaDataModelEntities : DbContext
     {
@@ -31,5 +33,11 @@ namespace Absa.DateAccess
         public virtual DbSet<LookUpName> LookUpNames { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersAudit> UsersAudits { get; set; }
+        public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
+    
+        public virtual ObjectResult<GetUsersList_Result> GetUsersList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList");
+        }
     }
 }
