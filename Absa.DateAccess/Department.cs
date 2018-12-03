@@ -19,6 +19,7 @@ namespace Absa.DateAccess
         {
             this.Users = new HashSet<User>();
             this.UsersAudits = new HashSet<UsersAudit>();
+            this.DepartmentAudits = new HashSet<DepartmentAudit>();
         }
     
         public int DepartmentID { get; set; }
@@ -30,5 +31,7 @@ namespace Absa.DateAccess
         public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersAudit> UsersAudits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DepartmentAudit> DepartmentAudits { get; set; }
     }
 }

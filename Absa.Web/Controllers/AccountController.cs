@@ -90,7 +90,7 @@ namespace Absa.Web.Controllers
 			var model = new UserModel();
 			string number = System.Text.RegularExpressions.Regex.Replace(userId, @"\D+", string.Empty);
 			int id = Convert.ToInt16(number);
-			var items = context.DataLookUps.Where(x => x.LookUpNameID == 1).ToList();
+			var items = context.DataLookUps.Where(x => x.LoopkUpID == 1).ToList();
 			if (items != null)
 			{
 				ViewBag.data = items;
@@ -193,6 +193,7 @@ namespace Absa.Web.Controllers
 				}
 			} catch (Exception ex)
 			{
+				throw ex;
 			}
 			return View(model);
 		}

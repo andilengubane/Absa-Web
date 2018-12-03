@@ -14,8 +14,17 @@ namespace Absa.DateAccess
     
     public partial class LookUpName
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LookUpName()
+        {
+            this.DataLookUps = new HashSet<DataLookUp>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DataLookUp> DataLookUps { get; set; }
     }
 }

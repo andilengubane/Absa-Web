@@ -30,5 +30,6 @@ namespace Absa.DateAccess
         public Nullable<int> RolePermissionID { get; set; }
     
         public virtual Department Department { get; set; }
+        public virtual User User { get; set; }
     }
 }

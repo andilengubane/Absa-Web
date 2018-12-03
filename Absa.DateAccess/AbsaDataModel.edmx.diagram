@@ -5,16 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7fd486e818ba400ab6cd248103841c6d" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="AbsaDataModel.DataLookUp" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDataModel.Department" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDataModel.DepartmentAudit" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDataModel.DepartmentAudit" Width="1.5" PointX="8" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDataModel.LookUpName" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDataModel.User" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDataModel.UsersAudit" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="AbsaDataModel.FK__Users__Departmen__22AA2996" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDataModel.FK__UsersAudi__Depar__276EDEB3" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="AbsaDataModel.RolesPermission" Width="1.5" PointX="5.375" PointY="7.875" />
+        <EntityTypeShape EntityType="AbsaDataModel.RolesPermission" Width="1.5" PointX="5.375" PointY="5.875" />
         <AssociationConnector Association="AbsaDataModel.fk_RolesPermissions_id" />
+        <EntityTypeShape EntityType="AbsaDataModel.sysdiagram" Width="1.5" PointX="7.875" PointY="6.25" />
+        <AssociationConnector Association="AbsaDataModel.FK__UsersAudi__UserI__5CD6CB2B" />
+        <AssociationConnector Association="AbsaDataModel.FK__Departmen__Depar__5DCAEF64" />
+        <EntityTypeShape EntityType="AbsaDataModel.DataLookUp" Width="1.5" PointX="10" PointY="0.75" />
+        <AssociationConnector Association="AbsaDataModel.FK__DataLookU__Loopk__5AEE82B9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
