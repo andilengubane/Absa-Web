@@ -18,6 +18,8 @@ namespace Absa.DateAccess
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
-        public Nullable<int> LookUpNameID { get; set; }
+        public Nullable<int> LoopkUpID { get; set; }
+    
+        public virtual LookUpName LookUpName { get; set; }
     }
 }

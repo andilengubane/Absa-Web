@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AbsaDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="DataLookUp">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateLogged" Type="DateTime" Precision="3" />
-    <Property Name="LookUpNameID" Type="Int32" />
-  </EntityType>
   <EntityType Name="Department">
     <Key>
       <PropertyRef Name="DepartmentID" />
@@ -20,6 +10,7 @@
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Users" Relationship="Self.FK__Users__Departmen__22AA2996" FromRole="Department" ToRole="Users" />
     <NavigationProperty Name="UsersAudits" Relationship="Self.FK__UsersAudi__Depar__276EDEB3" FromRole="Department" ToRole="UsersAudit" />
+    <NavigationProperty Name="DepartmentAudits" Relationship="AbsaDataModel.FK__Departmen__Depar__5DCAEF64" FromRole="Department" ToRole="DepartmentAudit" />
   </EntityType>
   <EntityType Name="DepartmentAudit">
     <Key>
@@ -32,6 +23,7 @@
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
     <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Department" Relationship="AbsaDataModel.FK__Departmen__Depar__5DCAEF64" FromRole="DepartmentAudit" ToRole="Department" />
   </EntityType>
   <EntityType Name="LookUpName">
     <Key>
@@ -40,6 +32,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DataLookUps" Relationship="AbsaDataModel.FK__DataLookU__Loopk__5AEE82B9" FromRole="LookUpName" ToRole="DataLookUp" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -58,6 +51,7 @@
     <NavigationProperty Name="Department" Relationship="Self.FK__Users__Departmen__22AA2996" FromRole="Users" ToRole="Department" />
     <Property Name="RolesPermissionsID" Type="Int32" />
     <NavigationProperty Name="RolesPermission" Relationship="AbsaDataModel.fk_RolesPermissions_id" FromRole="User" ToRole="RolesPermission" />
+    <NavigationProperty Name="UsersAudits" Relationship="AbsaDataModel.FK__UsersAudi__UserI__5CD6CB2B" FromRole="User" ToRole="UsersAudit" />
   </EntityType>
   <EntityType Name="UsersAudit">
     <Key>
@@ -78,6 +72,7 @@
     <Property Name="UpdateOn" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Department" Relationship="Self.FK__UsersAudi__Depar__276EDEB3" FromRole="UsersAudit" ToRole="Department" />
     <Property Name="RolePermissionID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="AbsaDataModel.FK__UsersAudi__UserI__5CD6CB2B" FromRole="UsersAudit" ToRole="User" />
   </EntityType>
   <Association Name="FK__Users__Departmen__22AA2996">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -104,7 +99,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="AbsaDataModelEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="DataLookUps" EntityType="Self.DataLookUp" />
     <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="DepartmentAudits" EntityType="Self.DepartmentAudit" />
     <EntitySet Name="LookUpNames" EntityType="Self.LookUpName" />
@@ -124,6 +118,50 @@
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
     <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDataModel.GetUsersList_Result)" />
+    <EntitySet Name="sysdiagrams" EntityType="AbsaDataModel.sysdiagram" />
+    <AssociationSet Name="FK__UsersAudi__UserI__5CD6CB2B" Association="AbsaDataModel.FK__UsersAudi__UserI__5CD6CB2B">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UsersAudit" EntitySet="UsersAudits" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AbsaDataModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AbsaDataModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK__Departmen__Depar__5DCAEF64" Association="AbsaDataModel.FK__Departmen__Depar__5DCAEF64">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="DepartmentAudit" EntitySet="DepartmentAudits" />
+    </AssociationSet>
+    <EntitySet Name="DataLookUps" EntityType="AbsaDataModel.DataLookUp" />
+    <AssociationSet Name="FK__DataLookU__Loopk__5AEE82B9" Association="AbsaDataModel.FK__DataLookU__Loopk__5AEE82B9">
+      <End Role="LookUpName" EntitySet="LookUpNames" />
+      <End Role="DataLookUp" EntitySet="DataLookUps" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="RolesPermission">
     <Key>
@@ -157,4 +195,72 @@
     <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="150" />
   </ComplexType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__UsersAudi__UserI__5CD6CB2B">
+    <End Type="AbsaDataModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="AbsaDataModel.UsersAudit" Role="UsersAudit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UsersAudit">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <Association Name="FK__Departmen__Depar__5DCAEF64">
+    <End Type="AbsaDataModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="AbsaDataModel.DepartmentAudit" Role="DepartmentAudit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="DepartmentAudit">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DataLookUp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateLogged" Type="DateTime" Precision="3" />
+    <Property Name="LoopkUpID" Type="Int32" />
+    <NavigationProperty Name="LookUpName" Relationship="AbsaDataModel.FK__DataLookU__Loopk__5AEE82B9" FromRole="DataLookUp" ToRole="LookUpName" />
+  </EntityType>
+  <Association Name="FK__DataLookU__Loopk__5AEE82B9">
+    <End Type="AbsaDataModel.LookUpName" Role="LookUpName" Multiplicity="0..1" />
+    <End Type="AbsaDataModel.DataLookUp" Role="DataLookUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookUpName">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DataLookUp">
+        <PropertyRef Name="LoopkUpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
