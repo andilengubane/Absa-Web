@@ -136,42 +136,38 @@ namespace Absa.Web.Controllers
 		// POST: Adding and Update user details
 		public ActionResult AddUpdateUser(UserModel model)
 		{
-			if (ModelState.IsValid)
+			if (model.ID == 0)
 			{
-				if (model.ID == 0)
+				context.Users.Add(new User
 				{
-					context.Users.Add(new User
-					{
-						FirstName = model.FirstName,
-						LastName = model.LastName,
-						EmailAddress = model.EmailAddress,
-						ContactNumber = model.ContactNumber,
-						UserName = model.UserName,
-						Password = model.Password,
-						Datelogged = DateTime.Now,
-						IsActive = model.IsActive,
-						DepartmentID = int.Parse(model.BusinessUnit),
-						RolesPermissionsID = int.Parse(model.RolesPermission)
-					});
-				}
-				else
-				{
-					var data = context.Users.FirstOrDefault(x => x.UserID == model.ID);
-					data.UserID = model.ID;
-					data.FirstName = model.FirstName;
-					data.LastName = model.LastName;
-					data.EmailAddress = model.EmailAddress;
-					data.ContactNumber = model.ContactNumber;
-					data.UserName = model.UserName;
-					data.Password = model.Password;
-					data.Datelogged = DateTime.Now;
-					data.IsActive = model.IsActive;
-					data.DepartmentID = int.Parse(model.BusinessUnit);
-					data.RolesPermissionsID = int.Parse(model.RolesPermission);
-				}
-				context.SaveChanges();
+					FirstName = model.FirstName,
+					LastName = model.LastName,
+					EmailAddress = model.EmailAddress,
+					ContactNumber = model.ContactNumber,
+					UserName = model.UserName,
+					Password = model.Password,
+					Datelogged = DateTime.Now,
+					IsActive = model.IsActive,
+					DepartmentID = int.Parse(model.BusinessUnit),
+					RolesPermissionsID = int.Parse(model.RolesPermission)
+				});
 			}
-			ViewBag.ErrorMessage = "Date required";
+			else
+			{
+				var data = context.Users.FirstOrDefault(x => x.UserID == model.ID);
+				data.UserID = model.ID;
+				data.FirstName = model.FirstName;
+				data.LastName = model.LastName;
+				data.EmailAddress = model.EmailAddress;
+				data.ContactNumber = model.ContactNumber;
+				data.UserName = model.UserName;
+				data.Password = model.Password;
+				data.Datelogged = DateTime.Now;
+				data.IsActive = model.IsActive;
+				data.DepartmentID = int.Parse(model.BusinessUnit);
+				data.RolesPermissionsID = int.Parse(model.RolesPermission);
+			}
+			context.SaveChanges();
 			return RedirectToAction("UserList", "Account");
 		}
 
