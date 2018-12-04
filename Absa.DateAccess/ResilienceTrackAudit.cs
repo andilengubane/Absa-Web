@@ -12,9 +12,10 @@ namespace Absa.DateAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class ResilienceTrack
+    public partial class ResilienceTrackAudit
     {
-        public int ResilienceTrackID { get; set; }
+        public int ResilienceTrackAuditID { get; set; }
+        public Nullable<int> ResilienceTrackID { get; set; }
         public Nullable<int> BusinessUnitId { get; set; }
         public string ApplicationID { get; set; }
         public string ApplicationName { get; set; }
@@ -50,6 +51,8 @@ namespace Absa.DateAccess
         public string SupportedMiddleware { get; set; }
         public string SupportedDatabase { get; set; }
         public string OpenVulnerabilities { get; set; }
+        public string UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual BusinessUnit BusinessUnit { get; set; }
     }

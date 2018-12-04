@@ -18,9 +18,10 @@ namespace Absa.DateAccess
         public BusinessUnit()
         {
             this.BusinessUnitAudits = new HashSet<BusinessUnitAudit>();
+            this.ResilienceTrackAudits = new HashSet<ResilienceTrackAudit>();
+            this.ResilienceTracks = new HashSet<ResilienceTrack>();
             this.Users = new HashSet<User>();
             this.UsersAudits = new HashSet<UsersAudit>();
-            this.ResilienceTracks = new HashSet<ResilienceTrack>();
         }
     
         public int BusinessUnitId { get; set; }
@@ -31,10 +32,12 @@ namespace Absa.DateAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResilienceTrackAudit> ResilienceTrackAudits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersAudit> UsersAudits { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
     }
 }

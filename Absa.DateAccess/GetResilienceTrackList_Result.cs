@@ -13,7 +13,7 @@ namespace Absa.DateAccess
     
     public partial class GetResilienceTrackList_Result
     {
-        public int ID { get; set; }
+        public int ResilienceTrackID { get; set; }
         public string ApplicationID { get; set; }
         public string ApplicationName { get; set; }
         public string NameOnSnow { get; set; }
