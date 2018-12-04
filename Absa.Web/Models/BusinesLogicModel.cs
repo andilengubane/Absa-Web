@@ -46,4 +46,18 @@ namespace Absa.Web.Models
 		public string BusinessUnit { get; set; }
 		public string RolesPermission { get; set; }
 	}
+	public class ResilienceTrackModel
+	{
+		public int ID { get; set; }
+		public string ApplicationID { get; set; }
+		public string ApplicationName { get; set; }
+		public string NameOnSnow { get; set; }
+		public string HeadOfTechnology { get; set; }
+		public string ApplicatioOwner { get; set; }
+		public string ServiceManager { get; set; }
+		public long Tiering { get; set; }
+		public int BusinessUnitId { get; set; }
+		public string BusinessUnit { get; set; }
+	}
+
 }

@@ -66,13 +66,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AbsaDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BusinessUnit.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessUnitAudit.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataLookUp.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Department.cs">
-      <DependentUpon>AbsaDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DepartmentAudit.cs">
+    <Compile Include="GetResilienceTrackList_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetUsersList_Result.cs">
@@ -82,16 +85,10 @@
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResilienceTrack.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="RolesPermission.cs">
-      <DependentUpon>AbsaDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>AbsaDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>AbsaDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -106,13 +103,14 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AbsaDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="AbsaDataModel.edmx.diagram">
       <DependentUpon>AbsaDataModel.edmx</DependentUpon>
     </None>
     <None Include="App.Config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AbsaDataModel.Context.tt">
@@ -125,9 +123,6 @@
       <DependentUpon>AbsaDataModel.edmx</DependentUpon>
       <LastGenOutput>AbsaDataModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

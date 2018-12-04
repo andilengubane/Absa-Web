@@ -12,7 +12,7 @@ namespace Absa.Web.Controllers
 {
     public class AccountController : Controller
     {
-		AbsaDataModelEntities context = new AbsaDataModelEntities();
+		AbsaDBEntities context = new AbsaDBEntities();
 		// GET: Account
 		public ActionResult Login()
 		{
@@ -31,6 +31,7 @@ namespace Absa.Web.Controllers
 			try
 			{
 				var data = context.GetUsersList();
+				
 				foreach (var item in data)
 				{
 					model.Add(new UserModel()
@@ -41,7 +42,7 @@ namespace Absa.Web.Controllers
 						EmailAddress = item.EmailAddress,
 						ContactNumber = item.ContactNumber,
 						RolesPermission = item.Type,
-						BusinessUnit = item.DepartmentName,
+						BusinessUnit = item.BusinessUnitName,
 						IsActive = Convert.ToBoolean(item.IsActive)
 	              });
 				}
@@ -59,10 +60,10 @@ namespace Absa.Web.Controllers
 			
 			var model = new UserModel()
 			{
-				BusinestUnitList = context.Departments.Select(x => new SelectListItem
+				BusinestUnitList = context.BusinessUnits.OrderBy(x=>x.BusinessUnitName).Select(x => new SelectListItem
 				{
-					Value = x.DepartmentID.ToString(),
-					Text = x.DepartmentName
+					Value = x.BusinessUnitId.ToString(),
+					Text = x.BusinessUnitName
 				})
 			};
 			return View(model);
@@ -71,13 +72,13 @@ namespace Absa.Web.Controllers
 		public ActionResult CreateUser()
 		{
 			UserModel model = new UserModel();
-			model.BusinestUnitList = context.Departments.Select(x => new SelectListItem
+			model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
 			{
-				Value = x.DepartmentID.ToString(),
-				Text = x.DepartmentName
+				Value = x.BusinessUnitId.ToString(),
+				Text = x.BusinessUnitName
 			});
 
-			model.RolesPermissionList = context.RolesPermissions.Select(x => new SelectListItem
+			model.RolesPermissionList = context.RolesPermissions.OrderBy(x => x.Type).Select(x => new SelectListItem
 			{
 				Value = x.RolesPermissionsID.ToString(),
 				Text = x.Type
@@ -111,20 +112,20 @@ namespace Absa.Web.Controllers
 						model.Password = result.Password;
 						model.IsActive = Convert.ToBoolean(result.IsActive);
 						model.RolesPermission = Convert.ToString(result.RolesPermissionsID);
-						model.BusinessUnit = Convert.ToString(result.DepartmentID);
+						model.BusinessUnit = Convert.ToString(result.BusinessUnitId);
 					}
 				}
 				catch (Exception ex)
 				{
 					var error = ex.Message;
 				}
-				model.BusinestUnitList = context.Departments.Select(x => new SelectListItem
+				model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
 				{
-					Value = x.DepartmentID.ToString(),
-					Text = x.DepartmentName
+					Value = x.BusinessUnitId.ToString(),
+					Text = x.BusinessUnitName
 				});
 
-				model.RolesPermissionList = context.RolesPermissions.Select(x => new SelectListItem
+				model.RolesPermissionList = context.RolesPermissions.OrderBy(x => x.Type).Select(x => new SelectListItem
 				{
 					Value = x.RolesPermissionsID.ToString(),
 					Text = x.Type
@@ -136,42 +137,38 @@ namespace Absa.Web.Controllers
 		// POST: Adding and Update user details
 		public ActionResult AddUpdateUser(UserModel model)
 		{
-			if (ModelState.IsValid)
+			if (model.ID == 0)
 			{
-				if (model.ID == 0)
+				context.Users.Add(new User
 				{
-					context.Users.Add(new User
-					{
-						FirstName = model.FirstName,
-						LastName = model.LastName,
-						EmailAddress = model.EmailAddress,
-						ContactNumber = model.ContactNumber,
-						UserName = model.UserName,
-						Password = model.Password,
-						Datelogged = DateTime.Now,
-						IsActive = model.IsActive,
-						DepartmentID = int.Parse(model.BusinessUnit),
-						RolesPermissionsID = int.Parse(model.RolesPermission)
-					});
-				}
-				else
-				{
-					var data = context.Users.FirstOrDefault(x => x.UserID == model.ID);
-					data.UserID = model.ID;
-					data.FirstName = model.FirstName;
-					data.LastName = model.LastName;
-					data.EmailAddress = model.EmailAddress;
-					data.ContactNumber = model.ContactNumber;
-					data.UserName = model.UserName;
-					data.Password = model.Password;
-					data.Datelogged = DateTime.Now;
-					data.IsActive = model.IsActive;
-					data.DepartmentID = int.Parse(model.BusinessUnit);
-					data.RolesPermissionsID = int.Parse(model.RolesPermission);
-				}
-				context.SaveChanges();
+					FirstName = model.FirstName,
+					LastName = model.LastName,
+					EmailAddress = model.EmailAddress,
+					ContactNumber = model.ContactNumber,
+					UserName = model.UserName,
+					Password = model.Password,
+					Datelogged = DateTime.Now,
+					IsActive = model.IsActive,
+					BusinessUnitId = int.Parse(model.BusinessUnit),
+					RolesPermissionsID = int.Parse(model.RolesPermission)
+				});
 			}
-			ViewBag.ErrorMessage = "Date required";
+			else
+			{
+				var data = context.Users.FirstOrDefault(x => x.UserID == model.ID);
+				data.UserID = model.ID;
+				data.FirstName = model.FirstName;
+				data.LastName = model.LastName;
+				data.EmailAddress = model.EmailAddress;
+				data.ContactNumber = model.ContactNumber;
+				data.UserName = model.UserName;
+				data.Password = model.Password;
+				data.Datelogged = DateTime.Now;
+				data.IsActive = model.IsActive;
+				data.BusinessUnitId = int.Parse(model.BusinessUnit);
+				data.RolesPermissionsID = int.Parse(model.RolesPermission);
+			}
+			context.SaveChanges();
 			return RedirectToAction("UserList", "Account");
 		}
 
@@ -305,7 +302,7 @@ namespace Absa.Web.Controllers
 						EmailAddress = model.EmailAddress,
 						Datelogged = DateTime.Now,
 						ContactNumber = model.ContactNumber,
-						DepartmentID = Convert.ToInt32(model.BusinessUnit),
+						BusinessUnitId = Convert.ToInt32(model.BusinessUnit),
 						IsActive = true
 					});
 					context.SaveChanges();
@@ -320,10 +317,10 @@ namespace Absa.Web.Controllers
 			
 			var models = new UserModel()
 			{
-				BusinestUnitList = context.Departments.Select(x => new SelectListItem
+				BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
 				{
-					Value = x.DepartmentID.ToString(),
-					Text = x.DepartmentName
+					Value = x.BusinessUnitId.ToString(),
+					Text = x.BusinessUnitName
 				})
 			};
 			return this.View("Register", models);
