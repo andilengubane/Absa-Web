@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BusinessUnit">
           <Key>
             <PropertyRef Name="BusinessUnitId" />
@@ -46,9 +46,10 @@
         </EntityType>
         <EntityType Name="ResilienceTrack">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ResilienceTrackID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResilienceTrackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessUnitId" Type="int" />
           <Property Name="ApplicationID" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="ApplicationName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="NameOnSnow" Type="nvarchar" MaxLength="150" />
@@ -56,7 +57,77 @@
           <Property Name="ApplicatioOwner" Type="nvarchar" MaxLength="150" />
           <Property Name="ServiceManager" Type="nvarchar" MaxLength="150" />
           <Property Name="Tiering" Type="bigint" />
+          <Property Name="StrategicFit" Type="nvarchar" MaxLength="150" />
+          <Property Name="DisasterRecovery" Type="nvarchar" MaxLength="150" />
+          <Property Name="BackUpData" Type="nvarchar" MaxLength="150" />
+          <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
+          <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
+          <Property Name="SPOF" Type="nvarchar(max)" />
+          <Property Name="OperationalMonitiring" Type="nvarchar(max)" />
+          <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
+          <Property Name="InternalOLA" Type="nvarchar(max)" />
+          <Property Name="ExternalSLA" Type="nvarchar(max)" />
+          <Property Name="ArchitetureDocumentation" Type="nvarchar(max)" />
+          <Property Name="OparationsDocumentation" Type="nvarchar(max)" />
+          <Property Name="HighestDataClassification" Type="nvarchar(max)" />
+          <Property Name="DataRetentionRequirement" Type="nvarchar(max)" />
+          <Property Name="IntegratedToAD" Type="nvarchar(max)" />
+          <Property Name="JMLProcess" Type="nvarchar(max)" />
+          <Property Name="RecertificationProcess" Type="nvarchar(max)" />
+          <Property Name="PrivilegedAccessManagement" Type="nvarchar(max)" />
+          <Property Name="OSPatchingLevel" Type="nvarchar(max)" />
+          <Property Name="ApplicationPatchingLevel" Type="nvarchar(max)" />
+          <Property Name="MiddlewarePatchingLevel" Type="nvarchar(max)" />
+          <Property Name="SupportedApplication" Type="nvarchar(max)" />
+          <Property Name="SupportedOperationSystem" Type="nvarchar(max)" />
+          <Property Name="SupportedJava" Type="nvarchar(max)" />
+          <Property Name="SupportedMiddleware" Type="nvarchar(max)" />
+          <Property Name="SupportedDatabase" Type="nvarchar(max)" />
+          <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ResilienceTrackAudit">
+          <Key>
+            <PropertyRef Name="ResilienceTrackAuditID" />
+          </Key>
+          <Property Name="ResilienceTrackAuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResilienceTrackID" Type="int" />
           <Property Name="BusinessUnitId" Type="int" />
+          <Property Name="ApplicationID" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="NameOnSnow" Type="nvarchar" MaxLength="150" />
+          <Property Name="HeadOfTechnology" Type="nvarchar" MaxLength="150" />
+          <Property Name="ApplicatioOwner" Type="nvarchar" MaxLength="150" />
+          <Property Name="ServiceManager" Type="nvarchar" MaxLength="150" />
+          <Property Name="Tiering" Type="bigint" />
+          <Property Name="StrategicFit" Type="nvarchar" MaxLength="150" />
+          <Property Name="DisasterRecovery" Type="nvarchar" MaxLength="150" />
+          <Property Name="BackUpData" Type="nvarchar" MaxLength="150" />
+          <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
+          <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
+          <Property Name="SPOF" Type="nvarchar(max)" />
+          <Property Name="OperationalMonitiring" Type="nvarchar(max)" />
+          <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
+          <Property Name="InternalOLA" Type="nvarchar(max)" />
+          <Property Name="ExternalSLA" Type="nvarchar(max)" />
+          <Property Name="ArchitetureDocumentation" Type="nvarchar(max)" />
+          <Property Name="OparationsDocumentation" Type="nvarchar(max)" />
+          <Property Name="HighestDataClassification" Type="nvarchar(max)" />
+          <Property Name="DataRetentionRequirement" Type="nvarchar(max)" />
+          <Property Name="IntegratedToAD" Type="nvarchar(max)" />
+          <Property Name="JMLProcess" Type="nvarchar(max)" />
+          <Property Name="RecertificationProcess" Type="nvarchar(max)" />
+          <Property Name="PrivilegedAccessManagement" Type="nvarchar(max)" />
+          <Property Name="OSPatchingLevel" Type="nvarchar(max)" />
+          <Property Name="ApplicationPatchingLevel" Type="nvarchar(max)" />
+          <Property Name="MiddlewarePatchingLevel" Type="nvarchar(max)" />
+          <Property Name="SupportedApplication" Type="nvarchar(max)" />
+          <Property Name="SupportedOperationSystem" Type="nvarchar(max)" />
+          <Property Name="SupportedJava" Type="nvarchar(max)" />
+          <Property Name="SupportedMiddleware" Type="nvarchar(max)" />
+          <Property Name="SupportedDatabase" Type="nvarchar(max)" />
+          <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="RolesPermissions">
           <Key>
@@ -125,7 +196,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Resilienc__Busin__0C85DE4D">
+        <Association Name="FK__Resilienc__Busin__1F98B2C1">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="ResilienceTrackAudit" Type="Self.ResilienceTrackAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="ResilienceTrackAudit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resilienc__Busin__208CD6FA">
           <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
           <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,6 +276,7 @@
           <EntitySet Name="DataLookUp" EntityType="Self.DataLookUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUpName" EntityType="Self.LookUpName" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResilienceTrack" EntityType="Self.ResilienceTrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResilienceTrackAudit" EntityType="Self.ResilienceTrackAudit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersAudit" EntityType="Self.UsersAudit" Schema="dbo" store:Type="Tables" />
@@ -204,7 +288,11 @@
             <End Role="LookUpName" EntitySet="LookUpName" />
             <End Role="DataLookUp" EntitySet="DataLookUp" />
           </AssociationSet>
-          <AssociationSet Name="FK__Resilienc__Busin__0C85DE4D" Association="Self.FK__Resilienc__Busin__0C85DE4D">
+          <AssociationSet Name="FK__Resilienc__Busin__1F98B2C1" Association="Self.FK__Resilienc__Busin__1F98B2C1">
+            <End Role="BusinessUnit" EntitySet="BusinessUnit" />
+            <End Role="ResilienceTrackAudit" EntitySet="ResilienceTrackAudit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
             <End Role="BusinessUnit" EntitySet="BusinessUnit" />
             <End Role="ResilienceTrack" EntitySet="ResilienceTrack" />
           </AssociationSet>
@@ -225,7 +313,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AbsaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -238,9 +327,10 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="DateLogged" Type="DateTime" Precision="3" />
           <NavigationProperty Name="BusinessUnitAudits" Relationship="Self.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnit" ToRole="BusinessUnitAudit" />
+          <NavigationProperty Name="ResilienceTrackAudits" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="BusinessUnit" ToRole="ResilienceTrackAudit" />
+          <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="BusinessUnit" ToRole="Users" />
           <NavigationProperty Name="UsersAudits" Relationship="Self.FK__UsersAudi__Busin__03F0984C" FromRole="BusinessUnit" ToRole="UsersAudit" />
-          <NavigationProperty Name="ResilienceTracks" Relationship="AbsaDBModel.FK__Resilienc__Busin__0C85DE4D" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
         </EntityType>
         <EntityType Name="BusinessUnitAudit">
           <Key>
@@ -274,6 +364,93 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateLogged" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DataLookUps" Relationship="Self.FK__DataLookU__Loopk__5AEE82B9" FromRole="LookUpName" ToRole="DataLookUp" />
+        </EntityType>
+        <EntityType Name="ResilienceTrack">
+          <Key>
+            <PropertyRef Name="ResilienceTrackID" />
+          </Key>
+          <Property Name="ResilienceTrackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessUnitId" Type="Int32" />
+          <Property Name="ApplicationID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameOnSnow" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HeadOfTechnology" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Tiering" Type="Int64" />
+          <Property Name="StrategicFit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DisasterRecovery" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpData" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpConfiguration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HighAvailability" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OperationalMonitiring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalSLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArchitetureDocumentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OparationsDocumentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HighestDataClassification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataRetentionRequirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IntegratedToAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JMLProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecertificationProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrivilegedAccessManagement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OSPatchingLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationPatchingLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddlewarePatchingLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedApplication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedOperationSystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedJava" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedMiddleware" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedDatabase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OpenVulnerabilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
+        </EntityType>
+        <EntityType Name="ResilienceTrackAudit">
+          <Key>
+            <PropertyRef Name="ResilienceTrackAuditID" />
+          </Key>
+          <Property Name="ResilienceTrackAuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResilienceTrackID" Type="Int32" />
+          <Property Name="BusinessUnitId" Type="Int32" />
+          <Property Name="ApplicationID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameOnSnow" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HeadOfTechnology" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Tiering" Type="Int64" />
+          <Property Name="StrategicFit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DisasterRecovery" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpData" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpConfiguration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HighAvailability" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OperationalMonitiring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalSLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArchitetureDocumentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OparationsDocumentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HighestDataClassification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataRetentionRequirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IntegratedToAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JMLProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecertificationProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrivilegedAccessManagement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OSPatchingLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationPatchingLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddlewarePatchingLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedApplication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedOperationSystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedJava" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedMiddleware" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedDatabase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OpenVulnerabilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="ResilienceTrackAudit" ToRole="BusinessUnit" />
         </EntityType>
         <EntityType Name="RolesPermission">
           <Key>
@@ -332,6 +509,30 @@
               <PropertyRef Name="BusinessUnitId" />
             </Principal>
             <Dependent Role="BusinessUnitAudit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resilienc__Busin__1F98B2C1">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="ResilienceTrackAudit" Type="Self.ResilienceTrackAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="ResilienceTrackAudit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resilienc__Busin__208CD6FA">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="ResilienceTrack">
               <PropertyRef Name="BusinessUnitId" />
             </Dependent>
           </ReferentialConstraint>
@@ -401,12 +602,22 @@
           <EntitySet Name="BusinessUnitAudits" EntityType="Self.BusinessUnitAudit" />
           <EntitySet Name="DataLookUps" EntityType="Self.DataLookUp" />
           <EntitySet Name="LookUpNames" EntityType="Self.LookUpName" />
+          <EntitySet Name="ResilienceTracks" EntityType="Self.ResilienceTrack" />
+          <EntitySet Name="ResilienceTrackAudits" EntityType="Self.ResilienceTrackAudit" />
           <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermission" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UsersAudits" EntityType="Self.UsersAudit" />
           <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="Self.FK__BusinessU__Busin__01142BA1">
             <End Role="BusinessUnit" EntitySet="BusinessUnits" />
             <End Role="BusinessUnitAudit" EntitySet="BusinessUnitAudits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resilienc__Busin__1F98B2C1" Association="Self.FK__Resilienc__Busin__1F98B2C1">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="ResilienceTrackAudit" EntitySet="ResilienceTrackAudits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
           </AssociationSet>
           <AssociationSet Name="FK__Users__BusinessU__7E37BEF6" Association="Self.FK__Users__BusinessU__7E37BEF6">
             <End Role="BusinessUnit" EntitySet="BusinessUnits" />
@@ -428,15 +639,20 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersAudit" EntitySet="UsersAudits" />
           </AssociationSet>
-          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
-          <EntitySet Name="ResilienceTracks" EntityType="AbsaDBModel.ResilienceTrack" />
-          <AssociationSet Name="FK__Resilienc__Busin__0C85DE4D" Association="AbsaDBModel.FK__Resilienc__Busin__0C85DE4D">
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-            <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
-          </AssociationSet>
-          <FunctionImport Name="GetRsilienceTrackList" ReturnType="Collection(AbsaDBModel.GetRsilienceTrackList_Result)" />
           <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
+          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
         </EntityContainer>
+        <ComplexType Name="GetResilienceTrackList_Result">
+          <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
+          <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="ApplicationName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="NameOnSnow" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="HeadOfTechnology" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ApplicatioOwner" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ServiceManager" Nullable="true" MaxLength="150" />
+          <Property Type="Int64" Name="Tiering" Nullable="true" />
+          <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+        </ComplexType>
         <ComplexType Name="GetUsersList_Result">
           <Property Type="Int32" Name="UserID" Nullable="false" />
           <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
@@ -446,54 +662,6 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
           <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
-        </ComplexType>
-        <EntityType Name="ResilienceTrack">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ApplicationID" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="NameOnSnow" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="HeadOfTechnology" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Tiering" Type="Int64" />
-          <Property Name="BusinessUnitId" Type="Int32" />
-          <NavigationProperty Name="BusinessUnit" Relationship="AbsaDBModel.FK__Resilienc__Busin__0C85DE4D" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
-        </EntityType>
-        <Association Name="FK__Resilienc__Busin__0C85DE4D">
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.ResilienceTrack" Role="ResilienceTrack" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BusinessUnit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Principal>
-            <Dependent Role="ResilienceTrack">
-              <PropertyRef Name="BusinessUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="GetRsilienceTrackList_Result">
-          <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ApplicationName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="NameOnSnow" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="HeadOfTechnology" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ApplicatioOwner" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ServiceManager" Nullable="true" MaxLength="150" />
-          <Property Type="Int64" Name="Tiering" Nullable="true" />
-          <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
-        </ComplexType>
-        <ComplexType Name="GetResilienceTrackList_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ApplicationName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="NameOnSnow" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="HeadOfTechnology" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ApplicatioOwner" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ServiceManager" Nullable="true" MaxLength="150" />
-          <Property Type="Int64" Name="Tiering" Nullable="true" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
         </ComplexType>
       </Schema>
@@ -545,6 +713,93 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ResilienceTracks">
+            <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrack">
+              <MappingFragment StoreEntitySet="ResilienceTrack">
+                <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="NameOnSnow" ColumnName="NameOnSnow" />
+                <ScalarProperty Name="HeadOfTechnology" ColumnName="HeadOfTechnology" />
+                <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
+                <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
+                <ScalarProperty Name="Tiering" ColumnName="Tiering" />
+                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
+                <ScalarProperty Name="SPOF" ColumnName="SPOF" />
+                <ScalarProperty Name="OperationalMonitiring" ColumnName="OperationalMonitiring" />
+                <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
+                <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
+                <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
+                <ScalarProperty Name="ArchitetureDocumentation" ColumnName="ArchitetureDocumentation" />
+                <ScalarProperty Name="OparationsDocumentation" ColumnName="OparationsDocumentation" />
+                <ScalarProperty Name="HighestDataClassification" ColumnName="HighestDataClassification" />
+                <ScalarProperty Name="DataRetentionRequirement" ColumnName="DataRetentionRequirement" />
+                <ScalarProperty Name="IntegratedToAD" ColumnName="IntegratedToAD" />
+                <ScalarProperty Name="JMLProcess" ColumnName="JMLProcess" />
+                <ScalarProperty Name="RecertificationProcess" ColumnName="RecertificationProcess" />
+                <ScalarProperty Name="PrivilegedAccessManagement" ColumnName="PrivilegedAccessManagement" />
+                <ScalarProperty Name="OSPatchingLevel" ColumnName="OSPatchingLevel" />
+                <ScalarProperty Name="ApplicationPatchingLevel" ColumnName="ApplicationPatchingLevel" />
+                <ScalarProperty Name="MiddlewarePatchingLevel" ColumnName="MiddlewarePatchingLevel" />
+                <ScalarProperty Name="SupportedApplication" ColumnName="SupportedApplication" />
+                <ScalarProperty Name="SupportedOperationSystem" ColumnName="SupportedOperationSystem" />
+                <ScalarProperty Name="SupportedJava" ColumnName="SupportedJava" />
+                <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
+                <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
+                <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResilienceTrackAudits">
+            <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrackAudit">
+              <MappingFragment StoreEntitySet="ResilienceTrackAudit">
+                <ScalarProperty Name="ResilienceTrackAuditID" ColumnName="ResilienceTrackAuditID" />
+                <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="NameOnSnow" ColumnName="NameOnSnow" />
+                <ScalarProperty Name="HeadOfTechnology" ColumnName="HeadOfTechnology" />
+                <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
+                <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
+                <ScalarProperty Name="Tiering" ColumnName="Tiering" />
+                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
+                <ScalarProperty Name="SPOF" ColumnName="SPOF" />
+                <ScalarProperty Name="OperationalMonitiring" ColumnName="OperationalMonitiring" />
+                <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
+                <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
+                <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
+                <ScalarProperty Name="ArchitetureDocumentation" ColumnName="ArchitetureDocumentation" />
+                <ScalarProperty Name="OparationsDocumentation" ColumnName="OparationsDocumentation" />
+                <ScalarProperty Name="HighestDataClassification" ColumnName="HighestDataClassification" />
+                <ScalarProperty Name="DataRetentionRequirement" ColumnName="DataRetentionRequirement" />
+                <ScalarProperty Name="IntegratedToAD" ColumnName="IntegratedToAD" />
+                <ScalarProperty Name="JMLProcess" ColumnName="JMLProcess" />
+                <ScalarProperty Name="RecertificationProcess" ColumnName="RecertificationProcess" />
+                <ScalarProperty Name="PrivilegedAccessManagement" ColumnName="PrivilegedAccessManagement" />
+                <ScalarProperty Name="OSPatchingLevel" ColumnName="OSPatchingLevel" />
+                <ScalarProperty Name="ApplicationPatchingLevel" ColumnName="ApplicationPatchingLevel" />
+                <ScalarProperty Name="MiddlewarePatchingLevel" ColumnName="MiddlewarePatchingLevel" />
+                <ScalarProperty Name="SupportedApplication" ColumnName="SupportedApplication" />
+                <ScalarProperty Name="SupportedOperationSystem" ColumnName="SupportedOperationSystem" />
+                <ScalarProperty Name="SupportedJava" ColumnName="SupportedJava" />
+                <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
+                <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
+                <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RolesPermissions">
             <EntityTypeMapping TypeName="AbsaDBModel.RolesPermission">
               <MappingFragment StoreEntitySet="RolesPermissions">
@@ -591,6 +846,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetResilienceTrackList" FunctionName="AbsaDBModel.Store.GetResilienceTrackList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AbsaDBModel.GetResilienceTrackList_Result">
+                <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="NameOnSnow" ColumnName="NameOnSnow" />
+                <ScalarProperty Name="HeadOfTechnology" ColumnName="HeadOfTechnology" />
+                <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
+                <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
+                <ScalarProperty Name="Tiering" ColumnName="Tiering" />
+                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetUsersList" FunctionName="AbsaDBModel.Store.GetUsersList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AbsaDBModel.GetUsersList_Result">
@@ -602,36 +872,6 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="ResilienceTracks">
-            <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrack">
-              <MappingFragment StoreEntitySet="ResilienceTrack">
-                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-                <ScalarProperty Name="Tiering" ColumnName="Tiering" />
-                <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
-                <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
-                <ScalarProperty Name="HeadOfTechnology" ColumnName="HeadOfTechnology" />
-                <ScalarProperty Name="NameOnSnow" ColumnName="NameOnSnow" />
-                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetResilienceTrackList" FunctionName="AbsaDBModel.Store.GetResilienceTrackList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AbsaDBModel.GetResilienceTrackList_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
-                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-                <ScalarProperty Name="NameOnSnow" ColumnName="NameOnSnow" />
-                <ScalarProperty Name="HeadOfTechnology" ColumnName="HeadOfTechnology" />
-                <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
-                <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
-                <ScalarProperty Name="Tiering" ColumnName="Tiering" />
                 <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
               </ComplexTypeMapping>
             </ResultMapping>

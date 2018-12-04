@@ -88,6 +88,9 @@
     <Compile Include="ResilienceTrack.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ResilienceTrackAudit.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="RolesPermission.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>

@@ -31,19 +31,20 @@ namespace Absa.DateAccess
         public virtual DbSet<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         public virtual DbSet<DataLookUp> DataLookUps { get; set; }
         public virtual DbSet<LookUpName> LookUpNames { get; set; }
+        public virtual DbSet<ResilienceTrack> ResilienceTracks { get; set; }
+        public virtual DbSet<ResilienceTrackAudit> ResilienceTrackAudits { get; set; }
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersAudit> UsersAudits { get; set; }
-        public virtual DbSet<ResilienceTrack> ResilienceTracks { get; set; }
-    
-        public virtual ObjectResult<GetUsersList_Result> GetUsersList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList");
-        }
     
         public virtual ObjectResult<GetResilienceTrackList_Result> GetResilienceTrackList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackList_Result>("GetResilienceTrackList");
+        }
+    
+        public virtual ObjectResult<GetUsersList_Result> GetUsersList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList");
         }
     }
 }
