@@ -12,26 +12,29 @@ namespace Absa.DateAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Department
+    public partial class BusinessUnit
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Department()
+        public BusinessUnit()
         {
+            this.BusinessUnitAudits = new HashSet<BusinessUnitAudit>();
             this.Users = new HashSet<User>();
             this.UsersAudits = new HashSet<UsersAudit>();
-            this.DepartmentAudits = new HashSet<DepartmentAudit>();
+            this.ResilienceTracks = new HashSet<ResilienceTrack>();
         }
     
-        public int DepartmentID { get; set; }
-        public string DepartmentName { get; set; }
+        public int BusinessUnitId { get; set; }
+        public string BusinessUnitName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersAudit> UsersAudits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DepartmentAudit> DepartmentAudits { get; set; }
+        public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
     }
 }

@@ -21,6 +21,6 @@ namespace Absa.DateAccess
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> Datelogged { get; set; }
         public string Type { get; set; }
-        public string DepartmentName { get; set; }
+        public string BusinessUnitName { get; set; }
     }
 }

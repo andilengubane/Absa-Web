@@ -11,12 +11,16 @@ namespace Absa.DateAccess
 {
     using System;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class GetResilienceTrackList_Result
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
         public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public string ApplicationID { get; set; }
+        public string ApplicationName { get; set; }
+        public string NameOnSnow { get; set; }
+        public string HeadOfTechnology { get; set; }
+        public string ApplicatioOwner { get; set; }
+        public string ServiceManager { get; set; }
+        public Nullable<long> Tiering { get; set; }
+        public string BusinessUnitName { get; set; }
     }
 }
