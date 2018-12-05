@@ -322,7 +322,9 @@
       <End Role="UsersAudit" EntitySet="UsersAudits" />
     </AssociationSet>
     <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
-    <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)" />
+    <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)">
+      <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
   </EntityContainer>
   <ComplexType Name="GetResilienceTrackList_Result">
