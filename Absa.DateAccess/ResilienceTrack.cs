@@ -29,7 +29,6 @@ namespace Absa.DateAccess
         public string BackUpConfiguration { get; set; }
         public string HighAvailability { get; set; }
         public string SPOF { get; set; }
-        public string OperationalMonitiring { get; set; }
         public string SecurityMonitoring { get; set; }
         public string InternalOLA { get; set; }
         public string ExternalSLA { get; set; }
@@ -50,6 +49,7 @@ namespace Absa.DateAccess
         public string SupportedMiddleware { get; set; }
         public string SupportedDatabase { get; set; }
         public string OpenVulnerabilities { get; set; }
+        public string OperationalMonitoring { get; set; }
     
         public virtual BusinessUnit BusinessUnit { get; set; }
     }

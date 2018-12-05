@@ -62,7 +62,6 @@
           <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
           <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
           <ScalarProperty Name="SPOF" ColumnName="SPOF" />
-          <ScalarProperty Name="OperationalMonitiring" ColumnName="OperationalMonitiring" />
           <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
           <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
           <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
@@ -83,6 +82,7 @@
           <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
           <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
           <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
+          <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -105,7 +105,6 @@
           <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
           <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
           <ScalarProperty Name="SPOF" ColumnName="SPOF" />
-          <ScalarProperty Name="OperationalMonitiring" ColumnName="OperationalMonitiring" />
           <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
           <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
           <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
@@ -128,6 +127,7 @@
           <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
           <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
           <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -189,6 +189,40 @@
           <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
           <ScalarProperty Name="Tiering" ColumnName="Tiering" />
           <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetResilienceTrackListById" FunctionName="AbsaDBModel.Store.GetResilienceTrackListById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetResilienceTrackListById_Result">
+          <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
+          <ScalarProperty Name="SPOF" ColumnName="SPOF" />
+          <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
+          <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
+          <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
+          <ScalarProperty Name="ArchitetureDocumentation" ColumnName="ArchitetureDocumentation" />
+          <ScalarProperty Name="OparationsDocumentation" ColumnName="OparationsDocumentation" />
+          <ScalarProperty Name="HighestDataClassification" ColumnName="HighestDataClassification" />
+          <ScalarProperty Name="DataRetentionRequirement" ColumnName="DataRetentionRequirement" />
+          <ScalarProperty Name="IntegratedToAD" ColumnName="IntegratedToAD" />
+          <ScalarProperty Name="JMLProcess" ColumnName="JMLProcess" />
+          <ScalarProperty Name="RecertificationProcess" ColumnName="RecertificationProcess" />
+          <ScalarProperty Name="PrivilegedAccessManagement" ColumnName="PrivilegedAccessManagement" />
+          <ScalarProperty Name="OSPatchingLevel" ColumnName="OSPatchingLevel" />
+          <ScalarProperty Name="ApplicationPatchingLevel" ColumnName="ApplicationPatchingLevel" />
+          <ScalarProperty Name="MiddlewarePatchingLevel" ColumnName="MiddlewarePatchingLevel" />
+          <ScalarProperty Name="SupportedApplication" ColumnName="SupportedApplication" />
+          <ScalarProperty Name="SupportedOperationSystem" ColumnName="SupportedOperationSystem" />
+          <ScalarProperty Name="SupportedJava" ColumnName="SupportedJava" />
+          <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
+          <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
+          <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
+          <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

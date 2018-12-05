@@ -63,7 +63,6 @@
           <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
           <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
           <Property Name="SPOF" Type="nvarchar(max)" />
-          <Property Name="OperationalMonitiring" Type="nvarchar(max)" />
           <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
           <Property Name="InternalOLA" Type="nvarchar(max)" />
           <Property Name="ExternalSLA" Type="nvarchar(max)" />
@@ -84,6 +83,7 @@
           <Property Name="SupportedMiddleware" Type="nvarchar(max)" />
           <Property Name="SupportedDatabase" Type="nvarchar(max)" />
           <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
+          <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ResilienceTrackAudit">
           <Key>
@@ -105,7 +105,6 @@
           <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
           <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
           <Property Name="SPOF" Type="nvarchar(max)" />
-          <Property Name="OperationalMonitiring" Type="nvarchar(max)" />
           <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
           <Property Name="InternalOLA" Type="nvarchar(max)" />
           <Property Name="ExternalSLA" Type="nvarchar(max)" />
@@ -128,6 +127,7 @@
           <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
           <Property Name="UpdatedBy" Type="nvarchar(max)" />
           <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="RolesPermissions">
           <Key>
@@ -269,6 +269,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="GetResilienceTrackList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetResilienceTrackListById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="AbsaDBModelStoreContainer">
           <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />
@@ -384,7 +385,6 @@
           <Property Name="BackUpConfiguration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="HighAvailability" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OperationalMonitiring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ExternalSLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -405,6 +405,7 @@
           <Property Name="SupportedMiddleware" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SupportedDatabase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OpenVulnerabilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OperationalMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
         </EntityType>
         <EntityType Name="ResilienceTrackAudit">
@@ -427,7 +428,6 @@
           <Property Name="BackUpConfiguration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="HighAvailability" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OperationalMonitiring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ExternalSLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -450,6 +450,7 @@
           <Property Name="OpenVulnerabilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="OperationalMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="ResilienceTrackAudit" ToRole="BusinessUnit" />
         </EntityType>
         <EntityType Name="RolesPermission">
@@ -640,6 +641,7 @@
             <End Role="UsersAudit" EntitySet="UsersAudits" />
           </AssociationSet>
           <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
+          <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)" />
           <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
         </EntityContainer>
         <ComplexType Name="GetResilienceTrackList_Result">
@@ -652,6 +654,36 @@
           <Property Type="String" Name="ServiceManager" Nullable="true" MaxLength="150" />
           <Property Type="Int64" Name="Tiering" Nullable="true" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="GetResilienceTrackListById_Result">
+          <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
+          <Property Type="String" Name="StrategicFit" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DisasterRecovery" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="BackUpData" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="BackUpConfiguration" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="HighAvailability" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="SPOF" Nullable="true" />
+          <Property Type="String" Name="SecurityMonitoring" Nullable="true" />
+          <Property Type="String" Name="InternalOLA" Nullable="true" />
+          <Property Type="String" Name="ExternalSLA" Nullable="true" />
+          <Property Type="String" Name="ArchitetureDocumentation" Nullable="true" />
+          <Property Type="String" Name="OparationsDocumentation" Nullable="true" />
+          <Property Type="String" Name="HighestDataClassification" Nullable="true" />
+          <Property Type="String" Name="DataRetentionRequirement" Nullable="true" />
+          <Property Type="String" Name="IntegratedToAD" Nullable="true" />
+          <Property Type="String" Name="JMLProcess" Nullable="true" />
+          <Property Type="String" Name="RecertificationProcess" Nullable="true" />
+          <Property Type="String" Name="PrivilegedAccessManagement" Nullable="true" />
+          <Property Type="String" Name="OSPatchingLevel" Nullable="true" />
+          <Property Type="String" Name="ApplicationPatchingLevel" Nullable="true" />
+          <Property Type="String" Name="MiddlewarePatchingLevel" Nullable="true" />
+          <Property Type="String" Name="SupportedApplication" Nullable="true" />
+          <Property Type="String" Name="SupportedOperationSystem" Nullable="true" />
+          <Property Type="String" Name="SupportedJava" Nullable="true" />
+          <Property Type="String" Name="SupportedMiddleware" Nullable="true" />
+          <Property Type="String" Name="SupportedDatabase" Nullable="true" />
+          <Property Type="String" Name="OpenVulnerabilities" Nullable="true" />
+          <Property Type="String" Name="OperationalMonitoring" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetUsersList_Result">
           <Property Type="Int32" Name="UserID" Nullable="false" />
@@ -731,7 +763,6 @@
                 <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
                 <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
                 <ScalarProperty Name="SPOF" ColumnName="SPOF" />
-                <ScalarProperty Name="OperationalMonitiring" ColumnName="OperationalMonitiring" />
                 <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
                 <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
                 <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
@@ -752,6 +783,7 @@
                 <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
                 <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
                 <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
+                <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -774,7 +806,6 @@
                 <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
                 <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
                 <ScalarProperty Name="SPOF" ColumnName="SPOF" />
-                <ScalarProperty Name="OperationalMonitiring" ColumnName="OperationalMonitiring" />
                 <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
                 <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
                 <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
@@ -797,6 +828,7 @@
                 <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -858,6 +890,40 @@
                 <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
                 <ScalarProperty Name="Tiering" ColumnName="Tiering" />
                 <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetResilienceTrackListById" FunctionName="AbsaDBModel.Store.GetResilienceTrackListById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AbsaDBModel.GetResilienceTrackListById_Result">
+                <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
+                <ScalarProperty Name="SPOF" ColumnName="SPOF" />
+                <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
+                <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
+                <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
+                <ScalarProperty Name="ArchitetureDocumentation" ColumnName="ArchitetureDocumentation" />
+                <ScalarProperty Name="OparationsDocumentation" ColumnName="OparationsDocumentation" />
+                <ScalarProperty Name="HighestDataClassification" ColumnName="HighestDataClassification" />
+                <ScalarProperty Name="DataRetentionRequirement" ColumnName="DataRetentionRequirement" />
+                <ScalarProperty Name="IntegratedToAD" ColumnName="IntegratedToAD" />
+                <ScalarProperty Name="JMLProcess" ColumnName="JMLProcess" />
+                <ScalarProperty Name="RecertificationProcess" ColumnName="RecertificationProcess" />
+                <ScalarProperty Name="PrivilegedAccessManagement" ColumnName="PrivilegedAccessManagement" />
+                <ScalarProperty Name="OSPatchingLevel" ColumnName="OSPatchingLevel" />
+                <ScalarProperty Name="ApplicationPatchingLevel" ColumnName="ApplicationPatchingLevel" />
+                <ScalarProperty Name="MiddlewarePatchingLevel" ColumnName="MiddlewarePatchingLevel" />
+                <ScalarProperty Name="SupportedApplication" ColumnName="SupportedApplication" />
+                <ScalarProperty Name="SupportedOperationSystem" ColumnName="SupportedOperationSystem" />
+                <ScalarProperty Name="SupportedJava" ColumnName="SupportedJava" />
+                <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
+                <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
+                <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
+                <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -58,7 +58,6 @@
     <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
     <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
     <Property Name="SPOF" Type="nvarchar(max)" />
-    <Property Name="OperationalMonitiring" Type="nvarchar(max)" />
     <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
     <Property Name="InternalOLA" Type="nvarchar(max)" />
     <Property Name="ExternalSLA" Type="nvarchar(max)" />
@@ -79,6 +78,7 @@
     <Property Name="SupportedMiddleware" Type="nvarchar(max)" />
     <Property Name="SupportedDatabase" Type="nvarchar(max)" />
     <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
+    <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="ResilienceTrackAudit">
     <Key>
@@ -100,7 +100,6 @@
     <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
     <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
     <Property Name="SPOF" Type="nvarchar(max)" />
-    <Property Name="OperationalMonitiring" Type="nvarchar(max)" />
     <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
     <Property Name="InternalOLA" Type="nvarchar(max)" />
     <Property Name="ExternalSLA" Type="nvarchar(max)" />
@@ -123,6 +122,7 @@
     <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
     <Property Name="UpdatedBy" Type="nvarchar(max)" />
     <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="RolesPermissions">
     <Key>
@@ -264,6 +264,7 @@
     </ReferentialConstraint>
   </Association>
   <Function Name="GetResilienceTrackList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetResilienceTrackListById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="AbsaDBModelStoreContainer">
     <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />

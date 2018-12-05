@@ -75,6 +75,9 @@
     <Compile Include="DataLookUp.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetResilienceTrackListById_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetResilienceTrackList_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>

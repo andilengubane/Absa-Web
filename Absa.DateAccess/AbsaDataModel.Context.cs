@@ -42,6 +42,11 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackList_Result>("GetResilienceTrackList");
         }
     
+        public virtual ObjectResult<GetResilienceTrackListById_Result> GetResilienceTrackListById()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackListById_Result>("GetResilienceTrackListById");
+        }
+    
         public virtual ObjectResult<GetUsersList_Result> GetUsersList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList");
