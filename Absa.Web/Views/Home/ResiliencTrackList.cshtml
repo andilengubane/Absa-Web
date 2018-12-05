@@ -11,15 +11,14 @@
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
-                title: "User",
-                width: 600
+                title: "Resilience Track",
+                width: 600,
+                height: 150
             });
-            $("#UserList .details").click(function () {
-                var customerId = $(this).closest("tr").find("td").eq(0).html();
+            $("#Resilience .Create").click(function () {
                 $.ajax({
                     type: "POST",
-                    url: "/Account/CreateUser",
-                    data: '{customerId: "' + customerId + '" }',
+                    url: "/Home/Create",
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
@@ -37,7 +36,7 @@
         });
 	</script>
 
-	<script type="text/javascript">
+	@*<script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
                 autoOpen: false,
@@ -66,21 +65,21 @@
                 });
             });
         });
-	</script>
+	</script*@
 	<script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
-                title: "User",
-                width: 600
+                title: "Resilience Track",
+                width: 1500
             });
-            $("#UserList .DeleteUser").click(function () {
-            	var id = $(this).closest('tr').find('td:eq(0)').text();
+            $("#Resilience .Apporval").click(function () {
+            	var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
                 $.ajax({
-                    type: "POST",
-                    url: "/Account/DeleteUser",
-                    data: '{userID: "' + id + '" }',
+                	type: "POST",
+                    url: "/Home/Approval",
+                    data: '{resilienceTrackId: "' + resilienceTrackId + '" }',
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
@@ -109,78 +108,77 @@
 	}
 </style>
 <div id="dialog" style="display: none"></div>
-<h3 class="modal-title" id="myModalLabel">Resilience Track</h3>
+<h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
 <br>
-<table class="table table-bordered" id="UserList">
-	<tr>
-		<th class="col1">
-
-		</th>
-		<th>
-			Application ID
-		</th>
-		<th>
-			Application Name
-		</th>
-		<th>
-			Name On Snow
-		</th>
-		<th>
-			Head Of Technology
-		</th>
-		<th>
-			Applicatio Owner
-		</th>
-		<th>
-			Service Manager
-		</th>
-		<th>
-			Tiering
-		</th>
-		<th>
-			Business Unit
-		</th>
-		<th></th>
-	</tr>
-
-	@foreach (var item in Model)
-	{
+<font size="2">
+	<table class="table table-bordered" id="Resilience">
 		<tr>
-			<td class="col1">
-				@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "userID" })
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ApplicationID)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ApplicationName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.NameOnSnow)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.HeadOfTechnology)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ApplicatioOwner)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ServiceManager)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Tiering)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.BusinessUnit)
-			</td>
-			<td>
-				<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
-				<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
-				<button class="DeleteUser btn-sm btn-danger" type="button" id="userList" href="javascript:;">APPROVAL</button>
-			</td>
+			<th class="col1">
+
+			</th>
+			<th>
+				Application ID
+			</th>
+			<th>
+				Application Name
+			</th>
+			<th>
+				Name On Snow
+			</th>
+			<th>
+				Head Of Technology
+			</th>
+			<th>
+				Applicatio Owner
+			</th>
+			<th>
+				Service Manager
+			</th>
+			<th>
+				Tiering
+			</th>
+			<th>
+				Business Unit
+			</th>
+			<th></th>
 		</tr>
-	}
 
-</table>
-
-
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td class="col1">
+					@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "resilienceTrackId" })
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ApplicationID)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ApplicationName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.NameOnSnow)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.HeadOfTechnology)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ApplicatioOwner)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ServiceManager)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Tiering)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.BusinessUnit)
+				</td>
+				<td>
+					<button class="Create btn btn-sm btn-success" type="button" id="Resilience" href="javascript:;">CREATE</button>
+					<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
+					<button class="Apporval btn-sm btn-danger" type="button" id="Resilience" href="javascript:;">APPROVAL</button>
+				</td>
+			</tr>
+		}
+	</table>
+</font>
