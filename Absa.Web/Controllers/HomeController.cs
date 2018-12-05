@@ -24,6 +24,11 @@ namespace Absa.Web.Controllers
 			return View(model);
 		}
 
+		public ActionResult Create()
+		{
+			return PartialView();
+		}
+
 		public ActionResult ResiliencTrackList()
 		{
 			var model = new List<ResilienceTrackModel>();
@@ -53,13 +58,16 @@ namespace Absa.Web.Controllers
 			}
 			return this.View("ResiliencTrackList", model);
 		}
-		public ActionResult Approval(string id)
+
+		// Get: Edit User
+		public ActionResult Approval(string resilienceTrackId)
 		{
 			var model = new List<ResilienceTrackModel>();
-			int resilienceTrackId = Convert.ToInt32(id);
+			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
+			int id = Convert.ToInt32(number);
 			try
 			{
-				var data = context.GetResilienceTrackListById(resilienceTrackId);
+				var data = context.GetResilienceTrackListById(id);
 				foreach (var item in data)
 				{
 					model.Add(new ResilienceTrackModel()
@@ -71,7 +79,7 @@ namespace Absa.Web.Controllers
 						BackUpConfiguration = item.BackUpConfiguration,
 						HighAvailability = item.HighAvailability,
 						SPOF = item.SPOF,
-						OperationalMonitiring = item.OperationalMonitoring,
+						OperationalMonitoring = item.OperationalMonitoring,
 						SecurityMonitoring = item.SecurityMonitoring,
 						InternalOLA = item.InternalOLA,
 						ExternalSLA = item.ExternalSLA,
@@ -99,7 +107,7 @@ namespace Absa.Web.Controllers
 			{
 				string error = ex.Message;
 			}
-			return View("Approval", model);
+			return PartialView("Approval", model);
 		}
 	}
 }

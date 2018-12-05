@@ -64,7 +64,7 @@ namespace Absa.Web.Models
 		public string BackUpConfiguration { get; set; }
 		public string HighAvailability { get; set; }
 		public string SPOF { get; set; }
-		public string OperationalMonitiring { get; set; }
+		public string OperationalMonitoring { get; set; }
 		public string SecurityMonitoring { get; set; }
 		public string InternalOLA { get; set; }
 		public string ExternalSLA { get; set; }
