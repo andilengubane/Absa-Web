@@ -1,0 +1,186 @@
+﻿@model IEnumerable<Absa.Web.Models.ResilienceTrackModel>
+@{
+	ViewBag.Title = "Resilence Track";
+}
+@section scripts{
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "User",
+                width: 600
+            });
+            $("#UserList .details").click(function () {
+                var customerId = $(this).closest("tr").find("td").eq(0).html();
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/CreateUser",
+                    data: '{customerId: "' + customerId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#dialog').html(response);
+                        $('#dialog').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+	</script>
+
+	<script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "User",
+                width: 600
+            });
+            $("#UserList .EditUser").click(function () {
+            	var id = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Approval",
+                    data: '{userID: "' + id + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#dialog').html(response);
+                        $('#dialog').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+	</script>
+	<script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "User",
+                width: 600
+            });
+            $("#UserList .DeleteUser").click(function () {
+            	var id = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/DeleteUser",
+                    data: '{userID: "' + id + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#dialog').html(response);
+                        $('#dialog').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+	</script>
+
+}
+<style>
+	.col1 {
+		display: none;
+	}
+
+	.col2 {
+		display: none;
+	}
+</style>
+<div id="dialog" style="display: none"></div>
+<h3 class="modal-title" id="myModalLabel">Resilience Track</h3>
+<br>
+<table class="table table-bordered" id="UserList">
+	<tr>
+		<th class="col1">
+
+		</th>
+		<th>
+			Application ID
+		</th>
+		<th>
+			Application Name
+		</th>
+		<th>
+			Name On Snow
+		</th>
+		<th>
+			Head Of Technology
+		</th>
+		<th>
+			Applicatio Owner
+		</th>
+		<th>
+			Service Manager
+		</th>
+		<th>
+			Tiering
+		</th>
+		<th>
+			Business Unit
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td class="col1">
+				@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "userID" })
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ApplicationID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ApplicationName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NameOnSnow)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.HeadOfTechnology)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ApplicatioOwner)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ServiceManager)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Tiering)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.BusinessUnit)
+			</td>
+			<td>
+				<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
+				<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
+				<button class="DeleteUser btn-sm btn-danger" type="button" id="userList" href="javascript:;">APPROVAL</button>
+			</td>
+		</tr>
+	}
+
+</table>
+
+

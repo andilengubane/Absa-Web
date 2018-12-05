@@ -23,9 +23,9 @@ namespace Absa.Web.Controllers
 			};
 			return View(model);
 		}
-		public ActionResult Approval()
-		{
 
+		public ActionResult ResiliencTrackList()
+		{
 			var model = new List<ResilienceTrackModel>();
 			try
 			{
@@ -35,7 +35,7 @@ namespace Absa.Web.Controllers
 				{
 					model.Add(new ResilienceTrackModel()
 					{
-						ID = item.ID,
+						ResilienceTrackID = item.ResilienceTrackID,
 						ApplicationID = item.ApplicationID,
 						ApplicationName = item.ApplicationName,
 						NameOnSnow = item.NameOnSnow,
@@ -51,7 +51,36 @@ namespace Absa.Web.Controllers
 			{
 				string error = ex.Message;
 			}
-			return this.View("Approval", model);
+			return this.View("ResiliencTrackList", model);
+		}
+		public ActionResult Approval(string id)
+		{
+			var model = new List<ResilienceTrackModel>();
+			try
+			{
+				var data = context.GetResilienceTrackList();
+
+				foreach (var item in data)
+				{
+					model.Add(new ResilienceTrackModel()
+					{
+						ResilienceTrackID = item.ResilienceTrackID,
+						ApplicationID = item.ApplicationID,
+						ApplicationName = item.ApplicationName,
+						NameOnSnow = item.NameOnSnow,
+						HeadOfTechnology = item.HeadOfTechnology,
+						ApplicatioOwner = item.ApplicatioOwner,
+						ServiceManager = item.ServiceManager,
+						Tiering = item.Tiering.Value,
+						BusinessUnit = item.BusinessUnitName
+					});
+				}
+			}
+			catch (Exception ex)
+			{
+				string error = ex.Message;
+			}
+			return View();
 		}
 	}
 }

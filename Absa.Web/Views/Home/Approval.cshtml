@@ -14,72 +14,11 @@
                 title: "User",
                 width: 600
             });
-            $("#UserList .details").click(function () {
-                var customerId = $(this).closest("tr").find("td").eq(0).html();
-                $.ajax({
-                    type: "POST",
-                    url: "/Account/CreateUser",
-                    data: '{customerId: "' + customerId + '" }',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-	</script>
-
-	<script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "User",
-                width: 600
-            });
             $("#UserList .EditUser").click(function () {
             	var id = $(this).closest('tr').find('td:eq(0)').text();
                 $.ajax({
                     type: "POST",
                     url: "/Account/EditUser",
-                    data: '{userID: "' + id + '" }',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-	</script>
-	<script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "User",
-                width: 600
-            });
-            $("#UserList .DeleteUser").click(function () {
-            	var id = $(this).closest('tr').find('td:eq(0)').text();
-                $.ajax({
-                    type: "POST",
-                    url: "/Account/DeleteUser",
                     data: '{userID: "' + id + '" }',
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
@@ -117,13 +56,37 @@
 
 		</th>
 		<th>
-			Application ID
+			Strategic Fit
 		</th>
 		<th>
-			Application Name
+			Disaster Recovery
 		</th>
 		<th>
-			Name On Snow
+			BackUp - Data
+		</th>
+		<th>
+			BackUp - Configuration
+		</th>
+		<th>
+			High Availability
+		</th>
+		<th>
+			SPOF
+		</th>
+		<th>
+			Operational Monitiring
+		</th>
+		<th>
+			Internal OLA
+		</th>
+		<th>
+			Architeture Documentation
+		</th>
+		<th>
+			External SLA
+		</th>
+		<th>
+			Oparations Documentation
 		</th>
 		<th>
 			Head Of Technology
@@ -132,13 +95,43 @@
 			Applicatio Owner
 		</th>
 		<th>
-			Service Manager
+			Highest Data Classification
 		</th>
 		<th>
-			Tiering
+			Data Retention Requirement
 		</th>
 		<th>
-			Business Unit
+			JML Process
+		</th>
+		<th>
+			Privileged Access Management
+		</th>
+		<th>
+			OS Patching Level
+		</th>
+		<th>
+			Application Patching Level
+		</th>
+		<th>
+			Middleware Patching Level
+		</th>
+		<th>
+			Supported Application
+		</th>
+		<th>
+			Supported Operation System
+		</th>
+		<th>
+			Supported Java
+		</th>
+		<th>
+			Supported Middleware
+		</th>
+		<th>
+			Supported Database
+		</th>
+		<th>
+			Open Vulnerabilities
 		</th>
 		<th></th>
 	</tr>
@@ -147,38 +140,91 @@
 		{
 		<tr>
 			<td class="col1">
-				@Html.DisplayFor(modelItem => item.ID, new { id = "userID" })
+				@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "userID" })
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.ApplicationID)
+				@Html.DisplayFor(modelItem => item.StrategicFit)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.ApplicationName)
+				@Html.DisplayFor(modelItem => item.DisasterRecovery)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.NameOnSnow)
+				@Html.DisplayFor(modelItem => item.BackUpData)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.HeadOfTechnology)
+				@Html.DisplayFor(modelItem => item.BackUpConfiguration)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.ApplicatioOwner)
+				@Html.DisplayFor(modelItem => item.HighAvailability)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.ServiceManager)
+				@Html.DisplayFor(modelItem => item.SPOF)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.Tiering)
+				@Html.DisplayFor(modelItem => item.OperationalMonitiring)
 			</td>
 		    <td>
-			   @Html.DisplayFor(modelItem => item.BusinessUnit)
+			   @Html.DisplayFor(modelItem => item.SecurityMonitoring)
 		   </td>
 			<td>
-				<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
-				<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
-				<button class="DeleteUser btn-sm btn-danger" type="button" id="userList" href="javascript:;">APPROVAL</button>
+				@Html.DisplayFor(modelItem => item.InternalOLA)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ArchitetureDocumentation)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ExternalSLA)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.OparationsDocumentation)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.HighestDataClassification)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DataRetentionRequirement)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.JMLProcess)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PrivilegedAccessManagement)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.OSPatchingLevel)
+			</td>
+				<td>
+				@Html.DisplayFor(modelItem => item.ApplicationPatchingLevel)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MiddlewarePatchingLevel)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SupportedApplication)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SupportedOperationSystem)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SupportedJava)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SupportedMiddleware)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SupportedDatabase)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.OpenVulnerabilities)
+			</td>
+			<td>
+				<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">Over Role</button>
 			</td>
 		</tr>
 	}
 
 </table>
+		 
+		 
+		 
+		
