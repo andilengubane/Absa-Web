@@ -56,23 +56,42 @@ namespace Absa.Web.Controllers
 		public ActionResult Approval(string id)
 		{
 			var model = new List<ResilienceTrackModel>();
+			int resilienceTrackId = Convert.ToInt32(id);
 			try
 			{
-				var data = context.GetResilienceTrackList();
-
+				var data = context.GetResilienceTrackListById(resilienceTrackId);
 				foreach (var item in data)
 				{
 					model.Add(new ResilienceTrackModel()
 					{
 						ResilienceTrackID = item.ResilienceTrackID,
-						ApplicationID = item.ApplicationID,
-						ApplicationName = item.ApplicationName,
-						NameOnSnow = item.NameOnSnow,
-						HeadOfTechnology = item.HeadOfTechnology,
-						ApplicatioOwner = item.ApplicatioOwner,
-						ServiceManager = item.ServiceManager,
-						Tiering = item.Tiering.Value,
-						BusinessUnit = item.BusinessUnitName
+						StrategicFit = item.StrategicFit,
+						DisasterRecovery = item.DisasterRecovery,
+						BackUpData = item.BackUpData,
+						BackUpConfiguration = item.BackUpConfiguration,
+						HighAvailability = item.HighAvailability,
+						SPOF = item.SPOF,
+						OperationalMonitiring = item.OperationalMonitoring,
+						SecurityMonitoring = item.SecurityMonitoring,
+						InternalOLA = item.InternalOLA,
+						ExternalSLA = item.ExternalSLA,
+						ArchitetureDocumentation = item.ArchitetureDocumentation,
+						OparationsDocumentation = item.OparationsDocumentation,
+						HighestDataClassification = item.HighestDataClassification,
+						DataRetentionRequirement = item.DataRetentionRequirement,
+						IntegratedToAD = item.IntegratedToAD,
+						JMLProcess = item.JMLProcess,
+						RecertificationProcess = item.RecertificationProcess,
+						PrivilegedAccessManagement = item.PrivilegedAccessManagement,
+						OSPatchingLevel = item.OSPatchingLevel,
+						ApplicationPatchingLevel = item.ApplicationPatchingLevel,
+						MiddlewarePatchingLevel = item.MiddlewarePatchingLevel,
+						SupportedApplication = item.SupportedApplication,
+						SupportedOperationSystem = item.SupportedOperationSystem,
+						SupportedJava = item.SupportedJava,
+						SupportedMiddleware = item.SupportedMiddleware,
+						SupportedDatabase = item.SupportedDatabase,
+						OpenVulnerabilities = item.OpenVulnerabilities,
 					});
 				}
 			}
@@ -80,7 +99,7 @@ namespace Absa.Web.Controllers
 			{
 				string error = ex.Message;
 			}
-			return View();
+			return View("Approval", model);
 		}
 	}
 }

@@ -42,9 +42,13 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackList_Result>("GetResilienceTrackList");
         }
     
-        public virtual ObjectResult<GetResilienceTrackListById_Result> GetResilienceTrackListById()
+        public virtual ObjectResult<GetResilienceTrackListById_Result> GetResilienceTrackListById(Nullable<int> resilienceTrackID)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackListById_Result>("GetResilienceTrackListById");
+            var resilienceTrackIDParameter = resilienceTrackID.HasValue ?
+                new ObjectParameter("ResilienceTrackID", resilienceTrackID) :
+                new ObjectParameter("ResilienceTrackID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackListById_Result>("GetResilienceTrackListById", resilienceTrackIDParameter);
         }
     
         public virtual ObjectResult<GetUsersList_Result> GetUsersList()
