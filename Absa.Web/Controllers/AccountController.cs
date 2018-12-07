@@ -231,7 +231,7 @@ namespace Absa.Web.Controllers
 						this.Session["FirstName"] = data.FirstName;
 						this.Session["LastName"] = data.LastName;
 						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
-						return RedirectToAction("Index", "Orders");
+						return RedirectToAction("Index", "Home");
 					}
 				}
 				else
