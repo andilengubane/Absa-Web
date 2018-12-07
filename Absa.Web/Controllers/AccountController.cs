@@ -221,18 +221,26 @@ namespace Absa.Web.Controllers
 				{
 					if (data.IsActive == false)
 					{
-
+<<<<<<< HEAD
 					  ViewBag.ErroMessage = "Your acccount is not active please ask your line manager to activate your account";
+					}
+					else {
+=======
+						ViewBag.ErroMessage = "Your account is not active please ask your line manager to activate your account";
 					}
 					else
 					{
+>>>>>>> development
 						this.Session["ID"] = data.UserID;
 						this.Session["UserName"] = data.UserName;
 						this.Session["FirstName"] = data.FirstName;
 						this.Session["LastName"] = data.LastName;
 						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
-
+<<<<<<< HEAD
+						return RedirectToAction("Index", "Orders");
+=======
 						return RedirectToAction("Index", "Home");
+>>>>>>> development
 					}
 				}
 				else
@@ -248,7 +256,7 @@ namespace Absa.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-
+<<<<<<< HEAD
 				context.Users.Add(new User
 				{
 					UserName = model.UserName,
@@ -258,7 +266,7 @@ namespace Absa.Web.Controllers
 					EmailAddress = model.EmailAddress,
 					Datelogged = DateTime.Now,
 					ContactNumber = model.ContactNumber,
-					BusinessUnitId = Convert.ToInt32(model.BusinessUnit),
+					DepartmentID = Convert.ToInt32(model.Department),
 					IsActive = false
 				});
 				context.SaveChanges();
@@ -277,7 +285,7 @@ namespace Absa.Web.Controllers
 				*/
 				ViewBag.ErrorMessage = "Your account is not active please see your Manager or Superviser to Activate You account";
 				return this.RedirectToAction("Index", "DashBord");
-
+=======
 				var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
 				if (data != null)
 				{
@@ -304,7 +312,7 @@ namespace Absa.Web.Controllers
 					ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
 					return this.RedirectToAction("Login", "Account");
 				}
-
+>>>>>>> development
 			}
 			
 			var models = new UserModel()
