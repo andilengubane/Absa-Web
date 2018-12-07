@@ -8,12 +8,12 @@
 	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
         $(function () {
-            $("#dialog").dialog({
+            $("#dialogs").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
-                width: 600,
-                height: 150
+                width: 800,
+                height: 500
             });
             $("#Resilience .Create").click(function () {
                 $.ajax({
@@ -22,8 +22,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
+                        $('#dialogs').html(response);
+                        $('#dialogs').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -36,43 +36,46 @@
         });
 	</script>
 
-	@*<script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "User",
-                width: 600
-            });
-            $("#UserList .EditUser").click(function () {
-            	var id = $(this).closest('tr').find('td:eq(0)').text();
-                $.ajax({
-                    type: "POST",
-                    url: "/Home/Approval",
-                    data: '{userID: "' + id + '" }',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-	</script*@
+	<script type="text/javascript">
+		$(function () {
+			$("#dialogss").dialog({
+				autoOpen: false,
+				modal: true,
+				title: "Resilience Track",
+				width: 800,
+				height: 500
+			});
+			$("#Resilience .Edit").click(function () {
+				var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
+				$.ajax({
+					type: "POST",
+					url: "/Home/EditResilienceTrack",
+					data: '{resilienceTrackId: "' + resilienceTrackId + '" }',
+					contentType: "application/json; charset=utf-8",
+					dataType: "html",
+					success: function (response) {
+						$('#dialogss').html(response);
+						$('#dialogss').dialog('open');
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+			});
+		});
+	</script>
+
 	<script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
-                width: 1500
+                width: 1600,
+                height: 600
             });
             $("#Resilience .Apporval").click(function () {
             	var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
@@ -108,6 +111,8 @@
 	}
 </style>
 <div id="dialog" style="display: none"></div>
+<div id="dialogs" style="display: none"></div>
+<div id="dialogss" style="display: none"></div>
 <h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
 <br>
 <font size="2">
@@ -175,7 +180,7 @@
 				</td>
 				<td>
 					<button class="Create btn btn-sm btn-success" type="button" id="Resilience" href="javascript:;">CREATE</button>
-					<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
+					<button class="Edit btn btn-sm btn-primary" type="button" id="Resilience" href="javascript:;">MODIFY</button>
 					<button class="Apporval btn-sm btn-danger" type="button" id="Resilience" href="javascript:;">APPROVAL</button>
 				</td>
 			</tr>
