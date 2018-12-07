@@ -8,22 +8,22 @@
 	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
         $(function () {
-            $("#dialog").dialog({
+            $("#dialogs").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
                 width: 600,
-                height: 150
+                height: 450
             });
             $("#Resilience .Create").click(function () {
                 $.ajax({
                     type: "POST",
-                    url: "/Home/Create",
+                    url: "/Home/CreateResilienceTrack",
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
+                        $('#dialogs').html(response);
+                        $('#dialogs').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -35,37 +35,6 @@
             });
         });
 	</script>
-
-	@*<script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "User",
-                width: 600
-            });
-            $("#UserList .EditUser").click(function () {
-            	var id = $(this).closest('tr').find('td:eq(0)').text();
-                $.ajax({
-                    type: "POST",
-                    url: "/Home/Approval",
-                    data: '{userID: "' + id + '" }',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-	</script*@
 	<script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
@@ -107,6 +76,7 @@
 		display: none;
 	}
 </style>
+<div id="dialogs" style="display: none"></div>
 <div id="dialog" style="display: none"></div>
 <h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
 <br>
