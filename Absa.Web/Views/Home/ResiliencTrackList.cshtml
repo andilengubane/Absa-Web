@@ -12,8 +12,8 @@
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
-                width: 600,
-                height: 150
+                width: 800,
+                height: 500
             });
             $("#Resilience .Create").click(function () {
                 $.ajax({
@@ -41,10 +41,11 @@
 			$("#dialogss").dialog({
 				autoOpen: false,
 				modal: true,
-				title: "User",
-				width: 600
+				title: "Resilience Track",
+				width: 800,
+				height: 500
 			});
-			$("#UserList .Edit").click(function () {
+			$("#Resilience .Edit").click(function () {
 				var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
 				$.ajax({
 					type: "POST",
@@ -73,7 +74,8 @@
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
-                width: 1500
+                width: 1600,
+                height: 600
             });
             $("#Resilience .Apporval").click(function () {
             	var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
@@ -178,7 +180,7 @@
 				</td>
 				<td>
 					<button class="Create btn btn-sm btn-success" type="button" id="Resilience" href="javascript:;">CREATE</button>
-					<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
+					<button class="Edit btn btn-sm btn-primary" type="button" id="Resilience" href="javascript:;">MODIFY</button>
 					<button class="Apporval btn-sm btn-danger" type="button" id="Resilience" href="javascript:;">APPROVAL</button>
 				</td>
 			</tr>
