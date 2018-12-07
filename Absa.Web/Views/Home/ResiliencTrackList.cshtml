@@ -8,7 +8,7 @@
 	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
         $(function () {
-            $("#dialog").dialog({
+            $("#dialogs").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
@@ -22,8 +22,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
+                        $('#dialogs').html(response);
+                        $('#dialogs').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -36,36 +36,37 @@
         });
 	</script>
 
-	@*<script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "User",
-                width: 600
-            });
-            $("#UserList .EditUser").click(function () {
-            	var id = $(this).closest('tr').find('td:eq(0)').text();
-                $.ajax({
-                    type: "POST",
-                    url: "/Home/Approval",
-                    data: '{userID: "' + id + '" }',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-	</script*@
+	<script type="text/javascript">
+		$(function () {
+			$("#dialogss").dialog({
+				autoOpen: false,
+				modal: true,
+				title: "User",
+				width: 600
+			});
+			$("#UserList .Edit").click(function () {
+				var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
+				$.ajax({
+					type: "POST",
+					url: "/Home/EditResilienceTrack",
+					data: '{resilienceTrackId: "' + resilienceTrackId + '" }',
+					contentType: "application/json; charset=utf-8",
+					dataType: "html",
+					success: function (response) {
+						$('#dialogss').html(response);
+						$('#dialogss').dialog('open');
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+			});
+		});
+	</script>
+
 	<script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
@@ -108,6 +109,8 @@
 	}
 </style>
 <div id="dialog" style="display: none"></div>
+<div id="dialogs" style="display: none"></div>
+<div id="dialogss" style="display: none"></div>
 <h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
 <br>
 <font size="2">
