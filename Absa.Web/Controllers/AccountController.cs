@@ -215,26 +215,37 @@ namespace Absa.Web.Controllers
 		{
 			if (model.UserName != null)
 			{
+				// check if the user IsActive
 				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password == model.Password);
 				if (data != null)
 				{
 					if (data.IsActive == false)
 					{
+<<<<<<< HEAD
+					  ViewBag.ErroMessage = "Your acccount is not active please ask your line manager to activate your account";
+					}
+					else {
+=======
 						ViewBag.ErroMessage = "Your account is not active please ask your line manager to activate your account";
 					}
 					else
 					{
+>>>>>>> development
 						this.Session["ID"] = data.UserID;
 						this.Session["UserName"] = data.UserName;
 						this.Session["FirstName"] = data.FirstName;
 						this.Session["LastName"] = data.LastName;
 						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
+<<<<<<< HEAD
+						return RedirectToAction("Index", "Orders");
+=======
 						return RedirectToAction("Index", "Home");
+>>>>>>> development
 					}
 				}
 				else
 				{
-					ViewBag.ErroMessage = "Your logged in details are incorrect.";
+					ViewBag.ErroMessage = "Incorrect login detail provided.";
 				}
 			}
 			return View("Login");
@@ -245,6 +256,36 @@ namespace Absa.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+<<<<<<< HEAD
+				context.Users.Add(new User
+				{
+					UserName = model.UserName,
+					Password = model.Password,
+					LastName = model.LastName,
+					FirstName = model.FirstName,
+					EmailAddress = model.EmailAddress,
+					Datelogged = DateTime.Now,
+					ContactNumber = model.ContactNumber,
+					DepartmentID = Convert.ToInt32(model.Department),
+					IsActive = false
+				});
+				context.SaveChanges();
+				/*
+				MailMessage msg = new MailMessage();
+				msg.From = new MailAddress("joe@contoso.com");
+				msg.To.Add(new MailAddress(model.EmailAddress));
+				msg.Subject = "User Request Access";
+				msg.Body = " Please see Activate the user account " + model.FirstName +" "+ model.LastName + ".";
+
+				SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+				System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("joe@contoso.com", "XXXXXX");
+				smtpClient.Credentials = credentials;
+				smtpClient.EnableSsl = true;
+				smtpClient.Send(msg);
+				*/
+				ViewBag.ErrorMessage = "Your account is not active please see your Manager or Superviser to Activate You account";
+				return this.RedirectToAction("Index", "DashBord");
+=======
 				var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
 				if (data != null)
 				{
@@ -271,6 +312,7 @@ namespace Absa.Web.Controllers
 					ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
 					return this.RedirectToAction("Login", "Account");
 				}
+>>>>>>> development
 			}
 			
 			var models = new UserModel()

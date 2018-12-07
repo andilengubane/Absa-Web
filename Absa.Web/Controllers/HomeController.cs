@@ -24,7 +24,7 @@ namespace Absa.Web.Controllers
 			return View(model);
 		}
 
-		public ActionResult CreateResilienceTrack()
+		public ActionResult Create()
 		{
 			return PartialView();
 		}
