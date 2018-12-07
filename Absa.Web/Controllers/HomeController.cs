@@ -29,6 +29,54 @@ namespace Absa.Web.Controllers
 			return PartialView();
 		}
 
+		// Get EditResilienceTrack
+		public ActionResult EditResilienceTrack(string resilienceTrackId)
+		{
+			var model = new ResilienceTrackModel();
+			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
+			int id = Convert.ToInt16(number);
+			var items = context.DataLookUps.Where(x => x.LoopkUpID == 1).ToList();
+			if (items != null)
+			{
+				ViewBag.data = items;
+			}
+			if (id != 0)
+			{
+				try
+				{
+					var data = context.ResilienceTracks.Where(m => m.ResilienceTrackID == id);
+					foreach (var result in data)
+					{
+						model.ResilienceTrackID = result.ResilienceTrackID;
+						model.ApplicationID = result.ApplicationID;
+						model.ApplicationName = result.ApplicationName;
+						model.NameOnSnow = result.NameOnSnow;
+						model.Tiering = result.Tiering.Value;
+						model.HeadOfTechnology = result.HeadOfTechnology;
+						model.ApplicatioOwner = result.ApplicatioOwner;
+						model.HeadOfTechnology = result.ApplicatioOwner;
+	              }
+				}
+				catch (Exception ex)
+				{
+					var error = ex.Message;
+				}
+				/*
+				 	model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
+				{
+					Value = x.BusinessUnitId.ToString(),
+					Text = x.BusinessUnitName
+				});
+
+				model.RolesPermissionList = context.RolesPermissions.OrderBy(x => x.Type).Select(x => new SelectListItem
+				{
+					Value = x.RolesPermissionsID.ToString(),
+					Text = x.Type
+				});
+				 */
+			}
+			return PartialView(model);
+		}
 		public ActionResult ResiliencTrackList()
 		{
 			var model = new List<ResilienceTrackModel>();
