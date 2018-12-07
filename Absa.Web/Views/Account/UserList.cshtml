@@ -14,7 +14,8 @@
                 autoOpen: false,
                 modal: true,
                 title: "User",
-                width: 600
+                width: 700,
+                height: 450,
             });
             $("#UserList .details").click(function () {
                 var customerId = $(this).closest("tr").find("td").eq(0).html();
@@ -41,11 +42,12 @@
 
 <script type="text/javascript">
         $(function () {
-            $("#dialog").dialog({
+            $("#dialogs").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "User",
-                width: 600
+                width: 700,
+                height: 450,
             });
             $("#UserList .EditUser").click(function () {
             	var id = $(this).closest('tr').find('td:eq(0)').text();
@@ -56,8 +58,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
+                        $('#dialogs').html(response);
+                        $('#dialogs').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -71,11 +73,12 @@
 </script>
 <script type="text/javascript">
         $(function () {
-            $("#dialog").dialog({
+            $("#dialogss").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "User",
-                width: 600
+                width: 600,
+                height: 250,
             });
             $("#UserList .DeleteUser").click(function () {
             	var id = $(this).closest('tr').find('td:eq(0)').text();
@@ -86,8 +89,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
+                        $('#dialogss').html(response);
+                        $('#dialogss').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -111,6 +114,8 @@
     }
 </style>
 <div id="dialog" style="display: none"></div>
+<div id="dialogs" style="display: none"></div>
+<div id="dialogss" style="display: none"></div>
 	<h3 class="modal-title" id="myModalLabel">Users</h3>
 	<br>
 <font size="2">
