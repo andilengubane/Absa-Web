@@ -52,11 +52,6 @@
     <Property Name="ApplicatioOwner" Type="nvarchar" MaxLength="150" />
     <Property Name="ServiceManager" Type="nvarchar" MaxLength="150" />
     <Property Name="Tiering" Type="bigint" />
-    <Property Name="StrategicFit" Type="nvarchar" MaxLength="150" />
-    <Property Name="DisasterRecovery" Type="nvarchar" MaxLength="150" />
-    <Property Name="BackUpData" Type="nvarchar" MaxLength="150" />
-    <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
-    <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
     <Property Name="SPOF" Type="nvarchar(max)" />
     <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
     <Property Name="InternalOLA" Type="nvarchar(max)" />
@@ -79,6 +74,11 @@
     <Property Name="SupportedDatabase" Type="nvarchar(max)" />
     <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
     <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
+    <Property Name="StrategicFit" Type="nvarchar(max)" />
+    <Property Name="DisasterRecovery" Type="nvarchar(max)" />
+    <Property Name="BackUpData" Type="nvarchar(max)" />
+    <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
+    <Property Name="HighAvailability" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="ResilienceTrackAudit">
     <Key>
@@ -94,11 +94,6 @@
     <Property Name="ApplicatioOwner" Type="nvarchar" MaxLength="150" />
     <Property Name="ServiceManager" Type="nvarchar" MaxLength="150" />
     <Property Name="Tiering" Type="bigint" />
-    <Property Name="StrategicFit" Type="nvarchar" MaxLength="150" />
-    <Property Name="DisasterRecovery" Type="nvarchar" MaxLength="150" />
-    <Property Name="BackUpData" Type="nvarchar" MaxLength="150" />
-    <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
-    <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
     <Property Name="SPOF" Type="nvarchar(max)" />
     <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
     <Property Name="InternalOLA" Type="nvarchar(max)" />
@@ -123,6 +118,11 @@
     <Property Name="UpdatedBy" Type="nvarchar(max)" />
     <Property Name="UpdatedOn" Type="datetime" />
     <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
+    <Property Name="StrategicFit" Type="nvarchar(max)" />
+    <Property Name="DisasterRecovery" Type="nvarchar(max)" />
+    <Property Name="BackUpData" Type="nvarchar(max)" />
+    <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
+    <Property Name="HighAvailability" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="RolesPermissions">
     <Key>
@@ -263,6 +263,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="GetBusinessUnitByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetResilienceTrackList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetResilienceTrackListById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ResilienceTrackID" Type="int" Mode="In" />

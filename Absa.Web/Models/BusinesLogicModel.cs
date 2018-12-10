@@ -17,6 +17,12 @@ namespace Absa.Web.Models
 		public string BusinessUnit { get; set; }
 	}
 
+	public class ReportModel
+	{
+		public int ID { get; set; }
+		public string BusinessUnit { get; set; }
+	}
+
 	public class UserModel
 	{
 		public IEnumerable<SelectListItem> BusinestUnitList { get; set; }
