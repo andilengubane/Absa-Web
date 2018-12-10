@@ -18,7 +18,6 @@ namespace Absa.Web.Controllers
 			var model = new DashBord()
 			{
 				BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem     
-								  
 				{
 					Value = x.BusinessUnitId.ToString(),
 					Text = x.BusinessUnitName
@@ -29,6 +28,11 @@ namespace Absa.Web.Controllers
 
 		public ActionResult Create()
 		{
+			//APPL017023
+			//var model = new ResilienceTrackModel();
+			//DateTime dob = DateTime.Now;
+			//string ApplicatioId = "APPL0" + dob.Day + dob.Month;
+			//model.ApplicationID = ApplicatioId;
 			return PartialView();
 		}
 
@@ -159,6 +163,89 @@ namespace Absa.Web.Controllers
 				string error = ex.Message;
 			}
 			return PartialView("Approval", model);
+		}
+		public ActionResult AddUpdateResilienceTrack(ResilienceTrackModel model)
+		{
+			if (model.ResilienceTrackID == 0)
+			{
+				context.ResilienceTracks.Add(new ResilienceTrack
+				{
+					ResilienceTrackID = model.ResilienceTrackID,
+				    ApplicationID = model.ApplicationID,
+				    ApplicationName = model.ApplicationName,
+				    NameOnSnow = model.NameOnSnow,
+				    Tiering = model.Tiering,
+				    HeadOfTechnology = model.HeadOfTechnology,
+				    ApplicatioOwner = model.ApplicatioOwner,
+					StrategicFit = model.StrategicFit,
+					DisasterRecovery = model.DisasterRecovery,
+					BackUpData = model.BackUpData,
+					BackUpConfiguration = model.BackUpConfiguration,
+					HighAvailability = model.HighAvailability,
+					SPOF = model.SPOF,
+					OperationalMonitoring = model.OperationalMonitoring,
+					SecurityMonitoring = model.SecurityMonitoring,
+					InternalOLA = model.InternalOLA,
+					ExternalSLA = model.ExternalSLA,
+					ArchitetureDocumentation = model.ArchitetureDocumentation,
+					OparationsDocumentation = model.OparationsDocumentation,
+					HighestDataClassification = model.HighestDataClassification,
+					DataRetentionRequirement = model.DataRetentionRequirement,
+					IntegratedToAD = model.IntegratedToAD,
+					JMLProcess = model.JMLProcess,
+					RecertificationProcess = model.RecertificationProcess,
+					PrivilegedAccessManagement = model.PrivilegedAccessManagement,
+					OSPatchingLevel = model.OSPatchingLevel,
+					ApplicationPatchingLevel = model.ApplicationPatchingLevel,
+					MiddlewarePatchingLevel = model.MiddlewarePatchingLevel,
+					SupportedApplication = model.SupportedApplication,
+					SupportedOperationSystem = model.SupportedOperationSystem,
+					SupportedJava = model.SupportedJava,
+					SupportedMiddleware = model.SupportedMiddleware,
+					SupportedDatabase = model.SupportedDatabase,
+					OpenVulnerabilities = model.OpenVulnerabilities,
+				});
+			}
+			else
+			{
+				var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceTrackID);
+				data.ResilienceTrackID = model.ResilienceTrackID;
+				data.ApplicationID = model.ApplicationID;
+				data.ApplicationName = model.ApplicationName;
+				data.NameOnSnow = model.NameOnSnow;
+				data.Tiering = model.Tiering;
+				data.HeadOfTechnology = model.HeadOfTechnology;
+				data.ApplicatioOwner = model.ApplicatioOwner;
+				data.StrategicFit = model.StrategicFit;
+				data.DisasterRecovery = model.DisasterRecovery;
+				data.BackUpData = model.BackUpData;
+				data.BackUpConfiguration = model.BackUpConfiguration;
+				data.HighAvailability = model.HighAvailability;
+				data.SPOF = model.SPOF;
+				data.OperationalMonitoring = model.OperationalMonitoring;
+				data.SecurityMonitoring = model.SecurityMonitoring;
+				data.InternalOLA = model.InternalOLA;
+				data.ExternalSLA = model.ExternalSLA;
+				data.ArchitetureDocumentation = model.ArchitetureDocumentation;
+				data.OparationsDocumentation = model.OparationsDocumentation;
+				data.HighestDataClassification = model.HighestDataClassification;
+				data.DataRetentionRequirement = model.DataRetentionRequirement;
+				data.IntegratedToAD = model.IntegratedToAD;
+				data.JMLProcess = model.JMLProcess;
+				data.RecertificationProcess = model.RecertificationProcess;
+				data.PrivilegedAccessManagement = model.PrivilegedAccessManagement;
+				data.OSPatchingLevel = model.OSPatchingLevel;
+				data.ApplicationPatchingLevel = model.ApplicationPatchingLevel;
+				data.MiddlewarePatchingLevel = model.MiddlewarePatchingLevel;
+				data.SupportedApplication = model.SupportedApplication;
+				data.SupportedOperationSystem = model.SupportedOperationSystem;
+				data.SupportedJava = model.SupportedJava;
+				data.SupportedMiddleware = model.SupportedMiddleware;
+				data.SupportedDatabase = model.SupportedDatabase;
+				data.OpenVulnerabilities = model.OpenVulnerabilities;
+			}
+			context.SaveChanges();
+			return RedirectToAction("UserList", "Account");
 		}
 	}
 }

@@ -29,7 +29,7 @@ namespace Absa.DateAccess
         public Nullable<int> RolePermissionID { get; set; }
         public Nullable<int> BusinessUnitId { get; set; }
     
-        public virtual BusinessUnit BusinessUnit { get; set; }
         public virtual User User { get; set; }
+        public virtual BusinessUnit BusinessUnit { get; set; }
     }
 }

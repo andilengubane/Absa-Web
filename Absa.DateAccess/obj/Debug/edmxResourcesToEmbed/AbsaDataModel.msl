@@ -1,29 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="AbsaDBModelStoreContainer" CdmEntityContainer="AbsaDBEntities">
-    <EntitySetMapping Name="BusinessUnits">
-      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
-        <MappingFragment StoreEntitySet="BusinessUnit">
-          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BusinessUnitAudits">
-      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
-        <MappingFragment StoreEntitySet="BusinessUnitAudit">
-          <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
-          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DataLookUps">
       <EntityTypeMapping TypeName="AbsaDBModel.DataLookUp">
         <MappingFragment StoreEntitySet="DataLookUp">
@@ -242,5 +219,30 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GetBusinessUnitByUserId" FunctionName="AbsaDBModel.Store.GetBusinessUnitByUserId" />
+    <EntitySetMapping Name="BusinessUnits">
+      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
+        <MappingFragment StoreEntitySet="BusinessUnit">
+          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessUnitAudits">
+      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
+        <MappingFragment StoreEntitySet="BusinessUnitAudit">
+          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+          <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
