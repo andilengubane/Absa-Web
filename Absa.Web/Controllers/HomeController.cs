@@ -13,11 +13,14 @@ namespace Absa.Web.Controllers
 		AbsaDBEntities context = new AbsaDBEntities();
 		public ActionResult Index()
 		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
 			var model = new DashBord()
 			{
-				BusinessUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
+				BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem     
+								  
 				{
-					Value = x.BusinessUnitName.ToString(),
+					Value = x.BusinessUnitId.ToString(),
 					Text = x.BusinessUnitName
 				})
 			};

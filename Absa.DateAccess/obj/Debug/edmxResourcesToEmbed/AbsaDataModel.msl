@@ -241,5 +241,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBusinessUnitByUserId" FunctionName="AbsaDBModel.Store.GetBusinessUnitByUserId" />
   </EntityContainerMapping>
 </Mapping>

@@ -60,11 +60,11 @@
     <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Tiering" Type="Int64" />
-    <Property Name="StrategicFit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="DisasterRecovery" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="BackUpData" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="BackUpConfiguration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="HighAvailability" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="StrategicFit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisasterRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BackUpData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -103,11 +103,11 @@
     <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Tiering" Type="Int64" />
-    <Property Name="StrategicFit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="DisasterRecovery" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="BackUpData" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="BackUpConfiguration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="HighAvailability" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="StrategicFit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisasterRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BackUpData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -326,6 +326,9 @@
       <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
+    <FunctionImport Name="GetBusinessUnitByUserId" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetResilienceTrackList_Result">
     <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
