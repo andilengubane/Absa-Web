@@ -17,13 +17,10 @@ namespace Absa.Web.Controllers
 			int userId = Convert.ToInt32(id);
 			var model = new DashBord()
 			{
-				BusinessUnitList = from  n in context.BusinessUnits
-								   join on      
-								   
-								   
-								   //context.GetBusinessUnitByUserId(userId).Select(x => new SelectListItem
+				BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem     
+								  
 				{
-					Value = x.BusinessUnitName.ToString(),
+					Value = x.BusinessUnitId.ToString(),
 					Text = x.BusinessUnitName
 				})
 			};
