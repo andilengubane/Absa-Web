@@ -28,6 +28,7 @@ namespace Absa.DateAccess
         public string BusinessUnitName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
+        public Nullable<int> NumberOfApps { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusinessUnitAudit> BusinessUnitAudits { get; set; }

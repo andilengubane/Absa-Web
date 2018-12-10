@@ -8,6 +8,7 @@
     <Property Name="BusinessUnitName" Type="nvarchar" MaxLength="150" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="DateLogged" Type="datetime" />
+    <Property Name="NumberOfApps" Type="int" />
   </EntityType>
   <EntityType Name="BusinessUnitAudit">
     <Key>
@@ -20,6 +21,7 @@
     <Property Name="DateLogged" Type="datetime" />
     <Property Name="UpdatedBy" Type="nvarchar" MaxLength="150" />
     <Property Name="UpdateOn" Type="datetime" />
+    <Property Name="NumberOfApps" Type="int" />
   </EntityType>
   <EntityType Name="DataLookUp">
     <Key>

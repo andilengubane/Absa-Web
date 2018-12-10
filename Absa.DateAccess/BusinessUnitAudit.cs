@@ -21,6 +21,7 @@ namespace Absa.DateAccess
         public Nullable<System.DateTime> DateLogged { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdateOn { get; set; }
+        public Nullable<int> NumberOfApps { get; set; }
     
         public virtual BusinessUnit BusinessUnit { get; set; }
     }

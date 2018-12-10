@@ -5,8 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6900598a899e4e9282159af401efd9ca" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnit" Width="1.5" PointX="2.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnitAudit" Width="1.5" PointX="2.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.DataLookUp" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.LookUpName" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrack" Width="1.5" PointX="11.5" PointY="2.875" IsExpanded="true" />
@@ -14,15 +12,16 @@
         <EntityTypeShape EntityType="AbsaDBModel.RolesPermission" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.User" Width="1.5" PointX="5.875" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.UsersAudit" Width="1.5" PointX="8.75" PointY="3.625" IsExpanded="true" />
-        <AssociationConnector Association="AbsaDBModel.FK__BusinessU__Busin__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Busin__1F98B2C1" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Busin__208CD6FA" ManuallyRouted="false" />
-        <AssociationConnector Association="AbsaDBModel.FK__Users__BusinessU__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="AbsaDBModel.FK__UsersAudi__Busin__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__DataLookU__Loopk__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.fk_RolesPermissions_id" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__UsersAudi__UserI__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnit" Width="1.5" PointX="3.625" PointY="4.875" />
+        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnitAudit" Width="1.5" PointX="5.875" PointY="8" />
+        <AssociationConnector Association="AbsaDBModel.FK__BusinessU__Busin__01142BA1" />
+        <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Busin__1F98B2C1" />
+        <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Busin__208CD6FA" />
+        <AssociationConnector Association="AbsaDBModel.FK__Users__BusinessU__7E37BEF6" />
+        <AssociationConnector Association="AbsaDBModel.FK__UsersAudi__Busin__03F0984C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
