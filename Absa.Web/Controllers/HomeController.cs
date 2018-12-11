@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList.Mvc;
+using PagedList;
 using System.Web.Mvc;
 using Absa.Web.Models;
 using Absa.DateAccess;
+using System.Collections.Generic;
 
 namespace Absa.Web.Controllers
 {
@@ -16,7 +18,6 @@ namespace Absa.Web.Controllers
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-
 			var model = new DashBord()
 			{
 				BusinessUnitList = context.BusinessUnits.Where(x=>x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem     
@@ -86,7 +87,7 @@ namespace Absa.Web.Controllers
 			}
 			return PartialView(model);
 		}
-		public ActionResult ResiliencTrackList()
+		public ActionResult ResiliencTrackList(int? page)
 		{
 			var model = new List<ResilienceTrackModel>();
 			try
@@ -105,7 +106,7 @@ namespace Absa.Web.Controllers
 						ApplicatioOwner = item.ApplicatioOwner,
 						ServiceManager = item.ServiceManager,
 						Tiering = item.Tiering.Value,
-						BusinessUnit = item.BusinessUnitName
+						BusinessUnit = item.BusinessUnitName,
 					});
 				}
 			}
@@ -113,7 +114,10 @@ namespace Absa.Web.Controllers
 			{
 				string error = ex.Message;
 			}
-			return this.View("ResiliencTrackList", model);
+
+			int pageSize = 5;
+			int pageNumber = (page ?? 1);
+			return this.View("ResiliencTrackList", model.ToPagedList(pageNumber, pageSize));
 		}
 
 		// Get: Edit User
