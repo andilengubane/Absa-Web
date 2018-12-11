@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Linq;
+using PagedList;
 using System.Web;
+using System.Linq;
 using System.Web.Mvc;
+using PagedList.Mvc;
 using Absa.Web.Models;
 using System.Net.Mail;
 using System.Diagnostics;
@@ -25,7 +27,7 @@ namespace Absa.Web.Controllers
 			return View();
 		}
 
-		public ActionResult UserList()
+		public ActionResult UserList(int? page)
 		{
 			var model = new List<UserModel>();
 			try
@@ -51,7 +53,9 @@ namespace Absa.Web.Controllers
 			{
 				string error = ex.Message;
 			}
-			return this.View("UserList", model);
+			int pageSize = 5;
+			int pageNumber = (page ?? 1);
+			return this.View("UserList", model.ToPagedList(pageNumber, pageSize));
 		}
 
 		// GET: Register

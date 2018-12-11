@@ -244,5 +244,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetStatusForAllApps" FunctionName="AbsaDBModel.Store.GetStatusForAllApps">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetStatusForAllApps_Result">
+          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

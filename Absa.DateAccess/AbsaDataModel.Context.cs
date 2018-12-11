@@ -64,5 +64,14 @@ namespace Absa.DateAccess
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetBusinessUnitByUserId", userIdParameter);
         }
+    
+        public virtual ObjectResult<GetStatusForAllApps_Result> GetStatusForAllApps(Nullable<int> businessUnitId)
+        {
+            var businessUnitIdParameter = businessUnitId.HasValue ?
+                new ObjectParameter("BusinessUnitId", businessUnitId) :
+                new ObjectParameter("BusinessUnitId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStatusForAllApps_Result>("GetStatusForAllApps", businessUnitIdParameter);
+        }
     }
 }

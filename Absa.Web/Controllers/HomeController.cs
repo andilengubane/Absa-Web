@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Web;
-using PagedList.Mvc;
 using PagedList;
+using System.Web;
+using System.Linq;
+using PagedList.Mvc;
 using System.Web.Mvc;
 using Absa.Web.Models;
 using Absa.DateAccess;
@@ -87,13 +87,30 @@ namespace Absa.Web.Controllers
 			}
 			return PartialView(model);
 		}
-		public ActionResult ResiliencTrackList(int? page)
+		public ActionResult ResiliencTrackList(int? page, string currentFilter, string searchString)
 		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
 			var model = new List<ResilienceTrackModel>();
+			if (searchString != null)
+			{
+				page = 1;
+			}
+			else
+			{
+				searchString = currentFilter;
+			}
 			try
 			{
-				var data = context.GetResilienceTrackList();
-
+				var businessUnitData = context.Users.FirstOrDefault(u => u.UserID == userId);
+				var data = from s in context.ResilienceTracks
+						   where s.BusinessUnitId == businessUnitData.BusinessUnitId
+						   select s;
+				ViewBag.CurrentFilter = searchString;
+				if (!String.IsNullOrEmpty(searchString))
+				{
+					data = data.Where(s => s.ApplicationID.Contains(searchString)); 
+				}
 				foreach (var item in data)
 				{
 					model.Add(new ResilienceTrackModel()
@@ -106,7 +123,6 @@ namespace Absa.Web.Controllers
 						ApplicatioOwner = item.ApplicatioOwner,
 						ServiceManager = item.ServiceManager,
 						Tiering = item.Tiering.Value,
-						BusinessUnit = item.BusinessUnitName,
 					});
 				}
 			}

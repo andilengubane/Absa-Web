@@ -81,6 +81,9 @@
     <Compile Include="GetResilienceTrackList_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetStatusForAllApps_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetUsersList_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>

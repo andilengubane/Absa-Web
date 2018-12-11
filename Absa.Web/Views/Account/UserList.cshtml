@@ -1,13 +1,14 @@
-﻿@model IEnumerable<Absa.Web.Models.UserModel>
-
+﻿@model PagedList.IPagedList<Absa.Web.Models.UserModel>
+@using PagedList.Mvc;
+@using PagedList;
 @{
 	ViewBag.Title = "UserList";
 }
-
 @section scripts{
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
 <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
@@ -183,4 +184,7 @@
 			</tr>
 		}
 	</table>
+	<br>
+	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+	@Html.PagedListPager(Model, page => Url.Action("UserList", "Account", new { page, @class = "pagination" }))</div>
 </font>
