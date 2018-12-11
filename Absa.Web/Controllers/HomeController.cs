@@ -15,9 +15,11 @@ namespace Absa.Web.Controllers
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+
 			var model = new DashBord()
 			{
-				BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem     
+				BusinessUnitList = context.BusinessUnits.Where(x=>x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem     
 				{
 					Value = x.BusinessUnitId.ToString(),
 					Text = x.BusinessUnitName
@@ -61,7 +63,7 @@ namespace Absa.Web.Controllers
 						model.Tiering = result.Tiering.Value;
 						model.HeadOfTechnology = result.HeadOfTechnology;
 						model.ApplicatioOwner = result.ApplicatioOwner;
-						model.HeadOfTechnology = result.ApplicatioOwner;
+						model.ServiceManager = result.ServiceManager;
 	              }
 				}
 				catch (Exception ex)
@@ -168,6 +170,9 @@ namespace Absa.Web.Controllers
 		{
 			if (model.ResilienceTrackID == 0)
 			{
+				var id = this.Session["ID"];
+				int userId = Convert.ToInt32(id);
+				var data = context.Users.FirstOrDefault(u => u.UserID == userId);
 				context.ResilienceTracks.Add(new ResilienceTrack
 				{
 					ResilienceTrackID = model.ResilienceTrackID,
@@ -176,7 +181,9 @@ namespace Absa.Web.Controllers
 				    NameOnSnow = model.NameOnSnow,
 				    Tiering = model.Tiering,
 				    HeadOfTechnology = model.HeadOfTechnology,
-				    ApplicatioOwner = model.ApplicatioOwner,
+				    BusinessUnitId = data.BusinessUnitId,
+					ApplicatioOwner = model.ApplicatioOwner,
+					ServiceManager = model.ServiceManager,
 					StrategicFit = model.StrategicFit,
 					DisasterRecovery = model.DisasterRecovery,
 					BackUpData = model.BackUpData,
@@ -209,12 +216,9 @@ namespace Absa.Web.Controllers
 			else
 			{
 				var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceTrackID);
-				data.ResilienceTrackID = model.ResilienceTrackID;
-				data.ApplicationID = model.ApplicationID;
-				data.ApplicationName = model.ApplicationName;
-				data.NameOnSnow = model.NameOnSnow;
 				data.Tiering = model.Tiering;
 				data.HeadOfTechnology = model.HeadOfTechnology;
+				data.ServiceManager = model.ServiceManager;
 				data.ApplicatioOwner = model.ApplicatioOwner;
 				data.StrategicFit = model.StrategicFit;
 				data.DisasterRecovery = model.DisasterRecovery;
@@ -245,7 +249,7 @@ namespace Absa.Web.Controllers
 				data.OpenVulnerabilities = model.OpenVulnerabilities;
 			}
 			context.SaveChanges();
-			return RedirectToAction("UserList", "Account");
+			return RedirectToAction("ResiliencTrackList", "Home");
 		}
 	}
 }
