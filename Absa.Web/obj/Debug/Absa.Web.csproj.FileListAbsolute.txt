@@ -57,3 +57,7 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.DateAccess.pdb
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\EntityFramework.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\EntityFramework.SqlServer.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\EntityFramework.SqlServer.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.xml

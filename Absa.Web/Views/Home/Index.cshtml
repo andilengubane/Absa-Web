@@ -31,59 +31,69 @@
 		<h5 class="card-title">Business Unit</h5>
 		@using (Html.BeginForm())
 		{
-		  @Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, "Select Bussiness Unit", new { @class = "form-control" })
+		  @Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control" ,id  = "businessUnit"})
 		  <br />
 		  <input type="submit" value="Search" class="btn btn-danger" />
 		}
 	</div>
 </div>
-<br />
+<br>
+<button type="button" class="btn btn-sm btn-success"> </button>Yes
+<button type="button" class="btn btn-sm btn-warning"> </button>Warning
+<button type="button" class="btn btn-sm btn-danger"> </button>No
+<br>
+<br>
 <div class="card-deck">
 	<div class="card" id="dvChangeColor">
-		<div class="card-header">Disater Recover</div>
+		<div class="card-header"><h5 class="card-title">Disater Recover</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Disater Recover</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">BackUp - Data</div>
+		<div class="card-header"><h5 class="card-title">BackUp - Data</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer..</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Data</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">BackUp - Configuration</div>
+		<div class="card-header"><h5 class="card-title">BackUp - Configuration</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Configuration</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">High Availability</div>
+		<div class="card-header"><h5 class="card-title">High Availability</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">High Availability</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Single Point of Failure</div>
+		<div class="card-header"><h5 class="card-title">Single Point of Failure</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Single Point of Failure</button>
@@ -93,50 +103,55 @@
 <br>
 <div class="card-deck">
 	<div class="card">
-		<div class="card-header">Monitoring</div>
+		<div class="card-header"><h5 class="card-title">Monitoring</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Monitoring</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Unsupported Infrastruture</div>
+		<div class="card-header"><h5 class="card-title">Unsupported Infrastruture</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Unsupported Infrastruture</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Strategic Fit</div>
+		<div class="card-header"><h5 class="card-title">Strategic Fit</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Strategic Fit</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Operational Monitoring</div>
+		<div class="card-header"><h5 class="card-title">Operational Monitoring</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Monitoring</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Security Monitoring</div>
+		<div class="card-header"><h5 class="card-title">Security Monitoring</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Security Monitoring</button>
@@ -146,50 +161,55 @@
 <br />
 <div class="card-deck">
 	<div class="card" id="dashBord">
-		<div class="card-header">Internal OLA</div>
+		<div class="card-header"><h5 class="card-title">Internal OLA</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Internal OLA</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">External SLA</div>
+		<div class="card-header"><h5 class="card-title">External SLA</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">External SLA</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Archicteture Documentation</div>
+		<div class="card-header"><h5 class="card-title">Archicteture Documentation</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Archicteture Documentation</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Operational Documentation</div>
+		<div class="card-header"><h5 class="card-title">Operational Documentation</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Documentation</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Integrated to AD</div>
+		<div class="card-header"><h5 class="card-title">Integrated to AD</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Integrated to AD</button>
@@ -199,50 +219,55 @@
 <br />
 <div class="card-deck">
 	<div class="card" id="dashBord">
-		<div class="card-header">JML Process</div>
+		<div class="card-header"><h5 class="card-title">JML Process</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">JML Process</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Recertification Process</div>
+		<div class="card-header"><h5 class="card-title">Recertification Process</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Recertification Process</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Privileged Access Management</div>
+		<div class="card-header"><h5 class="card-title">Privileged Access Management</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Privileged Access Management</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">OS Patching Level</div>
+		<div class="card-header"><h5 class="card-title">OS Patching Level</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">OS Patching Level</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Application Patching Level</div>
+		<div class="card-header"><h5 class="card-title">Application Patching Level</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Application Patching Level</button>
@@ -252,50 +277,55 @@
 <br />
 <div class="card-deck">
 	<div class="card" id="dashBord">
-		<div class="card-header">Middleware Patching Level</div>
+		<div class="card-header"><h5 class="card-title">Middleware Patching Level</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Middleware Patching Level</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Supported Application</div>
+		<div class="card-header"><h5 class="card-title">Supported Application</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Application</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Supported OS</div>
+		<div class="card-header"><h5 class="card-title">Supported OS</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported OS</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Supported Java</div>
+		<div class="card-header"><h5 class="card-title">Supported Java</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Java</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Supported Middleware</div>
+		<div class="card-header"><h5 class="card-title">Supported Middleware</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Middleware</button>
@@ -305,24 +335,25 @@
 <br />
 <div class="card-deck" id="dashBord">
 	<div class="card">
-		<div class="card-header">Supported Database</div>
+		<div class="card-header"><h5 class="card-title">Supported Database</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Database</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header">Open Vulnerabilities</div>
+		<div class="card-header"><h5 class="card-title">Open Vulnerabilities</h5></div>
 		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This content is a little bit longer.</p>
+			<button type="button" class="btn btn-sm btn-success">0</button>
+			<button type="button" class="btn btn-sm btn-warning">0</button>
+			<button type="button" class="btn btn-sm btn-danger">0</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Open Vulnerabilities</button>
 		</div>
 	</div>
 </div>
-<br />
