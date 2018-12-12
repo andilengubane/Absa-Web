@@ -14,83 +14,221 @@
 {
 	@Html.AntiForgeryToken()
 	<form>
-		<div class="form-row">
-			<div class="col">
-				@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control", placeholder = "Application ID", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
-			</div>
-			<div class="col">
-				@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control", placeholder = "Application Name", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.ApplicationName, "", new { @class = "text-danger" })
-			</div>
-			<div class="col">
-				@Html.EditorFor(model => model.NameOnSnow, new { htmlAttributes = new { @class = "form-control", placeholder = "Name On Snow", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.NameOnSnow, "", new { @class = "text-danger" })
+		<div class="card">
+			<h5 class="card-header">Administration</h5>
+			<div class="card-body">
+				<div class="form-row">
+					<div class="col">
+						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control", placeholder = "Application ID", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control", placeholder = "Application Name", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.ApplicationName, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.EditorFor(model => model.NameOnSnow, new { htmlAttributes = new { @class = "form-control", placeholder = "Name On Snow", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.NameOnSnow, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.EditorFor(model => model.HeadOfTechnology, new { htmlAttributes = new { @class = "form-control", placeholder = "Head Of Technology", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.HeadOfTechnology, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.EditorFor(model => model.ApplicatioOwner, new { htmlAttributes = new { @class = "form-control", placeholder = "Application Owner", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.ApplicatioOwner, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.EditorFor(model => model.ServiceManager, new { htmlAttributes = new { @class = "form-control", placeholder = "Service Manager", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.ServiceManager, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control", placeholder = "Tiering", autocomplete = "off" } })
+						@Html.ValidationMessageFor(model => model.Tiering, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+
+					</div>
+					<div class="col">
+
+					</div>
+				</div>
+				<br />
 			</div>
 		</div>
 		<br>
-		<div class="form-row">
-			<div class="col">
-				@Html.EditorFor(model => model.HeadOfTechnology, new { htmlAttributes = new { @class = "form-control", placeholder = "Head Of Technology", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.HeadOfTechnology, "", new { @class = "text-danger" })
-			</div>
-			<div class="col">
-			@Html.EditorFor(model => model.ApplicatioOwner, new { htmlAttributes = new { @class = "form-control", placeholder = "Application Owner", autocomplete = "off" } })
-			@Html.ValidationMessageFor(model => model.ApplicatioOwner, "", new { @class = "text-danger" })
-			</div>
-			<div class="col">
-				@Html.EditorFor(model => model.ServiceManager, new { htmlAttributes = new { @class = "form-control", placeholder = "Service Manager", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.ServiceManager, "", new { @class = "text-danger" })
+		<div class="card">
+			<div class="card-header">Resilience</div>
+			<div class="card-body">
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.StrategicFit, Model.StatusList, "Strategic Fit", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.StrategicFit, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.DisasterRecovery, Model.StatusList, "Disaster Recovery", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.DisasterRecovery, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.BackUpData, Model.StatusList, "BackUp - Data", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.BackUpData, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.BackUpConfiguration, Model.StatusList, "BackUp - Configuration", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.BackUpConfiguration, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.HighAvailability, Model.StatusList, "High Availability", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.HighAvailability, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.SPOF, Model.StatusList, "Single Point Of Failure", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SPOF, "", new { @class = "text-danger" })
+						
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.OperationalMonitoring, Model.StatusList, "Operational Monitoring", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.OperationalMonitoring, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.SecurityMonitoring, Model.StatusList, "Security Monitoring", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SecurityMonitoring, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.InternalOLA, Model.StatusList, "Internal OLA", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.InternalOLA, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.ExternalSLA, Model.StatusList, "External SLA", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.ExternalSLA, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+
+					</div>
+					<div class="col">
+
+			        </div>
+		        </div>
 			</div>
 		</div>
 		<br>
-		<div class="form-row">
-			<div class="col">
-				@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control", placeholder = "Tiering", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.Tiering, "", new { @class = "text-danger" })
-			</div>
-			<div class="col">
-				
-			</div>
-			<div class="col">
-			
+		<div class="card">
+			<div class="card-header">Documents</div>
+			<div class="card-body">
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.ArchitetureDocumentation, Model.StatusList, "Architeture Documentation", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.ArchitetureDocumentation, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.OparationsDocumentation, Model.StatusList, "Oparations Documentation", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.OparationsDocumentation, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.HighestDataClassification, Model.StatusList, "HighestData Classification", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.HighestDataClassification, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.IntegratedToAD, Model.StatusList, "IntegratedToAD", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.IntegratedToAD, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.JMLProcess, Model.StatusList, "JML Process", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.JMLProcess, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.RecertificationProcess, Model.StatusList, "Recertification Process", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.RecertificationProcess, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.PrivilegedAccessManagement, Model.StatusList, "Privileged Access Management", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.PrivilegedAccessManagement, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+					
+					</div>
+					<div class="col">
+					
+					</div>
+				</div>
 			</div>
 		</div>
-		<br />
+		<br>
+		<div class="card">
+			<div class="card-header">Platform And Estate Management</div>
+			<div class="card-body">
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.OSPatchingLevel, Model.StatusList, "OS Patching Level", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.OSPatchingLevel, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.ApplicationPatchingLevel, Model.StatusList, "Application Patching Level", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.ApplicationPatchingLevel, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.MiddlewarePatchingLevel, Model.StatusList, "Middleware Patching Level", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.MiddlewarePatchingLevel, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.SupportedApplication, Model.StatusList, "Supported Application", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SupportedApplication, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.SupportedOperationSystem, Model.StatusList, "Supported Operation System", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SupportedOperationSystem, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.SupportedJava, Model.StatusList, "Supported Java", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SupportedJava, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br>
+				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.SupportedMiddleware, Model.StatusList, "Supported Middleware", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SupportedMiddleware, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.SupportedDatabase, Model.StatusList, "Supported Database", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.SupportedDatabase, "", new { @class = "text-danger" })
+					</div>
+					<div class="col">
+						@Html.DropDownListFor(model => model.OpenVulnerabilities, Model.StatusList, "Open Vulnerabilities", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.OpenVulnerabilities, "", new { @class = "text-danger" })
+					</div>
+				</div>
+			</div>
+		</div>
+	   <br>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<input type="submit" value="Save" id="butValidateForm" class="btn btn-success btn-lg btn-block" />
 			</div>
 		</div>
-	</form>
+   </form>
 }
-
-@*
-
-	StrategicFit
-	DisasterRecovery
-	BackUpData
-	BackUpConfiguration
-	HighAvailability
-	SPOF
-	OperationalMonitoring
-	SecurityMonitoring
-	InternalOLA
-	ExternalSLA
-	ArchitetureDocumentation
-	OparationsDocumentation
-	HighestDataClassification
-	DataRetentionRequirement
-	IntegratedToAD
-	JMLProcess
-	RecertificationProcess
-	PrivilegedAccessManagement
-	OSPatchingLevel
-	ApplicationPatchingLevel
-	MiddlewarePatchingLevel
-	SupportedApplication
-	SupportedOperationSystem
-	SupportedJava
-	SupportedMiddleware
-	SupportedDatabase
-	OpenVulnerabilities *@

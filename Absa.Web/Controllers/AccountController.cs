@@ -265,19 +265,7 @@ namespace Absa.Web.Controllers
 					IsActive = false
 				});
 				context.SaveChanges();
-				/*
-				MailMessage msg = new MailMessage();
-				msg.From = new MailAddress("joe@contoso.com");
-				msg.To.Add(new MailAddress(model.EmailAddress));
-				msg.Subject = "User Request Access";
-				msg.Body = " Please see Activate the user account " + model.FirstName +" "+ model.LastName + ".";
-
-				SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-				System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("joe@contoso.com", "XXXXXX");
-				smtpClient.Credentials = credentials;
-				smtpClient.EnableSsl = true;
-				smtpClient.Send(msg);
-				*/
+				
 				ViewBag.ErrorMessage = "Your account is not active please see your Manager or Superviser to Activate You account";
 				return this.RedirectToAction("Index", "DashBord");
 

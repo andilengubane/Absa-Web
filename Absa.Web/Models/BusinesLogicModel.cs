@@ -15,12 +15,14 @@ namespace Absa.Web.Models
 	{
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
 		public string BusinessUnit { get; set; }
+		public string StrategicFit { get; set; }
 	}
 
 	public class ReportModel
 	{
 		public int ID { get; set; }
 		public string BusinessUnit { get; set; }
+		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
 	}
 
 	public class UserModel
@@ -54,6 +56,7 @@ namespace Absa.Web.Models
 	}
 	public class ResilienceTrackModel
 	{
+		public IEnumerable<SelectListItem> StatusList { get; set; }
 		public int ResilienceTrackID { get; set; }
 		public string ApplicationID { get; set; }
 		public string ApplicationName { get; set; }

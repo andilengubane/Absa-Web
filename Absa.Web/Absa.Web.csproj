@@ -313,10 +313,10 @@
     <Content Include="Views\Home\ResiliencTrackList.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\EditResilienceTrack.cshtml" />
+    <Content Include="Views\Report\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

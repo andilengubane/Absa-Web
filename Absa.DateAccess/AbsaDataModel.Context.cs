@@ -27,6 +27,8 @@ namespace Absa.DateAccess
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BusinessUnit> BusinessUnits { get; set; }
+        public virtual DbSet<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         public virtual DbSet<DataLookUp> DataLookUps { get; set; }
         public virtual DbSet<LookUpName> LookUpNames { get; set; }
         public virtual DbSet<ResilienceTrack> ResilienceTracks { get; set; }
@@ -34,8 +36,24 @@ namespace Absa.DateAccess
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersAudit> UsersAudits { get; set; }
-        public virtual DbSet<BusinessUnit> BusinessUnits { get; set; }
-        public virtual DbSet<BusinessUnitAudit> BusinessUnitAudits { get; set; }
+    
+        public virtual ObjectResult<GetAppStatus_Result> GetAppStatus(Nullable<int> businessUnitId)
+        {
+            var businessUnitIdParameter = businessUnitId.HasValue ?
+                new ObjectParameter("BusinessUnitId", businessUnitId) :
+                new ObjectParameter("BusinessUnitId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAppStatus_Result>("GetAppStatus", businessUnitIdParameter);
+        }
+    
+        public virtual ObjectResult<string> GetBusinessUnitByUserId(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetBusinessUnitByUserId", userIdParameter);
+        }
     
         public virtual ObjectResult<GetResilienceTrackList_Result> GetResilienceTrackList()
         {
@@ -54,24 +72,6 @@ namespace Absa.DateAccess
         public virtual ObjectResult<GetUsersList_Result> GetUsersList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList");
-        }
-    
-        public virtual ObjectResult<string> GetBusinessUnitByUserId(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetBusinessUnitByUserId", userIdParameter);
-        }
-    
-        public virtual ObjectResult<GetStatusForAllApps_Result> GetStatusForAllApps(Nullable<int> businessUnitId)
-        {
-            var businessUnitIdParameter = businessUnitId.HasValue ?
-                new ObjectParameter("BusinessUnitId", businessUnitId) :
-                new ObjectParameter("BusinessUnitId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStatusForAllApps_Result>("GetStatusForAllApps", businessUnitIdParameter);
         }
     }
 }

@@ -23,11 +23,6 @@ namespace Absa.DateAccess
         public string ApplicatioOwner { get; set; }
         public string ServiceManager { get; set; }
         public Nullable<long> Tiering { get; set; }
-        public string StrategicFit { get; set; }
-        public string DisasterRecovery { get; set; }
-        public string BackUpData { get; set; }
-        public string BackUpConfiguration { get; set; }
-        public string HighAvailability { get; set; }
         public string SPOF { get; set; }
         public string SecurityMonitoring { get; set; }
         public string InternalOLA { get; set; }
@@ -50,6 +45,11 @@ namespace Absa.DateAccess
         public string SupportedDatabase { get; set; }
         public string OpenVulnerabilities { get; set; }
         public string OperationalMonitoring { get; set; }
+        public string StrategicFit { get; set; }
+        public string DisasterRecovery { get; set; }
+        public string BackUpData { get; set; }
+        public string BackUpConfiguration { get; set; }
+        public string HighAvailability { get; set; }
     
         public virtual BusinessUnit BusinessUnit { get; set; }
     }

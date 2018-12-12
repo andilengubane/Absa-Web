@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BusinessUnit">
           <Key>
             <PropertyRef Name="BusinessUnitId" />
@@ -270,15 +270,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetAppStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetBusinessUnitByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetResilienceTrackList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetResilienceTrackListById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ResilienceTrackID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetStatusForAllApps" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="AbsaDBModelStoreContainer">
@@ -324,10 +324,40 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AbsaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="BusinessUnitId" />
+          </Key>
+          <Property Name="BusinessUnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessUnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="DateLogged" Type="DateTime" Precision="3" />
+          <Property Name="NumberOfApps" Type="Int32" />
+          <NavigationProperty Name="BusinessUnitAudits" Relationship="Self.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnit" ToRole="BusinessUnitAudit" />
+          <NavigationProperty Name="ResilienceTrackAudits" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="BusinessUnit" ToRole="ResilienceTrackAudit" />
+          <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="BusinessUnit" ToRole="Users" />
+          <NavigationProperty Name="UsersAudits" Relationship="Self.FK__UsersAudi__Busin__03F0984C" FromRole="BusinessUnit" ToRole="UsersAudit" />
+        </EntityType>
+        <EntityType Name="BusinessUnitAudit">
+          <Key>
+            <PropertyRef Name="BusinessUnitAuditID" />
+          </Key>
+          <Property Name="BusinessUnitAuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessUnitId" Type="Int32" />
+          <Property Name="BusinessUnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="DateLogged" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="NumberOfApps" Type="Int32" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnitAudit" ToRole="BusinessUnit" />
+        </EntityType>
         <EntityType Name="DataLookUp">
           <Key>
             <PropertyRef Name="ID" />
@@ -361,11 +391,6 @@
           <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Tiering" Type="Int64" />
-          <Property Name="StrategicFit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DisasterRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BackUpData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -388,7 +413,12 @@
           <Property Name="SupportedDatabase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OpenVulnerabilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OperationalMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BusinessUnit" Relationship="AbsaDBModel.FK__Resilienc__Busin__208CD6FA" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
+          <Property Name="StrategicFit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisasterRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
         </EntityType>
         <EntityType Name="ResilienceTrackAudit">
           <Key>
@@ -404,11 +434,6 @@
           <Property Name="ApplicatioOwner" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ServiceManager" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Tiering" Type="Int64" />
-          <Property Name="StrategicFit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DisasterRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BackUpData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SPOF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="InternalOLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -433,7 +458,12 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="OperationalMonitoring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BusinessUnit" Relationship="AbsaDBModel.FK__Resilienc__Busin__1F98B2C1" FromRole="ResilienceTrackAudit" ToRole="BusinessUnit" />
+          <Property Name="StrategicFit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisasterRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="ResilienceTrackAudit" ToRole="BusinessUnit" />
         </EntityType>
         <EntityType Name="RolesPermission">
           <Key>
@@ -459,9 +489,9 @@
           <Property Name="Datelogged" Type="DateTime" Precision="3" />
           <Property Name="RolesPermissionsID" Type="Int32" />
           <Property Name="BusinessUnitId" Type="Int32" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
           <NavigationProperty Name="RolesPermission" Relationship="Self.fk_RolesPermissions_id" FromRole="Users" ToRole="RolesPermissions" />
           <NavigationProperty Name="UsersAudits" Relationship="Self.FK__UsersAudi__UserI__5CD6CB2B" FromRole="Users" ToRole="UsersAudit" />
-          <NavigationProperty Name="BusinessUnit" Relationship="AbsaDBModel.FK__Users__BusinessU__7E37BEF6" FromRole="User" ToRole="BusinessUnit" />
         </EntityType>
         <EntityType Name="UsersAudit">
           <Key>
@@ -481,9 +511,69 @@
           <Property Name="UpdateOn" Type="DateTime" Precision="3" />
           <Property Name="RolePermissionID" Type="Int32" />
           <Property Name="BusinessUnitId" Type="Int32" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__UsersAudi__Busin__03F0984C" FromRole="UsersAudit" ToRole="BusinessUnit" />
           <NavigationProperty Name="User" Relationship="Self.FK__UsersAudi__UserI__5CD6CB2B" FromRole="UsersAudit" ToRole="Users" />
-          <NavigationProperty Name="BusinessUnit" Relationship="AbsaDBModel.FK__UsersAudi__Busin__03F0984C" FromRole="UsersAudit" ToRole="BusinessUnit" />
         </EntityType>
+        <Association Name="FK__BusinessU__Busin__01142BA1">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="BusinessUnitAudit" Type="Self.BusinessUnitAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="BusinessUnitAudit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resilienc__Busin__1F98B2C1">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="ResilienceTrackAudit" Type="Self.ResilienceTrackAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="ResilienceTrackAudit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resilienc__Busin__208CD6FA">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="ResilienceTrack">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__BusinessU__7E37BEF6">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsersAudi__Busin__03F0984C">
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
+          <End Role="UsersAudit" Type="Self.UsersAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Principal>
+            <Dependent Role="UsersAudit">
+              <PropertyRef Name="BusinessUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DataLookU__Loopk__5AEE82B9">
           <End Role="LookUpName" Type="Self.LookUpName" Multiplicity="0..1" />
           <End Role="DataLookUp" Type="Self.DataLookUp" Multiplicity="*" />
@@ -521,6 +611,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AbsaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessUnits" EntityType="Self.BusinessUnit" />
+          <EntitySet Name="BusinessUnitAudits" EntityType="Self.BusinessUnitAudit" />
           <EntitySet Name="DataLookUps" EntityType="Self.DataLookUp" />
           <EntitySet Name="LookUpNames" EntityType="Self.LookUpName" />
           <EntitySet Name="ResilienceTracks" EntityType="Self.ResilienceTrack" />
@@ -528,6 +620,26 @@
           <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermission" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UsersAudits" EntityType="Self.UsersAudit" />
+          <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="Self.FK__BusinessU__Busin__01142BA1">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="BusinessUnitAudit" EntitySet="BusinessUnitAudits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resilienc__Busin__1F98B2C1" Association="Self.FK__Resilienc__Busin__1F98B2C1">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="ResilienceTrackAudit" EntitySet="ResilienceTrackAudits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__BusinessU__7E37BEF6" Association="Self.FK__Users__BusinessU__7E37BEF6">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsersAudi__Busin__03F0984C" Association="Self.FK__UsersAudi__Busin__03F0984C">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="UsersAudit" EntitySet="UsersAudits" />
+          </AssociationSet>
           <AssociationSet Name="FK__DataLookU__Loopk__5AEE82B9" Association="Self.FK__DataLookU__Loopk__5AEE82B9">
             <End Role="LookUpName" EntitySet="LookUpNames" />
             <End Role="DataLookUp" EntitySet="DataLookUps" />
@@ -540,40 +652,36 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersAudit" EntitySet="UsersAudits" />
           </AssociationSet>
-          <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
-          <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)" >
-          <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
-          <FunctionImport Name="GetBusinessUnitByUserId" ReturnType="Collection(String)">
-          <Parameter Name="UserId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="BusinessUnits" EntityType="AbsaDBModel.BusinessUnit" />
-          <EntitySet Name="BusinessUnitAudits" EntityType="AbsaDBModel.BusinessUnitAudit" />
-          <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="AbsaDBModel.FK__BusinessU__Busin__01142BA1">
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-            <End Role="BusinessUnitAudit" EntitySet="BusinessUnitAudits" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Resilienc__Busin__1F98B2C1" Association="AbsaDBModel.FK__Resilienc__Busin__1F98B2C1">
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-            <End Role="ResilienceTrackAudit" EntitySet="ResilienceTrackAudits" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="AbsaDBModel.FK__Resilienc__Busin__208CD6FA">
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-            <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__BusinessU__7E37BEF6" Association="AbsaDBModel.FK__Users__BusinessU__7E37BEF6">
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsersAudi__Busin__03F0984C" Association="AbsaDBModel.FK__UsersAudi__Busin__03F0984C">
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-            <End Role="UsersAudit" EntitySet="UsersAudits" />
-          </AssociationSet>
-          <FunctionImport Name="GetStatusForAllApps" ReturnType="Collection(AbsaDBModel.GetStatusForAllApps_Result)">
+          <FunctionImport Name="GetAppStatus" ReturnType="Collection(AbsaDBModel.GetAppStatus_Result)">
             <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetBusinessUnitByUserId" ReturnType="Collection(String)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
+          <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)">
+            <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
         </EntityContainer>
+        <ComplexType Name="GetAppStatus_Result">
+          <Property Type="Int32" Name="StrategicFitYes" Nullable="true" />
+          <Property Type="Int32" Name="StrategicFitNo" Nullable="true" />
+          <Property Type="Int32" Name="StrategicFitWarning" Nullable="true" />
+          <Property Type="Int32" Name="StrategicFitStatus" Nullable="true" />
+          <Property Type="Int32" Name="DisasterRecoverYes" Nullable="true" />
+          <Property Type="Int32" Name="DisasterRecoverNo" Nullable="true" />
+          <Property Type="Int32" Name="DisasterRecoverWarning" Nullable="true" />
+          <Property Type="Int32" Name="DisasterRecoverAllStatus" Nullable="true" />
+          <Property Type="Int32" Name="BackUpDataYes" Nullable="true" />
+          <Property Type="Int32" Name="BackUpDataNo" Nullable="true" />
+          <Property Type="Int32" Name="BackUpDataWarning" Nullable="true" />
+          <Property Type="Int32" Name="BackUpDataAllStatus" Nullable="true" />
+          <Property Type="Int32" Name="BackUpConfigurationYes" Nullable="true" />
+          <Property Type="Int32" Name="BackUpConfigurationNo" Nullable="true" />
+          <Property Type="Int32" Name="BackUpConfigurationWarning" Nullable="true" />
+          <Property Type="Int32" Name="BackUpConfigurationAllStatus" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="GetResilienceTrackList_Result">
           <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
           <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
@@ -587,11 +695,11 @@
         </ComplexType>
         <ComplexType Name="GetResilienceTrackListById_Result">
           <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
-          <Property Type="String" Name="StrategicFit" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="DisasterRecovery" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="BackUpData" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="BackUpConfiguration" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="HighAvailability" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StrategicFit" Nullable="true" />
+          <Property Type="String" Name="DisasterRecovery" Nullable="true" />
+          <Property Type="String" Name="BackUpData" Nullable="true" />
+          <Property Type="String" Name="BackUpConfiguration" Nullable="true" />
+          <Property Type="String" Name="HighAvailability" Nullable="true" />
           <Property Type="String" Name="SPOF" Nullable="true" />
           <Property Type="String" Name="SecurityMonitoring" Nullable="true" />
           <Property Type="String" Name="InternalOLA" Nullable="true" />
@@ -626,105 +734,37 @@
           <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
         </ComplexType>
-        <EntityType Name="BusinessUnit">
-          <Key>
-            <PropertyRef Name="BusinessUnitId" />
-          </Key>
-          <Property Name="BusinessUnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BusinessUnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="DateLogged" Type="DateTime" Precision="3" />
-          <Property Name="NumberOfApps" Type="Int32" />
-          <NavigationProperty Name="BusinessUnitAudits" Relationship="AbsaDBModel.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnit" ToRole="BusinessUnitAudit" />
-          <NavigationProperty Name="ResilienceTrackAudits" Relationship="AbsaDBModel.FK__Resilienc__Busin__1F98B2C1" FromRole="BusinessUnit" ToRole="ResilienceTrackAudit" />
-          <NavigationProperty Name="ResilienceTracks" Relationship="AbsaDBModel.FK__Resilienc__Busin__208CD6FA" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
-          <NavigationProperty Name="Users" Relationship="AbsaDBModel.FK__Users__BusinessU__7E37BEF6" FromRole="BusinessUnit" ToRole="User" />
-          <NavigationProperty Name="UsersAudits" Relationship="AbsaDBModel.FK__UsersAudi__Busin__03F0984C" FromRole="BusinessUnit" ToRole="UsersAudit" />
-        </EntityType>
-        <EntityType Name="BusinessUnitAudit">
-          <Key>
-            <PropertyRef Name="BusinessUnitAuditID" />
-          </Key>
-          <Property Name="BusinessUnitAuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BusinessUnitId" Type="Int32" />
-          <Property Name="BusinessUnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="DateLogged" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateOn" Type="DateTime" Precision="3" />
-          <Property Name="NumberOfApps" Type="Int32" />
-          <NavigationProperty Name="BusinessUnit" Relationship="AbsaDBModel.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnitAudit" ToRole="BusinessUnit" />
-        </EntityType>
-        <Association Name="FK__BusinessU__Busin__01142BA1">
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.BusinessUnitAudit" Role="BusinessUnitAudit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BusinessUnit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Principal>
-            <Dependent Role="BusinessUnitAudit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Resilienc__Busin__1F98B2C1">
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.ResilienceTrackAudit" Role="ResilienceTrackAudit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BusinessUnit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Principal>
-            <Dependent Role="ResilienceTrackAudit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Resilienc__Busin__208CD6FA">
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.ResilienceTrack" Role="ResilienceTrack" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BusinessUnit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Principal>
-            <Dependent Role="ResilienceTrack">
-              <PropertyRef Name="BusinessUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__BusinessU__7E37BEF6">
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BusinessUnit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="BusinessUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsersAudi__Busin__03F0984C">
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.UsersAudit" Role="UsersAudit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BusinessUnit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Principal>
-            <Dependent Role="UsersAudit">
-              <PropertyRef Name="BusinessUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="GetStatusForAllApps_Result">
-          <Property Type="String" Name="StrategicFit" Nullable="true" />
-          <Property Type="Int32" Name="Status" Nullable="true" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AbsaDBModelStoreContainer" CdmEntityContainer="AbsaDBEntities">
+          <EntitySetMapping Name="BusinessUnits">
+            <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
+              <MappingFragment StoreEntitySet="BusinessUnit">
+                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+                <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessUnitAudits">
+            <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
+              <MappingFragment StoreEntitySet="BusinessUnitAudit">
+                <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
+                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DataLookUps">
             <EntityTypeMapping TypeName="AbsaDBModel.DataLookUp">
               <MappingFragment StoreEntitySet="DataLookUp">
@@ -757,11 +797,6 @@
                 <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
                 <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
                 <ScalarProperty Name="Tiering" ColumnName="Tiering" />
-                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
-                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
-                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
-                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
                 <ScalarProperty Name="SPOF" ColumnName="SPOF" />
                 <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
                 <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
@@ -784,6 +819,11 @@
                 <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
                 <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
                 <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
+                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -800,11 +840,6 @@
                 <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
                 <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
                 <ScalarProperty Name="Tiering" ColumnName="Tiering" />
-                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
-                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
-                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
-                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
                 <ScalarProperty Name="SPOF" ColumnName="SPOF" />
                 <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
                 <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
@@ -829,6 +864,11 @@
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
+                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+                <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+                <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+                <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+                <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -878,6 +918,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAppStatus" FunctionName="AbsaDBModel.Store.GetAppStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AbsaDBModel.GetAppStatus_Result">
+                <ScalarProperty Name="StrategicFitYes" ColumnName="StrategicFitYes" />
+                <ScalarProperty Name="StrategicFitNo" ColumnName="StrategicFitNo" />
+                <ScalarProperty Name="StrategicFitWarning" ColumnName="StrategicFitWarning" />
+                <ScalarProperty Name="StrategicFitStatus" ColumnName="StrategicFitStatus" />
+                <ScalarProperty Name="DisasterRecoverYes" ColumnName="DisasterRecoverYes" />
+                <ScalarProperty Name="DisasterRecoverNo" ColumnName="DisasterRecoverNo" />
+                <ScalarProperty Name="DisasterRecoverWarning" ColumnName="DisasterRecoverWarning" />
+                <ScalarProperty Name="DisasterRecoverAllStatus" ColumnName="DisasterRecoverAllStatus" />
+                <ScalarProperty Name="BackUpDataYes" ColumnName="BackUpDataYes" />
+                <ScalarProperty Name="BackUpDataNo" ColumnName="BackUpDataNo" />
+                <ScalarProperty Name="BackUpDataWarning" ColumnName="BackUpDataWarning" />
+                <ScalarProperty Name="BackUpDataAllStatus" ColumnName="BackUpDataAllStatus" />
+                <ScalarProperty Name="BackUpConfigurationYes" ColumnName="BackUpConfigurationYes" />
+                <ScalarProperty Name="BackUpConfigurationNo" ColumnName="BackUpConfigurationNo" />
+                <ScalarProperty Name="BackUpConfigurationWarning" ColumnName="BackUpConfigurationWarning" />
+                <ScalarProperty Name="BackUpConfigurationAllStatus" ColumnName="BackUpConfigurationAllStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBusinessUnitByUserId" FunctionName="AbsaDBModel.Store.GetBusinessUnitByUserId" />
           <FunctionImportMapping FunctionImportName="GetResilienceTrackList" FunctionName="AbsaDBModel.Store.GetResilienceTrackList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AbsaDBModel.GetResilienceTrackList_Result">
@@ -939,40 +1002,6 @@
                 <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetBusinessUnitByUserId" FunctionName="AbsaDBModel.Store.GetBusinessUnitByUserId" />
-          <EntitySetMapping Name="BusinessUnits">
-            <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
-              <MappingFragment StoreEntitySet="BusinessUnit">
-                <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
-                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BusinessUnitAudits">
-            <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
-              <MappingFragment StoreEntitySet="BusinessUnitAudit">
-                <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
-                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-                <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetStatusForAllApps" FunctionName="AbsaDBModel.Store.GetStatusForAllApps">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AbsaDBModel.GetStatusForAllApps_Result">
-                <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

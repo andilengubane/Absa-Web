@@ -26,35 +26,62 @@ namespace Absa.Web.Controllers
 					Text = x.BusinessUnitName
 				})
 			};
+
+			var strategicFitappData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in strategicFitappData)
+			{
+				ViewBag.StrategicFitYes = item.StrategicFitYes;
+				ViewBag.StrategicFitNo = item.StrategicFitNo;
+				ViewBag.StrategicFitWarning = item.StrategicFitWarning;
+
+				ViewBag.DisasterRecoverYes = item.DisasterRecoverYes;
+				ViewBag.DisasterRecoverNo = item.DisasterRecoverNo;
+				ViewBag.DisasterRecoverWarning = item.DisasterRecoverWarning;
+
+				ViewBag.BackUpDataYes = item.BackUpDataYes;
+				ViewBag.BackUpDataNo = item.BackUpDataNo;
+				ViewBag.BackUpDataWarning = item.BackUpDataWarning;
+
+				ViewBag.BackUpConfigurationYes = item.BackUpConfigurationYes;
+				ViewBag.BackUpConfigurationNo = item.BackUpConfigurationNo;
+				ViewBag.BackUpConfigurationWarning = item.BackUpConfigurationWarning;
+			}
 			return View(model);
 		}
 
+		// Get Create
 		public ActionResult Create()
 		{
-			//APPL017023
-			//var model = new ResilienceTrackModel();
-			//DateTime dob = DateTime.Now;
-			//string ApplicatioId = "APPL0" + dob.Day + dob.Month;
-			//model.ApplicationID = ApplicatioId;
-			return PartialView();
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new ResilienceTrackModel()
+			{
+				StatusList = context.DataLookUps.Where(x => x.LoopkUpID == 1).Select(x => new SelectListItem
+				{
+					Value = x.Description,
+					Text = x.Description
+				})
+			};
+			return PartialView(model);
 		}
 
 		// Get EditResilienceTrack
 		public ActionResult EditResilienceTrack(string resilienceTrackId)
 		{
+			var _Id = this.Session["ID"];
+			int userId = Convert.ToInt32(_Id);
+			var dataStatus = context.Users.FirstOrDefault(u => u.UserID == userId);
+
 			var model = new ResilienceTrackModel();
 			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
 			int id = Convert.ToInt16(number);
-			var items = context.DataLookUps.Where(x => x.LoopkUpID == 1).ToList();
-			if (items != null)
-			{
-				ViewBag.data = items;
-			}
+
 			if (id != 0)
 			{
 				try
 				{
-					var data = context.ResilienceTracks.Where(m => m.ResilienceTrackID == id);
+					var data = context.ResilienceTracks.Where(m => m.ResilienceTrackID == id && m.BusinessUnitId == dataStatus.BusinessUnitId);
 					foreach (var result in data)
 					{
 						model.ResilienceTrackID = result.ResilienceTrackID;
@@ -65,28 +92,51 @@ namespace Absa.Web.Controllers
 						model.HeadOfTechnology = result.HeadOfTechnology;
 						model.ApplicatioOwner = result.ApplicatioOwner;
 						model.ServiceManager = result.ServiceManager;
-	              }
+						model.StrategicFit = result.StrategicFit;
+	                    model.DisasterRecovery  = result.DisasterRecovery;
+	                    model.BackUpData  = result.BackUpData;
+	                    model.BackUpConfiguration  = result.BackUpConfiguration;
+	                    model.HighAvailability  = result.HighAvailability;
+	                    model.SPOF  = result.SPOF;
+	                    model.OperationalMonitoring  = result.OperationalMonitoring;
+	                    model.SecurityMonitoring  = result.SecurityMonitoring;
+	                    model.InternalOLA  = result.InternalOLA;
+	                    model.ExternalSLA  = result.ExternalSLA;
+	                    model.ArchitetureDocumentation  = result.ArchitetureDocumentation;
+	                    model.OparationsDocumentation  = result.OparationsDocumentation;
+	                    model.HighestDataClassification  = result.HighestDataClassification;
+	                    model.DataRetentionRequirement  = result.DataRetentionRequirement;
+	                    model.IntegratedToAD  = result.IntegratedToAD;
+	                    model.JMLProcess  = result.JMLProcess;
+	                    model.RecertificationProcess  = result.RecertificationProcess;
+	                    model.PrivilegedAccessManagement  = result.PrivilegedAccessManagement;
+	                    model.OSPatchingLevel  = result.OSPatchingLevel;
+	                    model.ApplicationPatchingLevel  = result.ApplicationPatchingLevel;
+	                    model.MiddlewarePatchingLevel  = result.MiddlewarePatchingLevel;
+	                    model.SupportedApplication  = result.SupportedApplication;
+	                    model.SupportedOperationSystem  = result.SupportedOperationSystem;
+	                    model.SupportedJava  = result.SupportedJava;
+	                    model.SupportedMiddleware  = result.SupportedMiddleware;
+	                    model.SupportedDatabase  = result.SupportedDatabase;
+	                    model.OpenVulnerabilities  = result.OpenVulnerabilities;
+					}
 				}
 				catch (Exception ex)
 				{
 					var error = ex.Message;
 				}
-				/*
-				 	model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
-				{
-					Value = x.BusinessUnitId.ToString(),
-					Text = x.BusinessUnitName
-				});
 
-				model.RolesPermissionList = context.RolesPermissions.OrderBy(x => x.Type).Select(x => new SelectListItem
+				model.StatusList = context.DataLookUps.Where(x => x.LoopkUpID == 1).Select(x => new SelectListItem
 				{
-					Value = x.RolesPermissionsID.ToString(),
-					Text = x.Type
+					Value = x.Description,
+					Text = x.Description
 				});
-				 */
+			
 			}
 			return PartialView(model);
 		}
+
+		// Get: Resilience Track List
 		public ActionResult ResiliencTrackList(int? page, string currentFilter, string searchString)
 		{
 			var id = this.Session["ID"];
@@ -186,6 +236,8 @@ namespace Absa.Web.Controllers
 			}
 			return PartialView("Approval", model);
 		}
+
+		// Post AddUpdateResilienceTrack
 		public ActionResult AddUpdateResilienceTrack(ResilienceTrackModel model)
 		{
 			if (model.ResilienceTrackID == 0)
