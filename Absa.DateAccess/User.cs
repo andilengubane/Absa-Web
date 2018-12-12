@@ -32,9 +32,9 @@ namespace Absa.DateAccess
         public Nullable<int> RolesPermissionsID { get; set; }
         public Nullable<int> BusinessUnitId { get; set; }
     
+        public virtual BusinessUnit BusinessUnit { get; set; }
         public virtual RolesPermission RolesPermission { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersAudit> UsersAudits { get; set; }
-        public virtual BusinessUnit BusinessUnit { get; set; }
     }
 }

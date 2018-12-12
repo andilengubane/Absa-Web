@@ -1,6 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="AbsaDBModelStoreContainer" CdmEntityContainer="AbsaDBEntities">
+    <EntitySetMapping Name="BusinessUnits">
+      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
+        <MappingFragment StoreEntitySet="BusinessUnit">
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessUnitAudits">
+      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
+        <MappingFragment StoreEntitySet="BusinessUnitAudit">
+          <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DataLookUps">
       <EntityTypeMapping TypeName="AbsaDBModel.DataLookUp">
         <MappingFragment StoreEntitySet="DataLookUp">
@@ -33,11 +58,6 @@
           <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
           <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
           <ScalarProperty Name="Tiering" ColumnName="Tiering" />
-          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
-          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
-          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
-          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
           <ScalarProperty Name="SPOF" ColumnName="SPOF" />
           <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
           <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
@@ -60,6 +80,11 @@
           <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
           <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
           <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
+          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -76,11 +101,6 @@
           <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
           <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
           <ScalarProperty Name="Tiering" ColumnName="Tiering" />
-          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
-          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
-          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
-          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
           <ScalarProperty Name="SPOF" ColumnName="SPOF" />
           <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
           <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
@@ -105,6 +125,11 @@
           <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
           <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
           <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
+          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -154,6 +179,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAppStatus" FunctionName="AbsaDBModel.Store.GetAppStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetAppStatus_Result">
+          <ScalarProperty Name="StrategicFitYes" ColumnName="StrategicFitYes" />
+          <ScalarProperty Name="StrategicFitNo" ColumnName="StrategicFitNo" />
+          <ScalarProperty Name="StrategicFitWarning" ColumnName="StrategicFitWarning" />
+          <ScalarProperty Name="StrategicFitStatus" ColumnName="StrategicFitStatus" />
+          <ScalarProperty Name="DisasterRecoverYes" ColumnName="DisasterRecoverYes" />
+          <ScalarProperty Name="DisasterRecoverNo" ColumnName="DisasterRecoverNo" />
+          <ScalarProperty Name="DisasterRecoverWarning" ColumnName="DisasterRecoverWarning" />
+          <ScalarProperty Name="DisasterRecoverAllStatus" ColumnName="DisasterRecoverAllStatus" />
+          <ScalarProperty Name="BackUpDataYes" ColumnName="BackUpDataYes" />
+          <ScalarProperty Name="BackUpDataNo" ColumnName="BackUpDataNo" />
+          <ScalarProperty Name="BackUpDataWarning" ColumnName="BackUpDataWarning" />
+          <ScalarProperty Name="BackUpDataAllStatus" ColumnName="BackUpDataAllStatus" />
+          <ScalarProperty Name="BackUpConfigurationYes" ColumnName="BackUpConfigurationYes" />
+          <ScalarProperty Name="BackUpConfigurationNo" ColumnName="BackUpConfigurationNo" />
+          <ScalarProperty Name="BackUpConfigurationWarning" ColumnName="BackUpConfigurationWarning" />
+          <ScalarProperty Name="BackUpConfigurationAllStatus" ColumnName="BackUpConfigurationAllStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBusinessUnitByUserId" FunctionName="AbsaDBModel.Store.GetBusinessUnitByUserId" />
     <FunctionImportMapping FunctionImportName="GetResilienceTrackList" FunctionName="AbsaDBModel.Store.GetResilienceTrackList">
       <ResultMapping>
         <ComplexTypeMapping TypeName="AbsaDBModel.GetResilienceTrackList_Result">
@@ -215,40 +263,6 @@
           <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetBusinessUnitByUserId" FunctionName="AbsaDBModel.Store.GetBusinessUnitByUserId" />
-    <EntitySetMapping Name="BusinessUnits">
-      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
-        <MappingFragment StoreEntitySet="BusinessUnit">
-          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
-          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BusinessUnitAudits">
-      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
-        <MappingFragment StoreEntitySet="BusinessUnitAudit">
-          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
-          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
-          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-          <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="GetStatusForAllApps" FunctionName="AbsaDBModel.Store.GetStatusForAllApps">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="AbsaDBModel.GetStatusForAllApps_Result">
-          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
