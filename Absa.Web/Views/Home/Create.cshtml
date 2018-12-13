@@ -166,7 +166,8 @@
 						@Html.ValidationMessageFor(model => model.PrivilegedAccessManagement, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-					
+					    @Html.DropDownListFor(model => model.DataRetentionRequirement, Model.StatusList, "Data Retention Requirement", new { @class = "form-control" })
+					    @Html.ValidationMessageFor(model => model.DataRetentionRequirement, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
 					
