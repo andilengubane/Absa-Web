@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <Height>3.19642in</Height>
+    <Style />
+  </Body>
+  <Width>6.5in</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>2cm</LeftMargin>
+    <RightMargin>2cm</RightMargin>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="AbsaDBDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>54fb12d5-923d-4b9a-ae38-e3edfea8010d</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="OverRallDataSet">
+      <Query>
+        <DataSourceName>AbsaDBDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="StrategicFitYes">
+          <DataField>StrategicFitYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="StrategicFitNo">
+          <DataField>StrategicFitNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="StrategicFitWarning">
+          <DataField>StrategicFitWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="StrategicFitOverRall">
+          <DataField>StrategicFitOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisasterRecoverYes">
+          <DataField>DisasterRecoverYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisasterRecoverNo">
+          <DataField>DisasterRecoverNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisasterRecoverWarning">
+          <DataField>DisasterRecoverWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisasterRecoverOverRall">
+          <DataField>DisasterRecoverOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpDataYes">
+          <DataField>BackUpDataYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpDataNo">
+          <DataField>BackUpDataNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpDataWarning">
+          <DataField>BackUpDataWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpDataOverRall">
+          <DataField>BackUpDataOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpConfigurationYes">
+          <DataField>BackUpConfigurationYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpConfigurationNo">
+          <DataField>BackUpConfigurationNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpConfigurationWarning">
+          <DataField>BackUpConfigurationWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackUpConfigurationOverRall">
+          <DataField>BackUpConfigurationOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighAvailabilityYes">
+          <DataField>HighAvailabilityYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighAvailabilityNo">
+          <DataField>HighAvailabilityNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighAvailabilityWarning">
+          <DataField>HighAvailabilityWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighAvailabilityOverRall">
+          <DataField>HighAvailabilityOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OperationalMonitoringYes">
+          <DataField>OperationalMonitoringYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OperationalMonitoringNo">
+          <DataField>OperationalMonitoringNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OperationalMonitoringWarning">
+          <DataField>OperationalMonitoringWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OperationalMonitoringOverRall">
+          <DataField>OperationalMonitoringOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SecurityMonitoringYes">
+          <DataField>SecurityMonitoringYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SecurityMonitoringNo">
+          <DataField>SecurityMonitoringNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SecurityMonitoringWarning">
+          <DataField>SecurityMonitoringWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SecurityMonitoringOverRall">
+          <DataField>SecurityMonitoringOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SPOFYes">
+          <DataField>SPOFYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SPOFNo">
+          <DataField>SPOFNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SPOFWarning">
+          <DataField>SPOFWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SPOFOverRall">
+          <DataField>SPOFOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="InternalOLAYes">
+          <DataField>InternalOLAYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="InternalOLANo">
+          <DataField>InternalOLANo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="InternalOLAWarning">
+          <DataField>InternalOLAWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="InternalOLAOverRall">
+          <DataField>InternalOLAOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ExternalSLAYes">
+          <DataField>ExternalSLAYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ExternalSLANo">
+          <DataField>ExternalSLANo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ExternalSLAWarning">
+          <DataField>ExternalSLAWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ExternalSLAOverRall">
+          <DataField>ExternalSLAOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ArchitetureDocumentationYes">
+          <DataField>ArchitetureDocumentationYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ArchitetureDocumentationNo">
+          <DataField>ArchitetureDocumentationNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ArchitetureDocumentationWarning">
+          <DataField>ArchitetureDocumentationWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ArchitetureDocumentationOverRall">
+          <DataField>ArchitetureDocumentationOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OparationsDocumentationYes">
+          <DataField>OparationsDocumentationYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OparationsDocumentationNo">
+          <DataField>OparationsDocumentationNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OparationsDocumentationWarning">
+          <DataField>OparationsDocumentationWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OparationsDocumentationOverRall">
+          <DataField>OparationsDocumentationOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighestDataClassificationYes">
+          <DataField>HighestDataClassificationYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighestDataClassificationNo">
+          <DataField>HighestDataClassificationNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighestDataClassificationWarning">
+          <DataField>HighestDataClassificationWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HighestDataClassificationOverRall">
+          <DataField>HighestDataClassificationOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DataRetentionRequirementYes">
+          <DataField>DataRetentionRequirementYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DataRetentionRequirementNo">
+          <DataField>DataRetentionRequirementNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DataRetentionRequirementWarning">
+          <DataField>DataRetentionRequirementWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DataRetentionRequirementOverRall">
+          <DataField>DataRetentionRequirementOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IntegratedToADYes">
+          <DataField>IntegratedToADYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IntegratedToADNo">
+          <DataField>IntegratedToADNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IntegratedToADWarning">
+          <DataField>IntegratedToADWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IntegratedToADOverRall">
+          <DataField>IntegratedToADOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="JMLProcessYes">
+          <DataField>JMLProcessYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="JMLProcessNo">
+          <DataField>JMLProcessNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="JMLProcessWarning">
+          <DataField>JMLProcessWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="JMLProcessOverRall">
+          <DataField>JMLProcessOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RecertificationProcessYes">
+          <DataField>RecertificationProcessYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RecertificationProcessNo">
+          <DataField>RecertificationProcessNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RecertificationProcessWarning">
+          <DataField>RecertificationProcessWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RecertificationProcessOverRall">
+          <DataField>RecertificationProcessOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrivilegedAccessManagementYes">
+          <DataField>PrivilegedAccessManagementYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrivilegedAccessManagementNo">
+          <DataField>PrivilegedAccessManagementNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrivilegedAccessManagementWarning">
+          <DataField>PrivilegedAccessManagementWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrivilegedAccessManagementOverRall">
+          <DataField>PrivilegedAccessManagementOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OSPatchingLevelYes">
+          <DataField>OSPatchingLevelYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OSPatchingLevelNo">
+          <DataField>OSPatchingLevelNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OSPatchingLevelWarning">
+          <DataField>OSPatchingLevelWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OSPatchingLevelOverRall">
+          <DataField>OSPatchingLevelOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ApplicationPatchingLevelYes">
+          <DataField>ApplicationPatchingLevelYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ApplicationPatchingLevelNo">
+          <DataField>ApplicationPatchingLevelNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ApplicationPatchingLevelWarning">
+          <DataField>ApplicationPatchingLevelWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ApplicationPatchingLevelOverRall">
+          <DataField>ApplicationPatchingLevelOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MiddlewarePatchingLevelYes">
+          <DataField>MiddlewarePatchingLevelYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MiddlewarePatchingLevelNo">
+          <DataField>MiddlewarePatchingLevelNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MiddlewarePatchingLevelWarning">
+          <DataField>MiddlewarePatchingLevelWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MiddlewarePatchingLevelOverRall">
+          <DataField>MiddlewarePatchingLevelOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedApplicationYes">
+          <DataField>SupportedApplicationYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedApplicationNo">
+          <DataField>SupportedApplicationNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedApplicationWarning">
+          <DataField>SupportedApplicationWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedApplicationOverRall">
+          <DataField>SupportedApplicationOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedOperationSystemYes">
+          <DataField>SupportedOperationSystemYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedOperationSystemNo">
+          <DataField>SupportedOperationSystemNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedOperationSystemWarning">
+          <DataField>SupportedOperationSystemWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedOperationSystemOverRall">
+          <DataField>SupportedOperationSystemOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedJavaYes">
+          <DataField>SupportedJavaYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedJavaNo">
+          <DataField>SupportedJavaNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedJavaWarning">
+          <DataField>SupportedJavaWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedJavaOverRall">
+          <DataField>SupportedJavaOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedMiddlewareYes">
+          <DataField>SupportedMiddlewareYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedMiddlewareNo">
+          <DataField>SupportedMiddlewareNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedMiddlewareWarning">
+          <DataField>SupportedMiddlewareWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedMiddlewareOverRall">
+          <DataField>SupportedMiddlewareOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedDatabaseYes">
+          <DataField>SupportedDatabaseYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedDatabaseNo">
+          <DataField>SupportedDatabaseNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedDatabaseWarning">
+          <DataField>SupportedDatabaseWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupportedDatabaseOverRall">
+          <DataField>SupportedDatabaseOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OpenVulnerabilitiesYes">
+          <DataField>OpenVulnerabilitiesYes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OpenVulnerabilitiesNo">
+          <DataField>OpenVulnerabilitiesNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OpenVulnerabilitiesWarning">
+          <DataField>OpenVulnerabilitiesWarning</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OpenVulnerabilitiesOverRall">
+          <DataField>OpenVulnerabilitiesOverRall</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AbsaDBDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Apps\Absa\Application\Absa.Web\Absa.Web\AbsaDBDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>GetAppStatus</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetAppStatusTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>7fd38d5f-8167-49d5-b671-0b894cac6e3e</rd:ReportID>
+</Report>
