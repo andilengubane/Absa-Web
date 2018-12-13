@@ -22,6 +22,7 @@ namespace Absa.Web.Models
 	{
 		public int ID { get; set; }
 		public string BusinessUnit { get; set; }
+		public int BusinessUnitId { get; set}
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
 	}
 

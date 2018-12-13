@@ -24,7 +24,30 @@ namespace Absa.Web.Controllers
 					Text = x.BusinessUnitName
 				})
 			};
-			return View(model);
+
+			model.BusinessUnitId = Convert.ToInt32(data.BusinessUnitId);
+			return View("Report",model);
         }
-    }
+
+		[HttpPost]
+		public ActionResult RejectedReport(ReportModel model)
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			model.BusinessUnitList = context.BusinessUnits.Where(x => x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem
+			{
+				Value = x.BusinessUnitId.ToString(),
+				Text = x.BusinessUnitName
+			});
+
+			//model.BusinessUnitId = Convert.ToInt32(data.BusinessUnitId);
+			//model.ShowReport = true;
+			//model.ReportName = model.ReportName;
+			//ViewBag.FromDate = model.FromDate;
+			//ViewBag.tomDate = model.ToDate;
+			//ViewBag.SelectedStatus = model.SelectedStatusCode;
+			return this.View("Report", model);
+		}
+	}
 }

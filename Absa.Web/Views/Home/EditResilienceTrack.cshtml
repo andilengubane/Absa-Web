@@ -149,7 +149,7 @@
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.DropDownListFor(model => model.IntegratedToAD, Model.StatusList, "IntegratedToAD", new { @class = "form-control" })
+						@Html.DropDownListFor(model => model.IntegratedToAD, Model.StatusList, "Integrated To AD", new { @class = "form-control" })
 						@Html.ValidationMessageFor(model => model.IntegratedToAD, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
@@ -168,7 +168,8 @@
 						@Html.ValidationMessageFor(model => model.PrivilegedAccessManagement, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-
+						@Html.DropDownListFor(model => model.DataRetentionRequirement, Model.StatusList, "Data Retention Requirement", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.DataRetentionRequirement, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
 
@@ -228,6 +229,7 @@
 				</div>
 			</div>
 		</div>
+		<br>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<input type="submit" value="Save" id="butValidateForm" class="btn btn-success btn-lg btn-block" />
