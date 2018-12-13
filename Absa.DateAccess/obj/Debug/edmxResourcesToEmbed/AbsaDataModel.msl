@@ -185,19 +185,111 @@
           <ScalarProperty Name="StrategicFitYes" ColumnName="StrategicFitYes" />
           <ScalarProperty Name="StrategicFitNo" ColumnName="StrategicFitNo" />
           <ScalarProperty Name="StrategicFitWarning" ColumnName="StrategicFitWarning" />
-          <ScalarProperty Name="StrategicFitStatus" ColumnName="StrategicFitStatus" />
+          <ScalarProperty Name="StrategicFitOverRall" ColumnName="StrategicFitOverRall" />
           <ScalarProperty Name="DisasterRecoverYes" ColumnName="DisasterRecoverYes" />
           <ScalarProperty Name="DisasterRecoverNo" ColumnName="DisasterRecoverNo" />
           <ScalarProperty Name="DisasterRecoverWarning" ColumnName="DisasterRecoverWarning" />
-          <ScalarProperty Name="DisasterRecoverAllStatus" ColumnName="DisasterRecoverAllStatus" />
+          <ScalarProperty Name="DisasterRecoverOverRall" ColumnName="DisasterRecoverOverRall" />
           <ScalarProperty Name="BackUpDataYes" ColumnName="BackUpDataYes" />
           <ScalarProperty Name="BackUpDataNo" ColumnName="BackUpDataNo" />
           <ScalarProperty Name="BackUpDataWarning" ColumnName="BackUpDataWarning" />
-          <ScalarProperty Name="BackUpDataAllStatus" ColumnName="BackUpDataAllStatus" />
+          <ScalarProperty Name="BackUpDataOverRall" ColumnName="BackUpDataOverRall" />
           <ScalarProperty Name="BackUpConfigurationYes" ColumnName="BackUpConfigurationYes" />
           <ScalarProperty Name="BackUpConfigurationNo" ColumnName="BackUpConfigurationNo" />
           <ScalarProperty Name="BackUpConfigurationWarning" ColumnName="BackUpConfigurationWarning" />
-          <ScalarProperty Name="BackUpConfigurationAllStatus" ColumnName="BackUpConfigurationAllStatus" />
+          <ScalarProperty Name="BackUpConfigurationOverRall" ColumnName="BackUpConfigurationOverRall" />
+          <ScalarProperty Name="HighAvailabilityYes" ColumnName="HighAvailabilityYes" />
+          <ScalarProperty Name="HighAvailabilityNo" ColumnName="HighAvailabilityNo" />
+          <ScalarProperty Name="HighAvailabilityWarning" ColumnName="HighAvailabilityWarning" />
+          <ScalarProperty Name="HighAvailabilityOverRall" ColumnName="HighAvailabilityOverRall" />
+          <ScalarProperty Name="OperationalMonitoringYes" ColumnName="OperationalMonitoringYes" />
+          <ScalarProperty Name="OperationalMonitoringNo" ColumnName="OperationalMonitoringNo" />
+          <ScalarProperty Name="OperationalMonitoringWarning" ColumnName="OperationalMonitoringWarning" />
+          <ScalarProperty Name="OperationalMonitoringOverRall" ColumnName="OperationalMonitoringOverRall" />
+          <ScalarProperty Name="SecurityMonitoringYes" ColumnName="SecurityMonitoringYes" />
+          <ScalarProperty Name="SecurityMonitoringNo" ColumnName="SecurityMonitoringNo" />
+          <ScalarProperty Name="SecurityMonitoringWarning" ColumnName="SecurityMonitoringWarning" />
+          <ScalarProperty Name="SecurityMonitoringOverRall" ColumnName="SecurityMonitoringOverRall" />
+          <ScalarProperty Name="SPOFYes" ColumnName="SPOFYes" />
+          <ScalarProperty Name="SPOFNo" ColumnName="SPOFNo" />
+          <ScalarProperty Name="SPOFWarning" ColumnName="SPOFWarning" />
+          <ScalarProperty Name="SPOFOverRall" ColumnName="SPOFOverRall" />
+          <ScalarProperty Name="InternalOLAYes" ColumnName="InternalOLAYes" />
+          <ScalarProperty Name="InternalOLANo" ColumnName="InternalOLANo" />
+          <ScalarProperty Name="InternalOLAWarning" ColumnName="InternalOLAWarning" />
+          <ScalarProperty Name="InternalOLAOverRall" ColumnName="InternalOLAOverRall" />
+          <ScalarProperty Name="ExternalSLAYes" ColumnName="ExternalSLAYes" />
+          <ScalarProperty Name="ExternalSLANo" ColumnName="ExternalSLANo" />
+          <ScalarProperty Name="ExternalSLAWarning" ColumnName="ExternalSLAWarning" />
+          <ScalarProperty Name="ExternalSLAOverRall" ColumnName="ExternalSLAOverRall" />
+          <ScalarProperty Name="ArchitetureDocumentationYes" ColumnName="ArchitetureDocumentationYes" />
+          <ScalarProperty Name="ArchitetureDocumentationNo" ColumnName="ArchitetureDocumentationNo" />
+          <ScalarProperty Name="ArchitetureDocumentationWarning" ColumnName="ArchitetureDocumentationWarning" />
+          <ScalarProperty Name="ArchitetureDocumentationOverRall" ColumnName="ArchitetureDocumentationOverRall" />
+          <ScalarProperty Name="OparationsDocumentationYes" ColumnName="OparationsDocumentationYes" />
+          <ScalarProperty Name="OparationsDocumentationNo" ColumnName="OparationsDocumentationNo" />
+          <ScalarProperty Name="OparationsDocumentationWarning" ColumnName="OparationsDocumentationWarning" />
+          <ScalarProperty Name="OparationsDocumentationOverRall" ColumnName="OparationsDocumentationOverRall" />
+          <ScalarProperty Name="HighestDataClassificationYes" ColumnName="HighestDataClassificationYes" />
+          <ScalarProperty Name="HighestDataClassificationNo" ColumnName="HighestDataClassificationNo" />
+          <ScalarProperty Name="HighestDataClassificationWarning" ColumnName="HighestDataClassificationWarning" />
+          <ScalarProperty Name="HighestDataClassificationOverRall" ColumnName="HighestDataClassificationOverRall" />
+          <ScalarProperty Name="DataRetentionRequirementYes" ColumnName="DataRetentionRequirementYes" />
+          <ScalarProperty Name="DataRetentionRequirementNo" ColumnName="DataRetentionRequirementNo" />
+          <ScalarProperty Name="DataRetentionRequirementWarning" ColumnName="DataRetentionRequirementWarning" />
+          <ScalarProperty Name="DataRetentionRequirementOverRall" ColumnName="DataRetentionRequirementOverRall" />
+          <ScalarProperty Name="IntegratedToADYes" ColumnName="IntegratedToADYes" />
+          <ScalarProperty Name="IntegratedToADNo" ColumnName="IntegratedToADNo" />
+          <ScalarProperty Name="IntegratedToADWarning" ColumnName="IntegratedToADWarning" />
+          <ScalarProperty Name="IntegratedToADOverRall" ColumnName="IntegratedToADOverRall" />
+          <ScalarProperty Name="JMLProcessYes" ColumnName="JMLProcessYes" />
+          <ScalarProperty Name="JMLProcessNo" ColumnName="JMLProcessNo" />
+          <ScalarProperty Name="JMLProcessWarning" ColumnName="JMLProcessWarning" />
+          <ScalarProperty Name="JMLProcessOverRall" ColumnName="JMLProcessOverRall" />
+          <ScalarProperty Name="RecertificationProcessYes" ColumnName="RecertificationProcessYes" />
+          <ScalarProperty Name="RecertificationProcessNo" ColumnName="RecertificationProcessNo" />
+          <ScalarProperty Name="RecertificationProcessWarning" ColumnName="RecertificationProcessWarning" />
+          <ScalarProperty Name="RecertificationProcessOverRall" ColumnName="RecertificationProcessOverRall" />
+          <ScalarProperty Name="PrivilegedAccessManagementYes" ColumnName="PrivilegedAccessManagementYes" />
+          <ScalarProperty Name="PrivilegedAccessManagementNo" ColumnName="PrivilegedAccessManagementNo" />
+          <ScalarProperty Name="PrivilegedAccessManagementWarning" ColumnName="PrivilegedAccessManagementWarning" />
+          <ScalarProperty Name="PrivilegedAccessManagementOverRall" ColumnName="PrivilegedAccessManagementOverRall" />
+          <ScalarProperty Name="OSPatchingLevelYes" ColumnName="OSPatchingLevelYes" />
+          <ScalarProperty Name="OSPatchingLevelNo" ColumnName="OSPatchingLevelNo" />
+          <ScalarProperty Name="OSPatchingLevelWarning" ColumnName="OSPatchingLevelWarning" />
+          <ScalarProperty Name="OSPatchingLevelOverRall" ColumnName="OSPatchingLevelOverRall" />
+          <ScalarProperty Name="ApplicationPatchingLevelYes" ColumnName="ApplicationPatchingLevelYes" />
+          <ScalarProperty Name="ApplicationPatchingLevelNo" ColumnName="ApplicationPatchingLevelNo" />
+          <ScalarProperty Name="ApplicationPatchingLevelWarning" ColumnName="ApplicationPatchingLevelWarning" />
+          <ScalarProperty Name="ApplicationPatchingLevelOverRall" ColumnName="ApplicationPatchingLevelOverRall" />
+          <ScalarProperty Name="MiddlewarePatchingLevelYes" ColumnName="MiddlewarePatchingLevelYes" />
+          <ScalarProperty Name="MiddlewarePatchingLevelNo" ColumnName="MiddlewarePatchingLevelNo" />
+          <ScalarProperty Name="MiddlewarePatchingLevelWarning" ColumnName="MiddlewarePatchingLevelWarning" />
+          <ScalarProperty Name="MiddlewarePatchingLevelOverRall" ColumnName="MiddlewarePatchingLevelOverRall" />
+          <ScalarProperty Name="SupportedApplicationYes" ColumnName="SupportedApplicationYes" />
+          <ScalarProperty Name="SupportedApplicationNo" ColumnName="SupportedApplicationNo" />
+          <ScalarProperty Name="SupportedApplicationWarning" ColumnName="SupportedApplicationWarning" />
+          <ScalarProperty Name="SupportedApplicationOverRall" ColumnName="SupportedApplicationOverRall" />
+          <ScalarProperty Name="SupportedOperationSystemYes" ColumnName="SupportedOperationSystemYes" />
+          <ScalarProperty Name="SupportedOperationSystemNo" ColumnName="SupportedOperationSystemNo" />
+          <ScalarProperty Name="SupportedOperationSystemWarning" ColumnName="SupportedOperationSystemWarning" />
+          <ScalarProperty Name="SupportedOperationSystemOverRall" ColumnName="SupportedOperationSystemOverRall" />
+          <ScalarProperty Name="SupportedJavaYes" ColumnName="SupportedJavaYes" />
+          <ScalarProperty Name="SupportedJavaNo" ColumnName="SupportedJavaNo" />
+          <ScalarProperty Name="SupportedJavaWarning" ColumnName="SupportedJavaWarning" />
+          <ScalarProperty Name="SupportedJavaOverRall" ColumnName="SupportedJavaOverRall" />
+          <ScalarProperty Name="SupportedMiddlewareYes" ColumnName="SupportedMiddlewareYes" />
+          <ScalarProperty Name="SupportedMiddlewareNo" ColumnName="SupportedMiddlewareNo" />
+          <ScalarProperty Name="SupportedMiddlewareWarning" ColumnName="SupportedMiddlewareWarning" />
+          <ScalarProperty Name="SupportedMiddlewareOverRall" ColumnName="SupportedMiddlewareOverRall" />
+          <ScalarProperty Name="SupportedDatabaseYes" ColumnName="SupportedDatabaseYes" />
+          <ScalarProperty Name="SupportedDatabaseNo" ColumnName="SupportedDatabaseNo" />
+          <ScalarProperty Name="SupportedDatabaseWarning" ColumnName="SupportedDatabaseWarning" />
+          <ScalarProperty Name="SupportedDatabaseOverRall" ColumnName="SupportedDatabaseOverRall" />
+          <ScalarProperty Name="OpenVulnerabilitiesYes" ColumnName="OpenVulnerabilitiesYes" />
+          <ScalarProperty Name="OpenVulnerabilitiesNo" ColumnName="OpenVulnerabilitiesNo" />
+          <ScalarProperty Name="OpenVulnerabilitiesWarning" ColumnName="OpenVulnerabilitiesWarning" />
+          <ScalarProperty Name="OpenVulnerabilitiesOverRall" ColumnName="OpenVulnerabilitiesOverRall" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

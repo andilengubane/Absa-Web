@@ -339,19 +339,111 @@
     <Property Type="Int32" Name="StrategicFitYes" Nullable="true" />
     <Property Type="Int32" Name="StrategicFitNo" Nullable="true" />
     <Property Type="Int32" Name="StrategicFitWarning" Nullable="true" />
-    <Property Type="Int32" Name="StrategicFitStatus" Nullable="true" />
+    <Property Type="Int32" Name="StrategicFitOverRall" Nullable="true" />
     <Property Type="Int32" Name="DisasterRecoverYes" Nullable="true" />
     <Property Type="Int32" Name="DisasterRecoverNo" Nullable="true" />
     <Property Type="Int32" Name="DisasterRecoverWarning" Nullable="true" />
-    <Property Type="Int32" Name="DisasterRecoverAllStatus" Nullable="true" />
+    <Property Type="Int32" Name="DisasterRecoverOverRall" Nullable="true" />
     <Property Type="Int32" Name="BackUpDataYes" Nullable="true" />
     <Property Type="Int32" Name="BackUpDataNo" Nullable="true" />
     <Property Type="Int32" Name="BackUpDataWarning" Nullable="true" />
-    <Property Type="Int32" Name="BackUpDataAllStatus" Nullable="true" />
+    <Property Type="Int32" Name="BackUpDataOverRall" Nullable="true" />
     <Property Type="Int32" Name="BackUpConfigurationYes" Nullable="true" />
     <Property Type="Int32" Name="BackUpConfigurationNo" Nullable="true" />
     <Property Type="Int32" Name="BackUpConfigurationWarning" Nullable="true" />
-    <Property Type="Int32" Name="BackUpConfigurationAllStatus" Nullable="true" />
+    <Property Type="Int32" Name="BackUpConfigurationOverRall" Nullable="true" />
+    <Property Type="Int32" Name="HighAvailabilityYes" Nullable="true" />
+    <Property Type="Int32" Name="HighAvailabilityNo" Nullable="true" />
+    <Property Type="Int32" Name="HighAvailabilityWarning" Nullable="true" />
+    <Property Type="Int32" Name="HighAvailabilityOverRall" Nullable="true" />
+    <Property Type="Int32" Name="OperationalMonitoringYes" Nullable="true" />
+    <Property Type="Int32" Name="OperationalMonitoringNo" Nullable="true" />
+    <Property Type="Int32" Name="OperationalMonitoringWarning" Nullable="true" />
+    <Property Type="Int32" Name="OperationalMonitoringOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SecurityMonitoringYes" Nullable="true" />
+    <Property Type="Int32" Name="SecurityMonitoringNo" Nullable="true" />
+    <Property Type="Int32" Name="SecurityMonitoringWarning" Nullable="true" />
+    <Property Type="Int32" Name="SecurityMonitoringOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SPOFYes" Nullable="true" />
+    <Property Type="Int32" Name="SPOFNo" Nullable="true" />
+    <Property Type="Int32" Name="SPOFWarning" Nullable="true" />
+    <Property Type="Int32" Name="SPOFOverRall" Nullable="true" />
+    <Property Type="Int32" Name="InternalOLAYes" Nullable="true" />
+    <Property Type="Int32" Name="InternalOLANo" Nullable="true" />
+    <Property Type="Int32" Name="InternalOLAWarning" Nullable="true" />
+    <Property Type="Int32" Name="InternalOLAOverRall" Nullable="true" />
+    <Property Type="Int32" Name="ExternalSLAYes" Nullable="true" />
+    <Property Type="Int32" Name="ExternalSLANo" Nullable="true" />
+    <Property Type="Int32" Name="ExternalSLAWarning" Nullable="true" />
+    <Property Type="Int32" Name="ExternalSLAOverRall" Nullable="true" />
+    <Property Type="Int32" Name="ArchitetureDocumentationYes" Nullable="true" />
+    <Property Type="Int32" Name="ArchitetureDocumentationNo" Nullable="true" />
+    <Property Type="Int32" Name="ArchitetureDocumentationWarning" Nullable="true" />
+    <Property Type="Int32" Name="ArchitetureDocumentationOverRall" Nullable="true" />
+    <Property Type="Int32" Name="OparationsDocumentationYes" Nullable="true" />
+    <Property Type="Int32" Name="OparationsDocumentationNo" Nullable="true" />
+    <Property Type="Int32" Name="OparationsDocumentationWarning" Nullable="true" />
+    <Property Type="Int32" Name="OparationsDocumentationOverRall" Nullable="true" />
+    <Property Type="Int32" Name="HighestDataClassificationYes" Nullable="true" />
+    <Property Type="Int32" Name="HighestDataClassificationNo" Nullable="true" />
+    <Property Type="Int32" Name="HighestDataClassificationWarning" Nullable="true" />
+    <Property Type="Int32" Name="HighestDataClassificationOverRall" Nullable="true" />
+    <Property Type="Int32" Name="DataRetentionRequirementYes" Nullable="true" />
+    <Property Type="Int32" Name="DataRetentionRequirementNo" Nullable="true" />
+    <Property Type="Int32" Name="DataRetentionRequirementWarning" Nullable="true" />
+    <Property Type="Int32" Name="DataRetentionRequirementOverRall" Nullable="true" />
+    <Property Type="Int32" Name="IntegratedToADYes" Nullable="true" />
+    <Property Type="Int32" Name="IntegratedToADNo" Nullable="true" />
+    <Property Type="Int32" Name="IntegratedToADWarning" Nullable="true" />
+    <Property Type="Int32" Name="IntegratedToADOverRall" Nullable="true" />
+    <Property Type="Int32" Name="JMLProcessYes" Nullable="true" />
+    <Property Type="Int32" Name="JMLProcessNo" Nullable="true" />
+    <Property Type="Int32" Name="JMLProcessWarning" Nullable="true" />
+    <Property Type="Int32" Name="JMLProcessOverRall" Nullable="true" />
+    <Property Type="Int32" Name="RecertificationProcessYes" Nullable="true" />
+    <Property Type="Int32" Name="RecertificationProcessNo" Nullable="true" />
+    <Property Type="Int32" Name="RecertificationProcessWarning" Nullable="true" />
+    <Property Type="Int32" Name="RecertificationProcessOverRall" Nullable="true" />
+    <Property Type="Int32" Name="PrivilegedAccessManagementYes" Nullable="true" />
+    <Property Type="Int32" Name="PrivilegedAccessManagementNo" Nullable="true" />
+    <Property Type="Int32" Name="PrivilegedAccessManagementWarning" Nullable="true" />
+    <Property Type="Int32" Name="PrivilegedAccessManagementOverRall" Nullable="true" />
+    <Property Type="Int32" Name="OSPatchingLevelYes" Nullable="true" />
+    <Property Type="Int32" Name="OSPatchingLevelNo" Nullable="true" />
+    <Property Type="Int32" Name="OSPatchingLevelWarning" Nullable="true" />
+    <Property Type="Int32" Name="OSPatchingLevelOverRall" Nullable="true" />
+    <Property Type="Int32" Name="ApplicationPatchingLevelYes" Nullable="true" />
+    <Property Type="Int32" Name="ApplicationPatchingLevelNo" Nullable="true" />
+    <Property Type="Int32" Name="ApplicationPatchingLevelWarning" Nullable="true" />
+    <Property Type="Int32" Name="ApplicationPatchingLevelOverRall" Nullable="true" />
+    <Property Type="Int32" Name="MiddlewarePatchingLevelYes" Nullable="true" />
+    <Property Type="Int32" Name="MiddlewarePatchingLevelNo" Nullable="true" />
+    <Property Type="Int32" Name="MiddlewarePatchingLevelWarning" Nullable="true" />
+    <Property Type="Int32" Name="MiddlewarePatchingLevelOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SupportedApplicationYes" Nullable="true" />
+    <Property Type="Int32" Name="SupportedApplicationNo" Nullable="true" />
+    <Property Type="Int32" Name="SupportedApplicationWarning" Nullable="true" />
+    <Property Type="Int32" Name="SupportedApplicationOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SupportedOperationSystemYes" Nullable="true" />
+    <Property Type="Int32" Name="SupportedOperationSystemNo" Nullable="true" />
+    <Property Type="Int32" Name="SupportedOperationSystemWarning" Nullable="true" />
+    <Property Type="Int32" Name="SupportedOperationSystemOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SupportedJavaYes" Nullable="true" />
+    <Property Type="Int32" Name="SupportedJavaNo" Nullable="true" />
+    <Property Type="Int32" Name="SupportedJavaWarning" Nullable="true" />
+    <Property Type="Int32" Name="SupportedJavaOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SupportedMiddlewareYes" Nullable="true" />
+    <Property Type="Int32" Name="SupportedMiddlewareNo" Nullable="true" />
+    <Property Type="Int32" Name="SupportedMiddlewareWarning" Nullable="true" />
+    <Property Type="Int32" Name="SupportedMiddlewareOverRall" Nullable="true" />
+    <Property Type="Int32" Name="SupportedDatabaseYes" Nullable="true" />
+    <Property Type="Int32" Name="SupportedDatabaseNo" Nullable="true" />
+    <Property Type="Int32" Name="SupportedDatabaseWarning" Nullable="true" />
+    <Property Type="Int32" Name="SupportedDatabaseOverRall" Nullable="true" />
+    <Property Type="Int32" Name="OpenVulnerabilitiesYes" Nullable="true" />
+    <Property Type="Int32" Name="OpenVulnerabilitiesNo" Nullable="true" />
+    <Property Type="Int32" Name="OpenVulnerabilitiesWarning" Nullable="true" />
+    <Property Type="Int32" Name="OpenVulnerabilitiesOverRall" Nullable="true" />
   </ComplexType>
   <ComplexType Name="GetResilienceTrackList_Result">
     <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />

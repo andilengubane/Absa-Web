@@ -81,9 +81,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">High Availability</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.HighAvailabilityYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.HighAvailabilityNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.HighAvailabilityWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">High Availability</button>
@@ -92,31 +92,31 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Single Point of Failure</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SPOFYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SPOFNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SPOFWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Single Point of Failure</button>
 		</div>
 	</div>
 	<div class="card">
-		<div class="card-header"><h5 class="card-title">Monitoring</h5></div>
+		<div class="card-header"><h5 class="card-title">Highest Data Classification</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.HighestDataClassificationYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.HighestDataClassificationNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.HighestDataClassificationWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Monitoring</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
-		<div class="card-header"><h5 class="card-title">Unsupported Infrastruture</h5></div>
+		<div class="card-header"><h5 class="card-title">Data Retention Requirement</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.DataRetentionRequirementYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.DataRetentionRequirementNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.DataRetentionRequirementWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Unsupported Infrastruture</button>
@@ -128,9 +128,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Operational Monitoring</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.OperationalMonitoringYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.OperationalMonitoringNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.OperationalMonitoringWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Monitoring</button>
@@ -139,9 +139,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Security Monitoring</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SecurityMonitoringYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SecurityMonitoringNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SecurityMonitoringWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Security Monitoring</button>
@@ -150,9 +150,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Internal OLA</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.InternalOLAYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.InternalOLANo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.InternalOLAWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Internal OLA</button>
@@ -161,9 +161,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">External SLA</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.ExternalSLAYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.ExternalSLANo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.ExternalSLAWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">External SLA</button>
@@ -175,9 +175,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Archicteture Documentation</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.ArchitetureDocumentationYes </button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.ArchitetureDocumentationNo </button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.ArchitetureDocumentationWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Archicteture Documentation</button>
@@ -186,9 +186,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Operational Documentation</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.OparationsDocumentationYes </button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.OparationsDocumentationNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.OparationsDocumentationWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Documentation</button>
@@ -197,9 +197,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Integrated to AD</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.IntegratedToADYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.IntegratedToADNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.IntegratedToADWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Integrated to AD</button>
@@ -208,9 +208,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">JML Process</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.JMLProcessYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.JMLProcessNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.JMLProcessWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">JML Process</button>
@@ -222,9 +222,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Recertification Process</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.RecertificationProcessYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.RecertificationProcessNo </button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.RecertificationProcessWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Recertification Process</button>
@@ -233,9 +233,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Privileged Access Management</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.PrivilegedAccessManagementYes </button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.PrivilegedAccessManagementNo </button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.PrivilegedAccessManagementWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Privileged Access Management</button>
@@ -244,9 +244,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">OS Patching Level</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.OSPatchingLevelYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.OSPatchingLevelNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.OSPatchingLevelWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">OS Patching Level</button>
@@ -255,9 +255,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Application Patching Level</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.ApplicationPatchingLevelYes </button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.ApplicationPatchingLevelNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.ApplicationPatchingLevelWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Application Patching Level</button>
@@ -269,9 +269,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Middleware Patching Level</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.MiddlewarePatchingLevelYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.MiddlewarePatchingLevelNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.MiddlewarePatchingLevelWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Middleware Patching Level</button>
@@ -280,9 +280,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Supported Application</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SupportedApplicationYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SupportedApplicationNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SupportedApplicationWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Application</button>
@@ -291,9 +291,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Supported OS</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SupportedOperationSystemYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SupportedOperationSystemNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SupportedOperationSystemWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported OS</button>
@@ -302,9 +302,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Supported Java</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SupportedJavaYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SupportedJavaNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SupportedJavaWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Java</button>
@@ -316,9 +316,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Supported Middleware</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SupportedMiddlewareYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SupportedMiddlewareNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SupportedMiddlewareWarning </button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Middleware</button>
@@ -327,9 +327,9 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">Supported Database</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.SupportedDatabaseYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.SupportedDatabaseNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.SupportedDatabaseWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Database</button>
@@ -338,9 +338,9 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Open Vulnerabilities</h5></div>
 		<div class="card-body">
-			<button type="button" class="btn btn-sm btn-success">0</button>
-			<button type="button" class="btn btn-sm btn-warning">0</button>
-			<button type="button" class="btn btn-sm btn-danger">0</button>
+			<button type="button" class="btn btn-sm btn-success">@ViewBag.OpenVulnerabilitiesYes</button>
+			<button type="button" class="btn btn-sm btn-warning">@ViewBag.OpenVulnerabilitiesNo</button>
+			<button type="button" class="btn btn-sm btn-danger">@ViewBag.OpenVulnerabilitiesWarning</button>
 		</div>
 		<div class="card-footer">
 			<button class="btn btn-sm btn-outline-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Open Vulnerabilities</button>

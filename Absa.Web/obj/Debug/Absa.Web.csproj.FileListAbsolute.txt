@@ -61,3 +61,17 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Microsoft.SqlServer.Types.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\de\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\es\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\it\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\RdlCompile.cache
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\RdlCompile.compiled
