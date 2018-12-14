@@ -1,0 +1,9 @@
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\Absa.DateAccess.dll.config
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\Absa.DateAccess.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\Absa.DateAccess.pdb
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\EntityFramework.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\EntityFramework.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\obj\Release\Absa.DateAccess.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\obj\Release\Absa.DateAccess.pdb

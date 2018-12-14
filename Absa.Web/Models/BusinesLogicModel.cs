@@ -11,6 +11,7 @@ namespace Absa.Web.Models
 	{
 	}
 
+	
 	public class DashBord
 	{
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
@@ -22,7 +23,7 @@ namespace Absa.Web.Models
 	{
 		public int ID { get; set; }
 		public string BusinessUnit { get; set; }
-		public int BusinessUnitId { get; set}
+		public int BusinessUnitId { get; set; }
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
 	}
 
@@ -95,6 +96,116 @@ namespace Absa.Web.Models
 		public string SupportedMiddleware { get; set; }
 		public string SupportedDatabase { get; set; }
 		public string OpenVulnerabilities { get; set; }
+	}
+	public class ReportViewModel
+	{
+		public int StrategicFitYes { get; set; }
+		public int StrategicFitNo { get; set; }
+		public int StrategicFitWarning { get; set; }
+
+		public int DisasterRecoveryYes { get; set; }
+		public int DisasterRecoveryNo { get; set; }
+		public int DisasterRecoveryWarning { get; set; }
+
+		public int BackUpDataYes { get; set; }
+		public int BackUpDataNo { get; set; }
+		public int BackUpDataWarning { get; set; }
+
+		public int BackUpConfigurationYes { get; set; }
+		public int BackUpConfigurationNo { get; set; }
+		public int BackUpConfigurationWarning { get; set; }
+
+		public int HighAvailabilityYes { get; set; }
+		public int HighAvailabilityNo { get; set; }
+		public int HighAvailabilityWarning { get; set; }
+
+		public int OperationalMonitoringYes { get; set; }
+		public int OperationalMonitoringNo  { get; set; }
+		public int OperationalMonitoringWarning { get; set; }
+
+		public int SecurityMonitoringYes { get; set; }
+		public int SecurityMonitoringNo { get; set; }
+		public int SecurityMonitoringWarning { get; set; }
+
+		public int SPOFYes { get; set; }
+		public int SPOFNo { get; set; }
+		public int SPOFWarning { get; set; }
+
+		public int InternalOLAYes { get; set; }
+		public int InternalOLANo { get; set; }
+		public int InternalOLAWarning { get; set; }
+
+		public int ExternalSLAYes { get; set; }
+		public int ExternalSLANo { get; set; }
+		public int ExternalSLAWarning { get; set; }
+
+		public int ArchitetureDocumentationYes { get; set; }
+		public int ArchitetureDocumentationNo { get; set; }
+		public int ArchitetureDocumentationWarning{ get; set; }
+		
+		public int OparationsDocumentationYes { get; set; }
+		public int OparationsDocumentationNo { get; set; }
+		public int OparationsDocumentationWarning { get; set; }
+		
+		public int HighestDataClassificationYes { get; set; }
+		public int HighestDataClassificationNo { get; set; }
+		public int HighestDataClassificationWarning { get; set; }
+		
+		public int DataRetentionRequirementYes { get; set; }
+		public int DataRetentionRequirementNo { get; set; }
+		public int DataRetentionRequirementWarning { get; set; }
+
+		public int IntegratedToADYes { get; set; }
+		public int IntegratedToADNo { get; set; }
+		public int IntegratedToADWarning { get; set; }
+
+		public int JMLProcessYes { get; set; }
+		public int JMLProcessNo { get; set; }
+		public int JMLProcessWarning { get; set; }
+
+		public int PrivilegedAccessManagementYes { get; set; }
+		public int PrivilegedAccessManagementNo { get; set; }
+		public int PrivilegedAccessManagementWarning { get; set; }
+
+		public int RecertificationProcessYes { get; set; }
+		public int RecertificationProcessNo { get; set; }
+		public int RecertificationProcessWarning { get; set; }
+
+		public int OSPatchingLevelYes { get; set; }
+		public int OSPatchingLevelNo { get; set; }
+		public int OSPatchingLevelWarning  { get; set; }
+
+	    public int ApplicationPatchingLevelYes { get; set; }
+		public int ApplicationPatchingLevelNo { get; set; }
+		public int ApplicationPatchingLevelWarning { get; set; }
+
+		public int MiddlewarePatchingLevelYes { get; set; }
+		public int MiddlewarePatchingLevelNo { get; set; }
+		public int MiddlewarePatchingLevelWarning { get; set; }
+
+		public int SupportedApplicationYes { get; set; }
+		public int SupportedApplicationNo { get; set; }
+		public int SupportedApplicationWarning { get; set; }
+
+		public int SupportedOperationSystemYes { get; set; }
+		public int SupportedOperationSystemNo { get; set; }
+		public int SupportedOperationSystemWarning { get; set; }
+
+		public int SupportedJavaYes { get; set; }
+		public int SupportedJavaNo { get; set; }
+		public int SupportedJavaWarning { get; set; }
+
+		public int SupportedMiddlewareYes { get; set; }
+		public int SupportedMiddlewareNo{ get; set; }
+		public int SupportedMiddlewareWarning { get; set; }
+
+		public int SupportedDatabaseYes { get; set; }
+		public int SupportedDatabaseNo { get; set; }
+		public int SupportedDatabaseWarning { get; set; }
+
+		public int OpenVulnerabilitiesYes { get; set; }
+		public int OpenVulnerabilitiesNo { get; set; }
+		public int OpenVulnerabilitiesWarning { get; set; }
 	}
 
 }

@@ -235,7 +235,7 @@
 					@Html.DisplayFor(modelItem => item.OpenVulnerabilities)
 				</td>
 				<td>
-					<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">OVERRALL</button>
+					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("OverRallReportView", "Report")'">OVERRALL</button>
 				</td>
 			</tr>
 		}
