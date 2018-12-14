@@ -142,12 +142,16 @@
 						@Html.ValidationMessageFor(model => model.OparationsDocumentation, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.DropDownListFor(model => model.HighestDataClassification, Model.StatusList, "HighestData Classification", new { @class = "form-control" })
+						@Html.DropDownListFor(model => model.HighestDataClassification, Model.StatusList, "Highest Data Classification", new { @class = "form-control" })
 						@Html.ValidationMessageFor(model => model.HighestDataClassification, "", new { @class = "text-danger" })
 					</div>
 				</div>
 				<br>
 				<div class="form-row">
+					<div class="col">
+						@Html.DropDownListFor(model => model.DataRetentionRequirement, Model.StatusList, "Data Retention Requirement", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.DataRetentionRequirement, "", new { @class = "text-danger" })
+					</div>
 					<div class="col">
 						@Html.DropDownListFor(model => model.IntegratedToAD, Model.StatusList, "Integrated To AD", new { @class = "form-control" })
 						@Html.ValidationMessageFor(model => model.IntegratedToAD, "", new { @class = "text-danger" })
@@ -156,20 +160,16 @@
 						@Html.DropDownListFor(model => model.JMLProcess, Model.StatusList, "JML Process", new { @class = "form-control" })
 						@Html.ValidationMessageFor(model => model.JMLProcess, "", new { @class = "text-danger" })
 					</div>
-					<div class="col">
-						@Html.DropDownListFor(model => model.RecertificationProcess, Model.StatusList, "Recertification Process", new { @class = "form-control" })
-						@Html.ValidationMessageFor(model => model.RecertificationProcess, "", new { @class = "text-danger" })
-					</div>
 				</div>
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.DropDownListFor(model => model.PrivilegedAccessManagement, Model.StatusList, "Privileged Access Management", new { @class = "form-control" })
-						@Html.ValidationMessageFor(model => model.PrivilegedAccessManagement, "", new { @class = "text-danger" })
+						@Html.DropDownListFor(model => model.RecertificationProcess, Model.StatusList, "Recertification Process", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.RecertificationProcess, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.DropDownListFor(model => model.DataRetentionRequirement, Model.StatusList, "Data Retention Requirement", new { @class = "form-control" })
-						@Html.ValidationMessageFor(model => model.DataRetentionRequirement, "", new { @class = "text-danger" })
+						@Html.DropDownListFor(model => model.PrivilegedAccessManagement, Model.StatusList, "Privileged Access Management", new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.PrivilegedAccessManagement, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
 

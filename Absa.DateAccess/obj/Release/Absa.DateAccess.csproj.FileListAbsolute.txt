@@ -7,3 +7,4 @@ C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\EntityFramework.xm
 C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\bin\Release\EntityFramework.SqlServer.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\obj\Release\Absa.DateAccess.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\obj\Release\Absa.DateAccess.pdb
+C:\Apps\Absa\Application\Absa.Web\Absa.DateAccess\obj\Release\Absa.DateAccess.csprojResolveAssemblyReference.cache

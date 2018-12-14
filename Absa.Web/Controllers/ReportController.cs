@@ -22,7 +22,6 @@ namespace Absa.Web.Controllers
 				Value = x.BusinessUnitId.ToString(),
 				Text = x.BusinessUnitName
 			});
-
 			return PartialView(model);
 		}
 
