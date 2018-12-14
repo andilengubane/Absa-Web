@@ -141,6 +141,27 @@ namespace Absa.Web.Controllers
 			return View(model);
 		}
 
+		public ActionResult Report()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetStrategicFitData()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new ReportViewModel();
+			
+			var strategicFitappData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in strategicFitappData)
+			{
+				model.StrategicFitYes = Convert.ToInt32(item.StrategicFitYes);
+				model.StrategicFitNo = Convert.ToInt32(item.StrategicFitNo);
+				model.StrategicFitWarning = Convert.ToInt32(item.StrategicFitWarning);
+			}
+			return Json(model,JsonRequestBehavior.AllowGet);
+		}
 		// Get Create
 		public ActionResult Create()
 		{

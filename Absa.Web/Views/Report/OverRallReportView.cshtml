@@ -1,0 +1,124 @@
+﻿
+@{
+	ViewBag.Title = "OverRallReportView";
+}
+
+
+@model Absa.Web.Models.ReportModel
+@{
+
+}
+<script src="~/Scripts/chart/highcharts.js"></script>
+<script src="~/Scripts/chart/exporting.js"></script>
+<script src="~/Scripts/chart/export-data.js"></script>
+
+<br>
+<div>
+	<div class="card">
+		<div class="card-body">
+			<div id="container" style="min-width: 1100px; height: 400px; margin: 0 auto"></div>
+		</div>
+	</div>
+</div>
+<br>
+<script>
+	$(document).ready(function () {
+		$.getJSON("/Report/GetAllAppStatus", function (data) {
+			Highcharts.chart('container', {
+				chart: {
+					type: 'column'
+				},
+				title: {
+					text: ''
+				},
+				subtitle: {
+					text: ''
+				},
+				xAxis: {
+					categories: [
+						'StrategicFit',
+						'DisasterRecovery',
+						'BackUp-Data',
+						'BackUp-Configuration',
+						'HighAvailability',
+						'SPOF',
+						'OperationalMonitoring',
+						'SecurityMonitoring',
+						'InternalOLA',
+						'ExternalSLA',
+						'ArchitetureDocumentation',
+						'OparationsDocumentation',
+						'HighestDataClassification',
+						'DataRetentionRequirement',
+						'IntegratedToAD',
+						'JMLProcess',
+						'RecertificationProcess',
+						'PrivilegedAccessManagement',
+						'OSPatchingLevel',
+						'ApplicationPatchingLevel',
+						'MiddlewarePatchingLevel',
+						'SupportedApplication',
+						'SupportedOperationSystem',
+						'SupportedJava',
+						'SupportedMiddleware',
+						'SupportedDatabase',
+						'OpenVulnerabilities'
+					],
+					crosshair: true
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: '100%'
+					}
+				},
+				tooltip: {
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+								  '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+					footerFormat: '</table>',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						pointPadding: 0.2,
+						borderWidth: 0
+					}
+				},
+				series: [{
+					name: 'Yes',
+					data: [data.StrategicFitYes, data.DisasterRecoveryYes, data.BackUpDataYes, data.BackUpConfigurationYes, data.HighAvailabilityYes, data.OperationalMonitoringYes
+						   , data.SecurityMonitoringYes, data.SPOFYes, data.InternalOLAYes, data.ExternalSLAYes, data.ArchitetureDocumentationYes, data.OparationsDocumentationYes
+						   , data.HighestDataClassificationYes, data.DataRetentionRequirementYes, data.IntegratedToADYes, data.JMLProcessYes, data.PrivilegedAccessManagementYes
+						   , data.RecertificationProcessYes, data.OSPatchingLevelYes, data.ApplicationPatchingLevelYes, data.MiddlewarePatchingLevelYes
+						   , data.SupportedApplicationYes, data.SupportedOperationSystemYes, data.SupportedJavaYes, data.SupportedMiddlewareYes
+						   , data.SupportedDatabaseYes, data.OpenVulnerabilitiesYes],
+					color: '#008000',
+				}, {
+					name: 'No',
+					data: [data.StrategicFitNo, data.DisasterRecoveryNo, data.BackUpDataNo, data.BackUpConfigurationNo, data.HighAvailabilityNo, data.OperationalMonitoringNo
+						  , data.SecurityMonitoringNo, data.SPOFNo, data.InternalOLANo, data.ExternalSLANo, data.ArchitetureDocumentationNo, data.OparationsDocumentationNo
+						  , data.HighestDataClassificationNo, data.DataRetentionRequirementNo, data.IntegratedToADNo, data.JMLProcessNo, data.PrivilegedAccessManagementNo
+						  , data.RecertificationProcessNo, data.OSPatchingLevelNo, data.ApplicationPatchingLevelNo, data.MiddlewarePatchingLevelNo
+						  , data.SupportedApplicationNo, data.SupportedOperationSystemNo, data.SupportedJavaNo, data.SupportedMiddlewareNo
+						  , data.SupportedDatabaseNo, data.OpenVulnerabilitiesNo],
+					color: '#FF0000'
+				}, {
+					name: 'Warning',
+					data: [data.StrategicFitWarning, data.DisasterRecoveryWarning, data.BackUpDataWarning, data.BackUpConfigurationWarning, data.HighAvailabilityWarning, data.OperationalMonitoringWarning
+						  , data.SecurityMonitoringWarning, data.SPOFWarning, data.InternalOLAWarning, data.ExternalSLAWarning, data.ArchitetureDocumentationWarning, data.OparationsDocumentationWarning
+						  , data.HighestDataClassificationWarning, data.DataRetentionRequirementWarning, data.IntegratedToADWarning, data.JMLProcessWarning, data.PrivilegedAccessManagementWarning
+						  , data.RecertificationProcessWarning, data.OSPatchingLevelWarning, data.ApplicationPatchingLevelWarning, data.MiddlewarePatchingLevelWarning
+						  , data.SupportedApplicationWarning, data.SupportedOperationSystemWarning, data.SupportedJavaWarning, data.SupportedMiddlewareWarning
+						  , data.SupportedDatabaseWarning, data.OpenVulnerabilitiesWarning],
+					color: '#FFE334'
+				}]
+			});
+		});
+	});
+</script>	
+
+
+  
+       					   												              						    								         
