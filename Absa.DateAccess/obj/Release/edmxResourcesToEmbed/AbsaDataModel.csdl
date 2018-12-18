@@ -90,6 +90,7 @@
     <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
+    <Property Name="UserID" Type="Int32" />
   </EntityType>
   <EntityType Name="ResilienceTrackAudit">
     <Key>
@@ -135,6 +136,7 @@
     <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="ResilienceTrackAudit" ToRole="BusinessUnit" />
+    <Property Name="UserID" Type="Int32" />
   </EntityType>
   <EntityType Name="RolesPermission">
     <Key>
@@ -333,7 +335,10 @@
     <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)">
       <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
+    <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="sysdiagrams" EntityType="AbsaDBModel.sysdiagram" />
   </EntityContainer>
   <ComplexType Name="GetAppStatus_Result">
     <Property Type="Int32" Name="StrategicFitYes" Nullable="true" />
@@ -497,4 +502,14 @@
     <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
   </ComplexType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

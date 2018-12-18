@@ -16,7 +16,7 @@
                 modal: true,
                 title: "User",
                 width: 700,
-                height: 450,
+                height: 550,
             });
             $("#UserList .details").click(function () {
                 var customerId = $(this).closest("tr").find("td").eq(0).html();
@@ -119,7 +119,7 @@
 <div id="dialogss" style="display: none"></div>
 	<h3 class="modal-title" id="myModalLabel">Users</h3>
 	<br>
-<font size="2">
+<font size="3">
 	<table class="table table-bordered" id="UserList">
 		<tr>
 			<th class="col1">
@@ -177,14 +177,20 @@
 					@Html.DisplayFor(modelItem => item.RolesPermission)
 				</td>
 				<td>
-					<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
+					@if (ViewBag.RolePermission == "SuperUser")
+					{
+						<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
+					}
 					<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
-					<button class="DeleteUser btn btn-sm btn-danger" type="button" id="userList" href="javascript:;">DELETE</button>
+					@if (ViewBag.RolePermission == "SuperUser")
+					{
+						<button class="DeleteUser btn btn-sm btn-danger" type="button" id="userList" href="javascript:;">DELETE</button>
+					}
 				</td>
 			</tr>
 		}
 	</table>
 	<br>
 	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-	@Html.PagedListPager(Model, page => Url.Action("UserList", "Account", new { page, @class = "pagination" }))</div>
+	@Html.PagedListPager(Model, page => Url.Action("UserList", "Account", new { page, @class = "pagination" }))
 </font>

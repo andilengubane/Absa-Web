@@ -53,6 +53,7 @@ namespace Absa.DateAccess
         public string BackUpData { get; set; }
         public string BackUpConfiguration { get; set; }
         public string HighAvailability { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         public virtual BusinessUnit BusinessUnit { get; set; }
     }

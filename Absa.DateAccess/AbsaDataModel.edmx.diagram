@@ -22,6 +22,7 @@
         <AssociationConnector Association="AbsaDBModel.FK__DataLookU__Loopk__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.fk_RolesPermissions_id" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__UsersAudi__UserI__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AbsaDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

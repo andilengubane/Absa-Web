@@ -60,6 +60,7 @@ namespace Absa.Web.Models
 	{
 		public IEnumerable<SelectListItem> StatusList { get; set; }
 		public int ResilienceTrackID { get; set; }
+		public int UserID { get; set; }
 		public string ApplicationID { get; set; }
 		public string ApplicationName { get; set; }
 		public string NameOnSnow { get; set; }

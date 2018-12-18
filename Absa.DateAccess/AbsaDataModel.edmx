@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BusinessUnit">
           <Key>
             <PropertyRef Name="BusinessUnitId" />
@@ -86,6 +86,7 @@
           <Property Name="BackUpData" Type="nvarchar(max)" />
           <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
           <Property Name="HighAvailability" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="ResilienceTrackAudit">
           <Key>
@@ -130,6 +131,7 @@
           <Property Name="BackUpData" Type="nvarchar(max)" />
           <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
           <Property Name="HighAvailability" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="RolesPermissions">
           <Key>
@@ -138,6 +140,16 @@
           <Property Name="RolesPermissionsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="DateLogged" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -280,7 +292,9 @@
         <Function Name="GetResilienceTrackListById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ResilienceTrackID" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="AbsaDBModelStoreContainer">
           <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessUnitAudit" EntityType="Self.BusinessUnitAudit" Schema="dbo" store:Type="Tables" />
@@ -289,6 +303,7 @@
           <EntitySet Name="ResilienceTrack" EntityType="Self.ResilienceTrack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResilienceTrackAudit" EntityType="Self.ResilienceTrackAudit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersAudit" EntityType="Self.UsersAudit" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="Self.FK__BusinessU__Busin__01142BA1">
@@ -324,8 +339,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AbsaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -419,6 +433,7 @@
           <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="ResilienceTrack" ToRole="BusinessUnit" />
+          <Property Name="UserID" Type="Int32" />
         </EntityType>
         <EntityType Name="ResilienceTrackAudit">
           <Key>
@@ -464,6 +479,7 @@
           <Property Name="BackUpConfiguration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HighAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Resilienc__Busin__1F98B2C1" FromRole="ResilienceTrackAudit" ToRole="BusinessUnit" />
+          <Property Name="UserID" Type="Int32" />
         </EntityType>
         <EntityType Name="RolesPermission">
           <Key>
@@ -653,16 +669,19 @@
             <End Role="UsersAudit" EntitySet="UsersAudits" />
           </AssociationSet>
           <FunctionImport Name="GetAppStatus" ReturnType="Collection(AbsaDBModel.GetAppStatus_Result)">
-            <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
+          <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBusinessUnitByUserId" ReturnType="Collection(String)">
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
           <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)">
-            <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
+          <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" />
+          <FunctionImport Name="GetUsersList" ReturnType="Collection(AbsaDBModel.GetUsersList_Result)" >
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="sysdiagrams" EntityType="AbsaDBModel.sysdiagram" />
         </EntityContainer>
         <ComplexType Name="GetAppStatus_Result">
           <Property Type="Int32" Name="StrategicFitYes" Nullable="true" />
@@ -826,6 +845,16 @@
           <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
         </ComplexType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -880,6 +909,7 @@
           <EntitySetMapping Name="ResilienceTracks">
             <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrack">
               <MappingFragment StoreEntitySet="ResilienceTrack">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
                 <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
                 <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
@@ -922,6 +952,7 @@
           <EntitySetMapping Name="ResilienceTrackAudits">
             <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrackAudit">
               <MappingFragment StoreEntitySet="ResilienceTrackAudit">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ResilienceTrackAuditID" ColumnName="ResilienceTrackAuditID" />
                 <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
                 <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
@@ -1189,6 +1220,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AbsaDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -29,11 +29,18 @@ namespace Absa.Web.Controllers
 
 		public ActionResult UserList(int? page)
 		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			// GET USER RolePermission Type 
+			var rolesPermission = context.Users.FirstOrDefault(x=>x.UserID == userId);
+			var rP = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(rP.Type);
+			ViewBag.RolePermission = rolePermissionType;
+
 			var model = new List<UserModel>();
 			try
 			{
-				var data = context.GetUsersList();
-				
+				var data = context.GetUsersList(userId);
 				foreach (var item in data)
 				{
 					model.Add(new UserModel()
@@ -219,7 +226,6 @@ namespace Absa.Web.Controllers
 		{
 			if (model.UserName != null)
 			{
-				// check if the user IsActive
 				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password == model.Password);
 				if (data != null)
 				{
@@ -227,7 +233,6 @@ namespace Absa.Web.Controllers
 					{
 					  ViewBag.ErroMessage = "Your acccount is not active please ask your line manager to activate your account";
 					}
-					
 					else
 					{
 						this.Session["ID"] = data.UserID;
@@ -244,6 +249,7 @@ namespace Absa.Web.Controllers
 					ViewBag.ErroMessage = "Incorrect login detail provided.";
 				}
 			}
+			ViewBag.ErroMessage = "Incorrect username and password.";
 			return View("Login");
 		}
 
@@ -252,24 +258,7 @@ namespace Absa.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-
-				context.Users.Add(new User
-				{
-					UserName = model.UserName,
-					Password = model.Password,
-					LastName = model.LastName,
-					FirstName = model.FirstName,
-					EmailAddress = model.EmailAddress,
-					Datelogged = DateTime.Now,
-					ContactNumber = model.ContactNumber,
-					BusinessUnitId = Convert.ToInt32(model.BusinessUnit),
-					IsActive = false
-				});
-				context.SaveChanges();
-				
-				ViewBag.ErrorMessage = "Your account is not active please see your Manager or Superviser to Activate You account";
-				return this.RedirectToAction("Index", "DashBord");
-
+				//return this.RedirectToAction("Index", "DashBord");
 				var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
 				if (data != null)
 				{
@@ -287,7 +276,7 @@ namespace Absa.Web.Controllers
 						Datelogged = DateTime.Now,
 						ContactNumber = model.ContactNumber,
 						BusinessUnitId = Convert.ToInt32(model.BusinessUnit),
-						IsActive = true
+						IsActive = false
 					});
 					context.SaveChanges();
 					/*
@@ -296,17 +285,14 @@ namespace Absa.Web.Controllers
 					ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
 					return this.RedirectToAction("Login", "Account");
 				}
-
 			}
-			
-			var models = new UserModel()
+			var models = new UserModel();
+			model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
 			{
-				BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
-				{
-					Value = x.BusinessUnitId.ToString(),
-					Text = x.BusinessUnitName
-				})
-			};
+				Value = x.BusinessUnitId.ToString(),
+				Text = x.BusinessUnitName
+			});
+
 			return this.View("Register", models);
 		}
 
