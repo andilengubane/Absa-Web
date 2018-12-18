@@ -339,6 +339,10 @@
       <Parameter Name="UserId" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="sysdiagrams" EntityType="AbsaDBModel.sysdiagram" />
+    <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
+    <FunctionImport Name="GetUserById" ReturnType="Collection(AbsaDBModel.GetUserById_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetAppStatus_Result">
     <Property Type="Int32" Name="StrategicFitYes" Nullable="true" />
@@ -512,4 +516,26 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <ComplexType Name="GetAllUsersList_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="GetUserById_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+  </ComplexType>
 </Schema>

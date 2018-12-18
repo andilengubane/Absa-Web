@@ -78,5 +78,19 @@ namespace Absa.DateAccess
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList", userIdParameter);
         }
+    
+        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
+        }
+    
+        public virtual ObjectResult<GetUserById_Result> GetUserById(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserById_Result>("GetUserById", userIdParameter);
+        }
     }
 }
