@@ -18,15 +18,14 @@ namespace Absa.Web.Controllers
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-			var model = new DashBord()
-			{
-				BusinessUnitList = context.BusinessUnits.Where(x=>x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem     
-				{
-					Value = x.BusinessUnitId.ToString(),
-					Text = x.BusinessUnitName
-				})
-			};
 
+			var model = new DashBord();
+			model.BusinessUnitList = context.BusinessUnits.Where(x => x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem
+			{
+				Value = x.BusinessUnitId.ToString(),
+				Text = x.BusinessUnitName
+			});
+			
 			var strategicFitappData = context.GetAppStatus(data.BusinessUnitId);
 			foreach (var item in strategicFitappData)
 			{
@@ -77,7 +76,7 @@ namespace Absa.Web.Controllers
 				this.ViewBag.OparationsDocumentationYes = item.OparationsDocumentationYes;
 				this.ViewBag.OparationsDocumentationNo = item.OparationsDocumentationNo;
 				this.ViewBag.OparationsDocumentationWarning = item.OparationsDocumentationWarning;
-				//---
+				
 				this.ViewBag.HighestDataClassificationYes = item.HighestDataClassificationYes;
 				this.ViewBag.HighestDataClassificationNo = item.HighestDataClassificationNo;
 				this.ViewBag.HighestDataClassificationWarning = item.HighestDataClassificationWarning;
@@ -85,7 +84,7 @@ namespace Absa.Web.Controllers
 				this.ViewBag.DataRetentionRequirementYes = item.DataRetentionRequirementYes;
 				this.ViewBag.DataRetentionRequirementNo = item.DataRetentionRequirementNo;
 				this.ViewBag.DataRetentionRequirementWarning = item.DataRetentionRequirementWarning;
-				//---
+				
 				this.ViewBag.IntegratedToADYes = item.IntegratedToADYes;
 				this.ViewBag.IntegratedToADNo = item.IntegratedToADNo;
 				this.ViewBag.IntegratedToADWarning = item.IntegratedToADWarning;
@@ -145,6 +144,10 @@ namespace Absa.Web.Controllers
 		{
 			return PartialView();
 		}
+		public ActionResult Reports()
+		{
+			return PartialView();
+		}
 
 		public ActionResult GetStrategicFitData()
 		{
@@ -162,20 +165,21 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model,JsonRequestBehavior.AllowGet);
 		}
+
 		// Get Create
 		public ActionResult Create()
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-			var model = new ResilienceTrackModel()
+
+			var model = new ResilienceTrackModel();
+			model.StatusList = context.DataLookUps.Where(x => x.LoopkUpID == 1).Select(x => new SelectListItem
 			{
-				StatusList = context.DataLookUps.Where(x => x.LoopkUpID == 1).Select(x => new SelectListItem
-				{
-					Value = x.Description,
-					Text = x.Description
-				})
-			};
+				Value = x.Description,
+				Text = x.Description
+			});
+			
 			return PartialView(model);
 		}
 
@@ -351,6 +355,9 @@ namespace Absa.Web.Controllers
 		}
 
 		// Post AddUpdateResilienceTrack
+		[HttpPost]
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
 		public ActionResult AddUpdateResilienceTrack(ResilienceTrackModel model)
 		{
 			if (model.ResilienceTrackID == 0)
@@ -361,12 +368,13 @@ namespace Absa.Web.Controllers
 				context.ResilienceTracks.Add(new ResilienceTrack
 				{
 					ResilienceTrackID = model.ResilienceTrackID,
-				    ApplicationID = model.ApplicationID,
-				    ApplicationName = model.ApplicationName,
-				    NameOnSnow = model.NameOnSnow,
-				    Tiering = model.Tiering,
-				    HeadOfTechnology = model.HeadOfTechnology,
-				    BusinessUnitId = data.BusinessUnitId,
+					ApplicationID = model.ApplicationID,
+					UserID = model.UserID,
+					ApplicationName = model.ApplicationName,
+					NameOnSnow = model.NameOnSnow,
+					Tiering = model.Tiering,
+					HeadOfTechnology = model.HeadOfTechnology,
+					BusinessUnitId = data.BusinessUnitId,
 					ApplicatioOwner = model.ApplicatioOwner,
 					ServiceManager = model.ServiceManager,
 					StrategicFit = model.StrategicFit,
@@ -398,10 +406,11 @@ namespace Absa.Web.Controllers
 					OpenVulnerabilities = model.OpenVulnerabilities,
 				});
 			}
-			else
-			{
+			else {
+
 				var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceTrackID);
 				data.Tiering = model.Tiering;
+				data.UserID = model.UserID;
 				data.HeadOfTechnology = model.HeadOfTechnology;
 				data.ServiceManager = model.ServiceManager;
 				data.ApplicatioOwner = model.ApplicatioOwner;

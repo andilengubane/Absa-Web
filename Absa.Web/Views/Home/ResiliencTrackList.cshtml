@@ -19,7 +19,7 @@
                 width: 900,
                 height: 800
             });
-            $("#Resilience .Create").click(function () {
+            $("#create .Create").click(function () {
                 $.ajax({
                     type: "POST",
                     url: "/Home/Create",
@@ -133,7 +133,12 @@
 	</div>
 </div>
 <br>
-<font size="2">
+<div id="create">
+	<button class="Create btn btn-sm btn-success" type="button" id="create" href="javascript:;">CREATE</button>
+</div>
+<br>
+<br>
+<font size="3">
 	<table class="table table-bordered" id="Resilience">
 		<tr>
 			<th class="col1">
@@ -191,7 +196,7 @@
 					@Html.DisplayFor(modelItem => item.Tiering)
 				</td>
 				<td>
-					<button class="Create btn btn-sm btn-success" type="button" id="Resilience" href="javascript:;">CREATE</button>
+					
 					<button class="Edit btn btn-sm btn-primary" type="button" id="Resilience" href="javascript:;">MODIFY</button>
 					<button class="Apporval btn btn-sm btn-danger" type="button" id="Resilience" href="javascript:;">APPROVAL</button>
 				</td>

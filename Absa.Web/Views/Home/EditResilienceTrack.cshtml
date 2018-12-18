@@ -8,9 +8,40 @@
 	<script src="~/Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
 	<script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
 }
+
+<script type="text/javascript">
+	$(function() {
+		$("#resilienceForm").validate({
+			rules: {
+				email: {
+					required: true,
+					applicationId: true
+				},
+				messages: {
+					applicationId: "* Please enter Application Id.",
+				}
+			}
+		});
+	});
+	$('#submit').on('click', function (e) {
+		if (shouldSubmit == false)
+			e.preventDefault();
+		else {
+			var applicationId = $("#applicationId").val();
+			
+			var json = { ApplicationID: applicationId };
+
+			$.ajax({
+				url: '<%: Url.Action("Register", "Account")%>',
+				type: "POST",
+				data: json
+			});
+		}
+	});
+</script>
 <br>
 <br>
-@using (Html.BeginForm("AddUpdateResilienceTrack", "Home", FormMethod.Post, new { id = "myForm" }))
+@using (Html.BeginForm("AddUpdateResilienceTrack", "Home", FormMethod.Post, new { @id = "resilienceForm" }))
 {
 	@Html.AntiForgeryToken()
 	@Html.HiddenFor(model => model.ResilienceTrackID)
@@ -20,7 +51,7 @@
 			<div class="card-body">
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control", placeholder = "Application ID", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new {@id = "applicationId", @class = "form-control", placeholder = "Application ID", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">

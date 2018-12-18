@@ -36,6 +36,7 @@ namespace Absa.DateAccess
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersAudit> UsersAudits { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual ObjectResult<GetAppStatus_Result> GetAppStatus(Nullable<int> businessUnitId)
         {
@@ -69,9 +70,13 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackListById_Result>("GetResilienceTrackListById", resilienceTrackIDParameter);
         }
     
-        public virtual ObjectResult<GetUsersList_Result> GetUsersList()
+        public virtual ObjectResult<GetUsersList_Result> GetUsersList(Nullable<int> userId)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList");
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList", userIdParameter);
         }
     }
 }
