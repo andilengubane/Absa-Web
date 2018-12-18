@@ -40,21 +40,41 @@ namespace Absa.Web.Controllers
 			var model = new List<UserModel>();
 			try
 			{
-				var data = context.GetUsersList(userId);
-				foreach (var item in data)
-				{
-					model.Add(new UserModel()
+				if (rolePermissionType == "SuperUser" || rolePermissionType == "Mananger") {
+					var data = context.GetAllUsersList();
+					foreach (var item in data)
 					{
-						ID = item.UserID,
-						FirstName = item.FirstName,
-						LastName = item.LastName,
-						EmailAddress = item.EmailAddress,
-						ContactNumber = item.ContactNumber,
-						RolesPermission = item.Type,
-						BusinessUnit = item.BusinessUnitName,
-						IsActive = Convert.ToBoolean(item.IsActive)
-	              });
+						model.Add(new UserModel()
+						{
+							ID = item.UserID,
+							FirstName = item.FirstName,
+							LastName = item.LastName,
+							EmailAddress = item.EmailAddress,
+							ContactNumber = item.ContactNumber,
+							RolesPermission = item.Type,
+							BusinessUnit = item.BusinessUnitName,
+							IsActive = Convert.ToBoolean(item.IsActive)
+						});
+					}
 				}
+				else {
+					var data = context.GetUserById(userId);
+					foreach (var item in data)
+					{
+						model.Add(new UserModel()
+						{
+							ID = item.UserID,
+							FirstName = item.FirstName,
+							LastName = item.LastName,
+							EmailAddress = item.EmailAddress,
+							ContactNumber = item.ContactNumber,
+							RolesPermission = item.Type,
+							BusinessUnit = item.BusinessUnitName,
+							IsActive = Convert.ToBoolean(item.IsActive)
+						});
+					}
+				}
+				
 			}
 			catch (Exception ex)
 			{

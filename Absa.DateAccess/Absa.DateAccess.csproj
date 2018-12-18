@@ -75,6 +75,9 @@
     <Compile Include="DataLookUp.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAllUsersList_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAppStatus_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
@@ -82,6 +85,9 @@
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetResilienceTrackList_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetUserById_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetUsersList_Result.cs">
