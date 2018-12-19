@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+	Layout = null;
 }
 
 <script src="~/Scripts/chart/highcharts.js"></script>
@@ -14,7 +14,7 @@
 </div>
 <script>
 	$(document).ready(function () {
-		$.getJSON("/Home/GetStrategicFitData", function (data) {
+		$.getJSON("/DashBord/GetStrategicFitData", function (data) {
 			Highcharts.chart('container', {
 				chart: {
 					plotBackgroundColor: null,
