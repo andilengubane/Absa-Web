@@ -12,15 +12,17 @@ namespace Absa.Web.Controllers
     {
 		AbsaDBEntities context = new AbsaDBEntities();
 		// GET: DashBord
-		public ActionResult Report()
-		{
-			return PartialView();
-		}
+		
 		public ActionResult StrategicFit()
 		{
 			return PartialView();
 		}
 
+
+		public ActionResult DisasterRecover()
+		{
+			return PartialView();
+		}
 		public ActionResult GetStrategicFitData()
 		{
 			var id = this.Session["ID"];

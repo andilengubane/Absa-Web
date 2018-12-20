@@ -243,6 +243,7 @@
     <Content Include="Scripts\chart\exporting.js" />
     <Content Include="Scripts\chart\highcharts-more.js" />
     <Content Include="Scripts\chart\highcharts.js" />
+    <Content Include="Scripts\dashbord.js" />
     <Content Include="Scripts\dashBordScript.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -283,6 +284,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\techo.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -322,6 +324,7 @@
     <Content Include="Views\Home\EditResilienceTrack.cshtml" />
     <Content Include="Views\Report\OverRallReportView.cshtml" />
     <Content Include="Views\DashBord\StrategicFit.cshtml" />
+    <Content Include="Views\DashBord\DisasterRecover.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,7 +6,7 @@
 		width: 800,
 		height: 550
 	});
-	$("#dashBordmodel .ViewReport").click(function () {
+	$("#strategicfit .strategicfit").click(function () {
 		$.ajax({
 			type: "POST",
 			url: "/DashBord/StrategicFit",
@@ -38,7 +38,7 @@ $(function () {
 		debugger
 		$.ajax({
 			type: "POST",
-			url: "/Home/Report",
+			url: "/DashBord/DisasterRecoover",
 			contentType: "application/json; charset=utf-8",
 			dataType: "html",
 			success: function (response) {
