@@ -11,12 +11,13 @@
 	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-	<script>
+	<script type="text/javascript">
         $(function () {
             $("#dialogs").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "Over Rall Report",
+                dialogClass: 'titleColor',
                 width: 1200,
                 height: 600
             });
@@ -39,23 +40,25 @@
                 });
             });
         });
-	</script>
-
+</script>
+<style>
+	.btn.btn-circle { border-radius: 50px; }
+	.titleColor .ui-dialog-titlebar { background: #1C2833; }
+</style>
 </head>
 <body>
 	<div id="dialogs" style="display: none"></div>
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top nav-fill" style="background-color: #DC143C;">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top nav-fill" style="background-color: #1C2833;">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 			<a class="navbar-brand" href="#">
-				<img src="~/Content/image/ae27564ec7594689a4cf1ed44ebef592.png" width="70" height="40" alt="">
 			</a>
 			<a class="navbar-brand" href="#"></a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">DASHBORD</button>
+					<button class="btn btn-sm btn-circle btn-outline-secondarys" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">DASHBORD</button>
 				</li>
 				<li class="nav-item active">
 				</li>
@@ -63,24 +66,25 @@
 					<a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("ResiliencTrackList", "Home")'">RESILIENCE TRACK</button>
+					<button class="btn btn-sm btn-circle btn-outline-secondary" type="button" id="userList" onclick="location.href='@Url.Action("ResiliencTrackList", "Home")'">RESILIENCE TRACK</button>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active" id="overRall">
-					<button class="ViewReport btn btn-sm btn-success" type="button" id="overRall" href="javascript:;">REPORT</button>
+					<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="overRall" href="javascript:;">REPORT</button>
                 <li class="nav-item active">
 					<a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<button class="btn btn-sm btn-success" type="button" id="userList" onclick="location.href='@Url.Action("UserList", "Account")'">USERS</button>
+					<button class="btn btn-sm btn-circle btn-outline-secondary" type="button" id="userList" onclick="location.href='@Url.Action("UserList", "Account")'">USERS</button>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" id="search" placeholder="SEARCH" aria-label="Search">
-				<button class="btn btn-success my-2 my-sm-0" onclick="serch" type="submit">SEARCH</button>
+				@*<button type="button" class="btn btn-circle btn-success btn-sm">
+					<span class="glyphicon glyphicon-user">Andile Nguabe</span>
+				</button>*@
 			</form>
-			<button class="btn btn-primary my-2 my-sm-0" style='margin-Left:16px' onclick="location.href='@Url.Action("Login", "Account")'">LOGOUT</button>
+			<button class="btn btn-circle btn-outline-primary my-2 my-sm-0" style='margin-Left:16px' onclick="location.href='@Url.Action("Login", "Account")'">LOGOUT</button>
       </div>
 	</nav>
 	<br />

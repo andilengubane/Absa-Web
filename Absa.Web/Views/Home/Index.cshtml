@@ -13,28 +13,34 @@
 }
 
 <div id="strategicFit" style="display: none"></div>
-<div id="disaterRecover" style="display: none"></div> 
-<div id="backUpData" style="display: none"></div>
-<div id="backUpConfiguration" style="display: none"></div> 
 <style>
 	div.light {
-  width: 50px;
-  height: 50px;
-  background-color: green;
-}
+        width: 50px;
+        height: 50px;
+        background-color: green;
+    }
+
+	.btn.btn-circle {
+		 border-radius: 50px;
+	}
+
+	.text-field {
+		 border-radius: 50px;
+	}
+</style>
+<style>
+	
 </style>
 
 <h3>T100R Seven Pillas</h3>
 <br>
 <div class="card w-100">
 	<div class="card-body">
-		
+       @using (Html.BeginForm()){
 		<h5 class="card-title">Business Unit</h5>
-		@using (Html.BeginForm())
-		{
-		  @Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control" ,id  = "businessUnit"})
-		  <br />
-		  <input type="submit" value="Search" class="btn btn-danger" />
+		@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field", id = "businessUnit" })
+		<br>
+		<input type="submit" value="Search" class="btn btn-circle btn-outline-dark" />
 		}
 	</div>
 </div>
@@ -48,7 +54,7 @@
 			<canvas id="strategicFit" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="Strategicfit btn btn-sm btn-danger" type="button" id="dashBord" href="javascript:;">Strategic Fit</button>
+			<button class="Strategicfit btn btn-sm btn-circle btn-outline-dark" type="button" id="dashBord" href="javascript:;">Strategic Fit</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -57,7 +63,7 @@
 			<canvas id="disasterRecover" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="DisaterRecover btn btn-sm btn-danger" type="button" id="dashBord" href="javascript:;">Disater Recover</button>
+			<button class="DisaterRecover btn btn-sm btn-circle btn-outline-dark" type="button" id="dashBord" href="javascript:;">Disater Recover</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -66,7 +72,7 @@
 			<canvas id="backUpsData" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Data</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Data</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -75,7 +81,7 @@
 			<canvas id="backUpConfig" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Configuration</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Configuration</button>
 		</div>
 	</div>
 </div>
@@ -87,7 +93,7 @@
 			<canvas id="highAv" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">High Availability</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">High Availability</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -96,7 +102,7 @@
 			<canvas id="SPOF" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Single Point of Failure</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Single Point of Failure</button>
 		</div>
 	</div>
 	<div class="card">
@@ -105,7 +111,7 @@
 			 <canvas id="HDC" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Highest Data Classification</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Highest Data Classification</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -114,7 +120,7 @@
 			 <canvas id="DRR" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Data Retention Requirement</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Data Retention Requirement</button>
 		</div>
 	</div>
 </div>
@@ -126,7 +132,7 @@
 			 <canvas id="OM" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Monitoring</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Monitoring</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -135,7 +141,7 @@
 			<canvas id="SM" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Security Monitoring</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Security Monitoring</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -144,7 +150,7 @@
 			<canvas id="IOLA" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Internal OLA</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Internal OLA</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -153,7 +159,7 @@
 			<canvas id="ESLA" width="250" height="240"></canvas>
 		</div>
 		<div class="card-footer">
-			<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">External SLA</button>
+			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">External SLA</button>
 		</div>
 	</div>
 </div>
@@ -165,7 +171,7 @@
 				<canvas id="AD" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Archicteture Documentation</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Archicteture Documentation</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -174,7 +180,7 @@
 				<canvas id="OD" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Documentation</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Documentation</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -183,7 +189,7 @@
 				<canvas id="ITAD" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Integrated to AD</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Integrated to AD</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -192,7 +198,7 @@
 				<canvas id="JMLP" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">JML Process</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">JML Process</button>
 			</div>
 		</div>
 	</div>
@@ -204,7 +210,7 @@
 				<canvas id="RProcess" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Recertification Process</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Recertification Process</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -213,7 +219,7 @@
 				<canvas id="PAM" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Privileged Access Management</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Privileged Access Management</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -222,7 +228,7 @@
 				<canvas id="OSPL" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">OS Patching Level</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">OS Patching Level</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -231,7 +237,7 @@
 				<canvas id="APL" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Application Patching Level</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Application Patching Level</button>
 			</div>
 		</div>
 	</div>
@@ -243,7 +249,7 @@
 				 <canvas id="MPL" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Middleware Patching Level</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Middleware Patching Level</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -252,7 +258,7 @@
 				<canvas id="SA" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Application</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Application</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -261,7 +267,7 @@
 				<canvas id="SOS" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported OS</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported OS</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -270,7 +276,7 @@
 				<canvas id="SJ" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Java</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Java</button>
 			</div>
 		</div>
 	</div>
@@ -282,7 +288,7 @@
 				<canvas id="SML" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Middleware</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Middleware</button>
 			</div>
 		</div>
 		<div class="card">
@@ -291,7 +297,7 @@
 				<canvas id="SDB" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Database</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Database</button>
 			</div>
 		</div>
 		<div class="card" id="dashBord">
@@ -300,7 +306,7 @@
 				<canvas id="OV" width="250" height="240"></canvas>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-sm btn-danger" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Open Vulnerabilities</button>
+				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Open Vulnerabilities</button>
 			</div>
 		</div>
 	</div>

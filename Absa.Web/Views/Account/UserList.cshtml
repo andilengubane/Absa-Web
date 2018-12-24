@@ -11,10 +11,11 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
         $(function () {
-            $("#dialog").dialog({
+        	$("#dialogCreate").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "User",
+                dialogClass: 'titleColor',
                 width: 700,
                 height: 550,
             });
@@ -27,8 +28,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialog').html(response);
-                        $('#dialog').dialog('open');
+                    	$('#dialogCreate').html(response);
+                    	$('#dialogCreate').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -43,12 +44,13 @@
 
 <script type="text/javascript">
         $(function () {
-            $("#dialogs").dialog({
+            $("#dialogEdit").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "User",
+                dialogClass: 'titleColor',
                 width: 700,
-                height: 450,
+                height: 550,
             });
             $("#UserList .EditUser").click(function () {
             	var id = $(this).closest('tr').find('td:eq(0)').text();
@@ -59,8 +61,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialogs').html(response);
-                        $('#dialogs').dialog('open');
+                    	$('#dialogEdit').html(response);
+                    	$('#dialogEdit').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -74,10 +76,11 @@
 </script>
 <script type="text/javascript">
         $(function () {
-            $("#dialogss").dialog({
+        	$("#dialogDelete").dialog({
                 autoOpen: false,
                 modal: true,
                 title: "User",
+                dialogClass: 'titleColor',
                 width: 600,
                 height: 250,
             });
@@ -90,8 +93,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
-                        $('#dialogss').html(response);
-                        $('#dialogss').dialog('open');
+                    	$('#dialogDelete').html(response);
+                    	$('#dialogDelete').dialog('open');
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -107,18 +110,17 @@
 }
 
 <style>
- .col1 {
-		 display: none;
-	}
-  .col2 { 
-		display: none; 
-    }
+    .col1 { display: none; }
+    .col2 { display: none; }
+	.btn.btn-circle { border-radius: 50px; }
+	.titleColor .ui-dialog-titlebar { background: #1C2833; }
 </style>
-<div id="dialog" style="display: none"></div>
-<div id="dialogs" style="display: none"></div>
-<div id="dialogss" style="display: none"></div>
-	<h3 class="modal-title" id="myModalLabel">Users</h3>
-	<br>
+
+<div id="dialogCreate" style="display: none"></div>
+<div id="dialogEdit" style="display: none"></div>
+<div id="dialogDelete" style="display: none"></div>
+<h3 class="modal-title" id="myModalLabel">Users</h3>
+<br>
 <font size="3">
 	<table class="table table-bordered" id="UserList">
 		<tr>
@@ -179,12 +181,12 @@
 				<td>
 					@if (ViewBag.RolePermission == "SuperUser")
 					{
-						<button class="details btn btn-sm btn-success" type="button" id="userList" href="javascript:;">CREATE</button>
+						<button class="details btn btn-sm  btn-circle btn-outline-dark" type="button" id="userList" href="javascript:;">CREATE</button>
 					}
-					<button class="EditUser btn btn-sm btn-primary" type="button" id="userList" href="javascript:;">MODIFY</button>
+					<button class="EditUser btn btn-sm  btn-circle btn-outline-dark" type="button" id="userList" href="javascript:;">MODIFY</button>
 					@if (ViewBag.RolePermission == "SuperUser")
 					{
-						<button class="DeleteUser btn btn-sm btn-danger" type="button" id="userList" href="javascript:;">DELETE</button>
+						<button class="DeleteUser btn btn-sm  btn-circle btn-outline-dark" type="button" id="userList" href="javascript:;">DELETE</button>
 					}
 				</td>
 			</tr>

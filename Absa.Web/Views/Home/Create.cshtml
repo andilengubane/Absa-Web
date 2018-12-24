@@ -8,6 +8,10 @@
 	<script src="~/Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
 	<script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
 }
+<style>
+	.text-field { border-radius: 50px; }
+	.btn.btn-circle { border-radius: 50px; }
+</style>
 <br>
 <br>
 @using (Html.BeginForm("AddUpdateResilienceTrack", "Home", FormMethod.Post, new { id = "myForm" }))
@@ -19,26 +23,26 @@
 			<div class="card-body">
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control", placeholder = "Application ID", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application ID", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control", placeholder = "Application Name", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Name", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.ApplicationName, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.NameOnSnow, new { htmlAttributes = new { @class = "form-control", placeholder = "Name On Snow", autocomplete = "off" } })
+						@Html.EditorFor(model => model.NameOnSnow, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Name On Snow", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.NameOnSnow, "", new { @class = "text-danger" })
 					</div>
 				</div>
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.HeadOfTechnology, new { htmlAttributes = new { @class = "form-control", placeholder = "Head Of Technology", autocomplete = "off" } })
+						@Html.EditorFor(model => model.HeadOfTechnology, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Head Of Technology", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.HeadOfTechnology, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicatioOwner, new { htmlAttributes = new { @class = "form-control", placeholder = "Application Owner", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicatioOwner, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Owner", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.ApplicatioOwner, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
@@ -49,7 +53,7 @@
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control", placeholder = "Tiering", autocomplete = "off" } })
+						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Tiering", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.Tiering, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
@@ -228,7 +232,7 @@
 	   <br>
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<input type="submit" value="Save" id="butValidateForm" class="btn btn-success btn-lg btn-block" />
+				<input type="submit" value="Save" id="butValidateForm" class="btn btn-circle btn-outline-dark btn-lg btn-block" />
 			</div>
 		</div>
    </form>

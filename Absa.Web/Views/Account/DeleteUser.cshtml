@@ -36,7 +36,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>DeleteUser</title>
+	<style>
+		.btn.btn-circle {
+			border-radius: 50px;
+		}
+
+		.text-field {
+			border-radius: 50px;
+		}
+	</style>
 </head>
 <body>
     <div> 
@@ -49,7 +57,7 @@
 		<br />
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<input type="submit" value="Delete" class="btn btn-success btn-lg btn-block" onClick="deleteUser(); return false" />
+				<input type="submit" value="Delete" class="btn btn-circle btn-outline-dark btn-lg btn-block" onClick="deleteUser(); return false" />
 			</div>
 		</div>
     </div>

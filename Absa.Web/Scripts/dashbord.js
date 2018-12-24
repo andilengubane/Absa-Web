@@ -1,7 +1,6 @@
 ﻿$(function () {
 	$.ajax({
 		type: "POST",
-		//url: "/Home/GetAppStatusOverRall",
 		cache: false,
 		success: function (result) {
 
