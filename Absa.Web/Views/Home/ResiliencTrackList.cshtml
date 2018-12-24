@@ -16,6 +16,7 @@
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
+                dialogClass: 'titleColor',
                 width: 900,
                 height: 800
             });
@@ -46,6 +47,7 @@
 				autoOpen: false,
 				modal: true,
 				title: "Resilience Track",
+				dialogClass: 'titleColor',
 				width: 900,
 				height: 800
 			});
@@ -78,6 +80,7 @@
                 autoOpen: false,
                 modal: true,
                 title: "Resilience Track",
+                dialogClass: 'titleColor',
                 width: 1600,
                 height: 500
             });
@@ -113,6 +116,21 @@
 	.col2 {
 		display: none;
 	}
+
+	div.light {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+    }
+
+	.btn.btn-circle {
+		 border-radius: 50px;
+	}
+
+	.text-field {
+		 border-radius: 50px;
+	}
+	.titleColor .ui-dialog-titlebar { background: #1C2833; }
 </style>
 <div id="dialog" style="display: none"></div>
 <div id="dialogs" style="display: none"></div>
@@ -125,16 +143,16 @@
 		@using (Html.BeginForm("ResiliencTrackList", "Home", FormMethod.Get))
 		{
 			<p>
-				 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string,new { @class = "form-control mr-sm-2" , autocomplete = "off" })
+				 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string,new { @class = "form-control mr-sm-2 text-field " ,autocomplete = "off" })
 				<br />
-				<input type="submit" value="Search" class="btn  btn-sm btn-danger" />
+				<input type="submit" value="Search" class="btn  btn-sm btn-circle btn-outline-dark" />
 			</p>
 		}
 	</div>
 </div>
 <br>
 <div id="create">
-	<button class="Create btn btn-sm btn-success" type="button" id="create" href="javascript:;">CREATE</button>
+	<button class="Create btn btn-sm btn-circle btn-outline-dark" type="button" id="create" href="javascript:;">CREATE NEW RESILIENCE TRACK</button>
 </div>
 <br>
 <br>
@@ -196,9 +214,8 @@
 					@Html.DisplayFor(modelItem => item.Tiering)
 				</td>
 				<td>
-					
-					<button class="Edit btn btn-sm btn-primary" type="button" id="Resilience" href="javascript:;">MODIFY</button>
-					<button class="Apporval btn btn-sm btn-danger" type="button" id="Resilience" href="javascript:;">APPROVAL</button>
+					<button class="Edit btn btn-sm btn-circle btn-outline-dark" type="button" id="Resilience" href="javascript:;"> EDIT </button>
+					<button class="Apporval btn btn-sm btn-circle btn-outline-dark" type="button" id="Resilience" href="javascript:;"> APPROVAL </button>
 				</td>
 			</tr>
 		}

@@ -19,6 +19,7 @@
 .ui-dialog .ui-dialog-titlebar {
 	padding: .4em 1em;
 	position: relative;
+	background-color: #1C2833;
 }
 .ui-dialog .ui-dialog-title {
 	float: left;
@@ -27,6 +28,7 @@
 	width: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	background-color: #1C2833;
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
