@@ -245,7 +245,7 @@
     <Content Include="Scripts\chart\highcharts-more.js" />
     <Content Include="Scripts\chart\highcharts.js" />
     <Content Include="Scripts\dashbord.js" />
-    <Content Include="Scripts\dashBordScript.js" />
+    <Content Include="Scripts\dashbordlist.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
