@@ -11,18 +11,18 @@ namespace Absa.Web.Controllers
     public class DashBordController : Controller
     {
 		AbsaDBEntities context = new AbsaDBEntities();
-		// GET: DashBord
-		
+	
+		// GET: DashBord - StrategicFit
 		public ActionResult StrategicFit()
 		{
 			return PartialView();
 		}
 
+		//public ActionResult DisasterRecover()
+		//{
+		//	return PartialView();
+		//}
 
-		public ActionResult DisasterRecover()
-		{
-			return PartialView();
-		}
 		public ActionResult GetStrategicFitData()
 		{
 			var id = this.Session["ID"];
@@ -42,22 +42,22 @@ namespace Absa.Web.Controllers
 		}
 
 
-		public ActionResult GetDisasterRecoverData()
-		{
-			var id = this.Session["ID"];
-			int userId = Convert.ToInt32(id);
-			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-			var model = new DashBordModel();
+		//public ActionResult GetDisasterRecoverData()
+		//{
+		//	var id = this.Session["ID"];
+		//	int userId = Convert.ToInt32(id);
+		//	var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+		//	var model = new DashBordModel();
 
-			var disasterRecover = context.GetAppStatus(data.BusinessUnitId);
-			foreach (var item in disasterRecover)
-			{
-				model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);
-				model.DisasterRecoveryNo = Convert.ToInt32(item.DisasterRecoverNo);
-				model.DisasterRecoveryWarning = Convert.ToInt32(item.DisasterRecoverWarning);
-				model.DisasterRecoverOverRall = Convert.ToInt32(item.DisasterRecoverOverRall);
-			}
-			return Json(model, JsonRequestBehavior.AllowGet);
-		}
+		//	var disasterRecover = context.GetAppStatus(data.BusinessUnitId);
+		//	foreach (var item in disasterRecover)
+		//	{
+		//		model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);
+		//		model.DisasterRecoveryNo = Convert.ToInt32(item.DisasterRecoverNo);
+		//		model.DisasterRecoveryWarning = Convert.ToInt32(item.DisasterRecoverWarning);
+		//		model.DisasterRecoverOverRall = Convert.ToInt32(item.DisasterRecoverOverRall);
+		//	}
+		//	return Json(model, JsonRequestBehavior.AllowGet);
+		//}
 	}
 }
