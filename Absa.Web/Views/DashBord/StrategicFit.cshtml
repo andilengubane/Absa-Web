@@ -1,20 +1,20 @@
 ﻿
 @{
-	Layout = null;
+    Layout = null;
 }
 
-<script src="~/Scripts/chart/highcharts.js"></script>
-<script src="~/Scripts/chart/exporting.js"></script>
-<div>
-	<div class="card">
-		<div class="card-body">
-			<div id="container" style="min-width: 500px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-		</div>
-	</div>
-</div>
-<script>
-	$(document).ready(function () {
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StrategicFit</title>
+	<script src="~/Scripts/chart/highcharts.js"></script>
+	<script src="~/Scripts/chart/exporting.js"></script>
+	<script src="~/Scripts/chart/export-data.js"></script>
+	<script>
 		$.getJSON("/DashBord/GetStrategicFitData", function (data) {
+			
 			Highcharts.chart('container', {
 				chart: {
 					plotBackgroundColor: null,
@@ -23,7 +23,7 @@
 					type: 'pie'
 				},
 				title: {
-					text: 'Strategic Fit Data'
+					text: 'Over Rall '+ data.ApplicationPatchingLevelNo +'%'
 				},
 				tooltip: {
 					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -42,22 +42,32 @@
 					}
 				},
 				series: [{
+					name: 'Brands',
 					colorByPoint: true,
 					data: [{
 						name: 'Yes',
 						y: data.StrategicFitYes,
-						color: '#008000',
+						sliced: true,
+						selected: true,
+						color: 'green'
 					}, {
 						name: 'No',
 						y: data.StrategicFitNo,
-						color: '#FF0000'
+						y: 20,
+						color: 'red'
 					}, {
-						name: 'Warnings',
+						name: 'Warning',
 						y: data.StrategicFitWarning,
-						color: '#FFE334'
+						color: 'yellow'
 					}]
 				}]
 			});
 		});
-	});
-</script>
+	</script>
+</head>
+<body>
+    <div> 
+		<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    </div>
+</body>
+</html>

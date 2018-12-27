@@ -261,7 +261,7 @@ namespace Absa.Web.Controllers
 						this.Session["LastName"] = data.LastName;
 						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
 
-						return RedirectToAction("ResiliencTrackList", "Home");
+						return RedirectToAction("Index", "Home");
 					}
 				}
 				else
