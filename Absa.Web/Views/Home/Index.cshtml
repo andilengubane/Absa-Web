@@ -71,9 +71,73 @@
             });
         });
 </script>
+
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogBackUpData").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "BackUp - Data",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550
+            });
+        	$("#backUpData .ViewReport").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/DashBord/BackUpData",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogBackUpData').html(response);
+                    	$('#dialogBackUpData').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogBackUpConfiguration").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "BackUp - Configuration",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550
+            });
+        	$("#backUpConfiguration .ViewReport").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/DashBord/BackUpConfiguration",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogBackUpConfiguration').html(response);
+                    	$('#dialogBackUpConfiguration').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
 }
 <div id="dialogStrategicFit" style="display: none"></div>
 <div id="dialogDisasterRecovery" style="display: none"></div>
+<div id="dialogBackUpData" style="display: none"></div>
+<div id="dialogBackUpConfiguration" style="display: none"></div>
 <style>
 	div.light {
         width: 50px;
@@ -124,8 +188,8 @@
 		<div class="card-body">
 			<canvas id="backUpsData" width="250" height="240"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Data</button>
+		<div class="card-footer" id="backUpData">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="backUpData" href="javascript:;">BackUp - Data</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -133,8 +197,8 @@
 		<div class="card-body">
 			<canvas id="backUpConfig" width="250" height="240"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">BackUp - Configuration</button>
+		<div class="card-footer" id="backUpConfiguration">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="backUpConfiguration" href="javascript:;">BackUp - Configuration</button>
 		</div>
 	</div>
 </div>

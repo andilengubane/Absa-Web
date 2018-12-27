@@ -12,13 +12,12 @@ namespace Absa.Web.Controllers
     {
 		AbsaDBEntities context = new AbsaDBEntities();
 	
-		// GET: DashBord - StrategicFit
 		public ActionResult StrategicFit()
 		{
 			return PartialView();
 		}
-		//GetStrategicFitData
-		public ActionResult GetStrategicFitData()
+
+		public ActionResult GetAllApplicationData()
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
@@ -40,7 +39,7 @@ namespace Absa.Web.Controllers
 		{
 			return PartialView();
 		}
-		//GetDisasterRecoveryData
+
 		public ActionResult GetDisasterRecoveryData()
 		{
 			var id = this.Session["ID"];
@@ -48,8 +47,8 @@ namespace Absa.Web.Controllers
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
 			var model = new DashBordModel();
 
-			var disasterRecoverAppData = context.GetAppStatus(data.BusinessUnitId);
-			foreach (var item in disasterRecoverAppData)
+			var strategicFitAppData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in strategicFitAppData)
 			{
 				model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);
 				model.DisasterRecoveryNo = Convert.ToInt32(item.DisasterRecoverNo);
@@ -58,5 +57,48 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+		public ActionResult BackUpData()
+		{
+			return PartialView();
+		}
+		public ActionResult GetBackUpData()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var strategicFitAppData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in strategicFitAppData)
+			{
+				model.BackUpDataYes = Convert.ToInt32(item.BackUpDataYes);
+				model.BackUpDataNo = Convert.ToInt32(item.BackUpDataNo);
+				model.BackUpDataWarning = Convert.ToInt32(item.BackUpDataWarning);
+				model.BackUpDataOverRall = Convert.ToInt32(item.BackUpDataOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+		public ActionResult BackUpConfiguration()
+		{
+			return PartialView();
+		}
+		public ActionResult GetBackUpConfigurationData()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var strategicFitAppData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in strategicFitAppData)
+			{
+				model.BackUpConfigurationYes = Convert.ToInt32(item.BackUpConfigurationYes);
+				model.BackUpConfigurationNo = Convert.ToInt32(item.BackUpConfigurationNo);
+				model.BackUpConfigurationWarning = Convert.ToInt32(item.BackUpConfigurationWarning);
+				model.BackUpConfigurationOverRall = Convert.ToInt32(item.BackUpConfigurationOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+		
 	}
 }

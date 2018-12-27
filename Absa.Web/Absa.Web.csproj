@@ -326,6 +326,8 @@
     <Content Include="Views\Report\OverRallReportView.cshtml" />
     <Content Include="Views\DashBord\StrategicFit.cshtml" />
     <Content Include="Views\DashBord\DisasterRecovery.cshtml" />
+    <Content Include="Views\DashBord\BackUpData.cshtml" />
+    <Content Include="Views\DashBord\BackUpConfiguration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
