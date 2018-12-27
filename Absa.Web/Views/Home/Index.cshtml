@@ -40,8 +40,40 @@
             });
         });
 </script>
+
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogDisasterRecovery").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Disaster Recovery",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550
+            });
+        	$("#disasterRecovery .ViewReport").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/DashBord/DisasterRecovery",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogDisasterRecovery').html(response);
+                    	$('#dialogDisasterRecovery').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
 }
 <div id="dialogStrategicFit" style="display: none"></div>
+<div id="dialogDisasterRecovery" style="display: none"></div>
 <style>
 	div.light {
         width: 50px;
@@ -83,8 +115,8 @@
 		<div class="card-body">
 			<canvas id="DR" width="250" height="240"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="DisaterRecover btn btn-sm btn-circle btn-outline-dark" type="button" id="dashBord" href="javascript:;">Disater Recover</button>
+		<div class="card-footer" id="disasterRecovery">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="disasterRecovery" href="javascript:;">Disaster Recovery</button>
 		</div>
 	</div>
 	<div class="card">
