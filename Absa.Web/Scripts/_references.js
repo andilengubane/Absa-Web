@@ -16,6 +16,7 @@
 /// <reference path="jquery-3.3.1.slim.min.js" />
 /// <reference path="jquery-ui-1.12.1.js" />
 /// <reference path="jquery-ui-1.12.1.min.js" />
+/// <reference path="modelpopup.js" />
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="popper.min.js" />
 /// <reference path="popper-utils.min.js" />
