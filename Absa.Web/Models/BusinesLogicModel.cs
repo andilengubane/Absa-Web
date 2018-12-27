@@ -29,10 +29,12 @@ namespace Absa.Web.Models
 		public int BackUpDataYes { get; set; }
 		public int BackUpDataNo { get; set; }
 		public int BackUpDataWarning { get; set; }
+		public int BackUpDataOverRall { get; set; }
 
 		public int BackUpConfigurationYes { get; set; }
 		public int BackUpConfigurationNo { get; set; }
 		public int BackUpConfigurationWarning { get; set; }
+		public int BackUpConfigurationOverRall { get; set; }
 
 		public int HighAvailabilityYes { get; set; }
 		public int HighAvailabilityNo { get; set; }
