@@ -20,7 +20,7 @@
 @Scripts.Render("~/bundles/modernizr")
 <style>
 	.back {
-		background: #DC143C;
+		background:#F5F5F5;
 		width: 100%;
 		position: absolute;
 		top: 0;
@@ -30,7 +30,6 @@
 	.div-center {
 		width: 500px;
 		height: 400px;
-		background-color: #fff;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -41,7 +40,6 @@
 		max-height: 100%;
 		overflow: auto;
 		padding: 1em 2em;
-		border-bottom: 2px solid #ccc;
 		display: table;
 	}
 
@@ -72,47 +70,69 @@
             });
     }
 </script>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top nav-fill" style="background-color: #1C2833;">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+		<a class="navbar-brand" href="#">
+		</a>
+		<a class="navbar-brand" href="#"></a>
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+				<button class="btn btn-sm btn-circle btn-outline-secondarys" type="button" id="userList">SEND LOGIN REQUEST</button>
+			</li>
+		</ul>
+	</div>
+</nav>
 <div class="back">
 	<div class="div-center">
-		<div class="content">
-			<section id="loginForm">
-				@using (Html.BeginForm("GetUserAccess", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-				{
-					<div class="form-group">
-						<p>Enter the your login details in order to gain access. As the first time user Sign Up !</p>
-					</div>
-					@Html.AntiForgeryToken()
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-					<div class="form-group">
-						<div class="col-md-10">
-							@Html.TextBoxFor(m => m.UserName, new { @class = "form-control text-field", autocomplete = "off" , placeholder = "Username" })
-							@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-10">
-							@Html.PasswordFor(m => m.Password, new { @class = "form-control text-field", placeholder = "Password" })
-							@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							@*@Html.ActionLink("Recover Password", "RecoverPassword", "Account")*@
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<input type="submit" value="Log in" class="btn btn-danger btn-circle btn-lg btn-block" />
-							@*@Html.ActionLink("Sign Up", "Register", "Account", new { @class = "btn btn-danger btn-lg btn-space" })*@
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<font color="@ViewBag.color">@ViewBag.ErroMessage</font>
-						</div>
-					</div>
-				}
-			</section>
-		</div>
+			<div class="card">
+				<h5 class="card-header">Sign In</h5>
+				<div class="card-body">
+					<p class="card-text">Enter the your login details in order to gain access. As the first time user Sign Up !</p>
+					<br>
+					<section id="loginForm">
+						@using (Html.BeginForm("GetUserAccess", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+						{
+							@Html.AntiForgeryToken()
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							<div class="form-group">
+								<div class="col">
+									@Html.TextBoxFor(m => m.UserName, new { @class = "form-control text-field", autocomplete = "off", placeholder = "Username" })
+									@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col">
+									@Html.PasswordFor(m => m.Password, new { @class = "form-control text-field", placeholder = "Password" })
+									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<br>
+							<div class="form-group">
+								<div class="col">
+									<font color="@ViewBag.color">@ViewBag.ErroMessage</font>
+								</div>
+							</div>
+							<br>
+							<div class="form-group">
+								<div class="col">
+									<input type="submit" value="Log in" class="btn btn-outline-secondary btn-circle btn-lg btn-block" />
+								</div>
+							</div>
+						}
+					</section>
+
+				</div>
+			</div>
 	</div>
 </div>
+@*
+	@*<div class="back">
+			<div class="div-center">
+				<div class="content">
+					
+				</div>
+			</div>
+		</div>*@
