@@ -198,12 +198,78 @@
         });
 </script>
 
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogHighestDataClassification").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Highest Data Classification",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550
+            });
+        	$("#highestDataClassification .ViewReport").click(function () {
+				debugger
+                $.ajax({
+                    type: "POST",
+                    url: "/DashBord/HighestDataClassification",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogHighestDataClassification').html(response);
+                    	$('#dialogHighestDataClassification').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogDataRetentionRequirement").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Highest Data Classification",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550
+            });
+        	$("#dataRetentionRequirement .ViewReport").click(function () {
+				debugger
+                $.ajax({
+                    type: "POST",
+                    url: "/DashBord/DataRetentionRequirement",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogDataRetentionRequirement').html(response);
+                    	$('#dialogDataRetentionRequirement').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+
 <div id="dialogStrategicFit" style="display: none"></div>
 <div id="dialogDisasterRecovery" style="display: none"></div>
 <div id="dialogBackUpData" style="display: none"></div>
 <div id="dialogBackUpConfiguration" style="display: none"></div>
 <div id="dialogHighAvailability" style="display: none"></div>
 <div id="dialogSinglePointOfFailure" style="display: none"></div>
+<div id="dialogHighestDataClassification" style="display: none"></div>
+<div id="dialogDataRetentionRequirement" style="display: none"></div>
 
 <style>
 	div.light {
@@ -294,8 +360,8 @@
 		<div class="card-body">
 			 <canvas id="HDC" width="250" height="240"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Highest Data Classification</button>
+		<div class="card-footer" id="highestDataClassification">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="highestDataClassification" href="javascript:;">Highest Data Classification</button>
 		</div>
 	</div>
 	<div class="card">
@@ -303,8 +369,8 @@
 		<div class="card-body">
 			 <canvas id="DRR" width="250" height="240"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Data Retention Requirement</button>
+		<div class="card-footer" id="dataRetentionRequirement">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="dataRetentionRequirement" href="javascript:;">Data Retention Requirement</button>
 		</div>
 	</div>
 </div>

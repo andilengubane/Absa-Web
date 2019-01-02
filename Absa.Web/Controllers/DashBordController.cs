@@ -135,10 +135,55 @@ namespace Absa.Web.Controllers
 			var highAvailabiltyData = context.GetAppStatus(data.BusinessUnitId);
 			foreach (var item in highAvailabiltyData)
 			{
-				model.HighAvailabilityYes = Convert.ToInt32(item.HighAvailabilityYes);
-				model.HighAvailabilityNo = Convert.ToInt32(item.HighAvailabilityNo);
-				model.HighAvailabilityWarning = Convert.ToInt32(item.HighAvailabilityWarning);
-				model.HighAvailabilityOverRall = Convert.ToInt32(item.HighAvailabilityOverRall);
+				model.SPOFYes = Convert.ToInt32(item.SPOFYes);
+				model.SPOFNo = Convert.ToInt32(item.SPOFNo);
+				model.SPOFWarning = Convert.ToInt32(item.SPOFWarning);
+				model.SPOFOverRall = Convert.ToInt32(item.SPOFOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+		public ActionResult HighestDataClassification()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetHighestDataClassification()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var highAvailabiltyData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in highAvailabiltyData)
+			{
+				model.HighestDataClassificationYes = Convert.ToInt32(item.HighestDataClassificationYes);
+				model.HighestDataClassificationNo = Convert.ToInt32(item.HighestDataClassificationNo);
+				model.HighestDataClassificationWarning = Convert.ToInt32(item.HighestDataClassificationWarning);
+				model.HighestDataClassificationOverRall = Convert.ToInt32(item.HighestDataClassificationOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult DataRetentionRequirement()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetDataRetentionRequirement()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var highAvailabiltyData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in highAvailabiltyData)
+			{
+				model.DataRetentionRequirementYes = Convert.ToInt32(item.DataRetentionRequirementYes);
+				model.DataRetentionRequirementNo = Convert.ToInt32(item.DataRetentionRequirementNo);
+				model.DataRetentionRequirementWarning = Convert.ToInt32(item.DataRetentionRequirementWarning);
+				model.DataRetentionRequirementOverRall = Convert.ToInt32(item.DataRetentionRequirementOverRall);
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
