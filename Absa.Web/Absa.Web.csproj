@@ -328,6 +328,8 @@
     <Content Include="Views\DashBord\DisasterRecovery.cshtml" />
     <Content Include="Views\DashBord\BackUpData.cshtml" />
     <Content Include="Views\DashBord\BackUpConfiguration.cshtml" />
+    <Content Include="Views\DashBord\HighAvailability.cshtml" />
+    <Content Include="Views\DashBord\SinglePointOfFailure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

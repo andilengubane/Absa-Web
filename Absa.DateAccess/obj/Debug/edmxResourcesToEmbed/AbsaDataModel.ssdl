@@ -81,6 +81,7 @@
     <Property Name="BackUpData" Type="nvarchar(max)" />
     <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
     <Property Name="HighAvailability" Type="nvarchar(max)" />
+    <Property Name="UserID" Type="int" />
   </EntityType>
   <EntityType Name="ResilienceTrackAudit">
     <Key>
@@ -125,6 +126,7 @@
     <Property Name="BackUpData" Type="nvarchar(max)" />
     <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
     <Property Name="HighAvailability" Type="nvarchar(max)" />
+    <Property Name="UserID" Type="int" />
   </EntityType>
   <EntityType Name="RolesPermissions">
     <Key>
@@ -133,6 +135,16 @@
     <Property Name="RolesPermissionsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="DateLogged" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -265,6 +277,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="GetAllUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetAppStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
   </Function>
@@ -275,7 +288,9 @@
   <Function Name="GetResilienceTrackListById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ResilienceTrackID" Type="int" Mode="In" />
   </Function>
-  <Function Name="GetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetUserById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="AbsaDBModelStoreContainer">
     <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessUnitAudit" EntityType="Self.BusinessUnitAudit" Schema="dbo" store:Type="Tables" />
@@ -284,6 +299,7 @@
     <EntitySet Name="ResilienceTrack" EntityType="Self.ResilienceTrack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ResilienceTrackAudit" EntityType="Self.ResilienceTrackAudit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersAudit" EntityType="Self.UsersAudit" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="Self.FK__BusinessU__Busin__01142BA1">
