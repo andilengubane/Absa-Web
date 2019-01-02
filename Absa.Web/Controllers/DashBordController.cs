@@ -188,7 +188,7 @@ namespace Absa.Web.Controllers
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
 
-		public ActionResult OperationMonitoring()
+		public ActionResult OperationalMonitoring()
 		{
 			return PartialView();
 		}
@@ -202,10 +202,10 @@ namespace Absa.Web.Controllers
 			var operationMonitoringData = context.GetAppStatus(data.BusinessUnitId);
 			foreach (var item in operationMonitoringData)
 			{
-				model.OparationsDocumentationYes = Convert.ToInt32(item.OparationsDocumentationYes);
+				model.OperationalMonitoringYes = Convert.ToInt32(item.OperationalMonitoringYes);
 				model.OperationalMonitoringNo = Convert.ToInt32(item.OperationalMonitoringNo);
-				model.OparationsDocumentationWarning = Convert.ToInt32(item.OparationsDocumentationWarning);
-				model.OparationsDocumentationOverRall = Convert.ToInt32(item.OparationsDocumentationOverRall);
+				model.OperationalMonitoringWarning = Convert.ToInt32(item.OperationalMonitoringWarning);
+				model.OperationalMonitoringOverRall = Convert.ToInt32(item.OperationalMonitoringOverRall);
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}

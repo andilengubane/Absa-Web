@@ -1,20 +1,20 @@
 ﻿
 @{
-    Layout = null;
+	Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>StrategicFit</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>HighAvailabilty</title>
 	<script src="~/Scripts/chart/highcharts.js"></script>
 	<script src="~/Scripts/chart/exporting.js"></script>
 	<script src="~/Scripts/chart/export-data.js"></script>
 	<script>
-		$.getJSON("/DashBord/GetAllApplicationData", function (data) {
-			
+		$.getJSON("/DashBord/GetHighAvailabiltyData", function (data) {
+
 			Highcharts.chart('container', {
 				chart: {
 					plotBackgroundColor: null,
@@ -23,7 +23,7 @@
 					type: 'pie'
 				},
 				title: {
-					text: 'Over Rall ' + data.StrategicFitOverRall + '%'
+					text: 'Over Rall ' + data.HighAvailabilityOverRall + '%'
 				},
 				tooltip: {
 					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -46,18 +46,18 @@
 					colorByPoint: true,
 					data: [{
 						name: 'Yes',
-						y: data.StrategicFitYes,
+						y: data.HighAvailabilityYes,
 						sliced: true,
 						selected: true,
 						color: 'green'
 					}, {
 						name: 'No',
-						y: data.StrategicFitNo,
+						y: data.HighAvailabilityNo,
 						y: 20,
 						color: 'red'
 					}, {
 						name: 'Warning',
-						y: data.StrategicFitWarning,
+						y: data.HighAvailabilityWarning,
 						color: 'yellow'
 					}]
 				}]
@@ -66,8 +66,9 @@
 	</script>
 </head>
 <body>
-    <div> 
+	<div>
 		<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-    </div>
+	</div>
 </body>
 </html>
+
