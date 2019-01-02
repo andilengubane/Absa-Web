@@ -78,9 +78,9 @@ namespace Absa.Web.Controllers
 				model.ExternalSLANo = Convert.ToInt32(item.ExternalSLANo);
 				model.ExternalSLAWarning = Convert.ToInt32(item.ExternalSLAWarning);
 
-				model.ArchitetureDocumentationYes = Convert.ToInt32(item.ArchitetureDocumentationYes);
-				model.ArchitetureDocumentationNo = Convert.ToInt32(item.ArchitetureDocumentationNo);
-				model.ArchitetureDocumentationWarning = Convert.ToInt32(item.ArchitetureDocumentationWarning);
+				model.ArchitectureDocumentationYes = Convert.ToInt32(item.ArchitetureDocumentationYes);
+				model.ArchitectureDocumentationNo = Convert.ToInt32(item.ArchitetureDocumentationNo);
+				model.ArchitectureDocumentationWarning = Convert.ToInt32(item.ArchitetureDocumentationWarning);
 
 				model.OparationsDocumentationYes = Convert.ToInt32(item.OparationsDocumentationYes);
 				model.OparationsDocumentationNo = Convert.ToInt32(item.OparationsDocumentationNo);

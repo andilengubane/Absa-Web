@@ -73,5 +73,3 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\pt\Microsoft.SqlServer.Types.reso
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\RdlCompile.cache
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\RdlCompile.compiled
