@@ -187,6 +187,439 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+		public ActionResult OperationalMonitoring()
+		{
+			return PartialView();
+		}
 
+		public ActionResult GetOperationalMonitoring()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var highAvailabiltyData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in highAvailabiltyData)
+			{
+				model.OperationalMonitoringYes = Convert.ToInt32(item.OperationalMonitoringYes);
+				model.OperationalMonitoringNo = Convert.ToInt32(item.OperationalMonitoringNo);
+				model.OperationalMonitoringWarning = Convert.ToInt32(item.OperationalMonitoringWarning);
+				model.OperationalMonitoringOverRall = Convert.ToInt32(item.OperationalMonitoringOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult SecurityMonitoring()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetSecurityMonitoring()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var highAvailabiltyData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in highAvailabiltyData)
+			{
+				model.SecurityMonitoringYes = Convert.ToInt32(item.SecurityMonitoringYes);
+				model.SecurityMonitoringNo = Convert.ToInt32(item.SecurityMonitoringNo);
+				model.SecurityMonitoringWarning = Convert.ToInt32(item.SecurityMonitoringWarning);
+				model.SecurityMonitoringOverRall = Convert.ToInt32(item.SecurityMonitoringOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult InternalOLA()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetInternalOLA()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var highAvailabiltyData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in highAvailabiltyData)
+			{
+				model.InternalOLAYes = Convert.ToInt32(item.InternalOLAYes);
+				model.InternalOLANo = Convert.ToInt32(item.InternalOLANo);
+				model.InternalOLAWarning = Convert.ToInt32(item.InternalOLAWarning);
+				model.InternalOLAOverRall = Convert.ToInt32(item.InternalOLAOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+	   }
+
+	    public ActionResult ExternalSLA()
+	   {
+		  return PartialView();
+	   }
+
+	    public ActionResult GetExternalSLA()
+	    {
+		   var id = this.Session["ID"];
+		   int userId = Convert.ToInt32(id);
+		   var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+		   var model = new DashBordModel();
+
+		   var externalSLA = context.GetAppStatus(data.BusinessUnitId);
+		   foreach (var item in externalSLA)
+		   {
+			  model.ExternalSLAYes = Convert.ToInt32(item.ExternalSLAYes);
+			  model.ExternalSLANo = Convert.ToInt32(item.ExternalSLANo);
+			  model.ExternalSLAWarning = Convert.ToInt32(item.ExternalSLAWarning);
+			  model.ExternalSLAOverRall = Convert.ToInt32(item.ExternalSLAOverRall);
+		   }
+		    return Json(model, JsonRequestBehavior.AllowGet);
+	    }
+
+		public ActionResult ArchictetureDocumentation()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetArchictetureDocumentation()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var archictetureDocumentation = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in archictetureDocumentation)
+			{
+				model.ArchitectureDocumentationYes = Convert.ToInt32(item.ArchitetureDocumentationYes);
+				model.ArchitectureDocumentationNo = Convert.ToInt32(item.ArchitetureDocumentationNo);
+				model.ArchitectureDocumentationWarning = Convert.ToInt32(item.ArchitetureDocumentationWarning);
+				model.ArchitectureDocumentationOverRall = Convert.ToInt32(item.ArchitetureDocumentationOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+		public ActionResult OperationalDocumentation()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetOperationalDocumentation()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var operationalDocumentation = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in operationalDocumentation)
+			{
+				model.OparationsDocumentationYes = Convert.ToInt32(item.OparationsDocumentationYes);
+				model.OparationsDocumentationNo = Convert.ToInt32(item.OparationsDocumentationNo);
+				model.OparationsDocumentationWarning = Convert.ToInt32(item.OparationsDocumentationWarning);
+				model.OparationsDocumentationOverRall = Convert.ToInt32(item.OparationsDocumentationOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult IntegratedtoAD()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetIntegratedtoAD()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var integratedtoAD = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in integratedtoAD)
+			{
+				model.IntegratedToADYes = Convert.ToInt32(item.IntegratedToADYes);
+				model.IntegratedToADNo = Convert.ToInt32(item.IntegratedToADNo);
+				model.IntegratedToADWarning = Convert.ToInt32(item.IntegratedToADWarning);
+				model.IntegratedToADOverRall = Convert.ToInt32(item.IntegratedToADOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult JMLProcess()
+		{
+			return PartialView();
+		}
+		public ActionResult GetJMLProcess()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var jmlProcess = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in jmlProcess)
+			{
+				model.JMLProcessYes = Convert.ToInt32(item.JMLProcessYes);
+				model.JMLProcessNo = Convert.ToInt32(item.JMLProcessNo);
+				model.JMLProcessWarning = Convert.ToInt32(item.JMLProcessWarning);
+				model.JMLProcessOverRall = Convert.ToInt32(item.JMLProcessOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult RecertificationProcess()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetRecertificationProcess()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var recertificationProcess = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in recertificationProcess)
+			{
+				model.RecertificationProcessYes = Convert.ToInt32(item.RecertificationProcessYes);
+				model.RecertificationProcessNo = Convert.ToInt32(item.RecertificationProcessNo);
+				model.RecertificationProcessWarning = Convert.ToInt32(item.RecertificationProcessWarning);
+				model.RecertificationProcessOverRall = Convert.ToInt32(item.RecertificationProcessOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult PrivilegedAccessManagement()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetPrivilegedAccessManagement()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+			
+			var privilegedAccessManagement = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in privilegedAccessManagement)
+			{
+				model.PrivilegedAccessManagementYes = Convert.ToInt32(item.PrivilegedAccessManagementYes);
+				model.PrivilegedAccessManagementNo = Convert.ToInt32(item.PrivilegedAccessManagementNo);
+				model.PrivilegedAccessManagementWarning = Convert.ToInt32(item.PrivilegedAccessManagementWarning);
+				model.PrivilegedAccessManagementOverRall = Convert.ToInt32(item.PrivilegedAccessManagementOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult OSPatchingLevel()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetOSPatchingLevel()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var osPatchingLevel = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in osPatchingLevel)
+			{
+				model.OSPatchingLevelYes = Convert.ToInt32(item.OSPatchingLevelYes);
+				model.OSPatchingLevelNo = Convert.ToInt32(item.OSPatchingLevelNo);
+				model.OSPatchingLevelWarning = Convert.ToInt32(item.OSPatchingLevelWarning);
+				model.OSPatchingLevelOverRall = Convert.ToInt32(item.OSPatchingLevelOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult ApplicationPatchingLevel()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetApplicationPatchingLevel()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+			
+			var applicationPatchingLevel = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in applicationPatchingLevel)
+			{
+				model.ApplicationPatchingLevelYes = Convert.ToInt32(item.ApplicationPatchingLevelYes);
+				model.ApplicationPatchingLevelNo = Convert.ToInt32(item.ApplicationPatchingLevelNo);
+				model.ApplicationPatchingLevelWarning = Convert.ToInt32(item.ApplicationPatchingLevelWarning);
+				model.ApplicationPatchingLevelOverRall = Convert.ToInt32(item.ApplicationPatchingLevelOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult MiddlewarePatchingLevel()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetMiddlewarePatchingLevel()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var middlewarePatchingLevel = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in middlewarePatchingLevel)
+			{
+				model.MiddlewarePatchingLevelYes = Convert.ToInt32(item.MiddlewarePatchingLevelNo);
+				model.MiddlewarePatchingLevelNo = Convert.ToInt32(item.ApplicationPatchingLevelNo);
+				model.MiddlewarePatchingLevelWarning = Convert.ToInt32(item.MiddlewarePatchingLevelWarning);
+				model.MiddlewarePatchingLevelOverRall = Convert.ToInt32(item.MiddlewarePatchingLevelOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult SupportedApplication()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetSupportedApplication()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+			
+			var middlewarePatchingLevel = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in middlewarePatchingLevel)
+			{
+				model.SupportedApplicationYes = Convert.ToInt32(item.SupportedApplicationYes);
+				model.SupportedApplicationNo = Convert.ToInt32(item.SupportedApplicationNo);
+				model.SupportedApplicationWarning = Convert.ToInt32(item.SupportedApplicationWarning);
+				model.SupportedApplicationOverRall = Convert.ToInt32(item.SupportedApplicationOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult SupportedOperationSystem()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetSupportedOperationSystem()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+			
+			var supportedOperationSystem = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in supportedOperationSystem)
+			{
+				model.SupportedOperationSystemYes = Convert.ToInt32(item.SupportedOperationSystemYes);
+				model.SupportedOperationSystemNo = Convert.ToInt32(item.SupportedOperationSystemNo);
+				model.SupportedOperationSystemWarning = Convert.ToInt32(item.SupportedOperationSystemWarning);
+				model.SupportedOperationSystemOverRall = Convert.ToInt32(item.SupportedOperationSystemOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult SupportedJava()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetSupportedJava()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var supportedJava = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in supportedJava)
+			{
+				model.SupportedJavaYes = Convert.ToInt32(item.SupportedJavaYes);
+				model.SupportedJavaNo = Convert.ToInt32(item.SupportedJavaNo);
+				model.SupportedJavaWarning = Convert.ToInt32(item.SupportedJavaWarning);
+				model.SupportedJavaOverRall = Convert.ToInt32(item.SupportedJavaOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult SupportedMiddleware()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetSupportedMiddleware()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var supportedMiddleware = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in supportedMiddleware)
+			{
+				model.SupportedMiddlewareYes = Convert.ToInt32(item.SupportedMiddlewareYes);
+				model.SupportedMiddlewareNo = Convert.ToInt32(item.SupportedMiddlewareNo);
+				model.SupportedMiddlewareWarning = Convert.ToInt32(item.SupportedMiddlewareWarning);
+				model.SupportedMiddlewareOverRall = Convert.ToInt32(item.SupportedMiddlewareOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
+		
+		public ActionResult SupportedDatabase()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetSupportedDatabase()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var supportedDatabase = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in supportedDatabase)
+			{
+				model.SupportedDatabaseYes = Convert.ToInt32(item.SupportedDatabaseYes);
+				model.SupportedDatabaseNo = Convert.ToInt32(item.SupportedDatabaseNo);
+				model.SupportedDatabaseWarning = Convert.ToInt32(item.SupportedDatabaseWarning);
+				model.SupportedDatabaseOverRall = Convert.ToInt32(item.SupportedDatabaseOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		} 
+
+		public ActionResult OpenVulnerabilities()
+		{
+			return PartialView();
+		}
+
+		public ActionResult GetOpenVulnerabilities()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var model = new DashBordModel();
+
+			var openVulnerabilities = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in openVulnerabilities)
+			{
+				model.OpenVulnerabilitiesYes = Convert.ToInt32(item.OpenVulnerabilitiesYes);
+				model.OperationalMonitoringNo = Convert.ToInt32(item.OperationalMonitoringNo);
+				model.OperationalMonitoringWarning = Convert.ToInt32(item.OperationalMonitoringWarning);
+				model.OperationalMonitoringOverRall = Convert.ToInt32(item.OperationalMonitoringOverRall);
+			}
+			return Json(model, JsonRequestBehavior.AllowGet);
+		}
 	}
 }

@@ -245,6 +245,7 @@
     <Content Include="Scripts\chart\highcharts-more.js" />
     <Content Include="Scripts\chart\highcharts.js" />
     <Content Include="Scripts\dashbord.js" />
+    <Content Include="Scripts\dashbordreport.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -332,6 +333,25 @@
     <Content Include="Views\DashBord\SinglePointOfFailure.cshtml" />
     <Content Include="Views\DashBord\HighestDataClassification.cshtml" />
     <Content Include="Views\DashBord\DataRetentionRequirement.cshtml" />
+    <Content Include="Views\DashBord\OperationalMonitoring.cshtml" />
+    <Content Include="Views\DashBord\SecurityMonitoring.cshtml" />
+    <Content Include="Views\DashBord\InternalOLA.cshtml" />
+    <Content Include="Views\DashBord\ExternalSLA.cshtml" />
+    <Content Include="Views\DashBord\ArchictetureDocumentation.cshtml" />
+    <Content Include="Views\DashBord\OperationalDocumentation.cshtml" />
+    <Content Include="Views\DashBord\IntegratedtoAD.cshtml" />
+    <Content Include="Views\DashBord\JMLProcess.cshtml" />
+    <Content Include="Views\DashBord\RecertificationProcess.cshtml" />
+    <Content Include="Views\DashBord\PrivilegedAccessManagement.cshtml" />
+    <Content Include="Views\DashBord\OSPatchingLevel.cshtml" />
+    <Content Include="Views\DashBord\ApplicationPatchingLevel.cshtml" />
+    <Content Include="Views\DashBord\MiddlewarePatchingLevel.cshtml" />
+    <Content Include="Views\DashBord\SupportedApplication.cshtml" />
+    <Content Include="Views\DashBord\SupportedOperationSystem.cshtml" />
+    <Content Include="Views\DashBord\SupportedJava.cshtml" />
+    <Content Include="Views\DashBord\SupportedMiddleware.cshtml" />
+    <Content Include="Views\DashBord\SupportedDatabase.cshtml" />
+    <Content Include="Views\DashBord\OpenVulnerabilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

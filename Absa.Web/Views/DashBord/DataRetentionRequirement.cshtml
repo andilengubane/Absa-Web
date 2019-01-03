@@ -7,12 +7,64 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>DataRetentionRequirement</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>StrategicFit</title>
+	<script src="~/Scripts/chart/highcharts.js"></script>
+	<script src="~/Scripts/chart/exporting.js"></script>
+	<script src="~/Scripts/chart/export-data.js"></script>
+	<script>
+		$.getJSON("/DashBord/GetDataRetentionRequirement", function (data) {
+
+			Highcharts.chart('container', {
+				chart: {
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false,
+					type: 'pie'
+				},
+				title: {
+					text: 'Over Rall ' + data.DataRetentionRequirementOverRall + '%'
+				},
+				tooltip: {
+					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: true,
+							format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+							style: {
+								color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+							}
+						}
+					}
+				},
+				series: [{
+					name: 'Brands',
+					colorByPoint: true,
+					data: [{
+						name: 'Yes',
+						y: data.DataRetentionRequirementYes,
+						color: 'green'
+					}, {
+						name: 'No',
+						y: data.DataRetentionRequirementNo,
+						color: 'red'
+					}, {
+						name: 'Warning',
+						y: data.DataRetentionRequirementWarning,
+						color: 'yellow'
+					}]
+				}]
+			});
+		});
+	</script>
 </head>
 <body>
-    <div> 
-		Data Retention Requirement
-    </div>
+	<div>
+		<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+	</div>
 </body>
 </html>

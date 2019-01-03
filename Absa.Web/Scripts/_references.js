@@ -7,6 +7,7 @@
 /// <reference path="chart/highcharts.js" />
 /// <reference path="chart/highcharts-more.js" />
 /// <reference path="dashbord.js" />
+/// <reference path="dashbordreport.js" />
 /// <reference path="esm/popper.min.js" />
 /// <reference path="esm/popper-utils.min.js" />
 /// <reference path="jquery.validate.js" />
