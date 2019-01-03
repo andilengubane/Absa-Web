@@ -3,264 +3,14 @@
     ViewBag.Title = "DashBord";
 }
 @section scripts{
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
-    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/dashbord.js"></script>
-    <script src="~/Scripts/techo.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/dashbord.js"></script>
+<script src="~/Scripts/techo.js"></script>
+<script src="~/Scripts/dashbordreport.js"></script>
 }
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogStrategicFit").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "Strategic Fit",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#stategicFit .ViewReport").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/StrategicFit",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogStrategicFit').html(response);
-                        $('#dialogStrategicFit').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogDisasterRecovery").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "Disaster Recovery",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#disasterRecovery .ViewReport").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/DisasterRecovery",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogDisasterRecovery').html(response);
-                    	$('#dialogDisasterRecovery').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogBackUpData").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "BackUp - Data",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#backUpData .ViewReport").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/BackUpData",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogBackUpData').html(response);
-                    	$('#dialogBackUpData').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogBackUpConfiguration").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "BackUp - Configuration",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#backUpConfiguration .ViewReport").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/BackUpConfiguration",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogBackUpConfiguration').html(response);
-                    	$('#dialogBackUpConfiguration').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogHighAvailability").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "High Availability",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#highAvailability .ViewReport").click(function () {
-				debugger
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/HighAvailability",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogHighAvailability').html(response);
-                    	$('#dialogHighAvailability').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogSinglePointOfFailure").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "Single Point Of Failure",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#sPOF .ViewReport").click(function () {
-				debugger
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/SinglePointOfFailure",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogSinglePointOfFailure').html(response);
-                    	$('#dialogSinglePointOfFailure').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogHighestDataClassification").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "Highest Data Classification",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#highestDataClassification .ViewReport").click(function () {
-				debugger
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/HighestDataClassification",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogHighestDataClassification').html(response);
-                    	$('#dialogHighestDataClassification').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
-
-<script type="text/javascript">
-        $(function () {
-        	$("#dialogDataRetentionRequirement").dialog({
-                autoOpen: false,
-                modal: true,
-                title: "Highest Data Classification",
-                dialogClass: 'titleColor',
-                width: 700,
-                height: 550
-            });
-        	$("#dataRetentionRequirement .ViewReport").click(function () {
-				debugger
-                $.ajax({
-                    type: "POST",
-                    url: "/DashBord/DataRetentionRequirement",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (response) {
-                    	$('#dialogDataRetentionRequirement').html(response);
-                    	$('#dialogDataRetentionRequirement').dialog('open');
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            });
-        });
-</script>
 
 <div id="dialogStrategicFit" style="display: none"></div>
 <div id="dialogDisasterRecovery" style="display: none"></div>
@@ -270,6 +20,25 @@
 <div id="dialogSinglePointOfFailure" style="display: none"></div>
 <div id="dialogHighestDataClassification" style="display: none"></div>
 <div id="dialogDataRetentionRequirement" style="display: none"></div>
+<div id="dialogOperationalMonitoring" style="display: none"></div>
+<div id="dialogSecurityMonitoring" style="display: none"></div>
+<div id="dialogInternalOLA" style="display: none"></div>
+<div id="dialogExternalSLA" style="display: none"></div>
+<div id="dialogArchictetureDocumentation" style="display: none"></div>
+<div id="dialogOperationalDocumentation" style="display: none"></div>
+<div id="dialogIntegratedtoAD" style="display: none"></div>
+<div id="dialogJMLProcess" style="display: none"></div>
+<div id="dialogRecertificationProcess" style="display: none"></div>
+<div id="dialogPrivilegedAccessManagement" style="display: none"></div>
+<div id="dialogOSPatchingLevel" style="display: none"></div>
+<div id="dialogApplicationPatchingLevel" style="display: none"></div>
+<div id="dialogMiddlewarePatchingLevel" style="display: none"></div>
+<div id="dialogSupportedApplication" style="display: none"></div>
+<div id="dialogSupportedOS" style="display: none"></div>
+<div id="dialogSupportedJava" style="display: none"></div>
+<div id="dialogSupportedMiddleware" style="display: none"></div>
+<div id="dialogSupportedDatabase" style="display: none"></div>
+<div id="dialogOpenVulnerabilities" style="display: none"></div>
 
 <style>
 	div.light {
@@ -301,7 +70,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">Strategic Fit</h5></div>
 		<div class="card-body">
-			<canvas id="SF" width="250" height="240"></canvas>
+			<canvas id="SF" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="stategicFit">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="stategicFit" href="javascript:;">Strategic Fit</button>
@@ -310,7 +79,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">Disater Recover</h5></div>
 		<div class="card-body">
-			<canvas id="DR" width="250" height="240"></canvas>
+			<canvas id="DR" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="disasterRecovery">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="disasterRecovery" href="javascript:;">Disaster Recovery</button>
@@ -319,7 +88,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">BackUp - Data</h5></div>
 		<div class="card-body">
-			<canvas id="backUpsData" width="250" height="240"></canvas>
+			<canvas id="backUpsData" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="backUpData">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="backUpData" href="javascript:;">BackUp - Data</button>
@@ -328,7 +97,7 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">BackUp - Configuration</h5></div>
 		<div class="card-body">
-			<canvas id="backUpConfig" width="250" height="240"></canvas>
+			<canvas id="backUpConfig" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="backUpConfiguration">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="backUpConfiguration" href="javascript:;">BackUp - Configuration</button>
@@ -340,7 +109,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">High Availability</h5></div>
 		<div class="card-body">
-			<canvas id="highAv" width="250" height="240"></canvas>
+			<canvas id="highAv" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="highAvailability">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="highAvailability" href="javascript:;">High Availability</button>
@@ -349,7 +118,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">Single Point of Failure</h5></div>
 		<div class="card-body">
-			<canvas id="SPOF" width="250" height="240"></canvas>
+			<canvas id="SPOF" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer"  id="sPOF">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="sPOF" href="javascript:;">Single Point of Failure</button>
@@ -358,7 +127,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">Highest Data Classification</h5></div>
 		<div class="card-body">
-			 <canvas id="HDC" width="250" height="240"></canvas>
+			 <canvas id="HDC" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="highestDataClassification">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="highestDataClassification" href="javascript:;">Highest Data Classification</button>
@@ -367,7 +136,7 @@
 	<div class="card">
 		<div class="card-header"><h5 class="card-title">Data Retention Requirement</h5></div>
 		<div class="card-body">
-			 <canvas id="DRR" width="250" height="240"></canvas>
+			 <canvas id="DRR" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="dataRetentionRequirement">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="dataRetentionRequirement" href="javascript:;">Data Retention Requirement</button>
@@ -379,184 +148,184 @@
 	<div class="card" id="dashBord">
 		<div class="card-header"><h5 class="card-title">Operational Monitoring</h5></div>
 		<div class="card-body">
-			 <canvas id="OM" width="250" height="240"></canvas>
+			 <canvas id="OM" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="operationalMonitoring">
 			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="operationalMonitoring" href="javascript:;">Operation Monitoring</button>
 		</div>
 	</div>
-	<div class="card" id="dashBord">
+	<div class="card">
 		<div class="card-header"><h5 class="card-title">Security Monitoring</h5></div>
 		<div class="card-body">
-			<canvas id="SM" width="250" height="240"></canvas>
+			<canvas id="SM" width="250" height="240" data-val="0"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Security Monitoring</button>
+		<div class="card-footer" id="securityMonitoring">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="securityMonitoring" href="javascript:;">Security Monitoring</button>
 		</div>
 	</div>
-	<div class="card" id="dashBord">
+	<div class="card">
 		<div class="card-header"><h5 class="card-title">Internal OLA</h5></div>
 		<div class="card-body">
-			<canvas id="IOLA" width="250" height="240"></canvas>
+			<canvas id="IOLA" width="250" height="240" data-val="0"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Internal OLA</button>
+		<div class="card-footer" id="internalOLA">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="internalOLA" href="javascript:;">Internal OLA</button>
 		</div>
 	</div>
-	<div class="card" id="dashBord">
+	<div class="card">
 		<div class="card-header"><h5 class="card-title">External SLA</h5></div>
 		<div class="card-body">
-			<canvas id="ESLA" width="250" height="240"></canvas>
+			<canvas id="ESLA" width="250" height="240" data-val="0"></canvas>
 		</div>
-		<div class="card-footer">
-			<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">External SLA</button>
+		<div class="card-footer"  id="externalSLA">
+			<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="externalSLA" href="javascript:;">External SLA</button>
 		</div>
 	</div>
 </div>
 <br>
 <div class="card-deck">
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Archicteture Documentation</h5></div>
 			<div class="card-body">
-				<canvas id="AD" width="250" height="240"></canvas>
+				<canvas id="AD" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Archicteture Documentation</button>
+			<div class="card-footer"  id="archictetureDocumentation">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="archictetureDocumentation" href="javascript:;">Archicteture Documentation</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Operational Documentation</h5></div>
 			<div class="card-body">
-				<canvas id="OD" width="250" height="240"></canvas>
+				<canvas id="OD" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Operational Documentation</button>
+			<div class="card-footer" id="operationalDocumentation">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="operationalDocumentation" href="javascript:;">Operational Documentation</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Integrated to AD</h5></div>
 			<div class="card-body">
-				<canvas id="ITAD" width="250" height="240"></canvas>
+				<canvas id="ITAD" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Integrated to AD</button>
+			<div class="card-footer" id="integratedtoAD">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="integratedtoAD" href="javascript:;">Integrated to AD</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">JML Process</h5></div>
 			<div class="card-body">
-				<canvas id="JMLP" width="250" height="240"></canvas>
+				<canvas id="JMLP" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">JML Process</button>
+			<div class="card-footer" id="jmlProcess">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="jmlProcess" href="javascript:;">JML Process</button>
 			</div>
 		</div>
 	</div>
 <br>
 <div class="card-deck">
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Recertification Process</h5></div>
 			<div class="card-body">
-				<canvas id="RProcess" width="250" height="240"></canvas>
+				<canvas id="RProcess" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Recertification Process</button>
+			<div class="card-footer" id="recertificationProcess">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="recertificationProcess" href="javascript:;">Recertification Process</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Privileged Access Management</h5></div>
 			<div class="card-body">
-				<canvas id="PAM" width="250" height="240"></canvas>
+				<canvas id="PAM" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Privileged Access Management</button>
+			<div class="card-footer" id="privilegedAccessManagement">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="privilegedAccessManagement" href="javascript:;">Privileged Access Management</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">OS Patching Level</h5></div>
 			<div class="card-body">
-				<canvas id="OSPL" width="250" height="240"></canvas>
+				<canvas id="OSPL" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">OS Patching Level</button>
+			<div class="card-footer" id="osPatchingLevel">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="osPatchingLevel" href="javascript:;">OS Patching Level</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Application Patching Level</h5></div>
 			<div class="card-body">
-				<canvas id="APL" width="250" height="240"></canvas>
+				<canvas id="APL" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Application Patching Level</button>
+			<div class="card-footer" id="applicationPatchingLevel">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="applicationPatchingLevel" href="javascript:;">Application Patching Level</button>
 			</div>
 		</div>
 	</div>
 <br>
 <div class="card-deck">
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Middleware Patching Level</h5></div>
 			<div class="card-body">
-				 <canvas id="MPL" width="250" height="240"></canvas>
+				 <canvas id="MPL" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Middleware Patching Level</button>
+			<div class="card-footer" id="middlewarePatchingLevel">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="middlewarePatchingLevel" href="javascript:;">Middleware Patching Level</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Supported Application</h5></div>
 			<div class="card-body">
-				<canvas id="SA" width="250" height="240"></canvas>
+				<canvas id="SA" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Application</button>
+			<div class="card-footer" id="supportedApplication">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="supportedApplication" href="javascript:;">Supported Application</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
-			<div class="card-header"><h5 class="card-title">Supported OS</h5></div>
+		<div class="card">
+			<div class="card-header"><h5 class="card-title">Supported Operation System</h5></div>
 			<div class="card-body">
-				<canvas id="SOS" width="250" height="240"></canvas>
+				<canvas id="SOS" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported OS</button>
+			<div class="card-footer" id="supportedOS">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="supportedOS" href="javascript:;">Supported Operation System</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Supported Java</h5></div>
 			<div class="card-body">
-				<canvas id="SJ" width="250" height="240"></canvas>
+				<canvas id="SJ" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Java</button>
+			<div class="card-footer" id="supportedJava">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="supportedJava" href="javascript:;">Supported Java</button>
 			</div>
 		</div>
 	</div>
 <br>
 <div class="card-deck">
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Supported Middleware</h5></div>
 			<div class="card-body">
-				<canvas id="SML" width="250" height="240"></canvas>
+				<canvas id="SML" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Middleware</button>
+			<div class="card-footer" id="supportedMiddleware">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="supportedMiddleware" href="javascript:;">Supported Middleware</button>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-header"><h5 class="card-title">Supported Database</h5></div>
 			<div class="card-body">
-				<canvas id="SDB" width="250" height="240"></canvas>
+				<canvas id="SDB" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Supported Database</button>
+			<div class="card-footer" id="supportedDatabase">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="supportedDatabase" href="javascript:;">Supported Database</button>
 			</div>
 		</div>
-		<div class="card" id="dashBord">
+		<div class="card">
 			<div class="card-header"><h5 class="card-title">Open Vulnerabilities</h5></div>
 			<div class="card-body">
-				<canvas id="OV" width="250" height="240"></canvas>
+				<canvas id="OV" width="250" height="240" data-val="0"></canvas>
 			</div>
-			<div class="card-footer">
-				<button class="btn btn-sm btn-circle btn-outline-dark" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">Open Vulnerabilities</button>
+			<div class="card-footer" id="openVulnerabilities">
+				<button class="ViewReport btn btn-sm btn-circle btn-outline-secondary" type="button" id="openVulnerabilities" href="javascript:;">Open Vulnerabilities</button>
 			</div>
 		</div>
 	</div>
