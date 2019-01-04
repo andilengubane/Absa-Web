@@ -15,6 +15,7 @@ namespace Absa.Web.Models
 	public class DashBordModel
 	{
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
+		public int NumberOfApps { get; set; }
 		public string BusinessUnit { get; set; }
 		public int StrategicFitYes { get; set; }
 		public int StrategicFitNo { get; set; }
