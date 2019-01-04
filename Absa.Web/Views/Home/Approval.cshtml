@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
 	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
         $(function () {
             $("#dialog").dialog({
@@ -35,7 +36,24 @@
                 });
             });
         });
+
+
+        $(function () {
+        	if (document.getElementById) {
+        		var table = document.getElementById(id);
+        		var cell = table.getElementByName("tr");
+        		for (i = 0; i < cell.lenght; i++) {
+        			if (1  == 'Yes') {
+        				cell[1].className = "green";
+        			}
+        		}
+        	}
+        })
 	</script>
+
+   <script type="text/javascript">
+     $( "td:contains('Yes')" ).css( "background-color", "#c1c1c1" );
+   </script>
 
 }
 <style>
@@ -47,9 +65,25 @@
 		display: none;
 	}
 
-	.text-field { border-radius: 50px; }
-	.btn.btn-circle { border-radius: 50px; }
+	.text-field { 
+		border-radius: 50px; 
+	}
 
+	.btn.btn-circle { 
+		border-radius: 50px;
+	}
+
+	.green {
+        background: #008000;
+    }
+
+	.red {
+        background: #FF0000;
+    }
+
+	.warning {
+        background: #FFE334;
+    }
 </style>
 <div id="dialog" style="display: none"></div>
 <h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
@@ -61,7 +95,7 @@
 <br>
 <br>
 <font size="2">
-	<table  class="table table-bordered" id="UserList"  >
+	<table  class="table table-bordered" id="approvals"  >
 		<tr>
 			<th class="col1">
 			</th>
@@ -154,7 +188,7 @@
 				<td class="col1">
 					@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "resilienceTrackId" })
 				</td>
-				<td>
+				<td id="color">
 					@Html.DisplayFor(modelItem => item.StrategicFit)
 				</td>
 				<td>

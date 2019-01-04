@@ -1,62 +1,43 @@
 ﻿$(function () {
 	$.ajax({
 		type: "POST",
+		url: "/Home/GetDeshbordStatus",
 		cache: false,
-		success: function (result) {
+		success: function (data) {
 
-			var data = (result);
-			//var json = JSON.parse(data);
-			//jsonsData = json.issues;
-			//console.log(jsonsData);
-			var SF = 5;
-			var DR = 10;
-			var backUpsData = 15;
-			var backUpConfig = 20;
+			var SF = Math.round((data.StrategicFitYes / data.NumberOfApps * 100),2);
+			var DR = Math.round((data.DisasterRecoveryYes / data.NumberOfApps * 100),2);
+			var backUpsData = Math.round((data.BackUpDataYes / data.NumberOfApps * 100),2);
+			var backUpConfig = Math.round((data.BackUpConfigurationYes / data.NumberOfApps * 100),2);
 
-			var highAv = 25
-			var SPOF = 30;
-			var HDC = 35;
-			var DRR = 40;
+			var highAv =  Math.round((data.HighAvailabilityYes / data.NumberOfApps * 100),2);
+			var SPOF =  Math.round((data.SPOFYes / data.NumberOfApps * 100),2);
+			var HDC =  Math.round((data.HighestDataClassificationYes / data.NumberOfApps * 100),2);
+			var DRR =  Math.round((data.DataRetentionRequirementYes / data.NumberOfApps * 100),2);
 
-			var OM = 45;
-			var SM = 50;
-			var IOLA = 55;
-			var ESLA = 60;
+			var OM =  Math.round((data.OperationalMonitoringYes / data.NumberOfApps * 100),2);
+			var SM =  Math.round((data.SecurityMonitoringYes / data.NumberOfApps * 100),2);
+			var IOLA =  Math.round((data.InternalOLAYes / data.NumberOfApps * 100),2);
+			var ESLA =  Math.round((data.ExternalSLAYes / data.NumberOfApps * 100),2);
 
-			var AD = 65;
-			var OD = 70;
-			var ITAD = 75;
-			var JMLP = 80;
+			var AD =  Math.round((data.ArchitectureDocumentationYes / data.NumberOfApps * 100),2);
+			var OD =  Math.round((data.OparationsDocumentationYes / data.NumberOfApps * 100),2);
+			var ITAD =  Math.round((data.IntegratedToADYes / data.NumberOfApps * 100),2);
+			var JMLP =  Math.round((data.JMLProcessYes / data.NumberOfApps * 100),2);
 
-			var RProcess = 85;
-			var PAM = 90;
-			var OSPL = 95;
-			var APL = 100;
+			var RProcess =  Math.round((data.RecertificationProcessYes / data.NumberOfApps * 100),2);
+			var PAM =  Math.round((data.PrivilegedAccessManagementYes / data.NumberOfApps * 100),2);
+			var OSPL =  Math.round((data.OSPatchingLevelYes / data.NumberOfApps * 100),2);
+			var APL =  Math.round((data.ApplicationPatchingLevelYes / data.NumberOfApps * 100),2);
 
-			var MPL = 6;
-			var SA = 12;
-			var SOS = 18;
-			var SJ = 24;
+			var MPL =  Math.round((data.MiddlewarePatchingLevelYes / data.NumberOfApps * 100),2);
+			var SA =  Math.round((data.SupportedApplicationYes / data.NumberOfApps * 100),2);
+			var SOS =  Math.round((data.SupportedOperationSystemYes / data.NumberOfApps * 100),2);
+			var SJ =  Math.round((data.SupportedJavaYes / data.NumberOfApps * 100),2);
 
-			var SML = 32;
-			var SDB = 38;
-			var OV = 46;
-
-			//for (var i = 0; i < jsonsData.length; i++) {
-			//	if ((jsonsData[i].fields.customfield_12807.value) === "Sev 1") {
-			//		serv1++;
-			//	} else if ((jsonsData[i].fields.customfield_12807.value) === "Sev 2") {
-			//		serv2++;
-			//	} else if ((jsonsData[i].fields.customfield_12807.value) === "Sev 3 med") {
-			//		serv3M++;
-			//	} else if ((jsonsData[i].fields.customfield_12807.value) === "Sev 3 low") {
-			//		serv3L++;
-			//	} else if ((jsonsData[i].fields.customfield_12807.value) === "Sev 3 High") {
-			//		serv3H++;
-			//	} else if ((jsonsData[i].fields.customfield_12807.value) === "Sev 4") {
-			//		serv4++;
-			//	}
-			//}
+			var SML =  Math.round((data.SupportedMiddlewareYes / data.NumberOfApps * 100),2);
+			var SDB =  Math.round((data.SupportedDatabaseYes / data.NumberOfApps * 100),2);
+			var OV =  Math.round((data.OpenVulnerabilitiesYes / data.NumberOfApps * 100),2);
 
 			var strategicFitData = document.getElementById('SF');
 			tacho(strategicFitData, {
@@ -308,7 +289,6 @@
 				"redLinePoint": 0.85,
 				"autoScale": true
 			});
-		
 
 			strategicFitData.setAttribute('data-val', SF);
 			disasterRecoverData.setAttribute('data-val', DR);
@@ -343,65 +323,6 @@
 			SupportedMiddleware.setAttribute('data-val', SML); 
 			SupportedDatabase.setAttribute('data-val', SDB); 
 			OpenVulnerabilities.setAttribute('data-val', OV);
-
-			// var demoInput = document.getElementById('demoInput');
-			//var elements = document.getElementById("myValues");
-			// elements.value =  serv3H;  
-			// elements=elements.val(serv3L);
-			//  var elements =  document.getElementById("serv3M");
-			// elements.innerHTML =  serv3M;
-			//   var elements =  document.getElementById("serv3H");
-			// elements.innerHTML =  serv3H;
-			// var elements =  document.getElementById("serv1");
-			// elements.innerHTML =  serv1;
-			//    var gaugeChart = AmCharts.makeChart( "chartdiv", {
-			//   "type": "gauge",
-			//   "theme": "light",
-			//   "axes": [ {
-			//     "axisThickness": 1,
-			//     "axisAlpha": 0.2,
-			//     "tickAlpha": 0.2,
-			//     "valueInterval": 20,
-			//     "bands": [ {
-			//       "color": "#84b761",
-			//       "endValue": 90,
-			//       "startValue": 0
-			//     }, {
-			//       "color": "#fdd400",
-			//       "endValue": 130,
-			//       "startValue": 90
-			//     }, {
-			//       "color": "#cc4748",
-			//       "endValue": 220,
-			//       "innerRadius": "95%",
-			//       "startValue": 130
-			//     } ],
-			//     "bottomText": "0 km/h",
-			//     "bottomTextYOffset": -20,
-			//     "endValue": 220
-			//   } ],
-			//   "arrows": [ {} ],
-			//   "export": {
-			//     "enabled": true
-			//   }
-			// } );
-
-			// setInterval( randomValue, 2000 );
-
-			// set random value
-			// function randomValue() {
-			//   var value = serv3H;
-			//   if ( gaugeChart ) {
-			//     if ( gaugeChart.arrows ) {
-			//       if ( gaugeChart.arrows[ 0 ] ) {
-			//         if ( gaugeChart.arrows[ 0 ].setValue ) {
-			//           gaugeChart.arrows[ 0 ].setValue( value );
-			//           gaugeChart.axes[ 0 ].setBottomText( value + " MIM's " );
-			//         }
-			//       }
-			//     }
-			//   }
-			// }
 		}
 	});
 });
