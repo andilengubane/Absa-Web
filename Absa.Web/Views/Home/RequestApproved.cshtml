@@ -1,11 +1,32 @@
-﻿@model Absa.Web.Models.DeclineModel
+﻿@model Absa.Web.Models.ApplicationModel
 
 @{
     ViewBag.Title = "RequestApproved";
 }
+<script type="text/javascript">
+   	function deleteUser() {
+   		var userId = $("#resilienceTrackID").val();
+   			$.ajax({
+   				type: "POST",
+   				url: "/Account/Delete",
+   				data: '{resilienceTrackID: "' + resilienceTrackID + '" }',
+   				contentType: "application/json; charset=utf-8",
+   				dataType: "html",
+   				success: function (response) {
+   				},
+   				failure: function (response) {
+   					alert(response.responseText);
+   				},
+   				error: function (response) {
+   					alert(response.responseText);
+   				}
+   		   });
+   	}
+</script>
 
 <div>
     <dl class="dl-horizontal">
+		@Html.HiddenFor(model => model.ResilienceID, new { id = "resilienceTrackID" })
         <dt>
             @Html.DisplayNameFor(model => model.BusinessUnit)
         </dt>
@@ -29,7 +50,7 @@
 	<br>
 	<div class="form-row">
 		<div class="form-group col-md-6">
-			<input type="submit" value="Delete" class="btn btn-circle btn-outline-success btn-lg btn-block" onClick="deleteUser(); return false" />
+			<input type="submit" value="Submit" class="btn btn-circle btn-outline-success btn-lg btn-block" onClick="approveRequest(); return false" />
 		</div>
 	</div>
 </div>

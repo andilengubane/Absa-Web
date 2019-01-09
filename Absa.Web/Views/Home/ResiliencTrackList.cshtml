@@ -17,8 +17,8 @@
                 modal: true,
                 title: "Resilience Track",
                 dialogClass: 'titleColor',
-                width: 900,
-                height: 800
+                width: 1498,
+                height: 647
             });
             $("#create .Create").click(function () {
                 $.ajax({
@@ -48,8 +48,8 @@
 				modal: true,
 				title: "Resilience Track",
 				dialogClass: 'titleColor',
-				width: 900,
-				height: 800
+				width: 1498,
+				height: 647
 			});
 			$("#Resilience .Edit").click(function () {
 				var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
@@ -140,6 +140,39 @@
         });
     </script>
 
+    <script type="text/javascript">
+        $(function () {
+        	$("#dialogApproval").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Approval",
+                dialogClass: 'titleColor',
+                width: 794,
+                height: 300
+            });
+        	$("#decline .ApprovalRequest").click(function () {
+            	var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                	type: "POST",
+                	url: "/Home/RequestApproved",
+                    data: '{resilienceTrackId: "' + resilienceTrackId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogApproval').html(response);
+                    	$('#dialogApproval').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+
 }
 <style>
 	.col1 {
@@ -172,6 +205,8 @@
 <div id="dialogs" style="display: none"></div>
 <div id="dialogss" style="display: none"></div>
 <div id="dialogDecline" style="display: none"></div>
+<div id="dialogApproval" style="display: none"></div>
+<br>
 <h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
 <br>
 <div class="card w-100">
@@ -256,12 +291,12 @@
 					@Html.DisplayFor(modelItem => item.Tiering)
 				</td>
 				<td id="decline">
-					<button class="Edit btn btn-sm btn-circle btn-outline-secondary" type="button" id="Resilience" href="javascript:;"> EDIT </button>
-					<button class="Apporval btn btn-sm btn-circle btn-outline-default" type="button" id="Resilience" href="javascript:;"> RESILIENCE </button>
+					<button class="Edit btn btn-sm btn-circle btn-secondary" type="button" id="Resilience" href="javascript:;"> EDIT </button>
+					<button class="Apporval btn btn-sm btn-circle  btn-primary" type="button" id="Resilience" href="javascript:;"> RESILIENCE </button>
 					@if (ViewBag.RolePermission == "Mananger")
 					{
-					<button class="Approve btn btn-sm btn-circle btn-outline-success" type="button" id="approve" href="javascript:;"> APPROVE </button>
-					<button class="Decline btn btn-sm btn-circle btn-outline-danger" type="button" id="decline" href="javascript:;"> DECLINE </button>
+					<button class="ApprovalRequest btn btn-sm btn-circle btn-success" type="button" id="decline" href="javascript:;"> APPROVE </button>
+					<button class="Decline btn btn-sm btn-circle btn-danger" type="button" id="decline" href="javascript:;"> DECLINE </button>
 					}
 				</td>
 			</tr>

@@ -43,13 +43,13 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
         }
     
-        public virtual ObjectResult<GetApplicationToDecline_Result> GetApplicationToDecline(Nullable<int> resilinceId)
+        public virtual ObjectResult<GetApplicationByResilienceID_Result> GetApplicationByResilienceID(Nullable<int> resilinceId)
         {
             var resilinceIdParameter = resilinceId.HasValue ?
                 new ObjectParameter("ResilinceId", resilinceId) :
                 new ObjectParameter("ResilinceId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationToDecline_Result>("GetApplicationToDecline", resilinceIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationByResilienceID_Result>("GetApplicationByResilienceID", resilinceIdParameter);
         }
     
         public virtual ObjectResult<GetAppStatus_Result> GetAppStatus(Nullable<int> businessUnitId)
