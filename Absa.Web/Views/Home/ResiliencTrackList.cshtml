@@ -107,6 +107,39 @@
         });
 	</script>
 
+    <script type="text/javascript">
+        $(function () {
+        	$("#dialogDecline").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Decline",
+                dialogClass: 'titleColor',
+                width: 1000,
+                height: 550
+            });
+        	$("#decline .Decline").click(function () {
+            	var resilienceTrackId = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                	type: "POST",
+                	url: "/Home/Decline",
+                    data: '{resilienceTrackId: "' + resilienceTrackId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogDecline').html(response);
+                    	$('#dialogDecline').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
 }
 <style>
 	.col1 {
@@ -132,12 +165,13 @@
 	}
 
 	.titleColor .ui-dialog-titlebar { 
-		background: #1C2833; 
+		 background: #1C2833; 
 	}
 </style>
 <div id="dialog" style="display: none"></div>
 <div id="dialogs" style="display: none"></div>
 <div id="dialogss" style="display: none"></div>
+<div id="dialogDecline" style="display: none"></div>
 <h4 class="modal-title" id="myModalLabel">Resilience Track</h4>
 <br>
 <div class="card w-100">
@@ -163,7 +197,9 @@
 	<table class="table table-bordered" id="Resilience">
 		<tr>
 			<th class="col1">
-
+			</th>
+			<th>
+				Status
 			</th>
 			<th>
 				Application ID
@@ -196,6 +232,9 @@
 					@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "resilienceTrackId" })
 				</td>
 				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
 					@Html.DisplayFor(modelItem => item.ApplicationID)
 				</td>
 				<td>
@@ -216,9 +255,14 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.Tiering)
 				</td>
-				<td>
-					<button class="Edit btn btn-sm btn-circle btn-outline-dark" type="button" id="Resilience" href="javascript:;"> EDIT </button>
-					<button class="Apporval btn btn-sm btn-circle btn-outline-dark" type="button" id="Resilience" href="javascript:;"> APPROVAL </button>
+				<td id="decline">
+					<button class="Edit btn btn-sm btn-circle btn-outline-secondary" type="button" id="Resilience" href="javascript:;"> EDIT </button>
+					<button class="Apporval btn btn-sm btn-circle btn-outline-default" type="button" id="Resilience" href="javascript:;"> RESILIENCE </button>
+					@if (ViewBag.RolePermission == "Mananger")
+					{
+					<button class="Approve btn btn-sm btn-circle btn-outline-success" type="button" id="approve" href="javascript:;"> APPROVE </button>
+					<button class="Decline btn btn-sm btn-circle btn-outline-danger" type="button" id="decline" href="javascript:;"> DECLINE </button>
+					}
 				</td>
 			</tr>
 		}

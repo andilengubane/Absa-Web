@@ -22,5 +22,8 @@ namespace Absa.DateAccess
         public string ServiceManager { get; set; }
         public Nullable<long> Tiering { get; set; }
         public string BusinessUnitName { get; set; }
+        public string Description { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<int> BusinessUnitId { get; set; }
     }
 }

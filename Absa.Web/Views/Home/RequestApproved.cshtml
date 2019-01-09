@@ -1,0 +1,36 @@
+﻿@model Absa.Web.Models.DeclineModel
+
+@{
+    ViewBag.Title = "RequestApproved";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+    </dl>
+	<br>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="submit" value="Delete" class="btn btn-circle btn-outline-success btn-lg btn-block" onClick="deleteUser(); return false" />
+		</div>
+	</div>
+</div>
+

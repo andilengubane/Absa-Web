@@ -33,10 +33,24 @@ namespace Absa.DateAccess
         public virtual DbSet<LookUpName> LookUpNames { get; set; }
         public virtual DbSet<ResilienceTrack> ResilienceTracks { get; set; }
         public virtual DbSet<ResilienceTrackAudit> ResilienceTrackAudits { get; set; }
+        public virtual DbSet<ResilinceApplication> ResilinceApplications { get; set; }
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersAudit> UsersAudits { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    
+        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
+        }
+    
+        public virtual ObjectResult<GetApplicationToDecline_Result> GetApplicationToDecline(Nullable<int> resilinceId)
+        {
+            var resilinceIdParameter = resilinceId.HasValue ?
+                new ObjectParameter("ResilinceId", resilinceId) :
+                new ObjectParameter("ResilinceId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationToDecline_Result>("GetApplicationToDecline", resilinceIdParameter);
+        }
     
         public virtual ObjectResult<GetAppStatus_Result> GetAppStatus(Nullable<int> businessUnitId)
         {
@@ -70,20 +84,6 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackListById_Result>("GetResilienceTrackListById", resilienceTrackIDParameter);
         }
     
-        public virtual ObjectResult<GetUsersList_Result> GetUsersList(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsersList_Result>("GetUsersList", userIdParameter);
-        }
-    
-        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
-        }
-    
         public virtual ObjectResult<GetUserById_Result> GetUserById(Nullable<int> userId)
         {
             var userIdParameter = userId.HasValue ?
@@ -91,6 +91,11 @@ namespace Absa.DateAccess
                 new ObjectParameter("UserId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserById_Result>("GetUserById", userIdParameter);
+        }
+    
+        public virtual ObjectResult<string> GetUserRolePermissions()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetUserRolePermissions");
         }
     }
 }

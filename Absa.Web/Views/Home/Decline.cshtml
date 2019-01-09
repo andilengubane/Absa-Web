@@ -1,0 +1,76 @@
+﻿@model Absa.Web.Models.DeclineModel
+
+@{
+	ViewBag.Title = "Decline";
+	Layout = null;
+}
+<style>
+	.col1 {
+		display: none;
+	}
+
+	.col2 {
+		display: none;
+	}
+
+	div.light {
+		width: 50px;
+		height: 50px;
+		background-color: green;
+	}
+
+	.btn.btn-circle {
+		border-radius: 50px;
+	}
+
+	.text-field {
+		border-radius: 50px;
+	}
+
+	.titleColor .ui-dialog-titlebar {
+		background: #1C2833;
+	}
+</style>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<form>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-2 col-form-label">Business Unit</label>
+			<div class="col-sm-10">
+				@Html.EditorFor(model => model.BusinessUnit, new { htmlAttributes = new { @class = "form-control" } })
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">Application ID</label>
+			<div class="col-sm-10">
+				@Html.EditorFor(model => model.ApplicationId, new { htmlAttributes = new { @class = "form-control" } })
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">Approval Requested By</label>
+			<div class="col-sm-10">
+				@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">Application Declined</label>
+			<div class="col-sm-10">
+				@Html.DropDownListFor(model => model.BusinessUnitName, Model.ApplicationDeclined, "Strategic Fit", new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">Reason For Declining</label>
+			<div class="col-sm-10">
+				@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+			</div>
+		</div>
+		<br>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-sm btn-circle btn-outline-dark" />
+			</div>
+		</div>
+	</form>
+}

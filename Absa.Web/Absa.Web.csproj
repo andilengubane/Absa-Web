@@ -292,6 +292,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\Decline.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -318,7 +319,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\UserList.cshtml" />
     <Content Include="Views\Home\Approval.cshtml" />
-    <Content Include="Views\Account\CreateUser.cshtml" />
     <Content Include="Views\Account\EditUser.cshtml" />
     <Content Include="Views\Account\DeleteUser.cshtml" />
     <Content Include="Views\Home\ResiliencTrackList.cshtml" />
@@ -352,6 +352,8 @@
     <Content Include="Views\DashBord\SupportedMiddleware.cshtml" />
     <Content Include="Views\DashBord\SupportedDatabase.cshtml" />
     <Content Include="Views\DashBord\OpenVulnerabilities.cshtml" />
+    <Content Include="Views\Home\RequestApproved.cshtml" />
+    <Content Include="Views\Account\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

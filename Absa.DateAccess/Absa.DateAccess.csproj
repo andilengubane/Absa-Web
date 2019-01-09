@@ -78,6 +78,9 @@
     <Compile Include="GetAllUsersList_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetApplicationToDecline_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAppStatus_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
@@ -90,9 +93,6 @@
     <Compile Include="GetUserById_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetUsersList_Result.cs">
-      <DependentUpon>AbsaDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="LookUpName.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
@@ -103,10 +103,10 @@
     <Compile Include="ResilienceTrackAudit.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RolesPermission.cs">
+    <Compile Include="ResilinceApplication.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="RolesPermission.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

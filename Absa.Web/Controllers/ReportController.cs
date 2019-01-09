@@ -10,7 +10,7 @@ namespace Absa.Web.Controllers
     public class ReportController : Controller
     {
 		AbsaDBEntities context = new AbsaDBEntities();
-		// GET: Report
+		
 		public ActionResult OverRallReportView()
 		{
 			var id = this.Session["ID"];
@@ -26,7 +26,6 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		// GET: GetAllAppStatus
 		public ActionResult GetAllAppStatus()
 		{
 			var id = this.Session["ID"];
