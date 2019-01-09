@@ -110,10 +110,18 @@
 }
 
 <style>
-    .col1 { display: none; }
-    .col2 { display: none; }
-	.btn.btn-circle { border-radius: 50px; }
-	.titleColor .ui-dialog-titlebar { background: #1C2833; }
+    .col1 { 
+		display: none;
+    }
+    .col2 { 
+		display: none;
+    }
+	.btn.btn-circle { 
+		border-radius: 50px; 
+	}
+	.titleColor .ui-dialog-titlebar {
+		 background: #1C2833; 
+	}
 </style>
 
 <div id="dialogCreate" style="display: none"></div>
@@ -179,12 +187,12 @@
 					@Html.DisplayFor(modelItem => item.RolesPermission)
 				</td>
 				<td>
-					@if (ViewBag.RolePermission == "SuperUser")
+					@if (ViewBag.RolePermission == "Manager")
 					{
 						<button class="details btn btn-sm  btn-circle btn-outline-dark" type="button" id="userList" href="javascript:;">CREATE</button>
 					}
 					<button class="EditUser btn btn-sm  btn-circle btn-outline-dark" type="button" id="userList" href="javascript:;">MODIFY</button>
-					@if (ViewBag.RolePermission == "SuperUser")
+					@if (ViewBag.RolePermission == "Manager")
 					{
 						<button class="DeleteUser btn btn-sm  btn-circle btn-outline-dark" type="button" id="userList" href="javascript:;">DELETE</button>
 					}

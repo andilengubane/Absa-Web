@@ -14,6 +14,12 @@ namespace Absa.DateAccess
     
     public partial class DataLookUp
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DataLookUp()
+        {
+            this.ResilienceTracks = new HashSet<ResilienceTrack>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -21,5 +27,7 @@ namespace Absa.DateAccess
         public Nullable<int> LoopkUpID { get; set; }
     
         public virtual LookUpName LookUpName { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
     }
 }

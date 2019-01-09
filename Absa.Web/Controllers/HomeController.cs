@@ -71,7 +71,7 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
-		// Get Create
+		
 		public ActionResult Create()
 		{
 			var id = this.Session["ID"];
@@ -88,7 +88,58 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		// Get EditResilienceTrack
+		public ActionResult Decline(string resilienceTrackId)
+		{
+			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
+			int id = Convert.ToInt16(number);
+			var model = new DeclineModel();
+			model.ApplicationDeclined = context.ResilinceApplications.Select(x => new SelectListItem
+			{
+				Value = x.ApplicationName.ToString(),
+				Text = x.ApplicationName
+			});
+
+			var data = context.GetApplicationToDecline(id);
+			foreach (var item in data)
+			{
+				model.ApplicationId = item.ApplicationID;
+				model.BusinessUnit = item.BusinessUnitName;
+				model.FullName = item.FullName;
+				model.Email = item.EmailAddress;
+			}
+			return PartialView(model);
+		}
+
+		public ActionResult DeclineRequest(DeclineModel model)
+		{
+			//Update status to Decline
+			//Send email notification
+			return View("Index");
+		}
+
+		public ActionResult Approve(string resilienceTrackId)
+		{
+			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
+			int id = Convert.ToInt16(number);
+			var model = new DeclineModel();
+
+			var data = context.GetApplicationToDecline(id);
+			foreach (var item in data)
+			{
+				model.ApplicationId = item.ApplicationID;
+				model.BusinessUnit = item.BusinessUnitName;
+				model.FullName = item.FullName;
+				model.Email = item.EmailAddress;
+			}
+			return PartialView(model);
+		}
+
+		public ActionResult ApprovedRequest()
+		{
+			//Update status to approved
+			return View("Index");
+		}
+
 		public ActionResult EditResilienceTrack(string resilienceTrackId)
 		{
 			var _Id = this.Session["ID"];
@@ -158,7 +209,6 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		// Get: Resilience Track List
 		public ActionResult ResiliencTrackList(int? page, string currentFilter, string searchString)
 		{
 			var id = this.Session["ID"];
@@ -175,7 +225,11 @@ namespace Absa.Web.Controllers
 			try
 			{
 				var businessUnitData = context.Users.FirstOrDefault(u => u.UserID == userId);
-				var data = from s in context.ResilienceTracks
+				var permission = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == businessUnitData.RolesPermissionsID);
+				string rolePermissionType = Convert.ToString(permission.Type);
+				ViewBag.RolePermission = rolePermissionType;
+
+				var data = from s in context.GetResilienceTrackList()
 						   where s.BusinessUnitId == businessUnitData.BusinessUnitId
 						   select s;
 				ViewBag.CurrentFilter = searchString;
@@ -194,6 +248,7 @@ namespace Absa.Web.Controllers
 						HeadOfTechnology = item.HeadOfTechnology,
 						ApplicatioOwner = item.ApplicatioOwner,
 						ServiceManager = item.ServiceManager,
+						Description = item.Description,
 						Tiering = item.Tiering.Value,
 					});
 				}
@@ -208,7 +263,6 @@ namespace Absa.Web.Controllers
 			return this.View("ResiliencTrackList", model.ToPagedList(pageNumber, pageSize));
 		}
 
-		// Get: Edit User
 		public ActionResult Approval(string resilienceTrackId)
 		{
 			var model = new List<ResilienceTrackModel>();
@@ -259,7 +313,6 @@ namespace Absa.Web.Controllers
 			return PartialView("Approval", model);
 		}
 
-		// Post AddUpdateResilienceTrack
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]

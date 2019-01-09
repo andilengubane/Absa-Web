@@ -57,10 +57,12 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult BackUpData()
 		{
 			return PartialView();
 		}
+
 		public ActionResult GetBackUpData()
 		{
 			var id = this.Session["ID"];
@@ -78,10 +80,12 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult BackUpConfiguration()
 		{
 			return PartialView();
 		}
+
 		public ActionResult GetBackUpConfigurationData()
 		{
 			var id = this.Session["ID"];
@@ -104,6 +108,7 @@ namespace Absa.Web.Controllers
 		{
 			return PartialView();
 		}
+
 		public ActionResult GetHighAvailabiltyData()
 		{
 			var id = this.Session["ID"];
@@ -121,10 +126,12 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult SinglePointOfFailure()
 		{
 			return PartialView();
 		}
+
 		public ActionResult GetSinglePointOfFailure()
 		{
 			var id = this.Session["ID"];
@@ -142,6 +149,7 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult HighestDataClassification()
 		{
 			return PartialView();
@@ -301,6 +309,7 @@ namespace Absa.Web.Controllers
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult OperationalDocumentation()
 		{
 			return PartialView();

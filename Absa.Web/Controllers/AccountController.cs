@@ -15,13 +15,12 @@ namespace Absa.Web.Controllers
     public class AccountController : Controller
     {
 		AbsaDBEntities context = new AbsaDBEntities();
-		// GET: Account
+	
 		public ActionResult Login()
 		{
 			return View();
 		}
-
-		// GET: Recover Password 
+ 
 		public ActionResult RecoverPassword()
 		{
 			return View();
@@ -40,7 +39,7 @@ namespace Absa.Web.Controllers
 			var model = new List<UserModel>();
 			try
 			{
-				if (rolePermissionType == "SuperUser" || rolePermissionType == "Mananger") {
+				if (rolePermissionType == "Mananger") {
 					var data = context.GetAllUsersList();
 					foreach (var item in data)
 					{
@@ -85,7 +84,6 @@ namespace Absa.Web.Controllers
 			return this.View("UserList", model.ToPagedList(pageNumber, pageSize));
 		}
 
-		// GET: Register
 		public ActionResult Register()
 		{
 			
@@ -99,7 +97,7 @@ namespace Absa.Web.Controllers
 			};
 			return View(model);
 		}
-		// Get: Create user
+
 		public ActionResult CreateUser()
 		{
 			UserModel model = new UserModel();
@@ -116,7 +114,7 @@ namespace Absa.Web.Controllers
 			});
 			return PartialView(model);
 		}
-		// Get: Edit User
+
 		public ActionResult EditUser(string userId)
 		{
 			var model = new UserModel();
@@ -165,7 +163,6 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		// POST: Adding and Update user details
 		public ActionResult AddUpdateUser(UserModel model)
 		{
 			if (model.ID == 0)
@@ -203,7 +200,6 @@ namespace Absa.Web.Controllers
 			return RedirectToAction("UserList", "Account");
 		}
 
-		// Get: Delete
 		public ActionResult DeleteUser(string userId)
 		{
 			var id = Convert.ToInt32(userId);
@@ -226,7 +222,6 @@ namespace Absa.Web.Controllers
 			return View(model);
 		}
 
-		// POST: Delete
 		[HttpPost]
 		public ActionResult Delete(string userId)
 		{
@@ -240,7 +235,6 @@ namespace Absa.Web.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
-		// POST: Account
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
 		{
@@ -272,8 +266,7 @@ namespace Absa.Web.Controllers
 			ViewBag.ErroMessage = "Incorrect username and password.";
 			return View("Login");
 		}
-
-		// POST: Register New User 
+ 
 		public ActionResult AddNewUser(UserModel model)
 		{
 			if (ModelState.IsValid)
@@ -315,8 +308,7 @@ namespace Absa.Web.Controllers
 
 			return this.View("Register", models);
 		}
-
-		// POST: Recover Password 
+		
 		public ActionResult ForgotPassword(UserModel model)
 		{
 			if (model.EmailAddress != null)
