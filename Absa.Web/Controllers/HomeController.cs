@@ -92,16 +92,17 @@ namespace Absa.Web.Controllers
 		{
 			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
 			int id = Convert.ToInt16(number);
-			var model = new DeclineModel();
+			var model = new ApplicationModel();
 			model.ApplicationDeclined = context.ResilinceApplications.Select(x => new SelectListItem
 			{
 				Value = x.ApplicationName.ToString(),
 				Text = x.ApplicationName
 			});
 
-			var data = context.GetApplicationToDecline(id);
+			var data = context.GetApplicationByResilienceID(id);
 			foreach (var item in data)
 			{
+				model.ResilienceID = item.ResilienceTrackID;
 				model.ApplicationId = item.ApplicationID;
 				model.BusinessUnit = item.BusinessUnitName;
 				model.FullName = item.FullName;
@@ -110,7 +111,7 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult DeclineRequest(DeclineModel model)
+		public ActionResult DeclineRequest(ApplicationModel model)
 		{
 			//Update status to Decline
 			//Send email notification
@@ -134,10 +135,22 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult ApprovedRequest()
+		public ActionResult RequestApproved(string resilienceTrackId)
 		{
-			//Update status to approved
-			return View("Index");
+			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
+			int id = Convert.ToInt16(number);
+			var model = new ApplicationModel();
+
+			var data = context.GetApplicationByResilienceID(id);
+			foreach (var item in data)
+			{
+				model.ResilienceID = item.ResilienceTrackID;
+				model.ApplicationId = item.ApplicationID;
+				model.BusinessUnit = item.BusinessUnitName;
+				model.FullName = item.FullName;
+				model.Email = item.EmailAddress;
+			}
+			return PartialView(model);
 		}
 
 		public ActionResult EditResilienceTrack(string resilienceTrackId)

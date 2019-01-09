@@ -53,16 +53,17 @@
 		 border-radius: 50px;
 	}
 </style>
-<h3>T100R 27 Pillas</h3>
+
 <br>
 <div class="card w-100">
 	<div class="card-body">
-       @using (Html.BeginForm()){
+		<h3>T100R 27 Pillas</h3>
+       @*@using (Html.BeginForm()){
 		<h5 class="card-title">Business Unit</h5>
 		@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field", id = "businessUnit" })
 		<br>
 		<input type="submit" value="Search" class="btn btn-circle btn-outline-dark" />
-		}
+		}*@
 	</div>
 </div>
 <br>

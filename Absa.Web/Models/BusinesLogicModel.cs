@@ -7,11 +7,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Absa.Web.Models
 {
-	public class DeclineModel
+	public class ApplicationModel
 	{
 		public IEnumerable<SelectListItem> ApplicationDeclined { get; set; }
 		public string BusinessUnitName { get; set; }
 		public string BusinessUnit { get; set; }
+		public int ResilienceID { get; set; }
 		public string ApplicationId { get; set; }
 		public string FullName { get; set; }
 		public string Manager { get; set; }

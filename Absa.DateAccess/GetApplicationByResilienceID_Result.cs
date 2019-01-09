@@ -11,8 +11,9 @@ namespace Absa.DateAccess
 {
     using System;
     
-    public partial class GetApplicationToDecline_Result
+    public partial class GetApplicationByResilienceID_Result
     {
+        public int ResilienceTrackID { get; set; }
         public string ApplicationID { get; set; }
         public string BusinessUnitName { get; set; }
         public string FullName { get; set; }

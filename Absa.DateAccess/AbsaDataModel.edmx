@@ -307,7 +307,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="GetAllUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="GetApplicationToDecline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="GetApplicationByResilienceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ResilinceId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetAppStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -754,7 +754,7 @@
             <End Role="UsersAudit" EntitySet="UsersAudits" />
           </AssociationSet>
           <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
-          <FunctionImport Name="GetApplicationToDecline" ReturnType="Collection(AbsaDBModel.GetApplicationToDecline_Result)">
+          <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
             <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAppStatus" ReturnType="Collection(AbsaDBModel.GetAppStatus_Result)">
@@ -783,7 +783,8 @@
           <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
         </ComplexType>
-        <ComplexType Name="GetApplicationToDecline_Result">
+        <ComplexType Name="GetApplicationByResilienceID_Result">
+          <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
           <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
           <Property Type="String" Name="FullName" Nullable="false" MaxLength="301" />
@@ -1166,9 +1167,10 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetApplicationToDecline" FunctionName="AbsaDBModel.Store.GetApplicationToDecline">
+          <FunctionImportMapping FunctionImportName="GetApplicationByResilienceID" FunctionName="AbsaDBModel.Store.GetApplicationByResilienceID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationToDecline_Result">
+              <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationByResilienceID_Result">
+                <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
                 <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
                 <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
