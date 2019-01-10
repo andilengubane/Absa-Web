@@ -140,7 +140,7 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult UpdateRequestApproved(string resilienceTrackID ,ApplicationModel model)
+		public ActionResult UpdateRequestApproved(string resilienceTrackID)
 		{
 			int id = Convert.ToInt32(resilienceTrackID);
 			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == id);
