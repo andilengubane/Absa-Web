@@ -16,6 +16,7 @@ namespace Absa.Web.Models
 		public string ApplicationId { get; set; }
 		public string FullName { get; set; }
 		public string Manager { get; set; }
+		[DataType(DataType.MultilineText)]
 		public string Description { get; set; }
 		public string Email { get; set; }
 	}

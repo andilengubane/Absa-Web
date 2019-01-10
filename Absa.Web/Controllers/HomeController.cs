@@ -4,6 +4,7 @@ using System.Web;
 using System.Linq;
 using PagedList.Mvc;
 using System.Web.Mvc;
+using System.Net.Mail;
 using Absa.Web.Models;
 using Absa.DateAccess;
 using System.Collections.Generic;
@@ -113,28 +114,14 @@ namespace Absa.Web.Controllers
 
 		public ActionResult DeclineRequest(ApplicationModel model)
 		{
-			//Update status to Decline
-			//Send email notification
-			return View("Index");
+			int id = Convert.ToInt32(model.ResilienceID);
+			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == id);
+			data.StatusId = 6;
+			//SendEmail(model.Email, model.Description , model.BusinessUnit,model.ApplicationId,model.FullName,model.BusinessUnitName);
+			context.SaveChanges();
+			return RedirectToAction("ResiliencTrackList", "Home");
 		}
-
-		public ActionResult Approve(string resilienceTrackId)
-		{
-			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
-			int id = Convert.ToInt16(number);
-			var model = new DeclineModel();
-
-			var data = context.GetApplicationToDecline(id);
-			foreach (var item in data)
-			{
-				model.ApplicationId = item.ApplicationID;
-				model.BusinessUnit = item.BusinessUnitName;
-				model.FullName = item.FullName;
-				model.Email = item.EmailAddress;
-			}
-			return PartialView(model);
-		}
-
+		
 		public ActionResult RequestApproved(string resilienceTrackId)
 		{
 			string number = System.Text.RegularExpressions.Regex.Replace(resilienceTrackId, @"\D+", string.Empty);
@@ -151,6 +138,15 @@ namespace Absa.Web.Controllers
 				model.Email = item.EmailAddress;
 			}
 			return PartialView(model);
+		}
+
+		public ActionResult UpdateRequestApproved(string resilienceTrackID ,ApplicationModel model)
+		{
+			int id = Convert.ToInt32(resilienceTrackID);
+			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == id);
+			data.StatusId = 4;
+			context.SaveChanges();
+			return RedirectToAction("ResiliencTrackList", "Home");
 		}
 
 		public ActionResult EditResilienceTrack(string resilienceTrackId)
@@ -271,7 +267,7 @@ namespace Absa.Web.Controllers
 				string error = ex.Message;
 			}
 
-			int pageSize = 5;
+			int pageSize = 10;
 			int pageNumber = (page ?? 1);
 			return this.View("ResiliencTrackList", model.ToPagedList(pageNumber, pageSize));
 		}
@@ -335,17 +331,30 @@ namespace Absa.Web.Controllers
 			{
 				var id = this.Session["ID"];
 				int userId = Convert.ToInt32(id);
-				var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+				var datas = context.Users.FirstOrDefault(u => u.UserID == userId);
+				int statusId;
+				var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
+				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+				string rolePermissionType = Convert.ToString(permissions.Type);
+
+				if (rolePermissionType == "Mananger")
+				{
+					statusId = 4;
+				}
+				else
+				{
+					statusId = 5;
+				}
 				context.ResilienceTracks.Add(new ResilienceTrack
 				{
 					ResilienceTrackID = model.ResilienceTrackID,
 					ApplicationID = model.ApplicationID,
-					UserID = model.UserID,
+					UserID = userId,
 					ApplicationName = model.ApplicationName,
 					NameOnSnow = model.NameOnSnow,
 					Tiering = model.Tiering,
 					HeadOfTechnology = model.HeadOfTechnology,
-					BusinessUnitId = data.BusinessUnitId,
+					BusinessUnitId = datas.BusinessUnitId,
 					ApplicatioOwner = model.ApplicatioOwner,
 					ServiceManager = model.ServiceManager,
 					StrategicFit = model.StrategicFit,
@@ -375,13 +384,27 @@ namespace Absa.Web.Controllers
 					SupportedMiddleware = model.SupportedMiddleware,
 					SupportedDatabase = model.SupportedDatabase,
 					OpenVulnerabilities = model.OpenVulnerabilities,
-				});
+					StatusId = statusId
+			});
 			}
 			else {
+				var id = this.Session["ID"];
+				int userId = Convert.ToInt32(id);
+				int statusId;
+				var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
+				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+				string rolePermissionType = Convert.ToString(permissions.Type);
+
+				if (rolePermissionType == "Mananger"){
+					 statusId = 4;
+				}
+				else {
+					 statusId = 5;
+				}
 
 				var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceTrackID);
 				data.Tiering = model.Tiering;
-				data.UserID = model.UserID;
+				data.UserID = userId;
 				data.HeadOfTechnology = model.HeadOfTechnology;
 				data.ServiceManager = model.ServiceManager;
 				data.ApplicatioOwner = model.ApplicatioOwner;
@@ -412,9 +435,31 @@ namespace Absa.Web.Controllers
 				data.SupportedMiddleware = model.SupportedMiddleware;
 				data.SupportedDatabase = model.SupportedDatabase;
 				data.OpenVulnerabilities = model.OpenVulnerabilities;
+				data.StatusId = statusId;
 			}
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
+		}
+
+		public void SendEmail(string email,string body, string businessUnit, string applicationID, string requestedBy, string applicationDeclined)
+		{
+			MailMessage msg = new MailMessage();
+			msg.From = new MailAddress("mthembungubane@gmail.com");
+			msg.To.Add(new MailAddress(email));
+			msg.Subject = "Request Declined";
+			msg.Body = "Business Unit" + businessUnit +
+					   "Application Id" + applicationID + 
+				       "Approval Requested By" + requestedBy +
+					   "Application Declined" + applicationDeclined +
+					   "\n" + body;
+			SmtpClient Client = new SmtpClient("smtp.gmail.com");
+			Client.Port = 587;
+			Client.UseDefaultCredentials = false;
+			System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("mthembungubane@gmail.com", "andile1234!@#$");
+			Client.Credentials = credentials;
+			Client.EnableSsl = true;
+			Client.DeliveryMethod = SmtpDeliveryMethod.Network;
+			Client.Send(msg);
 		}
 	}
 }

@@ -373,7 +373,7 @@
       <End Role="UsersAudit" EntitySet="UsersAudits" />
     </AssociationSet>
     <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
-    <FunctionImport Name="GetApplicationToDecline" ReturnType="Collection(AbsaDBModel.GetApplicationToDecline_Result)">
+    <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
       <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetAppStatus" ReturnType="Collection(AbsaDBModel.GetAppStatus_Result)">
@@ -402,7 +402,8 @@
     <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
   </ComplexType>
-  <ComplexType Name="GetApplicationToDecline_Result">
+  <ComplexType Name="GetApplicationByResilienceID_Result">
+    <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
     <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
     <Property Type="String" Name="FullName" Nullable="false" MaxLength="301" />

@@ -207,9 +207,10 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetApplicationToDecline" FunctionName="AbsaDBModel.Store.GetApplicationToDecline">
+    <FunctionImportMapping FunctionImportName="GetApplicationByResilienceID" FunctionName="AbsaDBModel.Store.GetApplicationByResilienceID">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationToDecline_Result">
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationByResilienceID_Result">
+          <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
           <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
           <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />

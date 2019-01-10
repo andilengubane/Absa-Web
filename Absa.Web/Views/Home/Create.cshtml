@@ -50,7 +50,7 @@
 						@Html.ValidationMessageFor(model => model.ApplicatioOwner, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ServiceManager, new { htmlAttributes = new { @class = "form-control", placeholder = "Service Manager", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ServiceManager, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Service Manager", autocomplete = "off" } })
 						@Html.ValidationMessageFor(model => model.ServiceManager, "", new { @class = "text-danger" })
 					</div>
 				</div>
