@@ -140,10 +140,9 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult UpdateRequestApproved(string resilienceTrackID)
+		public ActionResult UpdateRequestApproved(ApplicationModel model)
 		{
-			int id = Convert.ToInt32(resilienceTrackID);
-			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == id);
+			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceID);
 			data.StatusId = 4;
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");

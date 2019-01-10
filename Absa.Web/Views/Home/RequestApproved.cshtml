@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "RequestApproved";
 }
-<script type="text/javascript">
+@*<script type="text/javascript">
 	function approveRequest() {
 		var resilienceTrackID = $("#resilienceTrackID").val();
    			$.ajax({
@@ -22,36 +22,38 @@
    				}
    		   });
    	}
-</script>
+</script>*@
 
-<div>
-    <dl class="dl-horizontal">
-		@Html.HiddenFor(model => model.ResilienceID, new { id = "resilienceTrackID" })
-        <dt>
-            @Html.DisplayNameFor(model => model.BusinessUnit)
-        </dt>
+@using (Html.BeginForm("UpdateRequestApproved", "Home", FormMethod.Post, new { id = "formDecline" }))
+{
+	<div>
+		<dl class="dl-horizontal">
+			@Html.HiddenFor(model => model.ResilienceID, new { id = "resilienceTrackID" })
+			<dt>
+				@Html.DisplayNameFor(model => model.BusinessUnit)
+			</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BusinessUnit)
-        </dd>
+			<dd>
+				@Html.DisplayFor(model => model.BusinessUnit)
+			</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationId)
-        </dt>
+			<dt>
+				@Html.DisplayNameFor(model => model.ApplicationId)
+			</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationId)
-        </dd>
+			<dd>
+				@Html.DisplayFor(model => model.ApplicationId)
+			</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-    </dl>
-	<br>
-	<div class="form-row">
-		<div class="form-group col-md-6">
-			<input type="submit" value="Submit" class="btn btn-circle btn-success btn-lg btn-block" onClick="approveRequest(); return false" />
+			<dt>
+				@Html.DisplayNameFor(model => model.FullName)
+			</dt>
+		</dl>
+		<br>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<input type="submit" value="Submit" class="btn btn-circle btn-success btn-lg btn-block"  return false" /> 
+			</div>
 		</div>
 	</div>
-</div>
-
+}
