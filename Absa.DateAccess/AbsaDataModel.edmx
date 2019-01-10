@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BusinessUnit">
           <Key>
             <PropertyRef Name="BusinessUnitId" />
@@ -376,8 +376,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AbsaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -755,20 +754,20 @@
           </AssociationSet>
           <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
           <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
-            <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
+          <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAppStatus" ReturnType="Collection(AbsaDBModel.GetAppStatus_Result)">
-            <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
+          <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBusinessUnitByUserId" ReturnType="Collection(String)">
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
           <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)">
-            <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
+          <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUserById" ReturnType="Collection(AbsaDBModel.GetUserById_Result)">
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUserRolePermissions" ReturnType="Collection(String)" />
         </EntityContainer>

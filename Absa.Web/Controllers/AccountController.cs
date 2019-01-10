@@ -32,8 +32,8 @@ namespace Absa.Web.Controllers
 			int userId = Convert.ToInt32(id);
 			// GET USER RolePermission Type 
 			var rolesPermission = context.Users.FirstOrDefault(x=>x.UserID == userId);
-			var rP = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
-			string rolePermissionType = Convert.ToString(rP.Type);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
 			ViewBag.RolePermission = rolePermissionType;
 
 			var model = new List<UserModel>();

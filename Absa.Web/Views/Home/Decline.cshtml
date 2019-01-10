@@ -32,9 +32,11 @@
 	}
 </style>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("DeclineRequest", "Home", FormMethod.Post, new { id = "myForm" }))
 {
 	@Html.AntiForgeryToken()
+	@Html.HiddenFor(model => model.Email)
+	@Html.HiddenFor(model => model.ResilienceID)
 	<form>
 		<div class="form-group row">
 			<label for="staticEmail" class="col-sm-2 col-form-label">Business Unit</label>
