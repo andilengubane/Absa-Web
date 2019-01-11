@@ -173,6 +173,14 @@
         });
 </script>
 
+<script type="text/javascript">
+  	$(function () {
+  		$("td:contains('Approved')").addClass('greenBg');
+  		$("td:contains('Declined')").addClass('redBg');
+  		$("td:contains('Pending Approval')").addClass('yellowBg');
+  	});
+</script>
+
 }
 <style>
 	.col1 {
@@ -197,10 +205,20 @@
 		 border-radius: 50px;
 	}
 
-	.titleColor .ui-dialog-titlebar 
-	{ 
+	.titleColor .ui-dialog-titlebar { 
 		 background: #1C2833; 
 	}
+		.greenBg {
+        background: green;
+    }
+	
+	.redBg {
+        background: firebrick;
+    }
+
+	.yellowBg {
+        background: gold;
+    }
 </style>
 <div id="dialog" style="display: none"></div>
 <div id="dialogs" style="display: none"></div>
