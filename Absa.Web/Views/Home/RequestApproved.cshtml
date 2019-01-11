@@ -3,52 +3,13 @@
 @{
     ViewBag.Title = "RequestApproved";
 }
-@*<script type="text/javascript">
-	function approveRequest() {
-		var resilienceTrackID = $("#resilienceTrackID").val();
-   			$.ajax({
-   				type: "POST",
-   				url: "/Home/UpdateRequestApproved",
-   				data: '{resilienceTrackID: "' + resilienceTrackID + '" }',
-   				contentType: "application/json; charset=utf-8",
-   				dataType: "html",
-   				success: function (response) {
-   				},
-   				failure: function (response) {
-   					alert(response.responseText);
-   				},
-   				error: function (response) {
-   					alert(response.responseText);
-   				}
-   		   });
-   	}
-</script>*@
-
 @using (Html.BeginForm("UpdateRequestApproved", "Home", FormMethod.Post, new { id = "formDecline" }))
 {
 	<div>
-		<dl class="dl-horizontal">
-			@Html.HiddenFor(model => model.ResilienceID, new { id = "resilienceTrackID" })
-			<dt>
-				@Html.DisplayNameFor(model => model.BusinessUnit)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.BusinessUnit)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.ApplicationId)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.ApplicationId)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.FullName)
-			</dt>
-		</dl>
+		@Html.HiddenFor(model => model.ResilienceID, new { id = "resilienceTrackID" })
+		<p>Busines Unit  : @Html.DisplayFor(model => model.BusinessUnit)</p>
+		<p>Application ID : @Html.DisplayFor(model => model.ApplicationId)</p>
+		<br>
 		<br>
 		<div class="form-row">
 			<div class="form-group col-md-6">

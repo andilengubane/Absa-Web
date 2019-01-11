@@ -197,7 +197,8 @@
 		 border-radius: 50px;
 	}
 
-	.titleColor .ui-dialog-titlebar { 
+	.titleColor .ui-dialog-titlebar 
+	{ 
 		 background: #1C2833; 
 	}
 </style>
@@ -211,14 +212,17 @@
 <br>
 <div class="card w-100">
 	<div class="card-body">
-		<h5 class="card-title">Find by Application ID :</h5>
+		
 		@using (Html.BeginForm("ResiliencTrackList", "Home", FormMethod.Get))
 		{
-			<p>
-				 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string,new { @class = "form-control mr-sm-2 text-field " ,autocomplete = "off" })
-				<br />
-				<input type="submit" value="Search" class="btn  btn-sm btn-circle btn-outline-dark" />
-			</p>
+			<table>
+				<tr>
+					<td><h5>Find by Application ID : </h5></td>
+					<td>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control mr-sm-2 text-field ", autocomplete = "off" })</td>
+				</tr>
+			</table>
+			<br />
+			<input type="submit" value="Search" class="btn  btn-sm btn-circle btn-outline-dark" />
 		}
 	</div>
 </div>
