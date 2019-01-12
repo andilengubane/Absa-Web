@@ -56,35 +56,31 @@
 	@Html.AntiForgeryToken()
 	@Html.HiddenFor(model => model.Email)
 	@Html.HiddenFor(model => model.ResilienceID)
+
 	<form>
-		<div class="form-group row">
-			<label for="staticEmail" class="col-sm-2 col-form-label">Business Unit</label>
-			<div class="col-sm-10">
+		<div class="row">
+			<div class="col">
 				@Html.EditorFor(model => model.BusinessUnit, new { htmlAttributes = new { @class = "form-control" } })
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-2 col-form-label">Application ID</label>
 			<div class="col">
 				@Html.EditorFor(model => model.ApplicationId, new { htmlAttributes = new { @class = "form-control" } })
 			</div>
 		</div>
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-2 col-form-label">Requested By</label>
+		<br>
+		<div class="row">
 			<div class="col">
 				@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
 			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-2 col-form-label">Application</label>
 			<div class="col">
 				@Html.DropDownListFor(model => model.BusinessUnitName, Model.ApplicationDeclined, "Strategic Fit", new { @class = "form-control" })
 			</div>
 		</div>
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+		<br>
+		<div class="row">
 			<div class="col">
-				@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" , id = "description"} })
+				@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "description" } })
+			</div>
+			<div class="col">
 			</div>
 		</div>
 		<br>
