@@ -4,26 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f2ae680128f3456a8887351dbc31f1ee" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnit" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnitAudit" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.DataLookUp" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.LookUpName" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrack" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.ResilinceApplication" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.RolesPermission" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.User" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.UsersAudit" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrackAudit" Width="2" PointX="2.625" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="AbsaDBModel.FK__BusinessU__Busin__01142BA1" ManuallyRouted="false" />
+      <Diagram DiagramId="eda60cf686c24cc7b708e93dfdbaf0a2" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnit" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.DataLookUp" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.LookUpName" Width="1.5" PointX="1.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrack" Width="1.5" PointX="11.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.ResilinceApplication" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.RolesPermission" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.User" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnitAudit" Width="1.5" PointX="4.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrackAudit" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.UserAudit" Width="1.5" PointX="7.875" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Busin__208CD6FA" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__Users__BusinessU__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="AbsaDBModel.FK__UsersAudi__Busin__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__DataLookU__Loopk__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Statu__308E3499" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__Resilienc__UserI__2F9A1060" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.fk_RolesPermissions_id" ManuallyRouted="false" />
-        <AssociationConnector Association="AbsaDBModel.FK__UsersAudi__UserI__5CD6CB2B" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

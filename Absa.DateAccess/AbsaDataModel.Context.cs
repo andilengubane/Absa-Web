@@ -28,15 +28,15 @@ namespace Absa.DateAccess
         }
     
         public virtual DbSet<BusinessUnit> BusinessUnits { get; set; }
-        public virtual DbSet<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         public virtual DbSet<DataLookUp> DataLookUps { get; set; }
         public virtual DbSet<LookUpName> LookUpNames { get; set; }
         public virtual DbSet<ResilienceTrack> ResilienceTracks { get; set; }
         public virtual DbSet<ResilinceApplication> ResilinceApplications { get; set; }
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UsersAudit> UsersAudits { get; set; }
+        public virtual DbSet<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         public virtual DbSet<ResilienceTrackAudit> ResilienceTrackAudits { get; set; }
+        public virtual DbSet<UserAudit> UserAudits { get; set; }
     
         public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
         {

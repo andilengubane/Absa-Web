@@ -18,7 +18,6 @@ namespace Absa.DateAccess
         public User()
         {
             this.ResilienceTracks = new HashSet<ResilienceTrack>();
-            this.UsersAudits = new HashSet<UsersAudit>();
         }
     
         public int UserID { get; set; }
@@ -37,7 +36,5 @@ namespace Absa.DateAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
         public virtual RolesPermission RolesPermission { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersAudit> UsersAudits { get; set; }
     }
 }

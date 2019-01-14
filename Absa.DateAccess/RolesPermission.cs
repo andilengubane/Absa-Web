@@ -23,6 +23,7 @@ namespace Absa.DateAccess
         public int RolesPermissionsID { get; set; }
         public string Type { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }

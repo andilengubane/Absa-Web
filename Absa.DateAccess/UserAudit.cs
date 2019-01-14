@@ -12,8 +12,10 @@ namespace Absa.DateAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class BusinessUnitAudit
+    public partial class UserAudit
     {
+        public Nullable<int> UserID { get; set; }
+        public Nullable<int> RolesPermissionsID { get; set; }
         public Nullable<int> BusinessUnitId { get; set; }
         public string FieldName { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }

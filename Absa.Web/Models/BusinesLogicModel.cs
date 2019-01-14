@@ -12,6 +12,7 @@ namespace Absa.Web.Models
 		public IEnumerable<SelectListItem> ApplicationDeclined { get; set; }
 		public string BusinessUnitName { get; set; }
 		public string BusinessUnit { get; set; }
+		[Key]
 		public int ResilienceID { get; set; }
 		public string ApplicationId { get; set; }
 		public string FullName { get; set; }
@@ -20,6 +21,26 @@ namespace Absa.Web.Models
 		public string Description { get; set; }
 		public string Email { get; set; }
 	}
+	public class BusinessUnitModel
+	{
+		[Key]
+		public int BusinessUnitId { get; set; }
+		public string BusinessUnitName { get; set; }
+		public bool IsActive { get; set; }
+		public DateTime DateLogged { get; set; }
+		public int NumberOfApps { get; set; }
+		public string Description { get; set; }
+	}
+
+	public class RolePermissionsModel
+	{
+		[Key]
+		public int RolesPermissionsID { get; set; }
+		public string Type { get; set; }
+		public DateTime DateLogged { get; set; }
+		public string Description { get; set; }
+	}
+
 	public class DashBordModel
 	{
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
@@ -136,6 +157,7 @@ namespace Absa.Web.Models
 	}
 	public class ReportModel
 	{
+		[Key]
 		public int ID { get; set; }
 		public string BusinessUnit { get; set; }
 		public int BusinessUnitId { get; set; }
@@ -145,6 +167,7 @@ namespace Absa.Web.Models
 	{
 		public IEnumerable<SelectListItem> BusinestUnitList { get; set; }
 		public IEnumerable<SelectListItem> RolesPermissionList { get; set; }
+		[Key]
 		public int ID { get; set; }
 		[Required(ErrorMessage = "First Name is a required")]
 		[Display(Name = "First Name")]
@@ -173,6 +196,7 @@ namespace Absa.Web.Models
 	public class ResilienceTrackModel
 	{
 		public IEnumerable<SelectListItem> StatusList { get; set; }
+		[Key]
 		public int ResilienceTrackID { get; set; }
 		public int UserID { get; set; }
 		public string ApplicationID { get; set; }

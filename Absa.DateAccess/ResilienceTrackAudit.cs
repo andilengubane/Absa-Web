@@ -17,5 +17,8 @@ namespace Absa.DateAccess
         public Nullable<int> ResilienceTrackID { get; set; }
         public string FieldName { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<int> BusinessUnitId { get; set; }
+        public Nullable<int> StatusId { get; set; }
     }
 }

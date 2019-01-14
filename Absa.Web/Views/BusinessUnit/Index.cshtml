@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Absa.Web.Models.BusinessUnitModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessUnitName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLogged)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfApps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusinessUnitName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLogged)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfApps)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BusinessUnitId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BusinessUnitId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BusinessUnitId })
+        </td>
+    </tr>
+}
+
+</table>

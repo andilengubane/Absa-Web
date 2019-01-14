@@ -17,10 +17,8 @@ namespace Absa.DateAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BusinessUnit()
         {
-            this.BusinessUnitAudits = new HashSet<BusinessUnitAudit>();
             this.ResilienceTracks = new HashSet<ResilienceTrack>();
             this.Users = new HashSet<User>();
-            this.UsersAudits = new HashSet<UsersAudit>();
         }
     
         public int BusinessUnitId { get; set; }
@@ -28,14 +26,11 @@ namespace Absa.DateAccess
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> DateLogged { get; set; }
         public Nullable<int> NumberOfApps { get; set; }
+        public string Description { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BusinessUnitAudit> BusinessUnitAudits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersAudit> UsersAudits { get; set; }
     }
 }

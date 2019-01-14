@@ -9,24 +9,9 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
     <Property Name="NumberOfApps" Type="Int32" />
-    <NavigationProperty Name="BusinessUnitAudits" Relationship="Self.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnit" ToRole="BusinessUnitAudit" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
     <NavigationProperty Name="Users" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="BusinessUnit" ToRole="Users" />
-    <NavigationProperty Name="UsersAudits" Relationship="Self.FK__UsersAudi__Busin__03F0984C" FromRole="BusinessUnit" ToRole="UsersAudit" />
-  </EntityType>
-  <EntityType Name="BusinessUnitAudit">
-    <Key>
-      <PropertyRef Name="BusinessUnitAuditID" />
-    </Key>
-    <Property Name="BusinessUnitAuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BusinessUnitId" Type="Int32" />
-    <Property Name="BusinessUnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="DateLogged" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="UpdateOn" Type="DateTime" Precision="3" />
-    <Property Name="NumberOfApps" Type="Int32" />
-    <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__BusinessU__Busin__01142BA1" FromRole="BusinessUnitAudit" ToRole="BusinessUnit" />
   </EntityType>
   <EntityType Name="DataLookUp">
     <Key>
@@ -110,6 +95,7 @@
     <Property Name="RolesPermissionsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Users" Relationship="Self.fk_RolesPermissions_id" FromRole="RolesPermissions" ToRole="Users" />
   </EntityType>
   <EntityType Name="User">
@@ -130,28 +116,14 @@
     <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__UserI__2F9A1060" FromRole="Users" ToRole="ResilienceTrack" />
     <NavigationProperty Name="RolesPermission" Relationship="Self.fk_RolesPermissions_id" FromRole="Users" ToRole="RolesPermissions" />
-    <NavigationProperty Name="UsersAudits" Relationship="Self.FK__UsersAudi__UserI__5CD6CB2B" FromRole="Users" ToRole="UsersAudit" />
   </EntityType>
-  <EntityType Name="UsersAudit">
+  <EntityType Name="BusinessUnitAudit">
     <Key>
-      <PropertyRef Name="UserAuditID" />
+      <PropertyRef Name="FieldName" />
     </Key>
-    <Property Name="UserAuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserID" Type="Int32" />
-    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="EmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="Datelogged" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="UpdateOn" Type="DateTime" Precision="3" />
-    <Property Name="RolePermissionID" Type="Int32" />
     <Property Name="BusinessUnitId" Type="Int32" />
-    <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__UsersAudi__Busin__03F0984C" FromRole="UsersAudit" ToRole="BusinessUnit" />
-    <NavigationProperty Name="User" Relationship="Self.FK__UsersAudi__UserI__5CD6CB2B" FromRole="UsersAudit" ToRole="Users" />
+    <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateLogged" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ResilienceTrackAudit">
     <Key>
@@ -160,19 +132,20 @@
     <Property Name="ResilienceTrackID" Type="Int32" />
     <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="BusinessUnitId" Type="Int32" />
+    <Property Name="StatusId" Type="Int32" />
   </EntityType>
-  <Association Name="FK__BusinessU__Busin__01142BA1">
-    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
-    <End Role="BusinessUnitAudit" Type="Self.BusinessUnitAudit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BusinessUnit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Principal>
-      <Dependent Role="BusinessUnitAudit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="UserAudit">
+    <Key>
+      <PropertyRef Name="FieldName" />
+    </Key>
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="RolesPermissionsID" Type="Int32" />
+    <Property Name="BusinessUnitId" Type="Int32" />
+    <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateLogged" Type="DateTime" Precision="3" />
+  </EntityType>
   <Association Name="FK__Resilienc__Busin__208CD6FA">
     <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
     <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
@@ -193,18 +166,6 @@
         <PropertyRef Name="BusinessUnitId" />
       </Principal>
       <Dependent Role="Users">
-        <PropertyRef Name="BusinessUnitId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__UsersAudi__Busin__03F0984C">
-    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
-    <End Role="UsersAudit" Type="Self.UsersAudit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BusinessUnit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Principal>
-      <Dependent Role="UsersAudit">
         <PropertyRef Name="BusinessUnitId" />
       </Dependent>
     </ReferentialConstraint>
@@ -257,33 +218,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UsersAudi__UserI__5CD6CB2B">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="UsersAudit" Type="Self.UsersAudit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="UsersAudit">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="AbsaDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BusinessUnits" EntityType="Self.BusinessUnit" />
-    <EntitySet Name="BusinessUnitAudits" EntityType="Self.BusinessUnitAudit" />
     <EntitySet Name="DataLookUps" EntityType="Self.DataLookUp" />
     <EntitySet Name="LookUpNames" EntityType="Self.LookUpName" />
     <EntitySet Name="ResilienceTracks" EntityType="Self.ResilienceTrack" />
     <EntitySet Name="ResilinceApplications" EntityType="Self.ResilinceApplication" />
     <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermission" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <EntitySet Name="UsersAudits" EntityType="Self.UsersAudit" />
+    <EntitySet Name="BusinessUnitAudits" EntityType="Self.BusinessUnitAudit" />
     <EntitySet Name="ResilienceTrackAudits" EntityType="Self.ResilienceTrackAudit" />
-    <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="Self.FK__BusinessU__Busin__01142BA1">
-      <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-      <End Role="BusinessUnitAudit" EntitySet="BusinessUnitAudits" />
-    </AssociationSet>
+    <EntitySet Name="UserAudits" EntityType="Self.UserAudit" />
     <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
       <End Role="BusinessUnit" EntitySet="BusinessUnits" />
       <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
@@ -291,10 +236,6 @@
     <AssociationSet Name="FK__Users__BusinessU__7E37BEF6" Association="Self.FK__Users__BusinessU__7E37BEF6">
       <End Role="BusinessUnit" EntitySet="BusinessUnits" />
       <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UsersAudi__Busin__03F0984C" Association="Self.FK__UsersAudi__Busin__03F0984C">
-      <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-      <End Role="UsersAudit" EntitySet="UsersAudits" />
     </AssociationSet>
     <AssociationSet Name="FK__DataLookU__Loopk__5AEE82B9" Association="Self.FK__DataLookU__Loopk__5AEE82B9">
       <End Role="LookUpName" EntitySet="LookUpNames" />
@@ -311,10 +252,6 @@
     <AssociationSet Name="fk_RolesPermissions_id" Association="Self.fk_RolesPermissions_id">
       <End Role="RolesPermissions" EntitySet="RolesPermissions" />
       <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UsersAudi__UserI__5CD6CB2B" Association="Self.FK__UsersAudi__UserI__5CD6CB2B">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="UsersAudit" EntitySet="UsersAudits" />
     </AssociationSet>
     <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
     <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">

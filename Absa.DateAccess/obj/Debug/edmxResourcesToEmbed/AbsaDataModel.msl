@@ -9,20 +9,7 @@
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
           <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BusinessUnitAudits">
-      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
-        <MappingFragment StoreEntitySet="BusinessUnitAudit">
-          <ScalarProperty Name="BusinessUnitAuditID" ColumnName="BusinessUnitAuditID" />
-          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
-          <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -105,6 +92,7 @@
           <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -125,23 +113,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UsersAudits">
-      <EntityTypeMapping TypeName="AbsaDBModel.UsersAudit">
-        <MappingFragment StoreEntitySet="UsersAudit">
-          <ScalarProperty Name="UserAuditID" ColumnName="UserAuditID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
-          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
-          <ScalarProperty Name="RolePermissionID" ColumnName="RolePermissionID" />
+    <EntitySetMapping Name="BusinessUnitAudits">
+      <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
+        <MappingFragment StoreEntitySet="BusinessUnitAudit">
           <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -149,6 +126,20 @@
       <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrackAudit">
         <MappingFragment StoreEntitySet="ResilienceTrackAudit">
           <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAudits">
+      <EntityTypeMapping TypeName="AbsaDBModel.UserAudit">
+        <MappingFragment StoreEntitySet="UserAudit">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
           <ScalarProperty Name="FieldName" ColumnName="FieldName" />
           <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
         </MappingFragment>
