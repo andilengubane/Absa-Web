@@ -360,6 +360,7 @@
     <Content Include="Views\BusinessUnit\Index.cshtml" />
     <Content Include="Views\RolePermissions\Index.cshtml" />
     <Content Include="Views\RolePermissions\RolePermission.cshtml" />
+    <Content Include="Views\BusinessUnit\BusinessUnit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

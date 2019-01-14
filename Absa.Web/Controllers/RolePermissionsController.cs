@@ -77,7 +77,7 @@ namespace Absa.Web.Controllers
 				context.RolesPermissions.Add(new RolesPermission
 				{
 					Type = model.Type,
-					//UserID = userId,
+					UserId = userId,
 					DateLogged = DateTime.Now,
 					Description = model.Description,
 					
@@ -94,7 +94,7 @@ namespace Absa.Web.Controllers
 
 				var data = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == model.RolesPermissionsID);
 				data.Type = model.Type;
-				//data.UserID = userId;
+				data.UserId = userId;
 				data.Description = model.Description;
 			}
 			context.SaveChanges();

@@ -10,6 +10,7 @@
     <Property Name="DateLogged" Type="datetime" />
     <Property Name="NumberOfApps" Type="int" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.BusinessUnitAudit' was excluded.
@@ -115,6 +116,7 @@ warning 6002: The table/view 'AbsaDB.dbo.ResilienceTrackAudit' does not have a p
     <Property Name="Type" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="DateLogged" Type="datetime" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.UserAudit' was excluded.
@@ -146,6 +148,18 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
     <Property Name="RolesPermissionsID" Type="int" />
     <Property Name="BusinessUnitId" Type="int" />
   </EntityType>
+  <Association Name="FK__BusinessU__UserI__019E3B86">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessUnit">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__DataLookU__Loopk__5AEE82B9">
     <End Role="LookUpName" Type="Self.LookUpName" Multiplicity="0..1" />
     <End Role="DataLookUp" Type="Self.DataLookUp" Multiplicity="*" />
@@ -191,6 +205,18 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
       </Principal>
       <Dependent Role="ResilienceTrack">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolesPerm__UserI__00AA174D">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="RolesPermissions" Type="Self.RolesPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="RolesPermissions">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -273,6 +299,10 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
     [UserAudit].[DateLogged] AS [DateLogged]
     FROM [dbo].[UserAudit] AS [UserAudit]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="Self.FK__BusinessU__UserI__019E3B86">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BusinessUnit" EntitySet="BusinessUnit" />
+    </AssociationSet>
     <AssociationSet Name="FK__DataLookU__Loopk__5AEE82B9" Association="Self.FK__DataLookU__Loopk__5AEE82B9">
       <End Role="LookUpName" EntitySet="LookUpName" />
       <End Role="DataLookUp" EntitySet="DataLookUp" />
@@ -288,6 +318,10 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
     <AssociationSet Name="FK__Resilienc__UserI__2F9A1060" Association="Self.FK__Resilienc__UserI__2F9A1060">
       <End Role="Users" EntitySet="Users" />
       <End Role="ResilienceTrack" EntitySet="ResilienceTrack" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolesPerm__UserI__00AA174D" Association="Self.FK__RolesPerm__UserI__00AA174D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RolesPermissions" EntitySet="RolesPermissions" />
     </AssociationSet>
     <AssociationSet Name="FK__Users__BusinessU__7E37BEF6" Association="Self.FK__Users__BusinessU__7E37BEF6">
       <End Role="BusinessUnit" EntitySet="BusinessUnit" />
