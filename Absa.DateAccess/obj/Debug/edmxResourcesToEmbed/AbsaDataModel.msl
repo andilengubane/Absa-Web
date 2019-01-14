@@ -58,52 +58,15 @@
           <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
           <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
           <ScalarProperty Name="Tiering" ColumnName="Tiering" />
-          <ScalarProperty Name="SPOF" ColumnName="SPOF" />
-          <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
-          <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
-          <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
-          <ScalarProperty Name="ArchitetureDocumentation" ColumnName="ArchitetureDocumentation" />
-          <ScalarProperty Name="OparationsDocumentation" ColumnName="OparationsDocumentation" />
-          <ScalarProperty Name="HighestDataClassification" ColumnName="HighestDataClassification" />
-          <ScalarProperty Name="DataRetentionRequirement" ColumnName="DataRetentionRequirement" />
-          <ScalarProperty Name="IntegratedToAD" ColumnName="IntegratedToAD" />
-          <ScalarProperty Name="JMLProcess" ColumnName="JMLProcess" />
-          <ScalarProperty Name="RecertificationProcess" ColumnName="RecertificationProcess" />
-          <ScalarProperty Name="PrivilegedAccessManagement" ColumnName="PrivilegedAccessManagement" />
-          <ScalarProperty Name="OSPatchingLevel" ColumnName="OSPatchingLevel" />
-          <ScalarProperty Name="ApplicationPatchingLevel" ColumnName="ApplicationPatchingLevel" />
-          <ScalarProperty Name="MiddlewarePatchingLevel" ColumnName="MiddlewarePatchingLevel" />
-          <ScalarProperty Name="SupportedApplication" ColumnName="SupportedApplication" />
-          <ScalarProperty Name="SupportedOperationSystem" ColumnName="SupportedOperationSystem" />
-          <ScalarProperty Name="SupportedJava" ColumnName="SupportedJava" />
-          <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
-          <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
-          <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
-          <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
-          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
-          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
-          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
-          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ResilienceTrackAudits">
-      <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrackAudit">
-        <MappingFragment StoreEntitySet="ResilienceTrackAudit">
-          <ScalarProperty Name="ResilienceTrackAuditID" ColumnName="ResilienceTrackAuditID" />
-          <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
-          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
-          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-          <ScalarProperty Name="NameOnSnow" ColumnName="NameOnSnow" />
-          <ScalarProperty Name="HeadOfTechnology" ColumnName="HeadOfTechnology" />
-          <ScalarProperty Name="ApplicatioOwner" ColumnName="ApplicatioOwner" />
-          <ScalarProperty Name="ServiceManager" ColumnName="ServiceManager" />
-          <ScalarProperty Name="Tiering" ColumnName="Tiering" />
+          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
+          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
+          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
+          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
+          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
           <ScalarProperty Name="SPOF" ColumnName="SPOF" />
+          <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
           <ScalarProperty Name="SecurityMonitoring" ColumnName="SecurityMonitoring" />
           <ScalarProperty Name="InternalOLA" ColumnName="InternalOLA" />
           <ScalarProperty Name="ExternalSLA" ColumnName="ExternalSLA" />
@@ -124,16 +87,6 @@
           <ScalarProperty Name="SupportedMiddleware" ColumnName="SupportedMiddleware" />
           <ScalarProperty Name="SupportedDatabase" ColumnName="SupportedDatabase" />
           <ScalarProperty Name="OpenVulnerabilities" ColumnName="OpenVulnerabilities" />
-          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-          <ScalarProperty Name="OperationalMonitoring" ColumnName="OperationalMonitoring" />
-          <ScalarProperty Name="StrategicFit" ColumnName="StrategicFit" />
-          <ScalarProperty Name="DisasterRecovery" ColumnName="DisasterRecovery" />
-          <ScalarProperty Name="BackUpData" ColumnName="BackUpData" />
-          <ScalarProperty Name="BackUpConfiguration" ColumnName="BackUpConfiguration" />
-          <ScalarProperty Name="HighAvailability" ColumnName="HighAvailability" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -192,6 +145,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ResilienceTrackAudits">
+      <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrackAudit">
+        <MappingFragment StoreEntitySet="ResilienceTrackAudit">
+          <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="GetAllUsersList" FunctionName="AbsaDBModel.Store.GetAllUsersList">
       <ResultMapping>
         <ComplexTypeMapping TypeName="AbsaDBModel.GetAllUsersList_Result">
@@ -211,6 +173,16 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationByResilienceID_Result">
           <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetApplicationToDecline" FunctionName="AbsaDBModel.Store.GetApplicationToDecline">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationToDecline_Result">
           <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
           <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
