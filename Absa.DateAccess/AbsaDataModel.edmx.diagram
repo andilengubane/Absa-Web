@@ -21,6 +21,8 @@
         <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Statu__308E3499" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__Resilienc__UserI__2F9A1060" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.fk_RolesPermissions_id" ManuallyRouted="false" />
+        <AssociationConnector Association="AbsaDBModel.FK__BusinessU__UserI__019E3B86" />
+        <AssociationConnector Association="AbsaDBModel.FK__RolesPerm__UserI__00AA174D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

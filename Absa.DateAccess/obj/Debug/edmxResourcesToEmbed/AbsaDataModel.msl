@@ -4,6 +4,7 @@
     <EntitySetMapping Name="BusinessUnits">
       <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
         <MappingFragment StoreEntitySet="BusinessUnit">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
           <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -89,6 +90,7 @@
     <EntitySetMapping Name="RolesPermissions">
       <EntityTypeMapping TypeName="AbsaDBModel.RolesPermission">
         <MappingFragment StoreEntitySet="RolesPermissions">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
