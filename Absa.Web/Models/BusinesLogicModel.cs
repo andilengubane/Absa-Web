@@ -30,6 +30,7 @@ namespace Absa.Web.Models
 		public DateTime DateLogged { get; set; }
 		public int NumberOfApps { get; set; }
 		public string Description { get; set; }
+		public int UserID { get; set; }
 	}
 
 	public class RolePermissionsModel
@@ -39,6 +40,7 @@ namespace Absa.Web.Models
 		public string Type { get; set; }
 		public DateTime DateLogged { get; set; }
 		public string Description { get; set; }
+		public int UserID { get; set; }
 	}
 
 	public class DashBordModel

@@ -4,21 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            Role & Permission Type
         </th>
+		<th>
+			Description
+		</th>
         <th>
-            @Html.DisplayNameFor(model => model.DateLogged)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+			Date Created
         </th>
         <th></th>
     </tr>
@@ -29,10 +27,10 @@
             @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateLogged)
+			@Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+			@Html.DisplayFor(modelItem => item.DateLogged)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RolesPermissionsID }) |

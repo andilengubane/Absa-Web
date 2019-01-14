@@ -10,20 +10,20 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BusinessUnitName)
+           Business Unit
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsActive)
+           Description
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateLogged)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberOfApps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+		<th>
+			IsActive
+		</th>
+		<th>
+			Number Of Applications
+		</th>
+		<th>
+			Date Created
+		</th>
         <th></th>
     </tr>
 
@@ -32,18 +32,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.BusinessUnitName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateLogged)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberOfApps)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.IsActive)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.NumberOfApps)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateLogged)
+		</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BusinessUnitId }) |
             @Html.ActionLink("Details", "Details", new { id=item.BusinessUnitId }) |
