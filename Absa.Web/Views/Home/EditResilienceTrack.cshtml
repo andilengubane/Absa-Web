@@ -30,37 +30,37 @@
 			<div class="card-body">
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new {@id = "applicationId", @class = "form-control text-field", placeholder = "Application ID", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new {@id = "applicationId", @class = "form-control text-field", placeholder = "Application ID", autocomplete = "off" , required = "required" } })
 						@Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Name", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Name", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.ApplicationName, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.NameOnSnow, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Name On Snow", autocomplete = "off" } })
+						@Html.EditorFor(model => model.NameOnSnow, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Name On Snow", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.NameOnSnow, "", new { @class = "text-danger" })
 					</div>
 				</div>
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.HeadOfTechnology, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Head Of Technology", autocomplete = "off" } })
+						@Html.EditorFor(model => model.HeadOfTechnology, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Head Of Technology", autocomplete = "off" , required = "required" } })
 						@Html.ValidationMessageFor(model => model.HeadOfTechnology, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicatioOwner, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Owner", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ApplicatioOwner, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Owner", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.ApplicatioOwner, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ServiceManager, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Service Manager", autocomplete = "off" } })
+						@Html.EditorFor(model => model.ServiceManager, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Service Manager", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.ServiceManager, "", new { @class = "text-danger" })
 					</div>
 				</div>
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Tiering", autocomplete = "off" } })
+						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Tiering", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.Tiering, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">

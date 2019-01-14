@@ -10,12 +10,12 @@
 namespace Absa.DateAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ResilienceTrackAudit
+    public partial class GetApplicationToDecline_Result
     {
-        public Nullable<int> ResilienceTrackID { get; set; }
-        public string FieldName { get; set; }
-        public Nullable<System.DateTime> DateLogged { get; set; }
+        public string ApplicationID { get; set; }
+        public string BusinessUnitName { get; set; }
+        public string FullName { get; set; }
+        public string EmailAddress { get; set; }
     }
 }
