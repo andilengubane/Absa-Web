@@ -1,56 +1,148 @@
-﻿@model IEnumerable<Absa.Web.Models.BusinessUnitModel>
+﻿@model PagedList.IPagedList<Absa.Web.Models.BusinessUnitModel>
+@using PagedList.Mvc;
+@using PagedList;
 
 @{
     ViewBag.Title = "Index";
 }
+<script type="text/javascript">
+        $(function () {
+        	$("#dailogBusinessUnitCreate").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Business Unit ",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550,
+            });
+        	$("#businessUnit .BusinessUnitCreate").click(function () {
+        		var businessUnitId = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                    type: "POST",
+                    url: "/BusinessUnit/BusinessUnit",
+                    data: '{businessUnitId: "' + businessUnitId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dailogBusinessUnitCreate').html(response);
+                    	$('#dailogBusinessUnitCreate').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
 
+<script type="text/javascript">
+        $(function () {
+        	$("#dailogBusinessUnitCreate").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Business Unit",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 550,
+            });
+        	$("#businessUnitUpdate .BusinessUnitUpdate").click(function () {
+            	var businessUnitId = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                    type: "POST",
+                    url: "/BusinessUnit/BusinessUnit",
+                    data: '{businessUnitId: "' + businessUnitId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dailogBusinessUnitCreate').html(response);
+                    	$('#dailogBusinessUnitCreate').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+<style>
+	.div{
+       float:right;
+   }
+	 .col1 { 
+		display: none;
+    }
+</style>
+<div id="dailogBusinessUnitCreate" style="display: none"></div>
 <p>
-    @Html.ActionLink("Create New", "Create")
+	<div class="div" id="businessUnit">
+		<button class="BusinessUnitCreate btn btn-sm btn-circle btn-success" type="button" id="businessUnit" href="javascript:;">CREATE BUSINESS UNIT</button>
+	</div>
 </p>
+<br>
+<br>
 <table class="table">
-    <tr>
-        <th>
-           Business Unit
-        </th>
-        <th>
-           Description
-        </th>
-		<th>
-			IsActive
-		</th>
-		<th>
-			Number Of Applications
-		</th>
-		<th>
-			Date Created
-		</th>
-        <th></th>
-    </tr>
+	<thead class="thead-dark">
+		<tr>
+			<th class="col1">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BusinessUnitName)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-		<td>
-			@Html.DisplayFor(modelItem => item.IsActive)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.NumberOfApps)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateLogged)
-		</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BusinessUnitId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BusinessUnitId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BusinessUnitId })
-        </td>
-    </tr>
-}
+			</th>
+			<th>
+				Business Unit
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				IsActive
+			</th>
+			<th>
+				Number Of Applications
+			</th>
+			<th>
+				Date Created
+			</th>
+			<th></th>
+		</tr>
+		</thead>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td class="col1">
+					@Html.DisplayFor(modelItem => item.BusinessUnitId, new { id = "BusinessUnitId" })
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.BusinessUnitName)
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.IsActive)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.NumberOfApps)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DateLogged)
+				</td>
+				<td>
+					<div id="businessUnitUpdate">
+						<button class="BusinessUnitUpdate btn btn-sm btn-circle btn-primary" type="button" id="businessUnitUpdate" href="javascript:;">MODIFY</button>
+					</div>
+
+				</td>
+			</tr>
+		}
 
 </table>
+<br>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", "BusinessUnit", new { page, @class = "pagination" }))
+<br>

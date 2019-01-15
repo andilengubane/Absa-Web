@@ -3,10 +3,18 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<style>
+	.div{
+       float:right;
+   }
+</style>
 <p>
-    @Html.ActionLink("Create New", "Create")
+	<div class="div" id="create">
+		<button class="Create btn btn-sm btn-circle btn-success" type="button" id="create" href="javascript:;">CREATE ROLE PERMISSION</button>
+	</div>
 </p>
+<br>
+<br>
 <table class="table">
     <tr>
         <th>
@@ -33,9 +41,9 @@
 			@Html.DisplayFor(modelItem => item.DateLogged)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RolesPermissionsID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RolesPermissionsID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RolesPermissionsID })
+			<div id="create">
+				<button class="Create btn btn-sm btn-circle btn-primary" type="button" id="create" href="javascript:;">MODIFY</button>
+			</div>
         </td>
     </tr>
 }
