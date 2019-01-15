@@ -251,79 +251,80 @@
 <br>
 <br>
 <font size="3">
-	<table class="table table-bordered" id="Resilience">
-		<tr>
-			<th class="col1">
-			</th>
-			<th>
-				Status
-			</th>
-			<th>
-				Application ID
-			</th>
-			<th>
-				Application Name
-			</th>
-			<th>
-				Name On Snow
-			</th>
-			<th>
-				Head Of Technology
-			</th>
-			<th>
-				Applicatio Owner
-			</th>
-			<th>
-				Service Manager
-			</th>
-			<th>
-				Tiering
-			</th>
-			<th></th>
-		</tr>
-
-		@foreach (var item in Model)
-		{
+	<table class="table" id="Resilience">
+		<thead class="thead-dark">
 			<tr>
-				<td class="col1">
-					@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "resilienceTrackId" })
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Description)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ApplicationID)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ApplicationName)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.NameOnSnow)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.HeadOfTechnology)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ApplicatioOwner)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ServiceManager)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Tiering)
-				</td>
-				<td id="decline">
-					<button class="Edit btn btn-sm btn-circle btn-secondary" type="button" id="Resilience" href="javascript:;"> EDIT </button>
-					<button class="Apporval btn btn-sm btn-circle  btn-primary" type="button" id="Resilience" href="javascript:;"> RESILIENCE </button>
-					@if (ViewBag.RolePermission == "Mananger")
-					{
-					<button class="ApprovalRequest btn btn-sm btn-circle btn-success" type="button" id="decline" href="javascript:;"> APPROVE </button>
-					<button class="Decline btn btn-sm btn-circle btn-danger" type="button" id="decline" href="javascript:;"> DECLINE </button>
-					}
-				</td>
+				<th class="col1">
+				</th>
+				<th>
+					Status
+				</th>
+				<th>
+					Application ID
+				</th>
+				<th>
+					Application Name
+				</th>
+				<th>
+					Name On Snow
+				</th>
+				<th>
+					Head Of Technology
+				</th>
+				<th>
+					Applicatio Owner
+				</th>
+				<th>
+					Service Manager
+				</th>
+				<th>
+					Tiering
+				</th>
+				<th></th>
 			</tr>
-		}
-	</table>
+			</thead>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td class="col1">
+						@Html.DisplayFor(modelItem => item.ResilienceTrackID, new { id = "resilienceTrackId" })
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Description)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ApplicationID)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ApplicationName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.NameOnSnow)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.HeadOfTechnology)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ApplicatioOwner)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ServiceManager)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Tiering)
+					</td>
+					<td id="decline">
+						<button class="Edit btn btn-sm btn-circle btn-secondary" type="button" id="Resilience" href="javascript:;"> EDIT </button>
+						<button class="Apporval btn btn-sm btn-circle  btn-primary" type="button" id="Resilience" href="javascript:;"> RESILIENCE </button>
+						@if (ViewBag.RolePermission == "Mananger")
+						{
+							<button class="ApprovalRequest btn btn-sm btn-circle btn-success" type="button" id="decline" href="javascript:;"> APPROVE </button>
+							<button class="Decline btn btn-sm btn-circle btn-danger" type="button" id="decline" href="javascript:;"> DECLINE </button>
+						}
+					</td>
+				</tr>
+			}
+</table>
 	<br>
 	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 	@Html.PagedListPager(Model, page => Url.Action("ResiliencTrackList", "Home", new { page , @class ="pagination"}))

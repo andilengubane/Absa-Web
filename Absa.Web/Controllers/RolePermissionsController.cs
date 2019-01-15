@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using PagedList;
+using System.Linq;
 using System.Web.Mvc;
 using Absa.DateAccess;
 using Absa.Web.Models;
+using System.Collections.Generic;
 
 namespace Absa.Web.Controllers
 {
@@ -12,33 +13,41 @@ namespace Absa.Web.Controllers
     {
 		AbsaDBEntities context = new AbsaDBEntities();
         // GET: RolePermissions
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-			var model = new RolePermissionsModel();
+			var model = new List<RolePermissionsModel>();
 			var data = context.RolesPermissions.ToList();
 			foreach (var item in data)
 			{
-				model.RolesPermissionsID = item.RolesPermissionsID;
-				model.Type = item.Type;
-				model.DateLogged = item.DateLogged.Value;
-				model.Description = item.Description;
-			}
-			List<RolePermissionsModel> viewModelList = new List<RolePermissionsModel>();
-			viewModelList.Add(model);
-			return PartialView(viewModelList.AsEnumerable());
-        }
+				model.Add(new RolePermissionsModel
+				{
+			       RolesPermissionsID = item.RolesPermissionsID,
+				   Type = item.Type,
+				   DateLogged = item.DateLogged.Value,
+				   Description = item.Description,
+			    });
 
-		public ActionResult RolePermission(string rolePermissionID)
+			}
+			int pageSize = 5;
+			int pageNumber = (page ?? 1);
+			return this.PartialView("Index", model.ToPagedList(pageNumber, pageSize));
+		}
+
+		public ActionResult RolePermission(string rolePermissionsId)
 		{
 			var _Id = this.Session["ID"];
 			int userId = Convert.ToInt32(_Id);
 			var dataStatus = context.Users.FirstOrDefault(u => u.UserID == userId);
-
-			string number = System.Text.RegularExpressions.Regex.Replace(rolePermissionID, @"\D+", string.Empty);
-			int id = Convert.ToInt16(number);
+			int id = 0;
+			if (rolePermissionsId != "")
+			{
+				string number = System.Text.RegularExpressions.Regex.Replace(rolePermissionsId, @"\D+", string.Empty);
+				id = Convert.ToInt16(number);
+			}
+		
 
 			var model = new RolePermissionsModel();
-			if (model.RolesPermissionsID == 0)
+			if (id == 0)
 			{
 				return PartialView();
 			}
@@ -46,7 +55,7 @@ namespace Absa.Web.Controllers
 			{
 				try
 				{
-					var data = context.RolesPermissions.Where(m => m.RolesPermissionsID == model.RolesPermissionsID);
+					var data = context.RolesPermissions.Where(m => m.RolesPermissionsID == id);
 					foreach (var result in data)
 					{
 						model.RolesPermissionsID = result.RolesPermissionsID;
@@ -80,7 +89,6 @@ namespace Absa.Web.Controllers
 					UserId = userId,
 					DateLogged = DateTime.Now,
 					Description = model.Description,
-					
 				});
 			}
 			else
@@ -98,7 +106,7 @@ namespace Absa.Web.Controllers
 				data.Description = model.Description;
 			}
 			context.SaveChanges();
-			return RedirectToAction("UserList", "Home");
+			return RedirectToAction("UserList", "Account");
 		}
     }
 }

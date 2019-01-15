@@ -59,6 +59,7 @@ namespace Absa.Web.Controllers
 					{
 						model.BusinessUnitId = result.BusinessUnitId;
 						model.BusinessUnitName = result.BusinessUnitName;
+						model.NumberOfApps = result.NumberOfApps.Value;
 						model.IsActive = result.IsActive.Value;
 						model.DateLogged = result.DateLogged.Value;
 						model.Description = result.Description;
@@ -90,6 +91,7 @@ namespace Absa.Web.Controllers
 					DateLogged = DateTime.Now,
 					IsActive = model.IsActive,
 					Description = model.Description,
+					NumberOfApps = model.NumberOfApps,
 
 				});
 			}
@@ -104,12 +106,13 @@ namespace Absa.Web.Controllers
 
 				var data = context.BusinessUnits.FirstOrDefault(x => x.BusinessUnitId == model.BusinessUnitId);
 				data.BusinessUnitName = model.BusinessUnitName;
+				data.NumberOfApps = model.NumberOfApps;
 				data.UserId = userId;
 				data.IsActive = model.IsActive;
 				data.Description = model.Description;
 			}
 			context.SaveChanges();
-			return RedirectToAction("UserList", "Home");
+			return RedirectToAction("UserList", "Account");
 		}
 	}
 }

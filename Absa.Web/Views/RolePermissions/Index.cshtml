@@ -1,51 +1,137 @@
-﻿@model IEnumerable<Absa.Web.Models.RolePermissionsModel>
+﻿@model PagedList.IPagedList<Absa.Web.Models.RolePermissionsModel>
+@using PagedList.Mvc;
+@using PagedList;
 
 @{
     ViewBag.Title = "Index";
 }
+
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogRolePermissions").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Role & Permissions",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 250,
+            });
+        	$("#rolePermissionsCreate .RolePermissionsCreate").click(function () {
+        		var rolePermissionsId = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                    type: "POST",
+                    url: "/RolePermissions/RolePermission",
+                    data: '{rolePermissionsId: "' + rolePermissionsId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogRolePermissions').html(response);
+                    	$('#dialogRolePermissions').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(function () {
+        	$("#dialogRolePermissions").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Role & Permissions",
+                dialogClass: 'titleColor',
+                width: 700,
+                height: 250,
+            });
+        	$("#rolePermissionsUpdate .RolePermissionsUpdate").click(function () {
+        		var rolePermissionsId = $(this).closest('tr').find('td:eq(0)').text();
+                $.ajax({
+                    type: "POST",
+                    url: "/RolePermissions/RolePermission",
+                    data: '{rolePermissionsId: "' + rolePermissionsId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                    	$('#dialogRolePermissions').html(response);
+                    	$('#dialogRolePermissions').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+<div id="dialogRolePermissions" style="display: none"></div>
 <style>
-	.div{
-       float:right;
-   }
+	.div {
+		float: right;
+	}
+
+	.col1 {
+		display: none;
+	}
 </style>
+
+
+
 <p>
-	<div class="div" id="create">
-		<button class="Create btn btn-sm btn-circle btn-success" type="button" id="create" href="javascript:;">CREATE ROLE PERMISSION</button>
+	<div class="div" id="rolePermissionsCreate">
+		<button class="RolePermissionsCreate btn btn-sm btn-circle btn-success" type="button" id="rolePermissionsCreate" href="javascript:;">CREATE ROLE PERMISSION</button>
 	</div>
 </p>
 <br>
 <br>
 <table class="table">
-    <tr>
-        <th>
-            Role & Permission Type
-        </th>
-		<th>
-			Description
-		</th>
-        <th>
-			Date Created
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-			@Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-			@Html.DisplayFor(modelItem => item.DateLogged)
-        </td>
-        <td>
-			<div id="create">
-				<button class="Create btn btn-sm btn-circle btn-primary" type="button" id="create" href="javascript:;">MODIFY</button>
-			</div>
-        </td>
-    </tr>
-}
+	<thead class="thead-dark">
+		<tr>
+			<th class="col1">
+				
+			</th>
+			<th>
+				Role & Permission Type
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				Date Created
+			</th>
+			<th></th>
+		</tr>
+		</thead>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td class="col1">
+					@Html.DisplayFor(modelItem => item.RolesPermissionsID)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Type)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DateLogged)
+				</td>
+				<td>
+					<div id="rolePermissionsUpdate">
+						<button class="RolePermissionsUpdate btn btn-sm btn-circle btn-primary" type="button" id="rolePermissionsUpdate" href="javascript:;">MODIFY</button>
+					</div>
+				</td>
+			</tr>
+		}
 
 </table>
+<br>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", "RolePermissions", new { page, @class = "pagination" }))
