@@ -5,24 +5,6 @@
 	Layout = null;
 }
 <script src="~/Scripts/jquery.validate.js"></script>
-<script>
-	$(document).ready(function () {
-		$('#formDecline').validate({
-			rules: {
-				description: {
-					required: true,
-					minlength: 10
-				},
-			},
-			messages: {
-				description: {
-					required: "please enter description",
-					minlength: $.format("Keep typing, at least {0} characters required!")
-				},
-			}
-		});
-	});
-</script>
 <style>
 	.col1 {
 		display: none;

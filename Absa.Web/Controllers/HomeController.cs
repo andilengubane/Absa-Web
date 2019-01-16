@@ -19,13 +19,27 @@ namespace Absa.Web.Controllers
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-
 			var model = new DashBordModel();
-			model.BusinessUnitList = context.BusinessUnits.Where(x => x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem
+			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
+
+			if (rolePermissionType == "Mananger")
 			{
-				Value = x.BusinessUnitId.ToString(),
-				Text = x.BusinessUnitName
-			});
+				model.BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem
+				{
+					Value = x.BusinessUnitId.ToString(),
+					Text = x.BusinessUnitName
+				});
+			}
+			else
+			{
+				model.BusinessUnitList = context.BusinessUnits.Where(x => x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem
+				{
+					Value = x.BusinessUnitId.ToString(),
+					Text = x.BusinessUnitName
+				});
+			}
 			return View(model);
 		}
 
@@ -33,12 +47,17 @@ namespace Absa.Web.Controllers
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
+
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
 			var numberOfAppWithinTheBusinessUnit = context.BusinessUnits.FirstOrDefault(b=>b.BusinessUnitId == data.BusinessUnitId);
-			var model = new DashBordModel();
-			var strategicFitappData = context.GetAppStatus(data.BusinessUnitId);
+			
+			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
 
-			foreach (var item in strategicFitappData)
+			var model = new DashBordModel();
+			var appData = context.GetAppStatus(data.BusinessUnitId);
+			foreach (var item in appData)
 			{
 				model.StrategicFitYes = Convert.ToInt32(item.StrategicFitYes);
 				model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);

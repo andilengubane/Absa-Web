@@ -52,18 +52,26 @@
 	.text-field {
 		 border-radius: 50px;
 	}
+
+	.section {
+       -webkit-column-width: 200px;
+       -moz-column-width: 200px;
+            column-width: 200px;
+}
 </style>
 
 <br>
+<h3>T100R 27 Pillas</h3>
+<br>
 <div class="card w-100">
 	<div class="card-body">
-		<h3>T100R 27 Pillas</h3>
-       @*@using (Html.BeginForm()){
-		<h5 class="card-title">Business Unit</h5>
-		@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field", id = "businessUnit" })
-		<br>
-		<input type="submit" value="Search" class="btn btn-circle btn-outline-dark" />
-		}*@
+     <table>
+		 <tr>
+			 <td class="section"><h5 class="card-title">Business Unit : </h5></td>
+			 <td class="section">@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field", id = "businessUnit" })</td>
+			 <td class="section"><input type="submit" value="Search" onclick="getBusiness()" class="btn btn-circle btn-outline-dark" /></td>
+		 </tr>
+	 </table>
 	</div>
 </div>
 <br>
