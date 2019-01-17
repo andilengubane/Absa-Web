@@ -46,6 +46,8 @@ namespace Absa.Web.Models
 	public class DashBordModel
 	{
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
+		public IEnumerable<SelectListItem> StatusList { get; set; }
+		public string Status { get; set; }
 		public int NumberOfApps { get; set; }
 		public string BusinessUnit { get; set; }
 		public int StrategicFitYes { get; set; }
@@ -198,6 +200,7 @@ namespace Absa.Web.Models
 	public class ResilienceTrackModel
 	{
 		public IEnumerable<SelectListItem> StatusList { get; set; }
+		public string Status { get; set; }
 		[Key]
 		public int ResilienceTrackID { get; set; }
 		public int UserID { get; set; }

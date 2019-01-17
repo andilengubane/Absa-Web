@@ -51,81 +51,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbsaDAtaModel.Context.cs">
+    <Compile Include="AbsaDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbsaDAtaModel.Context.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AbsaDAtaModel.cs">
+    <Compile Include="AbsaDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AbsaDAtaModel.Designer.cs">
+    <Compile Include="AbsaDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbsaDAtaModel.edmx</DependentUpon>
+      <DependentUpon>AbsaDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="BusinessUnit.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessUnitAudit.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataLookUp.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetAllUsersList_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationByResilienceID_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationToDecline_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetAppStatus_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetResilienceTrackListById_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetResilienceTrackList_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetUserById_Result.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LookUpName.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResilienceTrack.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResilienceTrackAudit.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ResilinceApplication.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RolesPermission.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAudit.cs">
-      <DependentUpon>AbsaDAtaModel.tt</DependentUpon>
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="AbsaDAtaModel.edmx">
+    <EntityDeploy Include="AbsaDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AbsaDAtaModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AbsaDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AbsaDAtaModel.edmx.diagram">
-      <DependentUpon>AbsaDAtaModel.edmx</DependentUpon>
+    <None Include="AbsaDataModel.edmx.diagram">
+      <DependentUpon>AbsaDataModel.edmx</DependentUpon>
     </None>
     <None Include="App.Config" />
     <None Include="packages.config" />
@@ -134,15 +125,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AbsaDAtaModel.Context.tt">
+    <Content Include="AbsaDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AbsaDAtaModel.edmx</DependentUpon>
-      <LastGenOutput>AbsaDAtaModel.Context.cs</LastGenOutput>
+      <DependentUpon>AbsaDataModel.edmx</DependentUpon>
+      <LastGenOutput>AbsaDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AbsaDAtaModel.tt">
+    <Content Include="AbsaDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AbsaDAtaModel.edmx</DependentUpon>
-      <LastGenOutput>AbsaDAtaModel.cs</LastGenOutput>
+      <DependentUpon>AbsaDataModel.edmx</DependentUpon>
+      <LastGenOutput>AbsaDataModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

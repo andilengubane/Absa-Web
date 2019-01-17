@@ -12,18 +12,6 @@
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
     <Property Name="UserId" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.BusinessUnitAudit' was excluded.
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueIs' in the table 'AbsaDB.dbo.BusinessUnitAudit' was excluded.
-warning 6002: The table/view 'AbsaDB.dbo.BusinessUnitAudit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="BusinessUnitAudit">
-    <Key>
-      <PropertyRef Name="FieldName" />
-    </Key>
-    <Property Name="BusinessUnitId" Type="int" />
-    <Property Name="FieldName" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="DateLogged" Type="datetime" />
-  </EntityType>
   <EntityType Name="DataLookUp">
     <Key>
       <PropertyRef Name="ID" />
@@ -85,21 +73,6 @@ warning 6002: The table/view 'AbsaDB.dbo.BusinessUnitAudit' does not have a prim
     <Property Name="SupportedDatabase" Type="nvarchar" MaxLength="150" />
     <Property Name="OpenVulnerabilities" Type="nvarchar" MaxLength="150" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.ResilienceTrackAudit' was excluded.
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueIs' in the table 'AbsaDB.dbo.ResilienceTrackAudit' was excluded.
-warning 6002: The table/view 'AbsaDB.dbo.ResilienceTrackAudit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="ResilienceTrackAudit">
-    <Key>
-      <PropertyRef Name="FieldName" />
-    </Key>
-    <Property Name="ResilienceTrackID" Type="int" />
-    <Property Name="FieldName" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="DateLogged" Type="datetime" />
-    <Property Name="UserID" Type="int" />
-    <Property Name="BusinessUnitId" Type="int" />
-    <Property Name="StatusId" Type="int" />
-  </EntityType>
   <EntityType Name="ResilinceApplication">
     <Key>
       <PropertyRef Name="ApplicationID" />
@@ -117,20 +90,6 @@ warning 6002: The table/view 'AbsaDB.dbo.ResilienceTrackAudit' does not have a p
     <Property Name="DateLogged" Type="datetime" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
     <Property Name="UserId" Type="int" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.UserAudit' was excluded.
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueIs' in the table 'AbsaDB.dbo.UserAudit' was excluded.
-warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="UserAudit">
-    <Key>
-      <PropertyRef Name="FieldName" />
-    </Key>
-    <Property Name="UserID" Type="int" />
-    <Property Name="RolesPermissionsID" Type="int" />
-    <Property Name="BusinessUnitId" Type="int" />
-    <Property Name="FieldName" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="DateLogged" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -273,32 +232,6 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
     <EntitySet Name="ResilinceApplication" EntityType="Self.ResilinceApplication" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermissions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="BusinessUnitAudit" EntityType="Self.BusinessUnitAudit" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [BusinessUnitAudit].[BusinessUnitId] AS [BusinessUnitId], 
-    [BusinessUnitAudit].[FieldName] AS [FieldName], 
-    [BusinessUnitAudit].[DateLogged] AS [DateLogged]
-    FROM [dbo].[BusinessUnitAudit] AS [BusinessUnitAudit]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="ResilienceTrackAudit" EntityType="Self.ResilienceTrackAudit" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [ResilienceTrackAudit].[ResilienceTrackID] AS [ResilienceTrackID], 
-    [ResilienceTrackAudit].[FieldName] AS [FieldName], 
-    [ResilienceTrackAudit].[DateLogged] AS [DateLogged], 
-    [ResilienceTrackAudit].[UserID] AS [UserID], 
-    [ResilienceTrackAudit].[BusinessUnitId] AS [BusinessUnitId], 
-    [ResilienceTrackAudit].[StatusId] AS [StatusId]
-    FROM [dbo].[ResilienceTrackAudit] AS [ResilienceTrackAudit]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="UserAudit" EntityType="Self.UserAudit" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [UserAudit].[UserID] AS [UserID], 
-    [UserAudit].[RolesPermissionsID] AS [RolesPermissionsID], 
-    [UserAudit].[BusinessUnitId] AS [BusinessUnitId], 
-    [UserAudit].[FieldName] AS [FieldName], 
-    [UserAudit].[DateLogged] AS [DateLogged]
-    FROM [dbo].[UserAudit] AS [UserAudit]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="Self.FK__BusinessU__UserI__019E3B86">
       <End Role="Users" EntitySet="Users" />
       <End Role="BusinessUnit" EntitySet="BusinessUnit" />

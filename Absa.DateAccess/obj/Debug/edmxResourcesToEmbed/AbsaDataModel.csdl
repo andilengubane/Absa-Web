@@ -10,10 +10,10 @@
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
     <Property Name="NumberOfApps" Type="Int32" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="BusinessUnit" ToRole="Users" />
     <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
     <NavigationProperty Name="Users" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="BusinessUnit" ToRole="Users" />
-    <Property Name="UserId" Type="Int32" />
-    <NavigationProperty Name="User" Relationship="AbsaDBModel.FK__BusinessU__UserI__019E3B86" FromRole="BusinessUnit" ToRole="User" />
   </EntityType>
   <EntityType Name="DataLookUp">
     <Key>
@@ -98,9 +98,9 @@
     <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateLogged" Type="DateTime" Precision="3" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Users" Relationship="Self.fk_RolesPermissions_id" FromRole="RolesPermissions" ToRole="Users" />
     <Property Name="UserId" Type="Int32" />
-    <NavigationProperty Name="User" Relationship="AbsaDBModel.FK__RolesPerm__UserI__00AA174D" FromRole="RolesPermission" ToRole="User" />
+    <NavigationProperty Name="User" Relationship="Self.FK__RolesPerm__UserI__00AA174D" FromRole="RolesPermissions" ToRole="Users" />
+    <NavigationProperty Name="Users" Relationship="Self.fk_RolesPermissions_id" FromRole="RolesPermissions" ToRole="Users" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -117,41 +117,24 @@
     <Property Name="Datelogged" Type="DateTime" Precision="3" />
     <Property Name="RolesPermissionsID" Type="Int32" />
     <Property Name="BusinessUnitId" Type="Int32" />
+    <NavigationProperty Name="BusinessUnits" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__UserI__2F9A1060" FromRole="Users" ToRole="ResilienceTrack" />
+    <NavigationProperty Name="RolesPermissions" Relationship="Self.FK__RolesPerm__UserI__00AA174D" FromRole="Users" ToRole="RolesPermissions" />
     <NavigationProperty Name="RolesPermission" Relationship="Self.fk_RolesPermissions_id" FromRole="Users" ToRole="RolesPermissions" />
-    <NavigationProperty Name="BusinessUnits" Relationship="AbsaDBModel.FK__BusinessU__UserI__019E3B86" FromRole="User" ToRole="BusinessUnit" />
-    <NavigationProperty Name="RolesPermissions" Relationship="AbsaDBModel.FK__RolesPerm__UserI__00AA174D" FromRole="User" ToRole="RolesPermission" />
   </EntityType>
-  <EntityType Name="BusinessUnitAudit">
-    <Key>
-      <PropertyRef Name="FieldName" />
-    </Key>
-    <Property Name="BusinessUnitId" Type="Int32" />
-    <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateLogged" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="ResilienceTrackAudit">
-    <Key>
-      <PropertyRef Name="FieldName" />
-    </Key>
-    <Property Name="ResilienceTrackID" Type="Int32" />
-    <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateLogged" Type="DateTime" Precision="3" />
-    <Property Name="UserID" Type="Int32" />
-    <Property Name="BusinessUnitId" Type="Int32" />
-    <Property Name="StatusId" Type="Int32" />
-  </EntityType>
-  <EntityType Name="UserAudit">
-    <Key>
-      <PropertyRef Name="FieldName" />
-    </Key>
-    <Property Name="UserID" Type="Int32" />
-    <Property Name="RolesPermissionsID" Type="Int32" />
-    <Property Name="BusinessUnitId" Type="Int32" />
-    <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateLogged" Type="DateTime" Precision="3" />
-  </EntityType>
+  <Association Name="FK__BusinessU__UserI__019E3B86">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessUnit">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Resilienc__Busin__208CD6FA">
     <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
     <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
@@ -212,6 +195,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__RolesPerm__UserI__00AA174D">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="RolesPermissions" Type="Self.RolesPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="RolesPermissions">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_RolesPermissions_id">
     <End Role="RolesPermissions" Type="Self.RolesPermission" Multiplicity="0..1" />
     <End Role="Users" Type="Self.User" Multiplicity="*" />
@@ -232,9 +227,10 @@
     <EntitySet Name="ResilinceApplications" EntityType="Self.ResilinceApplication" />
     <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermission" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <EntitySet Name="BusinessUnitAudits" EntityType="Self.BusinessUnitAudit" />
-    <EntitySet Name="ResilienceTrackAudits" EntityType="Self.ResilienceTrackAudit" />
-    <EntitySet Name="UserAudits" EntityType="Self.UserAudit" />
+    <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="Self.FK__BusinessU__UserI__019E3B86">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+    </AssociationSet>
     <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
       <End Role="BusinessUnit" EntitySet="BusinessUnits" />
       <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
@@ -255,11 +251,14 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
     </AssociationSet>
+    <AssociationSet Name="FK__RolesPerm__UserI__00AA174D" Association="Self.FK__RolesPerm__UserI__00AA174D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RolesPermissions" EntitySet="RolesPermissions" />
+    </AssociationSet>
     <AssociationSet Name="fk_RolesPermissions_id" Association="Self.fk_RolesPermissions_id">
       <End Role="RolesPermissions" EntitySet="RolesPermissions" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
-    <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
     <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
       <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -279,27 +278,9 @@
     <FunctionImport Name="GetUserById" ReturnType="Collection(AbsaDBModel.GetUserById_Result)">
       <Parameter Name="UserId" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="GetUserRolePermissions" ReturnType="Collection(String)" />
-    <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="AbsaDBModel.FK__BusinessU__UserI__019E3B86">
-      <End Role="User" EntitySet="Users" />
-      <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RolesPerm__UserI__00AA174D" Association="AbsaDBModel.FK__RolesPerm__UserI__00AA174D">
-      <End Role="User" EntitySet="Users" />
-      <End Role="RolesPermission" EntitySet="RolesPermissions" />
-    </AssociationSet>
+    <FunctionImport Name="GetUserRolePermissions" />
+    <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
   </EntityContainer>
-  <ComplexType Name="GetAllUsersList_Result">
-    <Property Type="Int32" Name="UserID" Nullable="false" />
-    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
-    <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
-    <Property Type="Boolean" Name="IsActive" Nullable="true" />
-    <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
-    <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
-  </ComplexType>
   <ComplexType Name="GetApplicationByResilienceID_Result">
     <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
     <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
@@ -478,28 +459,15 @@
     <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
   </ComplexType>
-  <Association Name="FK__BusinessU__UserI__019E3B86">
-    <End Type="AbsaDBModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="BusinessUnit">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RolesPerm__UserI__00AA174D">
-    <End Type="AbsaDBModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="AbsaDBModel.RolesPermission" Role="RolesPermission" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="RolesPermission">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <ComplexType Name="GetAllUsersList_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+  </ComplexType>
 </Schema>

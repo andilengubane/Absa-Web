@@ -24,7 +24,7 @@ namespace Absa.Web.Controllers
 			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
 			string rolePermissionType = Convert.ToString(permissions.Type);
 
-			if (rolePermissionType == "Mananger")
+			if (rolePermissionType == "Manager")
 			{
 				model.BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem
 				{
@@ -40,6 +40,9 @@ namespace Absa.Web.Controllers
 					Text = x.BusinessUnitName
 				});
 			}
+
+			
+
 			return View(model);
 		}
 
@@ -241,6 +244,7 @@ namespace Absa.Web.Controllers
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var model = new List<ResilienceTrackModel>();
+			
 			if (searchString != null)
 			{
 				page = 1;
@@ -259,11 +263,13 @@ namespace Absa.Web.Controllers
 				var data = from s in context.GetResilienceTrackList()
 						   where s.BusinessUnitId == businessUnitData.BusinessUnitId
 						   select s;
+
 				ViewBag.CurrentFilter = searchString;
 				if (!String.IsNullOrEmpty(searchString))
 				{
 					data = data.Where(s => s.ApplicationID.Contains(searchString)); 
 				}
+
 				foreach (var item in data)
 				{
 					model.Add(new ResilienceTrackModel()
@@ -355,55 +361,64 @@ namespace Absa.Web.Controllers
 				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
 				string rolePermissionType = Convert.ToString(permissions.Type);
 
-				if (rolePermissionType == "Mananger")
+				var Application = context.ResilienceTracks.FirstOrDefault(a => a.ApplicationID == model.ApplicationID && a.ApplicationName == model.ApplicationName);
+				if (Application != null)
 				{
-					statusId = 4;
+					ViewBag.ErrorMessage = "Reasilience record with Application ID " + model.ApplicationID + " And Application Name " + model.ApplicationName + " already exist";
+					return RedirectToAction("ResiliencTrackList", "Home");
+				} else
+				{
+					if (rolePermissionType == "Manager")
+					{
+						statusId = 4;
+					}
+					else
+					{
+						statusId = 5;
+					}
+
+					context.ResilienceTracks.Add(new ResilienceTrack
+					{
+						ResilienceTrackID = model.ResilienceTrackID,
+						ApplicationID = model.ApplicationID,
+						UserID = userId,
+						ApplicationName = model.ApplicationName,
+						NameOnSnow = model.NameOnSnow,
+						Tiering = model.Tiering,
+						HeadOfTechnology = model.HeadOfTechnology,
+						BusinessUnitId = datas.BusinessUnitId,
+						ApplicatioOwner = model.ApplicatioOwner,
+						ServiceManager = model.ServiceManager,
+						StrategicFit = model.StrategicFit,
+						DisasterRecovery = model.DisasterRecovery,
+						BackUpData = model.BackUpData,
+						BackUpConfiguration = model.BackUpConfiguration,
+						HighAvailability = model.HighAvailability,
+						SPOF = model.SPOF,
+						OperationalMonitoring = model.OperationalMonitoring,
+						SecurityMonitoring = model.SecurityMonitoring,
+						InternalOLA = model.InternalOLA,
+						ExternalSLA = model.ExternalSLA,
+						ArchitetureDocumentation = model.ArchitetureDocumentation,
+						OparationsDocumentation = model.OparationsDocumentation,
+						HighestDataClassification = model.HighestDataClassification,
+						DataRetentionRequirement = model.DataRetentionRequirement,
+						IntegratedToAD = model.IntegratedToAD,
+						JMLProcess = model.JMLProcess,
+						RecertificationProcess = model.RecertificationProcess,
+						PrivilegedAccessManagement = model.PrivilegedAccessManagement,
+						OSPatchingLevel = model.OSPatchingLevel,
+						ApplicationPatchingLevel = model.ApplicationPatchingLevel,
+						MiddlewarePatchingLevel = model.MiddlewarePatchingLevel,
+						SupportedApplication = model.SupportedApplication,
+						SupportedOperationSystem = model.SupportedOperationSystem,
+						SupportedJava = model.SupportedJava,
+						SupportedMiddleware = model.SupportedMiddleware,
+						SupportedDatabase = model.SupportedDatabase,
+						OpenVulnerabilities = model.OpenVulnerabilities,
+						StatusId = statusId
+					});
 				}
-				else
-				{
-					statusId = 5;
-				}
-				context.ResilienceTracks.Add(new ResilienceTrack
-				{
-					ResilienceTrackID = model.ResilienceTrackID,
-					ApplicationID = model.ApplicationID,
-					UserID = userId,
-					ApplicationName = model.ApplicationName,
-					NameOnSnow = model.NameOnSnow,
-					Tiering = model.Tiering,
-					HeadOfTechnology = model.HeadOfTechnology,
-					BusinessUnitId = datas.BusinessUnitId,
-					ApplicatioOwner = model.ApplicatioOwner,
-					ServiceManager = model.ServiceManager,
-					StrategicFit = model.StrategicFit,
-					DisasterRecovery = model.DisasterRecovery,
-					BackUpData = model.BackUpData,
-					BackUpConfiguration = model.BackUpConfiguration,
-					HighAvailability = model.HighAvailability,
-					SPOF = model.SPOF,
-					OperationalMonitoring = model.OperationalMonitoring,
-					SecurityMonitoring = model.SecurityMonitoring,
-					InternalOLA = model.InternalOLA,
-					ExternalSLA = model.ExternalSLA,
-					ArchitetureDocumentation = model.ArchitetureDocumentation,
-					OparationsDocumentation = model.OparationsDocumentation,
-					HighestDataClassification = model.HighestDataClassification,
-					DataRetentionRequirement = model.DataRetentionRequirement,
-					IntegratedToAD = model.IntegratedToAD,
-					JMLProcess = model.JMLProcess,
-					RecertificationProcess = model.RecertificationProcess,
-					PrivilegedAccessManagement = model.PrivilegedAccessManagement,
-					OSPatchingLevel = model.OSPatchingLevel,
-					ApplicationPatchingLevel = model.ApplicationPatchingLevel,
-					MiddlewarePatchingLevel = model.MiddlewarePatchingLevel,
-					SupportedApplication = model.SupportedApplication,
-					SupportedOperationSystem = model.SupportedOperationSystem,
-					SupportedJava = model.SupportedJava,
-					SupportedMiddleware = model.SupportedMiddleware,
-					SupportedDatabase = model.SupportedDatabase,
-					OpenVulnerabilities = model.OpenVulnerabilities,
-					StatusId = statusId
-			});
 			}
 			else {
 				var id = this.Session["ID"];
@@ -413,7 +428,7 @@ namespace Absa.Web.Controllers
 				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
 				string rolePermissionType = Convert.ToString(permissions.Type);
 
-				if (rolePermissionType == "Mananger"){
+				if (rolePermissionType == "Manager"){
 					 statusId = 4;
 				}
 				else {
@@ -466,9 +481,9 @@ namespace Absa.Web.Controllers
 			msg.To.Add(new MailAddress(email));
 			msg.Subject = "Request Declined";
 			msg.Body = "Business Unit" + businessUnit +
-					   "Application Id" + applicationID + 
-				       "Approval Requested By" + requestedBy +
-					   "Application Declined" + applicationDeclined +
+				       "\n" +"Application Id" + applicationID +
+					   "\n"+"Approval Requested By" + requestedBy +
+					   "\n"+ "Application Declined" + applicationDeclined +
 					   "\n" + body;
 			SmtpClient Client = new SmtpClient("smtp.gmail.com");
 			Client.Port = 587;
