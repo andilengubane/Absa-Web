@@ -17,8 +17,8 @@ namespace Absa.DateAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.ResilienceTracks = new HashSet<ResilienceTrack>();
             this.BusinessUnits = new HashSet<BusinessUnit>();
+            this.ResilienceTracks = new HashSet<ResilienceTrack>();
             this.RolesPermissions = new HashSet<RolesPermission>();
         }
     
@@ -34,13 +34,13 @@ namespace Absa.DateAccess
         public Nullable<int> RolesPermissionsID { get; set; }
         public Nullable<int> BusinessUnitId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusinessUnit> BusinessUnits { get; set; }
         public virtual BusinessUnit BusinessUnit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResilienceTrack> ResilienceTracks { get; set; }
-        public virtual RolesPermission RolesPermission { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BusinessUnit> BusinessUnits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RolesPermission> RolesPermissions { get; set; }
+        public virtual RolesPermission RolesPermission { get; set; }
     }
 }

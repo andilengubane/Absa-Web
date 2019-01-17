@@ -84,9 +84,12 @@
 
 
 <p>
-	<div class="div" id="rolePermissionsCreate">
-		<button class="RolePermissionsCreate btn btn-sm btn-circle btn-success" type="button" id="rolePermissionsCreate" href="javascript:;">CREATE ROLE PERMISSION</button>
-	</div>
+	@if (ViewBag.RolePermission == "Manager")
+	{
+		<div class="div" id="rolePermissionsCreate">
+			<button class="RolePermissionsCreate btn btn-sm btn-circle btn-success" type="button" id="rolePermissionsCreate" href="javascript:;">CREATE ROLE PERMISSION</button>
+		</div>
+	}
 </p>
 <br>
 <br>
@@ -124,14 +127,16 @@
 					@Html.DisplayFor(modelItem => item.DateLogged)
 				</td>
 				<td>
-					<div id="rolePermissionsUpdate">
-						<button class="RolePermissionsUpdate btn btn-sm btn-circle btn-primary" type="button" id="rolePermissionsUpdate" href="javascript:;">MODIFY</button>
-					</div>
+                 @if (ViewBag.RolePermission == "Manager")
+                 {
+	                <div id="rolePermissionsUpdate">
+	                	<button class="RolePermissionsUpdate btn btn-sm btn-circle btn-primary" type="button" id="rolePermissionsUpdate" href="javascript:;">MODIFY</button>
+	                </div>
+                 }
 				</td>
 			</tr>
 		}
 
 </table>
 <br>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Index", "RolePermissions", new { page, @class = "pagination" }))
+

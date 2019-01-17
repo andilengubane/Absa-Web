@@ -34,14 +34,6 @@ namespace Absa.DateAccess
         public virtual DbSet<ResilinceApplication> ResilinceApplications { get; set; }
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<BusinessUnitAudit> BusinessUnitAudits { get; set; }
-        public virtual DbSet<ResilienceTrackAudit> ResilienceTrackAudits { get; set; }
-        public virtual DbSet<UserAudit> UserAudits { get; set; }
-    
-        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
-        }
     
         public virtual ObjectResult<GetApplicationByResilienceID_Result> GetApplicationByResilienceID(Nullable<int> resilinceId)
         {
@@ -102,9 +94,14 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserById_Result>("GetUserById", userIdParameter);
         }
     
-        public virtual ObjectResult<string> GetUserRolePermissions()
+        public virtual int GetUserRolePermissions()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetUserRolePermissions");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUserRolePermissions");
+        }
+    
+        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
         }
     }
 }

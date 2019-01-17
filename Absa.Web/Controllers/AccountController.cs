@@ -39,7 +39,7 @@ namespace Absa.Web.Controllers
 			var model = new List<UserModel>();
 			try
 			{
-				if (rolePermissionType == "Mananger") {
+				if (rolePermissionType == "Manager") {
 					var data = context.GetAllUsersList();
 					foreach (var item in data)
 					{

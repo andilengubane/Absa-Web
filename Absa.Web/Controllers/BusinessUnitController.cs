@@ -16,8 +16,16 @@ namespace Absa.Web.Controllers
         
         public ActionResult Index(int? page)
         {
+			var _Id = this.Session["ID"];
+			int userId = Convert.ToInt32(_Id);
 			var model = new List<BusinessUnitModel>();
 			var data = context.BusinessUnits.ToList();
+
+			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
+			ViewBag.RolePermission = rolePermissionType;
+
 			foreach (var item in data)
 			{
 				model.Add(new BusinessUnitModel()
@@ -30,7 +38,7 @@ namespace Absa.Web.Controllers
 				 DateLogged = item.DateLogged.Value
 			    });
 			}
-			int pageSize = 5;
+			int pageSize = 10;
 			int pageNumber = (page ?? 1);
 			return this.PartialView("Index", model.ToPagedList(pageNumber, pageSize));
         }

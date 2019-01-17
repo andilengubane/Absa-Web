@@ -9,19 +9,8 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="DateLogged" Type="datetime" />
     <Property Name="NumberOfApps" Type="int" />
-  </EntityType>
-  <EntityType Name="BusinessUnitAudit">
-    <Key>
-      <PropertyRef Name="BusinessUnitAuditID" />
-    </Key>
-    <Property Name="BusinessUnitAuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BusinessUnitId" Type="int" />
-    <Property Name="BusinessUnitName" Type="nvarchar" MaxLength="150" />
-    <Property Name="IsActive" Type="bit" />
-    <Property Name="DateLogged" Type="datetime" />
-    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="150" />
-    <Property Name="UpdateOn" Type="datetime" />
-    <Property Name="NumberOfApps" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="int" />
   </EntityType>
   <EntityType Name="DataLookUp">
     <Key>
@@ -54,79 +43,43 @@
     <Property Name="ApplicatioOwner" Type="nvarchar" MaxLength="150" />
     <Property Name="ServiceManager" Type="nvarchar" MaxLength="150" />
     <Property Name="Tiering" Type="bigint" />
-    <Property Name="SPOF" Type="nvarchar(max)" />
-    <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
-    <Property Name="InternalOLA" Type="nvarchar(max)" />
-    <Property Name="ExternalSLA" Type="nvarchar(max)" />
-    <Property Name="ArchitetureDocumentation" Type="nvarchar(max)" />
-    <Property Name="OparationsDocumentation" Type="nvarchar(max)" />
-    <Property Name="HighestDataClassification" Type="nvarchar(max)" />
-    <Property Name="DataRetentionRequirement" Type="nvarchar(max)" />
-    <Property Name="IntegratedToAD" Type="nvarchar(max)" />
-    <Property Name="JMLProcess" Type="nvarchar(max)" />
-    <Property Name="RecertificationProcess" Type="nvarchar(max)" />
-    <Property Name="PrivilegedAccessManagement" Type="nvarchar(max)" />
-    <Property Name="OSPatchingLevel" Type="nvarchar(max)" />
-    <Property Name="ApplicationPatchingLevel" Type="nvarchar(max)" />
-    <Property Name="MiddlewarePatchingLevel" Type="nvarchar(max)" />
-    <Property Name="SupportedApplication" Type="nvarchar(max)" />
-    <Property Name="SupportedOperationSystem" Type="nvarchar(max)" />
-    <Property Name="SupportedJava" Type="nvarchar(max)" />
-    <Property Name="SupportedMiddleware" Type="nvarchar(max)" />
-    <Property Name="SupportedDatabase" Type="nvarchar(max)" />
-    <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
-    <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
-    <Property Name="StrategicFit" Type="nvarchar(max)" />
-    <Property Name="DisasterRecovery" Type="nvarchar(max)" />
-    <Property Name="BackUpData" Type="nvarchar(max)" />
-    <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
-    <Property Name="HighAvailability" Type="nvarchar(max)" />
     <Property Name="UserID" Type="int" />
+    <Property Name="StatusId" Type="int" />
+    <Property Name="StrategicFit" Type="nvarchar" MaxLength="150" />
+    <Property Name="DisasterRecovery" Type="nvarchar" MaxLength="150" />
+    <Property Name="BackUpData" Type="nvarchar" MaxLength="150" />
+    <Property Name="BackUpConfiguration" Type="nvarchar" MaxLength="150" />
+    <Property Name="HighAvailability" Type="nvarchar" MaxLength="150" />
+    <Property Name="SPOF" Type="nvarchar" MaxLength="150" />
+    <Property Name="OperationalMonitoring" Type="nvarchar" MaxLength="150" />
+    <Property Name="SecurityMonitoring" Type="nvarchar" MaxLength="150" />
+    <Property Name="InternalOLA" Type="nvarchar" MaxLength="150" />
+    <Property Name="ExternalSLA" Type="nvarchar" MaxLength="150" />
+    <Property Name="ArchitetureDocumentation" Type="nvarchar" MaxLength="150" />
+    <Property Name="OparationsDocumentation" Type="nvarchar" MaxLength="150" />
+    <Property Name="HighestDataClassification" Type="nvarchar" MaxLength="150" />
+    <Property Name="DataRetentionRequirement" Type="nvarchar" MaxLength="150" />
+    <Property Name="IntegratedToAD" Type="nvarchar" MaxLength="150" />
+    <Property Name="JMLProcess" Type="nvarchar" MaxLength="150" />
+    <Property Name="RecertificationProcess" Type="nvarchar" MaxLength="150" />
+    <Property Name="PrivilegedAccessManagement" Type="nvarchar" MaxLength="150" />
+    <Property Name="OSPatchingLevel" Type="nvarchar" MaxLength="150" />
+    <Property Name="ApplicationPatchingLevel" Type="nvarchar" MaxLength="150" />
+    <Property Name="MiddlewarePatchingLevel" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupportedApplication" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupportedOperationSystem" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupportedJava" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupportedMiddleware" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupportedDatabase" Type="nvarchar" MaxLength="150" />
+    <Property Name="OpenVulnerabilities" Type="nvarchar" MaxLength="150" />
   </EntityType>
-  <EntityType Name="ResilienceTrackAudit">
+  <EntityType Name="ResilinceApplication">
     <Key>
-      <PropertyRef Name="ResilienceTrackAuditID" />
+      <PropertyRef Name="ApplicationID" />
     </Key>
-    <Property Name="ResilienceTrackAuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ResilienceTrackID" Type="int" />
-    <Property Name="BusinessUnitId" Type="int" />
-    <Property Name="ApplicationID" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ApplicationName" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="NameOnSnow" Type="nvarchar" MaxLength="150" />
-    <Property Name="HeadOfTechnology" Type="nvarchar" MaxLength="150" />
-    <Property Name="ApplicatioOwner" Type="nvarchar" MaxLength="150" />
-    <Property Name="ServiceManager" Type="nvarchar" MaxLength="150" />
-    <Property Name="Tiering" Type="bigint" />
-    <Property Name="SPOF" Type="nvarchar(max)" />
-    <Property Name="SecurityMonitoring" Type="nvarchar(max)" />
-    <Property Name="InternalOLA" Type="nvarchar(max)" />
-    <Property Name="ExternalSLA" Type="nvarchar(max)" />
-    <Property Name="ArchitetureDocumentation" Type="nvarchar(max)" />
-    <Property Name="OparationsDocumentation" Type="nvarchar(max)" />
-    <Property Name="HighestDataClassification" Type="nvarchar(max)" />
-    <Property Name="DataRetentionRequirement" Type="nvarchar(max)" />
-    <Property Name="IntegratedToAD" Type="nvarchar(max)" />
-    <Property Name="JMLProcess" Type="nvarchar(max)" />
-    <Property Name="RecertificationProcess" Type="nvarchar(max)" />
-    <Property Name="PrivilegedAccessManagement" Type="nvarchar(max)" />
-    <Property Name="OSPatchingLevel" Type="nvarchar(max)" />
-    <Property Name="ApplicationPatchingLevel" Type="nvarchar(max)" />
-    <Property Name="MiddlewarePatchingLevel" Type="nvarchar(max)" />
-    <Property Name="SupportedApplication" Type="nvarchar(max)" />
-    <Property Name="SupportedOperationSystem" Type="nvarchar(max)" />
-    <Property Name="SupportedJava" Type="nvarchar(max)" />
-    <Property Name="SupportedMiddleware" Type="nvarchar(max)" />
-    <Property Name="SupportedDatabase" Type="nvarchar(max)" />
-    <Property Name="OpenVulnerabilities" Type="nvarchar(max)" />
-    <Property Name="UpdatedBy" Type="nvarchar(max)" />
-    <Property Name="UpdatedOn" Type="datetime" />
-    <Property Name="OperationalMonitoring" Type="nvarchar(max)" />
-    <Property Name="StrategicFit" Type="nvarchar(max)" />
-    <Property Name="DisasterRecovery" Type="nvarchar(max)" />
-    <Property Name="BackUpData" Type="nvarchar(max)" />
-    <Property Name="BackUpConfiguration" Type="nvarchar(max)" />
-    <Property Name="HighAvailability" Type="nvarchar(max)" />
-    <Property Name="UserID" Type="int" />
+    <Property Name="ApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationName" Type="nvarchar" MaxLength="150" />
+    <Property Name="DateLogged" Type="datetime" />
   </EntityType>
   <EntityType Name="RolesPermissions">
     <Key>
@@ -135,16 +88,8 @@
     <Property Name="RolesPermissionsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="DateLogged" Type="datetime" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="int" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -162,34 +107,15 @@
     <Property Name="RolesPermissionsID" Type="int" />
     <Property Name="BusinessUnitId" Type="int" />
   </EntityType>
-  <EntityType Name="UsersAudit">
-    <Key>
-      <PropertyRef Name="UserAuditID" />
-    </Key>
-    <Property Name="UserAuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserID" Type="int" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="UserName" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ContactNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="IsActive" Type="bit" />
-    <Property Name="Datelogged" Type="datetime" />
-    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="150" />
-    <Property Name="UpdateOn" Type="datetime" />
-    <Property Name="RolePermissionID" Type="int" />
-    <Property Name="BusinessUnitId" Type="int" />
-  </EntityType>
-  <Association Name="FK__BusinessU__Busin__01142BA1">
-    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
-    <End Role="BusinessUnitAudit" Type="Self.BusinessUnitAudit" Multiplicity="*" />
+  <Association Name="FK__BusinessU__UserI__019E3B86">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="BusinessUnit">
-        <PropertyRef Name="BusinessUnitId" />
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
       </Principal>
-      <Dependent Role="BusinessUnitAudit">
-        <PropertyRef Name="BusinessUnitId" />
+      <Dependent Role="BusinessUnit">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -205,18 +131,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Resilienc__Busin__1F98B2C1">
-    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
-    <End Role="ResilienceTrackAudit" Type="Self.ResilienceTrackAudit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BusinessUnit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Principal>
-      <Dependent Role="ResilienceTrackAudit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Resilienc__Busin__208CD6FA">
     <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
     <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
@@ -229,6 +143,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Resilienc__Statu__308E3499">
+    <End Role="DataLookUp" Type="Self.DataLookUp" Multiplicity="0..1" />
+    <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DataLookUp">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ResilienceTrack">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Resilienc__UserI__2F9A1060">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ResilienceTrack">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolesPerm__UserI__00AA174D">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="RolesPermissions" Type="Self.RolesPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="RolesPermissions">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Users__BusinessU__7E37BEF6">
     <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -238,30 +188,6 @@
       </Principal>
       <Dependent Role="Users">
         <PropertyRef Name="BusinessUnitId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__UsersAudi__Busin__03F0984C">
-    <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
-    <End Role="UsersAudit" Type="Self.UsersAudit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BusinessUnit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Principal>
-      <Dependent Role="UsersAudit">
-        <PropertyRef Name="BusinessUnitId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__UsersAudi__UserI__5CD6CB2B">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="UsersAudit" Type="Self.UsersAudit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="UsersAudit">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -278,6 +204,12 @@
     </ReferentialConstraint>
   </Association>
   <Function Name="GetAllUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetApplicationByResilienceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ResilinceId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetApplicationToDecline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ResilinceId" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetAppStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
   </Function>
@@ -291,44 +223,42 @@
   <Function Name="GetUserById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserId" Type="int" Mode="In" />
   </Function>
+  <Function Name="GetUserRolePermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="AbsaDBModelStoreContainer">
     <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="BusinessUnitAudit" EntityType="Self.BusinessUnitAudit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DataLookUp" EntityType="Self.DataLookUp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LookUpName" EntityType="Self.LookUpName" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ResilienceTrack" EntityType="Self.ResilienceTrack" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ResilienceTrackAudit" EntityType="Self.ResilienceTrackAudit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResilinceApplication" EntityType="Self.ResilinceApplication" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermissions" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="UsersAudit" EntityType="Self.UsersAudit" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BusinessU__Busin__01142BA1" Association="Self.FK__BusinessU__Busin__01142BA1">
+    <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="Self.FK__BusinessU__UserI__019E3B86">
+      <End Role="Users" EntitySet="Users" />
       <End Role="BusinessUnit" EntitySet="BusinessUnit" />
-      <End Role="BusinessUnitAudit" EntitySet="BusinessUnitAudit" />
     </AssociationSet>
     <AssociationSet Name="FK__DataLookU__Loopk__5AEE82B9" Association="Self.FK__DataLookU__Loopk__5AEE82B9">
       <End Role="LookUpName" EntitySet="LookUpName" />
       <End Role="DataLookUp" EntitySet="DataLookUp" />
     </AssociationSet>
-    <AssociationSet Name="FK__Resilienc__Busin__1F98B2C1" Association="Self.FK__Resilienc__Busin__1F98B2C1">
-      <End Role="BusinessUnit" EntitySet="BusinessUnit" />
-      <End Role="ResilienceTrackAudit" EntitySet="ResilienceTrackAudit" />
-    </AssociationSet>
     <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
       <End Role="BusinessUnit" EntitySet="BusinessUnit" />
       <End Role="ResilienceTrack" EntitySet="ResilienceTrack" />
     </AssociationSet>
+    <AssociationSet Name="FK__Resilienc__Statu__308E3499" Association="Self.FK__Resilienc__Statu__308E3499">
+      <End Role="DataLookUp" EntitySet="DataLookUp" />
+      <End Role="ResilienceTrack" EntitySet="ResilienceTrack" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Resilienc__UserI__2F9A1060" Association="Self.FK__Resilienc__UserI__2F9A1060">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ResilienceTrack" EntitySet="ResilienceTrack" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolesPerm__UserI__00AA174D" Association="Self.FK__RolesPerm__UserI__00AA174D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RolesPermissions" EntitySet="RolesPermissions" />
+    </AssociationSet>
     <AssociationSet Name="FK__Users__BusinessU__7E37BEF6" Association="Self.FK__Users__BusinessU__7E37BEF6">
       <End Role="BusinessUnit" EntitySet="BusinessUnit" />
       <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UsersAudi__Busin__03F0984C" Association="Self.FK__UsersAudi__Busin__03F0984C">
-      <End Role="BusinessUnit" EntitySet="BusinessUnit" />
-      <End Role="UsersAudit" EntitySet="UsersAudit" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UsersAudi__UserI__5CD6CB2B" Association="Self.FK__UsersAudi__UserI__5CD6CB2B">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="UsersAudit" EntitySet="UsersAudit" />
     </AssociationSet>
     <AssociationSet Name="fk_RolesPermissions_id" Association="Self.fk_RolesPermissions_id">
       <End Role="RolesPermissions" EntitySet="RolesPermissions" />

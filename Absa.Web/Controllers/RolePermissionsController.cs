@@ -15,8 +15,16 @@ namespace Absa.Web.Controllers
         // GET: RolePermissions
         public ActionResult Index(int? page)
         {
+			var _Id = this.Session["ID"];
+			int userId = Convert.ToInt32(_Id);
 			var model = new List<RolePermissionsModel>();
 			var data = context.RolesPermissions.ToList();
+
+			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
+			ViewBag.RolePermission = rolePermissionType;
+
 			foreach (var item in data)
 			{
 				model.Add(new RolePermissionsModel
@@ -28,7 +36,7 @@ namespace Absa.Web.Controllers
 			    });
 
 			}
-			int pageSize = 5;
+			int pageSize = 10;
 			int pageNumber = (page ?? 1);
 			return this.PartialView("Index", model.ToPagedList(pageNumber, pageSize));
 		}
@@ -39,6 +47,9 @@ namespace Absa.Web.Controllers
 			int userId = Convert.ToInt32(_Id);
 			var dataStatus = context.Users.FirstOrDefault(u => u.UserID == userId);
 			int id = 0;
+
+			
+
 			if (rolePermissionsId != "")
 			{
 				string number = System.Text.RegularExpressions.Regex.Replace(rolePermissionsId, @"\D+", string.Empty);

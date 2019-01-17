@@ -80,9 +80,12 @@
 </style>
 <div id="dailogBusinessUnitCreate" style="display: none"></div>
 <p>
-	<div class="div" id="businessUnit">
-		<button class="BusinessUnitCreate btn btn-sm btn-circle btn-success" type="button" id="businessUnit" href="javascript:;">CREATE BUSINESS UNIT</button>
-	</div>
+	@if (ViewBag.RolePermission == "Manager")
+	{
+		<div class="div" id="businessUnit">
+			<button class="BusinessUnitCreate btn btn-sm btn-circle btn-success" type="button" id="businessUnit" href="javascript:;">CREATE BUSINESS UNIT</button>
+		</div>
+	}
 </p>
 <br>
 <br>
@@ -133,16 +136,15 @@
 					@Html.DisplayFor(modelItem => item.DateLogged)
 				</td>
 				<td>
-					<div id="businessUnitUpdate">
-						<button class="BusinessUnitUpdate btn btn-sm btn-circle btn-primary" type="button" id="businessUnitUpdate" href="javascript:;">MODIFY</button>
-					</div>
-
+					@if (ViewBag.RolePermission == "Manager")
+					{
+						<div id="businessUnitUpdate">
+							<button class="BusinessUnitUpdate btn btn-sm btn-circle btn-primary" type="button" id="businessUnitUpdate" href="javascript:;">MODIFY</button>
+						</div>
+					}
 				</td>
 			</tr>
 		}
 
 </table>
-<br>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Index", "BusinessUnit", new { page, @class = "pagination" }))
 <br>

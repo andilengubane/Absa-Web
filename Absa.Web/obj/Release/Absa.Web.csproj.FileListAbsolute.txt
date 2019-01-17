@@ -39,7 +39,6 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.Deployment.dl
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.Razor.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\WebGrease.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Microsoft.SqlServer.Types.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.DateAccess.pdb
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\EntityFramework.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\EntityFramework.SqlServer.xml
@@ -60,16 +59,6 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.Deployment.xm
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.Razor.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Antlr3.Runtime.pdb
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Newtonsoft.Json.xml
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\de\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\es\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\fr\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\it\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ja\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ko\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\pt\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\ru\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Release\Absa.Web.csprojResolveAssemblyReference.cache
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Release\Absa.Web.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Release\Absa.Web.pdb

@@ -17,18 +17,6 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="UserId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.BusinessUnitAudit' was excluded.
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueIs' in the table 'AbsaDB.dbo.BusinessUnitAudit' was excluded.
-warning 6002: The table/view 'AbsaDB.dbo.BusinessUnitAudit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="BusinessUnitAudit">
-          <Key>
-            <PropertyRef Name="FieldName" />
-          </Key>
-          <Property Name="BusinessUnitId" Type="int" />
-          <Property Name="FieldName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="DateLogged" Type="datetime" />
-        </EntityType>
         <EntityType Name="DataLookUp">
           <Key>
             <PropertyRef Name="ID" />
@@ -90,21 +78,6 @@ warning 6002: The table/view 'AbsaDB.dbo.BusinessUnitAudit' does not have a prim
           <Property Name="SupportedDatabase" Type="nvarchar" MaxLength="150" />
           <Property Name="OpenVulnerabilities" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.ResilienceTrackAudit' was excluded.
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueIs' in the table 'AbsaDB.dbo.ResilienceTrackAudit' was excluded.
-warning 6002: The table/view 'AbsaDB.dbo.ResilienceTrackAudit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ResilienceTrackAudit">
-          <Key>
-            <PropertyRef Name="FieldName" />
-          </Key>
-          <Property Name="ResilienceTrackID" Type="int" />
-          <Property Name="FieldName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="DateLogged" Type="datetime" />
-          <Property Name="UserID" Type="int" />
-          <Property Name="BusinessUnitId" Type="int" />
-          <Property Name="StatusId" Type="int" />
-        </EntityType>
         <EntityType Name="ResilinceApplication">
           <Key>
             <PropertyRef Name="ApplicationID" />
@@ -122,20 +95,6 @@ warning 6002: The table/view 'AbsaDB.dbo.ResilienceTrackAudit' does not have a p
           <Property Name="DateLogged" Type="datetime" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="UserId" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueWas' in the table 'AbsaDB.dbo.UserAudit' was excluded.
-warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'FieldValueIs' in the table 'AbsaDB.dbo.UserAudit' was excluded.
-warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="UserAudit">
-          <Key>
-            <PropertyRef Name="FieldName" />
-          </Key>
-          <Property Name="UserID" Type="int" />
-          <Property Name="RolesPermissionsID" Type="int" />
-          <Property Name="BusinessUnitId" Type="int" />
-          <Property Name="FieldName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="DateLogged" Type="datetime" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -278,32 +237,6 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <EntitySet Name="ResilinceApplication" EntityType="Self.ResilinceApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BusinessUnitAudit" EntityType="Self.BusinessUnitAudit" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [BusinessUnitAudit].[BusinessUnitId] AS [BusinessUnitId], 
-    [BusinessUnitAudit].[FieldName] AS [FieldName], 
-    [BusinessUnitAudit].[DateLogged] AS [DateLogged]
-    FROM [dbo].[BusinessUnitAudit] AS [BusinessUnitAudit]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ResilienceTrackAudit" EntityType="Self.ResilienceTrackAudit" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ResilienceTrackAudit].[ResilienceTrackID] AS [ResilienceTrackID], 
-    [ResilienceTrackAudit].[FieldName] AS [FieldName], 
-    [ResilienceTrackAudit].[DateLogged] AS [DateLogged], 
-    [ResilienceTrackAudit].[UserID] AS [UserID], 
-    [ResilienceTrackAudit].[BusinessUnitId] AS [BusinessUnitId], 
-    [ResilienceTrackAudit].[StatusId] AS [StatusId]
-    FROM [dbo].[ResilienceTrackAudit] AS [ResilienceTrackAudit]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UserAudit" EntityType="Self.UserAudit" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserAudit].[UserID] AS [UserID], 
-    [UserAudit].[RolesPermissionsID] AS [RolesPermissionsID], 
-    [UserAudit].[BusinessUnitId] AS [BusinessUnitId], 
-    [UserAudit].[FieldName] AS [FieldName], 
-    [UserAudit].[DateLogged] AS [DateLogged]
-    FROM [dbo].[UserAudit] AS [UserAudit]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="Self.FK__BusinessU__UserI__019E3B86">
             <End Role="Users" EntitySet="Users" />
             <End Role="BusinessUnit" EntitySet="BusinessUnit" />
@@ -351,10 +284,10 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <Property Name="DateLogged" Type="DateTime" Precision="3" />
           <Property Name="NumberOfApps" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="BusinessUnit" ToRole="Users" />
           <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__Busin__208CD6FA" FromRole="BusinessUnit" ToRole="ResilienceTrack" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="BusinessUnit" ToRole="Users" />
-          <Property Name="UserId" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="AbsaDBModel.FK__BusinessU__UserI__019E3B86" FromRole="BusinessUnit" ToRole="User" />
         </EntityType>
         <EntityType Name="DataLookUp">
           <Key>
@@ -439,9 +372,9 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateLogged" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="Self.fk_RolesPermissions_id" FromRole="RolesPermissions" ToRole="Users" />
           <Property Name="UserId" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="AbsaDBModel.FK__RolesPerm__UserI__00AA174D" FromRole="RolesPermission" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK__RolesPerm__UserI__00AA174D" FromRole="RolesPermissions" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.fk_RolesPermissions_id" FromRole="RolesPermissions" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -458,41 +391,24 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <Property Name="Datelogged" Type="DateTime" Precision="3" />
           <Property Name="RolesPermissionsID" Type="Int32" />
           <Property Name="BusinessUnitId" Type="Int32" />
+          <NavigationProperty Name="BusinessUnits" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="Users" ToRole="BusinessUnit" />
           <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
           <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__UserI__2F9A1060" FromRole="Users" ToRole="ResilienceTrack" />
+          <NavigationProperty Name="RolesPermissions" Relationship="Self.FK__RolesPerm__UserI__00AA174D" FromRole="Users" ToRole="RolesPermissions" />
           <NavigationProperty Name="RolesPermission" Relationship="Self.fk_RolesPermissions_id" FromRole="Users" ToRole="RolesPermissions" />
-          <NavigationProperty Name="BusinessUnits" Relationship="AbsaDBModel.FK__BusinessU__UserI__019E3B86" FromRole="User" ToRole="BusinessUnit" />
-          <NavigationProperty Name="RolesPermissions" Relationship="AbsaDBModel.FK__RolesPerm__UserI__00AA174D" FromRole="User" ToRole="RolesPermission" />
         </EntityType>
-        <EntityType Name="BusinessUnitAudit">
-          <Key>
-            <PropertyRef Name="FieldName" />
-          </Key>
-          <Property Name="BusinessUnitId" Type="Int32" />
-          <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateLogged" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="ResilienceTrackAudit">
-          <Key>
-            <PropertyRef Name="FieldName" />
-          </Key>
-          <Property Name="ResilienceTrackID" Type="Int32" />
-          <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateLogged" Type="DateTime" Precision="3" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="BusinessUnitId" Type="Int32" />
-          <Property Name="StatusId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="UserAudit">
-          <Key>
-            <PropertyRef Name="FieldName" />
-          </Key>
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="RolesPermissionsID" Type="Int32" />
-          <Property Name="BusinessUnitId" Type="Int32" />
-          <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateLogged" Type="DateTime" Precision="3" />
-        </EntityType>
+        <Association Name="FK__BusinessU__UserI__019E3B86">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BusinessUnit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Resilienc__Busin__208CD6FA">
           <End Role="BusinessUnit" Type="Self.BusinessUnit" Multiplicity="0..1" />
           <End Role="ResilienceTrack" Type="Self.ResilienceTrack" Multiplicity="*" />
@@ -553,6 +469,18 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__RolesPerm__UserI__00AA174D">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="RolesPermissions" Type="Self.RolesPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RolesPermissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_RolesPermissions_id">
           <End Role="RolesPermissions" Type="Self.RolesPermission" Multiplicity="0..1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
@@ -573,9 +501,10 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <EntitySet Name="ResilinceApplications" EntityType="Self.ResilinceApplication" />
           <EntitySet Name="RolesPermissions" EntityType="Self.RolesPermission" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="BusinessUnitAudits" EntityType="Self.BusinessUnitAudit" />
-          <EntitySet Name="ResilienceTrackAudits" EntityType="Self.ResilienceTrackAudit" />
-          <EntitySet Name="UserAudits" EntityType="Self.UserAudit" />
+          <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="Self.FK__BusinessU__UserI__019E3B86">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+          </AssociationSet>
           <AssociationSet Name="FK__Resilienc__Busin__208CD6FA" Association="Self.FK__Resilienc__Busin__208CD6FA">
             <End Role="BusinessUnit" EntitySet="BusinessUnits" />
             <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
@@ -596,11 +525,14 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
             <End Role="Users" EntitySet="Users" />
             <End Role="ResilienceTrack" EntitySet="ResilienceTracks" />
           </AssociationSet>
+          <AssociationSet Name="FK__RolesPerm__UserI__00AA174D" Association="Self.FK__RolesPerm__UserI__00AA174D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RolesPermissions" EntitySet="RolesPermissions" />
+          </AssociationSet>
           <AssociationSet Name="fk_RolesPermissions_id" Association="Self.fk_RolesPermissions_id">
             <End Role="RolesPermissions" EntitySet="RolesPermissions" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
           <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
           <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -620,27 +552,9 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <FunctionImport Name="GetUserById" ReturnType="Collection(AbsaDBModel.GetUserById_Result)">
           <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetUserRolePermissions" ReturnType="Collection(String)" />
-          <AssociationSet Name="FK__BusinessU__UserI__019E3B86" Association="AbsaDBModel.FK__BusinessU__UserI__019E3B86">
-            <End Role="User" EntitySet="Users" />
-            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RolesPerm__UserI__00AA174D" Association="AbsaDBModel.FK__RolesPerm__UserI__00AA174D">
-            <End Role="User" EntitySet="Users" />
-            <End Role="RolesPermission" EntitySet="RolesPermissions" />
-          </AssociationSet>
+          <FunctionImport Name="GetUserRolePermissions" />
+          <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
         </EntityContainer>
-        <ComplexType Name="GetAllUsersList_Result">
-          <Property Type="Int32" Name="UserID" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
-          <Property Type="Boolean" Name="IsActive" Nullable="true" />
-          <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
-        </ComplexType>
         <ComplexType Name="GetApplicationByResilienceID_Result">
           <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
           <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
@@ -819,30 +733,17 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
         </ComplexType>
-        <Association Name="FK__BusinessU__UserI__019E3B86">
-          <End Type="AbsaDBModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.BusinessUnit" Role="BusinessUnit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="BusinessUnit">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RolesPerm__UserI__00AA174D">
-          <End Type="AbsaDBModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="AbsaDBModel.RolesPermission" Role="RolesPermission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="RolesPermission">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <ComplexType Name="GetAllUsersList_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -852,13 +753,13 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <EntitySetMapping Name="BusinessUnits">
             <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnit">
               <MappingFragment StoreEntitySet="BusinessUnit">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
                 <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
                 <ScalarProperty Name="NumberOfApps" ColumnName="NumberOfApps" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -938,11 +839,11 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
           <EntitySetMapping Name="RolesPermissions">
             <EntityTypeMapping TypeName="AbsaDBModel.RolesPermission">
               <MappingFragment StoreEntitySet="RolesPermissions">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -963,53 +864,6 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BusinessUnitAudits">
-            <EntityTypeMapping TypeName="AbsaDBModel.BusinessUnitAudit">
-              <MappingFragment StoreEntitySet="BusinessUnitAudit">
-                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
-                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ResilienceTrackAudits">
-            <EntityTypeMapping TypeName="AbsaDBModel.ResilienceTrackAudit">
-              <MappingFragment StoreEntitySet="ResilienceTrackAudit">
-                <ScalarProperty Name="ResilienceTrackID" ColumnName="ResilienceTrackID" />
-                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
-                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserAudits">
-            <EntityTypeMapping TypeName="AbsaDBModel.UserAudit">
-              <MappingFragment StoreEntitySet="UserAudit">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="RolesPermissionsID" ColumnName="RolesPermissionsID" />
-                <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
-                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
-                <ScalarProperty Name="DateLogged" ColumnName="DateLogged" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetAllUsersList" FunctionName="AbsaDBModel.Store.GetAllUsersList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AbsaDBModel.GetAllUsersList_Result">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetApplicationByResilienceID" FunctionName="AbsaDBModel.Store.GetApplicationByResilienceID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AbsaDBModel.GetApplicationByResilienceID_Result">
@@ -1214,6 +1068,21 @@ warning 6002: The table/view 'AbsaDB.dbo.UserAudit' does not have a primary key 
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetUserRolePermissions" FunctionName="AbsaDBModel.Store.GetUserRolePermissions" />
+          <FunctionImportMapping FunctionImportName="GetAllUsersList" FunctionName="AbsaDBModel.Store.GetAllUsersList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AbsaDBModel.GetAllUsersList_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Datelogged" ColumnName="Datelogged" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
