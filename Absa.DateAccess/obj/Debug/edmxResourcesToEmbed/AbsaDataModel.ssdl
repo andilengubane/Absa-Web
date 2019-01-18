@@ -100,12 +100,12 @@
     <Property Name="LastName" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="ContactNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="Datelogged" Type="datetime" />
     <Property Name="RolesPermissionsID" Type="int" />
     <Property Name="BusinessUnitId" Type="int" />
+    <Property Name="Password" Type="binary" MaxLength="64" />
   </EntityType>
   <Association Name="FK__BusinessU__UserI__019E3B86">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -203,6 +203,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContactNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="RolesPermissionsID" Type="int" Mode="In" />
+    <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="GetAllUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetApplicationByResilienceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ResilinceId" Type="int" Mode="In" />
@@ -224,6 +235,18 @@
     <Parameter Name="UserId" Type="int" Mode="In" />
   </Function>
   <Function Name="GetUserRolePermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContactNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="RolesPermissionsID" Type="int" Mode="In" />
+    <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="AbsaDBModelStoreContainer">
     <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DataLookUp" EntityType="Self.DataLookUp" Schema="dbo" store:Type="Tables" />

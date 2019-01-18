@@ -8,7 +8,10 @@ using Absa.Web.Models;
 using System.Net.Mail;
 using System.Diagnostics;
 using Absa.DateAccess;
+using System.Security.Cryptography;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace Absa.Web.Controllers
 {
@@ -138,7 +141,7 @@ namespace Absa.Web.Controllers
 						model.EmailAddress = result.EmailAddress;
 						model.ContactNumber = result.ContactNumber;
 						model.UserName = result.UserName;
-						model.Password = result.Password;
+						//model.Password = result.Password;
 						model.IsActive = Convert.ToBoolean(result.IsActive);
 						model.RolesPermission = Convert.ToString(result.RolesPermissionsID);
 						model.BusinessUnit = Convert.ToString(result.BusinessUnitId);
@@ -165,38 +168,35 @@ namespace Absa.Web.Controllers
 
 		public ActionResult AddUpdateUser(UserModel model)
 		{
-			if (model.ID == 0)
+			var numberOfChars = 8;
+			var upperCase = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+			var lowerCase = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+			var numbers = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+			var specialCharacters = new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')' };
+			var random = new Random();
+
+			var total = upperCase.Concat(lowerCase).Concat(numbers).Concat(specialCharacters).ToArray();
+
+			var chars = Enumerable.Repeat<int>(0, numberOfChars).Select(i => total[random.Next(total.Length)]).ToArray();
+
+			var password = new string(chars);
+			var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
+			if (data != null)
 			{
-				context.Users.Add(new User
-				{
-					FirstName = model.FirstName,
-					LastName = model.LastName,
-					EmailAddress = model.EmailAddress,
-					ContactNumber = model.ContactNumber,
-					UserName = model.UserName,
-					Password = model.Password,
-					Datelogged = DateTime.Now,
-					IsActive = model.IsActive,
-					BusinessUnitId = int.Parse(model.BusinessUnit),
-					RolesPermissionsID = int.Parse(model.RolesPermission)
-				});
+				ViewBag.ErroMessage = "Email provided already exist " + data.EmailAddress + " .";
 			}
 			else
 			{
-				var data = context.Users.FirstOrDefault(x => x.UserID == model.ID);
-				data.UserID = model.ID;
-				data.FirstName = model.FirstName;
-				data.LastName = model.LastName;
-				data.EmailAddress = model.EmailAddress;
-				data.ContactNumber = model.ContactNumber;
-				data.UserName = model.UserName;
-				data.Password = model.Password;
-				data.Datelogged = DateTime.Now;
-				data.IsActive = model.IsActive;
-				data.BusinessUnitId = int.Parse(model.BusinessUnit);
-				data.RolesPermissionsID = int.Parse(model.RolesPermission);
+				if (model.ID == 0)
+				{
+					context.AddUser(model.FirstName, model.LastName, model.EmailAddress, model.UserName, model.ContactNumber, model.IsActive
+									, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
+				}
+				ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
 			}
-			context.SaveChanges();
+			
+			var _data = context.UpdateUser(model.ID, model.FirstName, model.LastName, model.EmailAddress, model.UserName,
+				                           model.ContactNumber, model.IsActive, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
 			return RedirectToAction("UserList", "Account");
 		}
 
@@ -238,9 +238,12 @@ namespace Absa.Web.Controllers
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
 		{
+			var s = Encrypt(model.Password);
+			byte[] _data = Convert.FromBase64String(s);
+
 			if (model.UserName != null)
 			{
-				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password == model.Password);
+				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password == _data);
 				if (data != null)
 				{
 					if (data.IsActive == false)
@@ -266,83 +269,28 @@ namespace Absa.Web.Controllers
 			ViewBag.ErroMessage = "Incorrect username and password.";
 			return View("Login");
 		}
- 
-		public ActionResult AddNewUser(UserModel model)
-		{
-			if (ModelState.IsValid)
-			{
-				//return this.RedirectToAction("Index", "DashBord");
-				var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
-				if (data != null)
-				{
-					ViewBag.ErroMessage = "Email provided already exist " + data.EmailAddress + " .";
-				}
-				else
-				{
-					context.Users.Add(new User
-					{
-						UserName = model.UserName,
-						Password = model.Password,
-						LastName = model.LastName,
-						FirstName = model.FirstName,
-						EmailAddress = model.EmailAddress,
-						Datelogged = DateTime.Now,
-						ContactNumber = model.ContactNumber,
-						BusinessUnitId = Convert.ToInt32(model.BusinessUnit),
-						IsActive = false
-					});
-					context.SaveChanges();
-					/*
-				    TODO: Send email to supervisor or line manager
-				   */
-					ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
-					return this.RedirectToAction("Login", "Account");
-				}
-			}
-			var models = new UserModel();
-			model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
-			{
-				Value = x.BusinessUnitId.ToString(),
-				Text = x.BusinessUnitName
-			});
 
-			return this.View("Register", models);
-		}
-		
-		public ActionResult ForgotPassword(UserModel model)
-		{
-			if (model.EmailAddress != null)
-			{
-				try
-				{
-					var result = from user in context.Users
-								 where user.EmailAddress == model.EmailAddress
-								 select user;
-					foreach (var item in result)
-					{
-						var password = item.Password;
-						var emailAddress = item.EmailAddress;
-						MailMessage msg = new MailMessage();
-						msg.From = new MailAddress("joe@contoso.com");
-						msg.To.Add(new MailAddress(emailAddress));
-						msg.Subject = "Recover Password";
-						msg.Body = " Please make sure you don't you keep your password" + password;
 
-						SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-						System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("joe@contoso.com", "XXXXXX");
-						smtpClient.Credentials = credentials;
-						smtpClient.EnableSsl = true;
-						smtpClient.Send(msg);
+		private string Encrypt(string clearText)
+		{
+			string EncryptionKey = "SHA2_512";
+			byte[] clearBytes = System.Text.Encoding.Unicode.GetBytes(clearText);
+			using (Aes encryptor = Aes.Create())
+			{
+				Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+				encryptor.Key = pdb.GetBytes(32);
+				encryptor.IV = pdb.GetBytes(16);
+				using (MemoryStream ms = new MemoryStream())
+				{
+					using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+					{
+						cs.Write(clearBytes, 0, clearBytes.Length);
+						cs.Close();
 					}
+					clearText = Convert.ToBase64String(ms.ToArray());
 				}
-				catch (Exception ex)
-				{
-					string error = ex.Message;
-				}
-				ViewBag.ErrorMessage = "Please check your email Address";
-				return this.View("Login");
 			}
-			return this.View("RecoverPassword", model);
+			return clearText;
 		}
 	}
 }
