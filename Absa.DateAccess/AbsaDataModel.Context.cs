@@ -35,6 +35,52 @@ namespace Absa.DateAccess
         public virtual DbSet<RolesPermission> RolesPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
     
+        public virtual int AddUser(string firstName, string lastName, string emailAddress, string userName, string contactNumber, Nullable<bool> isActive, Nullable<int> rolesPermissionsID, Nullable<int> businessUnitId, string password)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var contactNumberParameter = contactNumber != null ?
+                new ObjectParameter("ContactNumber", contactNumber) :
+                new ObjectParameter("ContactNumber", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var rolesPermissionsIDParameter = rolesPermissionsID.HasValue ?
+                new ObjectParameter("RolesPermissionsID", rolesPermissionsID) :
+                new ObjectParameter("RolesPermissionsID", typeof(int));
+    
+            var businessUnitIdParameter = businessUnitId.HasValue ?
+                new ObjectParameter("BusinessUnitId", businessUnitId) :
+                new ObjectParameter("BusinessUnitId", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddUser", firstNameParameter, lastNameParameter, emailAddressParameter, userNameParameter, contactNumberParameter, isActiveParameter, rolesPermissionsIDParameter, businessUnitIdParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
+        }
+    
         public virtual ObjectResult<GetApplicationByResilienceID_Result> GetApplicationByResilienceID(Nullable<int> resilinceId)
         {
             var resilinceIdParameter = resilinceId.HasValue ?
@@ -99,9 +145,49 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUserRolePermissions");
         }
     
-        public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
+        public virtual int UpdateUser(Nullable<int> userId, string firstName, string lastName, string emailAddress, string userName, string contactNumber, Nullable<bool> isActive, Nullable<int> rolesPermissionsID, Nullable<int> businessUnitId, string password)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var contactNumberParameter = contactNumber != null ?
+                new ObjectParameter("ContactNumber", contactNumber) :
+                new ObjectParameter("ContactNumber", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var rolesPermissionsIDParameter = rolesPermissionsID.HasValue ?
+                new ObjectParameter("RolesPermissionsID", rolesPermissionsID) :
+                new ObjectParameter("RolesPermissionsID", typeof(int));
+    
+            var businessUnitIdParameter = businessUnitId.HasValue ?
+                new ObjectParameter("BusinessUnitId", businessUnitId) :
+                new ObjectParameter("BusinessUnitId", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUser", userIdParameter, firstNameParameter, lastNameParameter, emailAddressParameter, userNameParameter, contactNumberParameter, isActiveParameter, rolesPermissionsIDParameter, businessUnitIdParameter, passwordParameter);
         }
     }
 }

@@ -111,12 +111,12 @@
     <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="EmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="Datelogged" Type="DateTime" Precision="3" />
     <Property Name="RolesPermissionsID" Type="Int32" />
     <Property Name="BusinessUnitId" Type="Int32" />
+    <Property Name="Password" Type="Binary" MaxLength="64" FixedLength="true" />
     <NavigationProperty Name="BusinessUnits" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__UserI__2F9A1060" FromRole="Users" ToRole="ResilienceTrack" />
@@ -259,6 +259,18 @@
       <End Role="RolesPermissions" EntitySet="RolesPermissions" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
+    <FunctionImport Name="AddUser">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="ContactNumber" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="RolesPermissionsID" Mode="In" Type="Int32" />
+      <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
     <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
       <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -279,8 +291,30 @@
       <Parameter Name="UserId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetUserRolePermissions" />
-    <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
+    <FunctionImport Name="UpdateUser">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="ContactNumber" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="RolesPermissionsID" Mode="In" Type="Int32" />
+      <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="GetAllUsersList_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+  </ComplexType>
   <ComplexType Name="GetApplicationByResilienceID_Result">
     <Property Type="Int32" Name="ResilienceTrackID" Nullable="false" />
     <Property Type="String" Name="ApplicationID" Nullable="false" MaxLength="150" />
@@ -449,17 +483,6 @@
     <Property Type="String" Name="OperationalMonitoring" Nullable="true" MaxLength="150" />
   </ComplexType>
   <ComplexType Name="GetUserById_Result">
-    <Property Type="Int32" Name="UserID" Nullable="false" />
-    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="200" />
-    <Property Type="String" Name="ContactNumber" Nullable="false" MaxLength="20" />
-    <Property Type="Boolean" Name="IsActive" Nullable="true" />
-    <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
-    <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
-  </ComplexType>
-  <ComplexType Name="GetAllUsersList_Result">
     <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" />
