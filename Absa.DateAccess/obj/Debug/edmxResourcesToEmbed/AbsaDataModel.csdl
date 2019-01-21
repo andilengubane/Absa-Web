@@ -116,7 +116,7 @@
     <Property Name="Datelogged" Type="DateTime" Precision="3" />
     <Property Name="RolesPermissionsID" Type="Int32" />
     <Property Name="BusinessUnitId" Type="Int32" />
-    <Property Name="Password" Type="Binary" MaxLength="64" FixedLength="true" />
+    <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BusinessUnits" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
     <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__UserI__2F9A1060" FromRole="Users" ToRole="ResilienceTrack" />
@@ -290,7 +290,6 @@
     <FunctionImport Name="GetUserById" ReturnType="Collection(AbsaDBModel.GetUserById_Result)">
       <Parameter Name="UserId" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="GetUserRolePermissions" />
     <FunctionImport Name="UpdateUser">
       <Parameter Name="UserId" Mode="In" Type="Int32" />
       <Parameter Name="FirstName" Mode="In" Type="String" />

@@ -139,7 +139,8 @@ namespace Absa.Web.Controllers
 			int id = Convert.ToInt32(model.ResilienceID);
 			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == id);
 			data.StatusId = 6;
-			//SendEmail(model.Email, model.Description , model.BusinessUnit,model.ApplicationId,model.FullName,model.BusinessUnitName);
+			var email = new Email();
+			email.SendEmail(model.Email, model.Description, model.BusinessUnit, model.ApplicationId, model.FullName, model.BusinessUnitName);
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
 		}
@@ -166,6 +167,7 @@ namespace Absa.Web.Controllers
 		{
 			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceID);
 			data.StatusId = 4;
+			
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
 		}
@@ -473,26 +475,6 @@ namespace Absa.Web.Controllers
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
 		}
-
-		public void SendEmail(string email,string body, string businessUnit, string applicationID, string requestedBy, string applicationDeclined)
-		{
-			MailMessage msg = new MailMessage();
-			msg.From = new MailAddress("mthembungubane@gmail.com");
-			msg.To.Add(new MailAddress(email));
-			msg.Subject = "Request Declined";
-			msg.Body = "Business Unit" + businessUnit +
-				       "\n" +"Application Id" + applicationID +
-					   "\n"+"Approval Requested By" + requestedBy +
-					   "\n"+ "Application Declined" + applicationDeclined +
-					   "\n" + body;
-			SmtpClient Client = new SmtpClient("smtp.gmail.com");
-			Client.Port = 587;
-			Client.UseDefaultCredentials = false;
-			System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("mthembungubane@gmail.com", "andile1234!@#$");
-			Client.Credentials = credentials;
-			Client.EnableSsl = true;
-			Client.DeliveryMethod = SmtpDeliveryMethod.Network;
-			Client.Send(msg);
-		}
+	
 	}
 }

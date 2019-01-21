@@ -334,7 +334,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetUserRolePermissions" FunctionName="AbsaDBModel.Store.GetUserRolePermissions" />
     <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="AbsaDBModel.Store.UpdateUser" />
   </EntityContainerMapping>
 </Mapping>

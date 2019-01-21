@@ -42,11 +42,10 @@
 		<br>
 		<div class="form-row">
 			<div class="col">
-				@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Username", autocomplete = "off" } })
-				@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+				@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinestUnitList, "Select Business Unit", new { @class = "form-control" })
 			</div>
 			<div class="col">
-				@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinestUnitList, "Select Business Unit", new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.RolesPermission, Model.RolesPermissionList, "Select  Role Permission", new { @class = "form-control" })
 			</div>
 		</div>
 		<br>
@@ -60,16 +59,6 @@
 			</div>
 		</div>
 		<br>
-		<div class="form-row">
-			<div class="col">
-				@Html.PasswordFor(model => model.Password, new { @class = "form-control text-field", placeholder = "Password", autocomplete = "off" })
-				@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-			</div>
-			<div class="col">
-				@Html.DropDownListFor(model => model.RolesPermission, Model.RolesPermissionList, "Select  Role Permission", new { @class = "form-control" })
-			</div>
-		</div>
-		<br />
 		<div class="form-row">
 			<div class="col">
 				<input type="submit" value="Save" id="butValidateForm" class="btn btn-lg  btn-circle btn-outline-dark" />
