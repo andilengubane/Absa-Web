@@ -140,11 +140,6 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserById_Result>("GetUserById", userIdParameter);
         }
     
-        public virtual int GetUserRolePermissions()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUserRolePermissions");
-        }
-    
         public virtual int UpdateUser(Nullable<int> userId, string firstName, string lastName, string emailAddress, string userName, string contactNumber, Nullable<bool> isActive, Nullable<int> rolesPermissionsID, Nullable<int> businessUnitId, string password)
         {
             var userIdParameter = userId.HasValue ?

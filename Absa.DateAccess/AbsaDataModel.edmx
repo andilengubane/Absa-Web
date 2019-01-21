@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AbsaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BusinessUnit">
           <Key>
             <PropertyRef Name="BusinessUnitId" />
@@ -110,7 +110,7 @@
           <Property Name="Datelogged" Type="datetime" />
           <Property Name="RolesPermissionsID" Type="int" />
           <Property Name="BusinessUnitId" Type="int" />
-          <Property Name="Password" Type="binary" MaxLength="64" />
+          <Property Name="Password" Type="varchar" MaxLength="64" />
         </EntityType>
         <Association Name="FK__BusinessU__UserI__019E3B86">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -217,7 +217,7 @@
           <Parameter Name="IsActive" Type="bit" Mode="In" />
           <Parameter Name="RolesPermissionsID" Type="int" Mode="In" />
           <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
-          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetAllUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetApplicationByResilienceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -239,7 +239,6 @@
         <Function Name="GetUserById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetUserRolePermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
@@ -250,7 +249,7 @@
           <Parameter Name="IsActive" Type="bit" Mode="In" />
           <Parameter Name="RolesPermissionsID" Type="int" Mode="In" />
           <Parameter Name="BusinessUnitId" Type="int" Mode="In" />
-          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="AbsaDBModelStoreContainer">
           <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" Schema="dbo" store:Type="Tables" />
@@ -293,7 +292,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AbsaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -413,7 +413,7 @@
           <Property Name="Datelogged" Type="DateTime" Precision="3" />
           <Property Name="RolesPermissionsID" Type="Int32" />
           <Property Name="BusinessUnitId" Type="Int32" />
-          <Property Name="Password" Type="Binary" MaxLength="64" FixedLength="true" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BusinessUnits" Relationship="Self.FK__BusinessU__UserI__019E3B86" FromRole="Users" ToRole="BusinessUnit" />
           <NavigationProperty Name="BusinessUnit" Relationship="Self.FK__Users__BusinessU__7E37BEF6" FromRole="Users" ToRole="BusinessUnit" />
           <NavigationProperty Name="ResilienceTracks" Relationship="Self.FK__Resilienc__UserI__2F9A1060" FromRole="Users" ToRole="ResilienceTrack" />
@@ -569,25 +569,24 @@
           </FunctionImport>
           <FunctionImport Name="GetAllUsersList" ReturnType="Collection(AbsaDBModel.GetAllUsersList_Result)" />
           <FunctionImport Name="GetApplicationByResilienceID" ReturnType="Collection(AbsaDBModel.GetApplicationByResilienceID_Result)">
-          <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
+            <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetApplicationToDecline" ReturnType="Collection(AbsaDBModel.GetApplicationToDecline_Result)">
-          <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
+            <Parameter Name="ResilinceId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAppStatus" ReturnType="Collection(AbsaDBModel.GetAppStatus_Result)">
-          <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
+            <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBusinessUnitByUserId" ReturnType="Collection(String)">
-          <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetResilienceTrackList" ReturnType="Collection(AbsaDBModel.GetResilienceTrackList_Result)" />
           <FunctionImport Name="GetResilienceTrackListById" ReturnType="Collection(AbsaDBModel.GetResilienceTrackListById_Result)">
-          <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
+            <Parameter Name="ResilienceTrackID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUserById" ReturnType="Collection(AbsaDBModel.GetUserById_Result)">
-          <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetUserRolePermissions" />
           <FunctionImport Name="UpdateUser">
             <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -1129,7 +1128,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetUserRolePermissions" FunctionName="AbsaDBModel.Store.GetUserRolePermissions" />
           <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="AbsaDBModel.Store.UpdateUser" />
         </EntityContainerMapping>
       </Mapping>

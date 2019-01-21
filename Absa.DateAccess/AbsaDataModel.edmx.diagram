@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5d0bf44a5f914c0f8b2499001e94eab7" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnit" Width="1.5" PointX="3.25" PointY="3" IsExpanded="true" />
+      <Diagram DiagramId="565aaad992e34a088f3bb209ab5b1f42" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="AbsaDBModel.BusinessUnit" Width="1.5" PointX="3.5" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.DataLookUp" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.LookUpName" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrack" Width="1.5" PointX="9.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.ResilienceTrack" Width="1.5" PointX="11.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsaDBModel.ResilinceApplication" Width="1.5" PointX="3.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.RolesPermission" Width="1.5" PointX="5.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsaDBModel.User" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.RolesPermission" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsaDBModel.User" Width="1.5" PointX="5.875" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="AbsaDBModel.FK__BusinessU__UserI__019E3B86" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__Resilienc__Busin__208CD6FA" ManuallyRouted="false" />
         <AssociationConnector Association="AbsaDBModel.FK__Users__BusinessU__7E37BEF6" ManuallyRouted="false" />

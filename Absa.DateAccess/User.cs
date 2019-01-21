@@ -32,7 +32,7 @@ namespace Absa.DateAccess
         public Nullable<System.DateTime> Datelogged { get; set; }
         public Nullable<int> RolesPermissionsID { get; set; }
         public Nullable<int> BusinessUnitId { get; set; }
-        public byte[] Password { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusinessUnit> BusinessUnits { get; set; }

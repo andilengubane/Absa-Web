@@ -141,7 +141,6 @@ namespace Absa.Web.Controllers
 						model.EmailAddress = result.EmailAddress;
 						model.ContactNumber = result.ContactNumber;
 						model.UserName = result.UserName;
-						//model.Password = result.Password;
 						model.IsActive = Convert.ToBoolean(result.IsActive);
 						model.RolesPermission = Convert.ToString(result.RolesPermissionsID);
 						model.BusinessUnit = Convert.ToString(result.BusinessUnitId);
@@ -172,31 +171,36 @@ namespace Absa.Web.Controllers
 			var upperCase = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 			var lowerCase = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 			var numbers = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-			var specialCharacters = new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')' };
+			var specialCharacters = new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')' , '_' , '+' };
 			var random = new Random();
 
 			var total = upperCase.Concat(lowerCase).Concat(numbers).Concat(specialCharacters).ToArray();
-
 			var chars = Enumerable.Repeat<int>(0, numberOfChars).Select(i => total[random.Next(total.Length)]).ToArray();
-
 			var password = new string(chars);
-			var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
-			if (data != null)
+			var userName = model.FirstName + model.LastName;
+
+			if (model.ID == 0)
 			{
-				ViewBag.ErroMessage = "Email provided already exist " + data.EmailAddress + " .";
+				var data = context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.ContactNumber == model.ContactNumber);
+				if (data != null){
+					ViewBag.ErroMessage = "Email provided already exist " + data.EmailAddress + " .";
+				}
+				else{
+					context.AddUser(model.FirstName, model.LastName, model.EmailAddress, userName, model.ContactNumber, model.IsActive
+									, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
+					var userEmailNotification = new Email();
+					userEmailNotification.CreateUserAccountNotificationEmail(model.EmailAddress, userName, password);
+					return RedirectToAction("UserList", "Account");
+				}
 			}
 			else
 			{
-				if (model.ID == 0)
-				{
-					context.AddUser(model.FirstName, model.LastName, model.EmailAddress, model.UserName, model.ContactNumber, model.IsActive
-									, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
-				}
-				ViewBag.ErrorMessage = "Your account is not active yet please see your line Manager or Supervisor to activate your account";
+				var _data = context.UpdateUser(model.ID, model.FirstName, model.LastName, model.EmailAddress, userName,
+										   model.ContactNumber, model.IsActive, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
+				var userEmailNotification = new Email();
+				userEmailNotification.UpdateUserDetailsNotificationEmail(model.EmailAddress, userName, password);
+				return RedirectToAction("UserList", "Account");
 			}
-			
-			var _data = context.UpdateUser(model.ID, model.FirstName, model.LastName, model.EmailAddress, model.UserName,
-				                           model.ContactNumber, model.IsActive, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
 			return RedirectToAction("UserList", "Account");
 		}
 
@@ -238,12 +242,13 @@ namespace Absa.Web.Controllers
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
 		{
-			var s = Encrypt(model.Password);
-			byte[] _data = Convert.FromBase64String(s);
+			MD5 md5Hash = MD5.Create();
+			string input = model.Password;
+			var password = GetMd5Hash(md5Hash, input);
 
 			if (model.UserName != null)
 			{
-				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password == _data);
+				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password.Equals(password));
 				if (data != null)
 				{
 					if (data.IsActive == false)
@@ -270,27 +275,28 @@ namespace Absa.Web.Controllers
 			return View("Login");
 		}
 
-
-		private string Encrypt(string clearText)
+		private static readonly Encoding Encoding1252 = Encoding.GetEncoding(1252);
+		public static byte[] SHA1HashValue(string s)
 		{
-			string EncryptionKey = "SHA2_512";
-			byte[] clearBytes = System.Text.Encoding.Unicode.GetBytes(clearText);
-			using (Aes encryptor = Aes.Create())
-			{
-				Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-				encryptor.Key = pdb.GetBytes(32);
-				encryptor.IV = pdb.GetBytes(16);
-				using (MemoryStream ms = new MemoryStream())
-				{
-					using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
-					{
-						cs.Write(clearBytes, 0, clearBytes.Length);
-						cs.Close();
-					}
-					clearText = Convert.ToBase64String(ms.ToArray());
-				}
-			}
-			return clearText;
+			byte[] bytes = Encoding1252.GetBytes(s);
+
+			var sha1 = SHA512.Create();
+			byte[] hashBytes = sha1.ComputeHash(bytes);
+
+			return hashBytes;
 		}
+
+		static string GetMd5Hash(MD5 md5Hash, string input)
+		{
+		
+			byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+			StringBuilder sBuilder = new StringBuilder();
+			for (int i = 0; i < data.Length; i++)
+			{
+				sBuilder.Append(data[i].ToString("x2"));
+			}
+			return sBuilder.ToString();
+		}
+		
 	}
 }
