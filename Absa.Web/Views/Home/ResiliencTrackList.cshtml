@@ -181,6 +181,31 @@
   	});
 </script>
 
+<script type="text/javascript">
+$(function () {
+	debugger
+    var items="";
+    $.getJSON("@Url.Action("GetBusinessUnitList", "Home")",function(data){
+        $.each(data,function(index,item){
+           items+="<option value='"+item.BuinessUnitId+"'>"+item.BusinessUnitName+"</option>";
+        });
+        $("#businessList").html(items);
+    });
+  });
+</script>
+
+<script type="text/javascript">
+	$(function () {
+    var items="";
+    $.getJSON("@Url.Action("GetStatusList", "Home")",function(data){
+        $.each(data,function(index,item){
+        	items += "<option value='" + item.Description + "'>" + item.Description + "</option>";
+        });
+        $("#statusList").html(items);
+    });
+  });
+</script>
+
 }
 <style>
 	.col1 {
@@ -238,18 +263,35 @@
 		
 		@using (Html.BeginForm("ResiliencTrackList", "Home", FormMethod.Get))
 		{
-			<table style="width: 50%; border-spacing: 0 1em;">
+			<table style="width: 80%; border-spacing: 0 1em;">
 				<tr>
 					<td style="width: 1%; text-align: center">
-						<h5>Find by Application ID :</h5>
+						<h5>Application ID :</h5>
 					</td>
 					<td style="width: 1%; text-align: center">
 						@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control mr-sm-2 text-field", autocomplete = "off" })
 					</td>
+					<td style="width: 1%; text-align: center">
+					<h5 class="card-title">Business Unit : </h5>
+					</td>
+					<td style="width: 1%; text-align: center">
+				    <select class="form-control mr-sm-2 text-field"  name="businessList" id="businessList"></select>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table style="width: 42.5%; border-spacing: 0 1em;">
+				<tr>
+					<td style="width: 1%; text-align: center">
+						<h5>Status : </h5>
+					</td>
+					<td style="width: 1%; text-align: center">
+						<select class="form-control mr-sm-2 text-field" name="statusList" id="statusList">Select Status</select>
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 1%; text-align: center">
-						<input type="submit" value="Search" style="width: 40%; text-align: center"  class="btn btn-circle btn-outline-dark" />
+						<input type="submit" value="Search" style="width: 40%; text-align: center" class="btn btn-circle btn-outline-dark" />
 					</td>
 				</tr>
 			</table>

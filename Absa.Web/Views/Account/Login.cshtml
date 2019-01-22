@@ -42,22 +42,36 @@
 		padding: 1em 2em;
 		display: table;
 	}
-
 	div.content {
 		display: table-cell;
 		vertical-align: middle;
 	}
-
 	.btn-space {
 		margin-right: 15px;
 	}
-
 	.size-alr {
 		width: 500px;
 	}
-
-	.text-field { border-radius: 50px; }
-	.btn.btn-circle { border-radius: 50px; } 
+	.text-field {
+		 border-radius: 50px;
+	}
+	.btn.btn-circle { 
+		border-radius: 50px;
+	}
+	.center {
+		/*width: 500px;
+		height: 400px;*/
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 20px;
+		bottom: 0;
+		margin: auto;
+		max-width: 150%;
+		max-height: 100%;
+		overflow: auto;
+		padding: 1em 2em;
+	} 
 </style>
 
 <script type="text/javascript">
@@ -88,8 +102,10 @@
 <div class="back">
 	<div class="div-center">
 			<div class="card">
-				<h5 class="card-header" style="background-color: #1C2833;">Sign In</h5>
-				<div class="card-body">
+				<div class="card-body" style="left: 20%; right: 0px;" >
+					<img src="~/Content/image/CTO_5-Objectives_T100R.png" style="width:220px; height: 180px; margin-left: 22.4%; margin-right: 15px;"  />
+					<br>
+					<br>
 					<p class="card-text">Enter the your login details in order to gain access. As the first time user Sign Up !</p>
 					<br>
 					<section id="loginForm">
@@ -97,28 +113,28 @@
 						{
 							@Html.AntiForgeryToken()
 							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-							<div class="form-group">
+							<div class="form-group" style="margin-left: 11.5%; margin-right: 15px;">
 								<div class="col">
 									@Html.TextBoxFor(m => m.UserName, new { @class = "form-control text-field", autocomplete = "off", placeholder = "Username" })
 									@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group" style="margin-left: 11.5%; margin-right: 15px;">
 								<div class="col">
 									@Html.PasswordFor(m => m.Password, new { @class = "form-control text-field", placeholder = "Password" })
 									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 								</div>
 							</div>
 							<br>
-							<div class="form-group">
+							<div class="form-group" style="margin-left: 11.5%; margin-right: 15px;">
 								<div class="col">
 									<font color="@ViewBag.color">@ViewBag.ErroMessage</font>
 								</div>
 							</div>
 							<br>
-							<div class="form-group">
+							<div class="form-group" style="margin-left: 11.5%; margin-right: 15px;">
 								<div class="col">
-									<input type="submit" value="Log in" class="btn btn-outline-secondary btn-circle btn-lg btn-block" />
+									<input type="submit" value="Log in" class="btn btn-secondary btn-circle btn-lg btn-block" />
 								</div>
 							</div>
 						}

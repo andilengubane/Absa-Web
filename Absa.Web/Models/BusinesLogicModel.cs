@@ -201,6 +201,9 @@ namespace Absa.Web.Models
 	{
 		public IEnumerable<SelectListItem> StatusList { get; set; }
 		public string Status { get; set; }
+		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
+		public string BusinessUnit { get; set; }
+		public int BusinessUnitId { get; set; }
 		[Key]
 		public int ResilienceTrackID { get; set; }
 		public int UserID { get; set; }
@@ -211,8 +214,7 @@ namespace Absa.Web.Models
 		public string ApplicatioOwner { get; set; }
 		public string ServiceManager { get; set; }
 		public long Tiering { get; set; }
-		public int BusinessUnitId { get; set; }
-		public string BusinessUnit { get; set; }
+	
 		public string StrategicFit { get; set; }
 		public string DisasterRecovery { get; set; }
 		public string BackUpData { get; set; }

@@ -302,6 +302,8 @@
       <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
       <Parameter Name="Password" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="GetStatus" ReturnType="Collection(AbsaDBModel.GetStatus_Result)" />
+    <FunctionImport Name="GetBusinessUnit" ReturnType="Collection(AbsaDBModel.GetBusinessUnit_Result)" />
   </EntityContainer>
   <ComplexType Name="GetAllUsersList_Result">
     <Property Type="Int32" Name="UserID" Nullable="false" />
@@ -490,6 +492,14 @@
     <Property Type="Boolean" Name="IsActive" Nullable="true" />
     <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
     <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="GetStatus_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetBusinessUnit_Result">
+    <Property Type="Int32" Name="BusinessUnitId" Nullable="false" />
     <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
   </ComplexType>
 </Schema>
