@@ -335,5 +335,21 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="AbsaDBModel.Store.UpdateUser" />
+    <FunctionImportMapping FunctionImportName="GetStatus" FunctionName="AbsaDBModel.Store.GetStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetStatus_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBusinessUnit" FunctionName="AbsaDBModel.Store.GetBusinessUnit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GetBusinessUnit_Result">
+          <ScalarProperty Name="BusinessUnitId" ColumnName="BusinessUnitId" />
+          <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

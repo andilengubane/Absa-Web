@@ -13,15 +13,17 @@ namespace Absa.Web.Controllers
 {
 	public class HomeController : Controller
 	{
+		
 		AbsaDBEntities context = new AbsaDBEntities();
 		public ActionResult Index()
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
-			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+
 			var model = new DashBordModel();
-			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
-			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == data.RolesPermissionsID);
+
 			string rolePermissionType = Convert.ToString(permissions.Type);
 
 			if (rolePermissionType == "Manager")
@@ -51,14 +53,12 @@ namespace Absa.Web.Controllers
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 
+			var model = new DashBordModel();
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
 			var numberOfAppWithinTheBusinessUnit = context.BusinessUnits.FirstOrDefault(b=>b.BusinessUnitId == data.BusinessUnitId);
-			
-			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
-			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
-			string rolePermissionType = Convert.ToString(permissions.Type);
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == data.RolesPermissionsID);
 
-			var model = new DashBordModel();
+			string rolePermissionType = Convert.ToString(permissions.Type);
 			var appData = context.GetAppStatus(data.BusinessUnitId);
 			foreach (var item in appData)
 			{
@@ -241,19 +241,46 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult ResiliencTrackList(int? page, string currentFilter, string searchString)
+		public ActionResult GetBusinessUnitList()
+		{
+			var id = this.Session["ID"];
+			int userId = Convert.ToInt32(id);
+			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
+			
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == data.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
+
+			if (rolePermissionType == "Manager")
+			{
+				var businessList = context.GetBusinessUnit();
+				return Json(businessList, JsonRequestBehavior.AllowGet);
+			}
+			else {
+				var businessList = context.GetBusinessUnitByUserId(userId);
+				return Json(businessList, JsonRequestBehavior.AllowGet);
+			}
+		}
+
+		public ActionResult GetStatusList()
+		{
+			var statusList = context.GetStatus();
+			return Json(statusList, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult ResiliencTrackList(int? page, string currentFilter, string searchString, string statusList, string businessList)
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var model = new List<ResilienceTrackModel>();
 			
-			if (searchString != null)
+			if (searchString != null || statusList != null)
 			{
 				page = 1;
 			}
 			else
 			{
 				searchString = currentFilter;
+				statusList = currentFilter;
 			}
 			try
 			{
@@ -267,9 +294,9 @@ namespace Absa.Web.Controllers
 						   select s;
 
 				ViewBag.CurrentFilter = searchString;
-				if (!String.IsNullOrEmpty(searchString))
+				if (!String.IsNullOrEmpty(searchString) || !String.IsNullOrEmpty(statusList))
 				{
-					data = data.Where(s => s.ApplicationID.Contains(searchString)); 
+					data = data.Where(s => s.ApplicationID.Contains(searchString) || s.Description.Contains(statusList)); 
 				}
 
 				foreach (var item in data)
@@ -355,12 +382,13 @@ namespace Absa.Web.Controllers
 		{
 			if (model.ResilienceTrackID == 0)
 			{
+			
 				var id = this.Session["ID"];
+				int statusId = 0;
 				int userId = Convert.ToInt32(id);
+
 				var datas = context.Users.FirstOrDefault(u => u.UserID == userId);
-				int statusId;
-				var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
-				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == datas.RolesPermissionsID);
 				string rolePermissionType = Convert.ToString(permissions.Type);
 
 				var Application = context.ResilienceTracks.FirstOrDefault(a => a.ApplicationID == model.ApplicationID && a.ApplicationName == model.ApplicationName);

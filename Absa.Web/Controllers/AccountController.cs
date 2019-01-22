@@ -242,33 +242,35 @@ namespace Absa.Web.Controllers
 		[HttpPost]
 		public ActionResult GetUserAccess(UserModel model)
 		{
-			MD5 md5Hash = MD5.Create();
-			string input = model.Password;
-			var password = GetMd5Hash(md5Hash, input);
-
-			if (model.UserName != null)
+			if (model.Password != null && model.UserName != null)
 			{
-				var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password.Equals(password));
-				if (data != null)
+				MD5 md5Hash = MD5.Create();
+				string input = model.Password;
+				var password = GetMd5Hash(md5Hash, input);
+
+				if (model.UserName != null)
 				{
-					if (data.IsActive == false)
+					var data = context.Users.FirstOrDefault(u => u.UserName == model.UserName && u.Password.Equals(password));
+					if (data != null)
 					{
-					  ViewBag.ErroMessage = "Your acccount is not active please ask your line manager to activate your account";
+						if (data.IsActive == false)
+						{
+							ViewBag.ErroMessage = "Your acccount is not active please ask your line manager to activate your account";
+						}
+						else
+						{
+							this.Session["ID"] = data.UserID;
+							this.Session["UserName"] = data.UserName;
+							this.Session["FirstName"] = data.FirstName;
+							this.Session["LastName"] = data.LastName;
+							ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
+							return RedirectToAction("Index", "Home");
+						}
 					}
 					else
 					{
-						this.Session["ID"] = data.UserID;
-						this.Session["UserName"] = data.UserName;
-						this.Session["FirstName"] = data.FirstName;
-						this.Session["LastName"] = data.LastName;
-						ViewBag.Details = this.Session["FirstName"] + " " + this.Session["LastName"];
-
-						return RedirectToAction("Index", "Home");
+						ViewBag.ErroMessage = "Incorrect login detail provided.";
 					}
-				}
-				else
-				{
-					ViewBag.ErroMessage = "Incorrect login detail provided.";
 				}
 			}
 			ViewBag.ErroMessage = "Incorrect username and password.";

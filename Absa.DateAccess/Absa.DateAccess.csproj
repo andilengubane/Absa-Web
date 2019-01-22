@@ -84,10 +84,16 @@
     <Compile Include="GetAppStatus_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetBusinessUnit_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetResilienceTrackListById_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetResilienceTrackList_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetStatus_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetUserById_Result.cs">

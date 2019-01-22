@@ -18,13 +18,14 @@ namespace Absa.Web.Controllers
 			var _Id = this.Session["ID"];
 			int userId = Convert.ToInt32(_Id);
 			var model = new List<RolePermissionsModel>();
-			var data = context.RolesPermissions.ToList();
 
 			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
 			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
 			string rolePermissionType = Convert.ToString(permissions.Type);
+
 			ViewBag.RolePermission = rolePermissionType;
 
+			var data = context.RolesPermissions.ToList();
 			foreach (var item in data)
 			{
 				model.Add(new RolePermissionsModel
@@ -48,14 +49,11 @@ namespace Absa.Web.Controllers
 			var dataStatus = context.Users.FirstOrDefault(u => u.UserID == userId);
 			int id = 0;
 
-			
-
 			if (rolePermissionsId != "")
 			{
 				string number = System.Text.RegularExpressions.Regex.Replace(rolePermissionsId, @"\D+", string.Empty);
 				id = Convert.ToInt16(number);
 			}
-		
 
 			var model = new RolePermissionsModel();
 			if (id == 0)
@@ -89,9 +87,8 @@ namespace Absa.Web.Controllers
 				var id = this.Session["ID"];
 				int userId = Convert.ToInt32(id);
 				var datas = context.Users.FirstOrDefault(u => u.UserID == userId);
-			
-				var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
-				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
+				
+				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == datas.RolesPermissionsID);
 				string rolePermissionType = Convert.ToString(permissions.Type);
 
 				context.RolesPermissions.Add(new RolesPermission
