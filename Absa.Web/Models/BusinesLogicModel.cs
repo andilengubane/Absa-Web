@@ -203,6 +203,7 @@ namespace Absa.Web.Models
 		public string Status { get; set; }
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
 		public string BusinessUnit { get; set; }
+		public string BusinessUnitName { get; set; }
 		public int BusinessUnitId { get; set; }
 		[Key]
 		public int ResilienceTrackID { get; set; }

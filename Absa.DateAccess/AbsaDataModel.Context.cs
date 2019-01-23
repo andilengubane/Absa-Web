@@ -108,13 +108,18 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAppStatus_Result>("GetAppStatus", businessUnitIdParameter);
         }
     
-        public virtual ObjectResult<string> GetBusinessUnitByUserId(Nullable<int> userId)
+        public virtual ObjectResult<GetBusinessUnit_Result> GetBusinessUnit()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBusinessUnit_Result>("GetBusinessUnit");
+        }
+    
+        public virtual ObjectResult<GetBusinessUnitByUserId_Result> GetBusinessUnitByUserId(Nullable<int> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("UserId", userId) :
                 new ObjectParameter("UserId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetBusinessUnitByUserId", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBusinessUnitByUserId_Result>("GetBusinessUnitByUserId", userIdParameter);
         }
     
         public virtual ObjectResult<GetResilienceTrackList_Result> GetResilienceTrackList()
@@ -129,6 +134,11 @@ namespace Absa.DateAccess
                 new ObjectParameter("ResilienceTrackID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetResilienceTrackListById_Result>("GetResilienceTrackListById", resilienceTrackIDParameter);
+        }
+    
+        public virtual ObjectResult<GetStatus_Result> GetStatus()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStatus_Result>("GetStatus");
         }
     
         public virtual ObjectResult<GetUserById_Result> GetUserById(Nullable<int> userId)
@@ -183,16 +193,6 @@ namespace Absa.DateAccess
                 new ObjectParameter("Password", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUser", userIdParameter, firstNameParameter, lastNameParameter, emailAddressParameter, userNameParameter, contactNumberParameter, isActiveParameter, rolesPermissionsIDParameter, businessUnitIdParameter, passwordParameter);
-        }
-    
-        public virtual ObjectResult<GetStatus_Result> GetStatus()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStatus_Result>("GetStatus");
-        }
-    
-        public virtual ObjectResult<GetBusinessUnit_Result> GetBusinessUnit()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBusinessUnit_Result>("GetBusinessUnit");
         }
     }
 }

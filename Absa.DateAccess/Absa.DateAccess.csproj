@@ -84,6 +84,9 @@
     <Compile Include="GetAppStatus_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetBusinessUnitByUserId_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetBusinessUnit_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
