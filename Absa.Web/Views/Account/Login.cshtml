@@ -58,20 +58,7 @@
 	.btn.btn-circle { 
 		border-radius: 50px;
 	}
-	.center {
-		/*width: 500px;
-		height: 400px;*/
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 20px;
-		bottom: 0;
-		margin: auto;
-		max-width: 150%;
-		max-height: 100%;
-		overflow: auto;
-		padding: 1em 2em;
-	} 
+
 </style>
 
 <script type="text/javascript">
@@ -119,6 +106,7 @@
 									@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
 								</div>
 							</div>
+							<br>
 							<div class="form-group" style="margin-left: 11.5%; margin-right: 15px;">
 								<div class="col">
 									@Html.PasswordFor(m => m.Password, new { @class = "form-control text-field", placeholder = "Password" })

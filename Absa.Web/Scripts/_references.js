@@ -23,5 +23,6 @@
 /// <reference path="popper-utils.min.js" />
 /// <reference path="respond.js" />
 /// <reference path="techo.js" />
+/// <reference path="toastr.min.js" />
 /// <reference path="umd/popper.min.js" />
 /// <reference path="umd/popper-utils.min.js" />

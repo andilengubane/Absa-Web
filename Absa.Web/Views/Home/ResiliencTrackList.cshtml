@@ -10,6 +10,8 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
 	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
 	<script type="text/javascript">
         $(function () {
             $("#dialogs").dialog({
@@ -263,6 +265,18 @@ $(function () {
 		
 		@using (Html.BeginForm("ResiliencTrackList", "Home", FormMethod.Get))
 		{
+			if (ViewBag.Message != null)
+			{
+				<script>
+                $(document).ready(function () {
+                if ('@TempData["message"]' == "Added") {
+                    toastr.success('Action successfully changed....', 'ActionName');
+                }
+                else { }
+            });
+				</script>
+			}
+
 			<table style="width: 80%; border-spacing: 0 1em;">
 				<tr>
 					<td style="width: 1%; text-align: center">
