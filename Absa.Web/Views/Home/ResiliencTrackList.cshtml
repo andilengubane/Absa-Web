@@ -12,6 +12,8 @@
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
 	<script type="text/javascript">
         $(function () {
             $("#dialogs").dialog({
@@ -265,18 +267,6 @@ $(function () {
 		
 		@using (Html.BeginForm("ResiliencTrackList", "Home", FormMethod.Get))
 		{
-			if (ViewBag.Message != null)
-			{
-				<script>
-                $(document).ready(function () {
-                if ('@TempData["message"]' == "Added") {
-                    toastr.success('Action successfully changed....', 'ActionName');
-                }
-                else { }
-            });
-				</script>
-			}
-
 			<table style="width: 80%; border-spacing: 0 1em;">
 				<tr>
 					<td style="width: 1%; text-align: center">
@@ -286,23 +276,15 @@ $(function () {
 						@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control mr-sm-2 text-field", autocomplete = "off" })
 					</td>
 					<td style="width: 1%; text-align: center">
-					<h5 class="card-title">Business Unit : </h5>
-					</td>
-					<td style="width: 1%; text-align: center">
-				    <select class="form-control mr-sm-2 text-field"  name="businessList" id="businessList"></select>
-					</td>
-				</tr>
-			</table>
-			<br>
-			<table style="width: 42.5%; border-spacing: 0 1em;">
-				<tr>
-					<td style="width: 1%; text-align: center">
 						<h5>Status : </h5>
 					</td>
 					<td style="width: 1%; text-align: center">
 						<select class="form-control mr-sm-2 text-field" name="statusList" id="statusList">Select Status</select>
 					</td>
 				</tr>
+			</table>
+			<br>
+			<table style="width: 42.5%; border-spacing: 0 1em;">
 				<tr>
 					<td style="width: 1%; text-align: center">
 						<input type="submit" value="Search" style="width: 40%; text-align: center" class="btn btn-circle btn-outline-dark" />
@@ -341,9 +323,6 @@ $(function () {
 					Application Name
 				</th>
 				<th>
-					Name On Snow
-				</th>
-				<th>
 					Head Of Technology
 				</th>
 				<th>
@@ -354,6 +333,9 @@ $(function () {
 				</th>
 				<th>
 					Tiering
+				</th>
+				<th>
+				   Business Unit
 				</th>
 				<th></th>
 			</tr>
@@ -374,9 +356,6 @@ $(function () {
 						@Html.DisplayFor(modelItem => item.ApplicationName)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.NameOnSnow)
-					</td>
-					<td>
 						@Html.DisplayFor(modelItem => item.HeadOfTechnology)
 					</td>
 					<td>
@@ -387,6 +366,9 @@ $(function () {
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.Tiering)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.BusinessUnitName)
 					</td>
 					<td id="decline">
 						<button class="Edit btn btn-sm btn-circle btn-secondary" type="button" id="Resilience" href="javascript:;"> EDIT </button>
@@ -403,5 +385,4 @@ $(function () {
 	<br>
 	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 	@Html.PagedListPager(Model, page => Url.Action("ResiliencTrackList", "Home", new { page , @class ="pagination"}))
-	
 </font>

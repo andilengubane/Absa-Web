@@ -292,44 +292,71 @@ namespace Absa.Web.Controllers
 				searchString = currentFilter;
 				statusList = currentFilter;
 			}
-			try
-			{
-				var businessUnitData = context.Users.FirstOrDefault(u => u.UserID == userId);
-				var permission = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == businessUnitData.RolesPermissionsID);
-				string rolePermissionType = Convert.ToString(permission.Type);
-				ViewBag.RolePermission = rolePermissionType;
+			
+			var businessUnitData = context.Users.FirstOrDefault(u => u.UserID == userId);
+			var permission = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == businessUnitData.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permission.Type);
+			ViewBag.RolePermission = rolePermissionType;
 
+			if (ViewBag.RolePermission == "Manager")
+			{
 				var data = from s in context.GetResilienceTrackList()
-						   where s.BusinessUnitId == businessUnitData.BusinessUnitId
 						   select s;
 
-				ViewBag.CurrentFilter = searchString;
-				if (!String.IsNullOrEmpty(searchString) || !String.IsNullOrEmpty(statusList))
-				{
-					data = data.Where(s => s.ApplicationID.Contains(searchString) || s.Description.Contains(statusList)); 
-				}
-
-				foreach (var item in data)
-				{
-					model.Add(new ResilienceTrackModel()
-					{
-						ResilienceTrackID = item.ResilienceTrackID,
-						ApplicationID = item.ApplicationID,
-						ApplicationName = item.ApplicationName,
-						NameOnSnow = item.NameOnSnow,
-						HeadOfTechnology = item.HeadOfTechnology,
-						ApplicatioOwner = item.ApplicatioOwner,
-						ServiceManager = item.ServiceManager,
-						Description = item.Description,
-						Tiering = item.Tiering.Value,
-					});
-				}
-			}
-			catch (Exception ex)
+			ViewBag.CurrentFilter = searchString;
+			if (!String.IsNullOrEmpty(searchString) || !String.IsNullOrEmpty(statusList))
 			{
-				string error = ex.Message;
+				data = data.Where(s => s.ApplicationID.Contains(searchString) || s.Description.Contains(statusList));
 			}
 
+			foreach (var item in data)
+			{
+				model.Add(new ResilienceTrackModel()
+				{
+					ResilienceTrackID = item.ResilienceTrackID,
+					ApplicationID = item.ApplicationID,
+					ApplicationName = item.ApplicationName,
+					//NameOnSnow = item.NameOnSnow,
+					BusinessUnitName = item.BusinessUnitName,
+					HeadOfTechnology = item.HeadOfTechnology,
+					ApplicatioOwner = item.ApplicatioOwner,
+					ServiceManager = item.ServiceManager,
+					Description = item.Description,
+					Tiering = item.Tiering.Value,
+				});
+			}
+			}
+			else
+			{
+			  var data = from s in context.GetResilienceTrackList()
+						   where s.BusinessUnitId == businessUnitData.BusinessUnitId
+						   select s;
+			   
+			  ViewBag.CurrentFilter = searchString;
+
+			  if (!String.IsNullOrEmpty(searchString) || !String.IsNullOrEmpty(statusList))
+			  {
+			  	data = data.Where(s => s.ApplicationID.Contains(searchString) || s.Description.Contains(statusList));
+			  }
+			     
+			  foreach (var item in data)
+			  {
+			  	model.Add(new ResilienceTrackModel()
+			  	{
+			  		ResilienceTrackID = item.ResilienceTrackID,
+			  		ApplicationID = item.ApplicationID,
+			  		ApplicationName = item.ApplicationName,
+					  //NameOnSnow = item.NameOnSnow,
+					BusinessUnitName = item.BusinessUnitName,
+			  		HeadOfTechnology = item.HeadOfTechnology,
+			  		ApplicatioOwner = item.ApplicatioOwner,
+			  		ServiceManager = item.ServiceManager,
+					
+			  		Description = item.Description,
+			  		Tiering = item.Tiering.Value,
+			  	});
+			  }
+			}
 			int pageSize = 10;
 			int pageNumber = (page ?? 1);
 			return this.View("ResiliencTrackList", model.ToPagedList(pageNumber, pageSize));
@@ -405,15 +432,14 @@ namespace Absa.Web.Controllers
 				var Application = context.ResilienceTracks.FirstOrDefault(a => a.ApplicationID == model.ApplicationID || a.ApplicationName == model.ApplicationName);
 				if (Application != null)
 				{
-					TempData["message"] = "Added";
-					//ViewBag.Message = "s";//Notification.Show("Reasilience record with Application ID " + model.ApplicationID + " And Application Name " + model.ApplicationName + " already exist" , position: Position.BottomCenter, type: ToastType.Error, timeOut: 7000);
+					//ViewBag.Message = "Reasilience record with Application ID " + model.ApplicationID + " And Application Name " + model.ApplicationName + " already exist");
 					return RedirectToAction("ResiliencTrackList", "Home");
 				} else
 				{
 					if (rolePermissionType == "Manager")
 					{
 						statusId = 4;
-						businessUnitID = model.BusinessUnitId;
+						businessUnitID = Convert.ToInt32(model.BusinessUnit);
 
 					}
 					else
