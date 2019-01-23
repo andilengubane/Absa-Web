@@ -101,13 +101,23 @@ namespace Absa.Web.Controllers
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
 
+			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == data.RolesPermissionsID);
+			string rolePermissionType = Convert.ToString(permissions.Type);
+			ViewBag.RolePermission = rolePermissionType;
+
 			var model = new ResilienceTrackModel();
 			model.StatusList = context.DataLookUps.Where(x => x.LoopkUpID == 1).Select(x => new SelectListItem
 			{
 				Value = x.Description,
 				Text = x.Description
 			});
-			
+
+			model.BusinessUnitList = context.BusinessUnits.Select(x => new SelectListItem
+			{
+				Value = x.BusinessUnitId.ToString(),
+				Text = x.BusinessUnitName
+			});
+
 			return PartialView(model);
 		}
 
@@ -390,33 +400,37 @@ namespace Absa.Web.Controllers
 				var datas = context.Users.FirstOrDefault(u => u.UserID == userId);
 				var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == datas.RolesPermissionsID);
 				string rolePermissionType = Convert.ToString(permissions.Type);
-
-				var Application = context.ResilienceTracks.FirstOrDefault(a => a.ApplicationID == model.ApplicationID && a.ApplicationName == model.ApplicationName);
+				int businessUnitID = 0;
+				
+				var Application = context.ResilienceTracks.FirstOrDefault(a => a.ApplicationID == model.ApplicationID || a.ApplicationName == model.ApplicationName);
 				if (Application != null)
 				{
-					ViewBag.ErrorMessage = "Reasilience record with Application ID " + model.ApplicationID + " And Application Name " + model.ApplicationName + " already exist";
+					TempData["message"] = "Added";
+					//ViewBag.Message = "s";//Notification.Show("Reasilience record with Application ID " + model.ApplicationID + " And Application Name " + model.ApplicationName + " already exist" , position: Position.BottomCenter, type: ToastType.Error, timeOut: 7000);
 					return RedirectToAction("ResiliencTrackList", "Home");
 				} else
 				{
 					if (rolePermissionType == "Manager")
 					{
 						statusId = 4;
+						businessUnitID = model.BusinessUnitId;
+
 					}
 					else
 					{
 						statusId = 5;
+						businessUnitID = Convert.ToInt32(datas.BusinessUnitId);
 					}
 
 					context.ResilienceTracks.Add(new ResilienceTrack
 					{
-						ResilienceTrackID = model.ResilienceTrackID,
 						ApplicationID = model.ApplicationID,
 						UserID = userId,
 						ApplicationName = model.ApplicationName,
 						NameOnSnow = model.NameOnSnow,
 						Tiering = model.Tiering,
 						HeadOfTechnology = model.HeadOfTechnology,
-						BusinessUnitId = datas.BusinessUnitId,
+						BusinessUnitId = businessUnitID,
 						ApplicatioOwner = model.ApplicatioOwner,
 						ServiceManager = model.ServiceManager,
 						StrategicFit = model.StrategicFit,
@@ -503,6 +517,5 @@ namespace Absa.Web.Controllers
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
 		}
-	
 	}
 }

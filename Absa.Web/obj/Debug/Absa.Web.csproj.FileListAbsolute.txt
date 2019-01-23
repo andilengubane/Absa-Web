@@ -62,3 +62,5 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.ValueTuple.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.ValueTuple.xml

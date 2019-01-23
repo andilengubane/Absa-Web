@@ -22,16 +22,27 @@
 {
 	@Html.AntiForgeryToken()
 	<form>
+		@if(ViewBag.RolePermission == "Manager"){
+		<div class="card">
+			<h5 class="card-header">Business Unit</h5>
+			<div class="card-body">
+				<div class="form-row">
+					@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field", id = "businessUnit" })
+				</div>
+			</div>
+		</div>
+		<br>
+		}
 		<div class="card">
 			<h5 class="card-header">Administration</h5>
 			<div class="card-body">
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application ID", autocomplete = "off" , required = "required" } })
+						@Html.EditorFor(model => model.ApplicationID, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application ID", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Name", autocomplete = "off" , required = "required" } })
+						@Html.EditorFor(model => model.ApplicationName, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Application Name", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.ApplicationName, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
@@ -57,7 +68,7 @@
 				<br>
 				<div class="form-row">
 					<div class="col">
-						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Tiering", autocomplete = "off" , required = "required" } })
+						@Html.EditorFor(model => model.Tiering, new { htmlAttributes = new { @class = "form-control text-field", placeholder = "Tiering", autocomplete = "off", required = "required" } })
 						@Html.ValidationMessageFor(model => model.Tiering, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
@@ -101,7 +112,7 @@
 					<div class="col">
 						@Html.DropDownListFor(model => model.SPOF, Model.StatusList, "Single Point Of Failure", new { @class = "form-control" })
 						@Html.ValidationMessageFor(model => model.SPOF, "", new { @class = "text-danger" })
-						
+
 					</div>
 				</div>
 				<br>
@@ -130,8 +141,8 @@
 					</div>
 					<div class="col">
 
-			        </div>
-		        </div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<br>
@@ -178,7 +189,7 @@
 						@Html.ValidationMessageFor(model => model.PrivilegedAccessManagement, "", new { @class = "text-danger" })
 					</div>
 					<div class="col">
-					
+
 					</div>
 				</div>
 			</div>
@@ -233,11 +244,11 @@
 				</div>
 			</div>
 		</div>
-	   <br>
+		<br>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<input type="submit" value="Save" id="butValidateForm" class="btn btn-circle btn-success btn-lg btn-block" />
 			</div>
 		</div>
-   </form>
+	</form>
 }
