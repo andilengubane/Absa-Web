@@ -11,7 +11,7 @@ namespace Absa.DateAccess
 {
     using System;
     
-    public partial class GetAppStatus_Result
+    public partial class GetAllApplicationData_Result
     {
         public Nullable<int> StrategicFitYes { get; set; }
         public Nullable<int> StrategicFitNo { get; set; }

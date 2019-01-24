@@ -32,7 +32,6 @@ namespace Absa.Web.Models
 		public string Description { get; set; }
 		public int UserID { get; set; }
 	}
-
 	public class RolePermissionsModel
 	{
 		[Key]
@@ -41,15 +40,6 @@ namespace Absa.Web.Models
 		public DateTime DateLogged { get; set; }
 		public string Description { get; set; }
 		public int UserID { get; set; }
-	}
-
-
-	public class DisasterRecoveryModel
-	{
-		public int DisasterRecoveryYes { get; set; }
-		public int DisasterRecoveryNo { get; set; }
-		public int DisasterRecoveryWarning { get; set; }
-		public int DisasterRecoverOverRall { get; set; }
 	}
 	public class DashBordModel
 	{

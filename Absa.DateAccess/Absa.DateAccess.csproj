@@ -72,19 +72,19 @@
     <Compile Include="DataLookUp.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GerDisasterRecoveryByBusinesUnit_Result.cs">
+    <Compile Include="GetAllApplicationData_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetAllUsersList_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationByBusinesUnitId_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationByResilienceID_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationToDecline_Result.cs">
-      <DependentUpon>AbsaDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetAppStatus_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBusinessUnitByUserId_Result.cs">
