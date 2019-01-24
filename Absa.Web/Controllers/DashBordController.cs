@@ -40,14 +40,14 @@ namespace Absa.Web.Controllers
 			return PartialView();
 		}
 
-		public ActionResult GetDisasterRecoveryData()
+		public JsonResult GetDisasterRecoveryData()
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-			var model = new DashBordModel();
+			var model = new DisasterRecoveryModel();
 
-			var disasterRecoveryData = context.GetAppStatus(data.BusinessUnitId);
+			var disasterRecoveryData = context.GerDisasterRecoveryByBusinesUnit(data.BusinessUnitId);
 			foreach (var item in disasterRecoveryData)
 			{
 				model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);

@@ -85,6 +85,9 @@
       <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
       <Parameter Name="Password" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="GerDisasterRecoveryByBusinesUnit" ReturnType="Collection(AbsaDBModel.GerDisasterRecoveryByBusinesUnit_Result)">
+      <Parameter Name="BusinessUnitId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="BusinessUnit">
     <Key>
@@ -505,5 +508,11 @@
     <Property Type="DateTime" Name="Datelogged" Nullable="true" Precision="23" />
     <Property Type="String" Name="Type" Nullable="false" MaxLength="150" />
     <Property Type="String" Name="BusinessUnitName" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="GerDisasterRecoveryByBusinesUnit_Result">
+    <Property Type="Int32" Name="DisasterRecoverYes" Nullable="true" />
+    <Property Type="Int32" Name="DisasterRecoverNo" Nullable="true" />
+    <Property Type="Int32" Name="DisasterRecoverWarning" Nullable="true" />
+    <Property Type="Int32" Name="DisasterRecoverOverRall" Nullable="true" />
   </ComplexType>
 </Schema>

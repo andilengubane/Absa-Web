@@ -10,6 +10,960 @@
 <script src="~/Scripts/dashbord.js"></script>
 <script src="~/Scripts/techo.js"></script>
 <script src="~/Scripts/dashbordreport.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#dialogStrategicFit").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Strategic Fit",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#stategicFit .Strategic").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/StrategicFit",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogStrategicFit').html(response);
+					$('#dialogStrategicFit').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogDisasterRecovery").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Disaster Recovery",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+
+		$("#disasterRecovery .DisasterRecovery").click(function () {
+			$.ajax({
+				type: "GET",
+				url: "/DashBord/DisasterRecovery",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogDisasterRecovery').html(response);
+					$('#dialogDisasterRecovery').dialog('open');
+
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogBackUpData").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "BackUp - Data",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#backUpData .BackUpData").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/BackUpData",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogBackUpData').html(response);
+					$('#dialogBackUpData').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogBackUpConfiguration").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "BackUp - Configuration",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#backUpConfiguration .BackUpConfiguration").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/BackUpConfiguration",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogBackUpConfiguration').html(response);
+					$('#dialogBackUpConfiguration').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogHighAvailability").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "High Availability",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+			"Close": function () {
+				$(this).dialog("close");
+				window.location.reload(true);
+			}
+		}
+		});
+		$("#highAvailability .HighAvailability").click(function () {
+			debugger
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/HighAvailability",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogHighAvailability').html(response);
+					$('#dialogHighAvailability').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSinglePointOfFailure").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Single Point Of Failure",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#sPOF .SinglePointPointOfFailure").click(function () {
+			debugger
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SinglePointOfFailure",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSinglePointOfFailure').html(response);
+					$('#dialogSinglePointOfFailure').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogHighestDataClassification").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Highest Data Classification",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#highestDataClassification .HighestDataClassification").click(function () {
+			debugger
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/HighestDataClassification",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogHighestDataClassification').html(response);
+					$('#dialogHighestDataClassification').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogDataRetentionRequirement").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Data Retention Requirement",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#dataRetentionRequirement .DataRetentionRequirement").click(function () {
+			debugger
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/DataRetentionRequirement",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogDataRetentionRequirement').html(response);
+					$('#dialogDataRetentionRequirement').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogOperationalMonitoring").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Operational Monitoring",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#operationalMonitoring .OperationalMonitoring").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/OperationalMonitoring",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogOperationalMonitoring').html(response);
+					$('#dialogOperationalMonitoring').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSecurityMonitoring").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Security Monitoring",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#securityMonitoring .SecurityMonitoring").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SecurityMonitoring",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSecurityMonitoring').html(response);
+					$('#dialogSecurityMonitoring').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogInternalOLA").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Internal OLA",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#internalOLA .InternalOLA").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/InternalOLA",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogInternalOLA').html(response);
+					$('#dialogInternalOLA').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogExternalSLA").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "External SLA",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#externalSLA .ExternalSLA").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/ExternalSLA",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogExternalSLA').html(response);
+					$('#dialogExternalSLA').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogArchictetureDocumentation").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Archicteture Documentation",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#archictetureDocumentation .ArchictetureDocumentation").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/ArchictetureDocumentation",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogArchictetureDocumentation').html(response);
+					$('#dialogArchictetureDocumentation').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogOperationalDocumentation").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Operational Documentation",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#operationalDocumentation .OperationalDocumentation").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/OperationalDocumentation",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogOperationalDocumentation').html(response);
+					$('#dialogOperationalDocumentation').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogIntegratedtoAD").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Integrated to AD",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#integratedtoAD .IntegratedtoAD").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/IntegratedtoAD",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogIntegratedtoAD').html(response);
+					$('#dialogIntegratedtoAD').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogJMLProcess").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "JML Process",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#jmlProcess .JmlProcess").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/JMLProcess",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogJMLProcess').html(response);
+					$('#dialogJMLProcess').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogRecertificationProcess").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "RecertificationProcess",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#recertificationProcess .RecertificationProcess").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/RecertificationProcess",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogRecertificationProcess').html(response);
+					$('#dialogRecertificationProcess').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogPrivilegedAccessManagement").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Privileged Access Management",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#privilegedAccessManagement .PrivilegedAccessManagement").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/PrivilegedAccessManagement",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogPrivilegedAccessManagement').html(response);
+					$('#dialogPrivilegedAccessManagement').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogOSPatchingLevel").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "OS Patching Level",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#osPatchingLevel .OsPatchingLevel").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/OSPatchingLevel",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogOSPatchingLevel').html(response);
+					$('#dialogOSPatchingLevel').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogApplicationPatchingLevel").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Application Patching Level",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#applicationPatchingLevel .ApplicationPatchingLevel").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/ApplicationPatchingLevel",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogApplicationPatchingLevel').html(response);
+					$('#dialogApplicationPatchingLevel').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogMiddlewarePatchingLevel").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Middleware Patching Level",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#middlewarePatchingLevel .MiddlewarePatchingLevel").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/MiddlewarePatchingLevel",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogMiddlewarePatchingLevel').html(response);
+					$('#dialogMiddlewarePatchingLevel').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSupportedApplication").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Supported Application",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#supportedApplication .SupportedApplication").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SupportedApplication",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSupportedApplication').html(response);
+					$('#dialogSupportedApplication').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSupportedOS").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Supported OS",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#supportedOS .SupportedOS").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SupportedOperationSystem",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSupportedOS').html(response);
+					$('#dialogSupportedOS').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSupportedJava").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Supported Java",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#supportedJava .SupportedJava").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SupportedJava",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSupportedJava').html(response);
+					$('#dialogSupportedJava').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSupportedMiddleware").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Supported Middleware",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#supportedMiddleware .SupportedMiddleware").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SupportedMiddleware",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSupportedMiddleware').html(response);
+					$('#dialogSupportedMiddleware').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogSupportedDatabase").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Supported Database",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#supportedDatabase .SupportedDatabase").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/SupportedDatabase",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogSupportedDatabase').html(response);
+					$('#dialogSupportedDatabase').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+	$(function () {
+		$("#dialogOpenVulnerabilities").dialog({
+			autoOpen: false,
+			modal: true,
+			title: "Open Vulnerabilities",
+			dialogClass: 'titleColor',
+			width: 700,
+			height: 650,
+			buttons: {
+				"Close": function () {
+					$(this).dialog("close");
+					window.location.reload(true);
+				}
+			}
+		});
+		$("#openVulnerabilities .OpenVulnerabilities").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DashBord/OpenVulnerabilities",
+				contentType: "application/json; charset=utf-8",
+				dataType: "html",
+				success: function (response) {
+					$('#dialogOpenVulnerabilities').html(response);
+					$('#dialogOpenVulnerabilities').dialog('open');
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		});
+	});
+
+</script>
 }
 
 <div id="dialogStrategicFit" style="display: none"></div>
@@ -101,7 +1055,7 @@
 			<canvas id="SF" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="stategicFit">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="stategicFit" href="javascript:;">Strategic Fit</button>
+			<button class="Strategic btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="stategicFit" href="javascript:;">Strategic Fit</button>
 		</div>
 	</div>
 	<div class="card">
@@ -110,7 +1064,7 @@
 			<canvas id="DR" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="disasterRecovery">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary btnRefresh" style="margin-left: 35%; margin-right: 15px;"  type="button" id="disasterRecovery" href="javascript:;">Disaster Recovery</button>
+			<button class="DisasterRecovery btn btn-sm btn-circle btn-secondary btnRefresh" style="margin-left: 35%; margin-right: 15px;"  type="button" id="disasterRecovery" href="javascript:;">Disaster Recovery</button>
 		</div>
 	</div>
 	<div class="card">
@@ -119,7 +1073,7 @@
 			<canvas id="backUpsData" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="backUpData">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="backUpData" href="javascript:;">BackUp - Data</button>
+			<button class="BackUpData btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="backUpData" href="javascript:;">BackUp - Data</button>
 		</div>
 	</div>
 	<div class="card" id="dashBord">
@@ -128,7 +1082,7 @@
 			<canvas id="backUpConfig" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="backUpConfiguration">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="backUpConfiguration" href="javascript:;">BackUp - Configuration</button>
+			<button class="BackUpConfiguration btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="backUpConfiguration" href="javascript:;">BackUp - Configuration</button>
 		</div>
 	</div>
 </div>
@@ -140,7 +1094,7 @@
 			<canvas id="highAv" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="highAvailability">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="highAvailability" href="javascript:;">High Availability</button>
+			<button class="HighAvailability btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="highAvailability" href="javascript:;">High Availability</button>
 		</div>
 	</div>
 	<div class="card">
@@ -149,7 +1103,7 @@
 			<canvas id="SPOF" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer"  id="sPOF">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="sPOF" href="javascript:;">Single Point of Failure</button>
+			<button class="SinglePointPointOfFailure btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="sPOF" href="javascript:;">Single Point of Failure</button>
 		</div>
 	</div>
 	<div class="card">
@@ -158,7 +1112,7 @@
 			 <canvas id="HDC" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="highestDataClassification">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="highestDataClassification" href="javascript:;">Highest Data Classification</button>
+			<button class="HighestDataClassification btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="highestDataClassification" href="javascript:;">Highest Data Classification</button>
 		</div>
 	</div>
 	<div class="card">
@@ -167,7 +1121,7 @@
 			 <canvas id="DRR" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="dataRetentionRequirement">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="dataRetentionRequirement" href="javascript:;">Data Retention Requirement</button>
+			<button class="DataRetentionRequirement btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="dataRetentionRequirement" href="javascript:;">Data Retention Requirement</button>
 		</div>
 	</div>
 </div>
@@ -179,7 +1133,7 @@
 			 <canvas id="OM" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="operationalMonitoring">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="operationalMonitoring" href="javascript:;">Operation Monitoring</button>
+			<button class="OperationalMonitoring btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="operationalMonitoring" href="javascript:;">Operation Monitoring</button>
 		</div>
 	</div>
 	<div class="card">
@@ -188,7 +1142,7 @@
 			<canvas id="SM" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="securityMonitoring">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="securityMonitoring" href="javascript:;">Security Monitoring</button>
+			<button class="SecurityMonitoring btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="securityMonitoring" href="javascript:;">Security Monitoring</button>
 		</div>
 	</div>
 	<div class="card">
@@ -197,7 +1151,7 @@
 			<canvas id="IOLA" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="internalOLA">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="internalOLA" href="javascript:;">Internal OLA</button>
+			<button class="InternalOLA btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="internalOLA" href="javascript:;">Internal OLA</button>
 		</div>
 	</div>
 	<div class="card">
@@ -206,7 +1160,7 @@
 			<canvas id="ESLA" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer"  id="externalSLA">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="externalSLA" href="javascript:;">External SLA</button>
+			<button class="ExternalSLA btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="externalSLA" href="javascript:;">External SLA</button>
 		</div>
 	</div>
 </div>
@@ -218,7 +1172,7 @@
 				<canvas id="AD" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer"  id="archictetureDocumentation">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="archictetureDocumentation" href="javascript:;">Archicteture Documentation</button>
+				<button class="ArchictetureDocumentation btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="archictetureDocumentation" href="javascript:;">Archicteture Documentation</button>
 			</div>
 		</div>
 		<div class="card">
@@ -227,7 +1181,7 @@
 				<canvas id="OD" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="operationalDocumentation">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="operationalDocumentation" href="javascript:;">Operational Documentation</button>
+				<button class="OperationalDocumentation btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="operationalDocumentation" href="javascript:;">Operational Documentation</button>
 			</div>
 		</div>
 		<div class="card">
@@ -236,7 +1190,7 @@
 				<canvas id="ITAD" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="integratedtoAD">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="integratedtoAD" href="javascript:;">Integrated to AD</button>
+				<button class="IntegratedtoAD btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="integratedtoAD" href="javascript:;">Integrated to AD</button>
 			</div>
 		</div>
 		<div class="card">
@@ -245,7 +1199,7 @@
 				<canvas id="JMLP" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="jmlProcess">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="jmlProcess" href="javascript:;">JML Process</button>
+				<button class="JmlProcess btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="jmlProcess" href="javascript:;">JML Process</button>
 			</div>
 		</div>
 	</div>
@@ -257,7 +1211,7 @@
 				<canvas id="RProcess" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="recertificationProcess">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="recertificationProcess" href="javascript:;">Recertification Process</button>
+				<button class="RecertificationProcess btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="recertificationProcess" href="javascript:;">Recertification Process</button>
 			</div>
 		</div>
 		<div class="card">
@@ -266,7 +1220,7 @@
 				<canvas id="PAM" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="privilegedAccessManagement">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="privilegedAccessManagement" href="javascript:;">Privileged Access Management</button>
+				<button class="PrivilegedAccessManagement btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="privilegedAccessManagement" href="javascript:;">Privileged Access Management</button>
 			</div>
 		</div>
 		<div class="card">
@@ -275,7 +1229,7 @@
 				<canvas id="OSPL" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="osPatchingLevel">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="osPatchingLevel" href="javascript:;">OS Patching Level</button>
+				<button class="OsPatchingLevel btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="osPatchingLevel" href="javascript:;">OS Patching Level</button>
 			</div>
 		</div>
 		<div class="card">
@@ -284,7 +1238,7 @@
 				<canvas id="APL" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="applicationPatchingLevel">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="applicationPatchingLevel" href="javascript:;">Application Patching Level</button>
+				<button class="ApplicationPatchingLevel btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="applicationPatchingLevel" href="javascript:;">Application Patching Level</button>
 			</div>
 		</div>
 	</div>
@@ -296,7 +1250,7 @@
 				 <canvas id="MPL" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="middlewarePatchingLevel">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="middlewarePatchingLevel" href="javascript:;">Middleware Patching Level</button>
+				<button class="MiddlewarePatchingLevel btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="middlewarePatchingLevel" href="javascript:;">Middleware Patching Level</button>
 			</div>
 		</div>
 		<div class="card">
@@ -305,7 +1259,7 @@
 				<canvas id="SA" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="supportedApplication">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedApplication" href="javascript:;">Supported Application</button>
+				<button class="SupportedApplication btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedApplication" href="javascript:;">Supported Application</button>
 			</div>
 		</div>
 		<div class="card">
@@ -314,7 +1268,7 @@
 				<canvas id="SOS" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="supportedOS">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedOS" href="javascript:;">Supported Operation System</button>
+				<button class="SupportedOS btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedOS" href="javascript:;">Supported Operation System</button>
 			</div>
 		</div>
 		<div class="card">
@@ -323,7 +1277,7 @@
 				<canvas id="SJ" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="supportedJava">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedJava" href="javascript:;">Supported Java</button>
+				<button class="SupportedJava btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedJava" href="javascript:;">Supported Java</button>
 			</div>
 		</div>
 	</div>
@@ -335,7 +1289,7 @@
 				<canvas id="SML" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="supportedMiddleware">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedMiddleware" href="javascript:;">Supported Middleware</button>
+				<button class="SupportedMiddleware btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedMiddleware" href="javascript:;">Supported Middleware</button>
 			</div>
 		</div>
 		<div class="card">
@@ -344,7 +1298,7 @@
 				<canvas id="SDB" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="supportedDatabase">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedDatabase" href="javascript:;">Supported Database</button>
+				<button class="SupportedDatabase btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="supportedDatabase" href="javascript:;">Supported Database</button>
 			</div>
 		</div>
 		<div class="card">
@@ -353,7 +1307,7 @@
 				<canvas id="OV" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 			</div>
 			<div class="card-footer" id="openVulnerabilities">
-				<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="openVulnerabilities" href="javascript:;">Open Vulnerabilities</button>
+				<button class="OpenVulnerabilities btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="openVulnerabilities" href="javascript:;">Open Vulnerabilities</button>
 			</div>
 		</div>
 	</div>

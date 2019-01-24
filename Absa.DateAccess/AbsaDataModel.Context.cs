@@ -194,5 +194,14 @@ namespace Absa.DateAccess
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUser", userIdParameter, firstNameParameter, lastNameParameter, emailAddressParameter, userNameParameter, contactNumberParameter, isActiveParameter, rolesPermissionsIDParameter, businessUnitIdParameter, passwordParameter);
         }
+    
+        public virtual ObjectResult<GerDisasterRecoveryByBusinesUnit_Result> GerDisasterRecoveryByBusinesUnit(Nullable<int> businessUnitId)
+        {
+            var businessUnitIdParameter = businessUnitId.HasValue ?
+                new ObjectParameter("BusinessUnitId", businessUnitId) :
+                new ObjectParameter("BusinessUnitId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GerDisasterRecoveryByBusinesUnit_Result>("GerDisasterRecoveryByBusinesUnit", businessUnitIdParameter);
+        }
     }
 }
