@@ -76,9 +76,23 @@ namespace Absa.DateAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddUser", firstNameParameter, lastNameParameter, emailAddressParameter, userNameParameter, contactNumberParameter, isActiveParameter, rolesPermissionsIDParameter, businessUnitIdParameter, passwordParameter);
         }
     
+        public virtual ObjectResult<GetAllApplicationData_Result> GetAllApplicationData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllApplicationData_Result>("GetAllApplicationData");
+        }
+    
         public virtual ObjectResult<GetAllUsersList_Result> GetAllUsersList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsersList_Result>("GetAllUsersList");
+        }
+    
+        public virtual ObjectResult<GetApplicationByBusinesUnitId_Result> GetApplicationByBusinesUnitId(Nullable<int> businessUnitId)
+        {
+            var businessUnitIdParameter = businessUnitId.HasValue ?
+                new ObjectParameter("BusinessUnitId", businessUnitId) :
+                new ObjectParameter("BusinessUnitId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationByBusinesUnitId_Result>("GetApplicationByBusinesUnitId", businessUnitIdParameter);
         }
     
         public virtual ObjectResult<GetApplicationByResilienceID_Result> GetApplicationByResilienceID(Nullable<int> resilinceId)
@@ -97,15 +111,6 @@ namespace Absa.DateAccess
                 new ObjectParameter("ResilinceId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationToDecline_Result>("GetApplicationToDecline", resilinceIdParameter);
-        }
-    
-        public virtual ObjectResult<GetAppStatus_Result> GetAppStatus(Nullable<int> businessUnitId)
-        {
-            var businessUnitIdParameter = businessUnitId.HasValue ?
-                new ObjectParameter("BusinessUnitId", businessUnitId) :
-                new ObjectParameter("BusinessUnitId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAppStatus_Result>("GetAppStatus", businessUnitIdParameter);
         }
     
         public virtual ObjectResult<GetBusinessUnit_Result> GetBusinessUnit()
@@ -193,15 +198,6 @@ namespace Absa.DateAccess
                 new ObjectParameter("Password", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUser", userIdParameter, firstNameParameter, lastNameParameter, emailAddressParameter, userNameParameter, contactNumberParameter, isActiveParameter, rolesPermissionsIDParameter, businessUnitIdParameter, passwordParameter);
-        }
-    
-        public virtual ObjectResult<GerDisasterRecoveryByBusinesUnit_Result> GerDisasterRecoveryByBusinesUnit(Nullable<int> businessUnitId)
-        {
-            var businessUnitIdParameter = businessUnitId.HasValue ?
-                new ObjectParameter("BusinessUnitId", businessUnitId) :
-                new ObjectParameter("BusinessUnitId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GerDisasterRecoveryByBusinesUnit_Result>("GerDisasterRecoveryByBusinesUnit", businessUnitIdParameter);
         }
     }
 }

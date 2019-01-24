@@ -33,7 +33,7 @@ namespace Absa.Web.Controllers
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
 
 			var model = new DashBordModel();
-			var strategicFitappData = context.GetAppStatus(data.BusinessUnitId);
+			var strategicFitappData = context.GetApplicationByBusinesUnitId(data.BusinessUnitId);
 
 			foreach (var item in strategicFitappData)
 			{
