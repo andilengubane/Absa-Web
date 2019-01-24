@@ -1,11 +1,15 @@
-﻿        $(function () {
+﻿
+      $(function () {
         	$("#dialogStrategicFit").dialog({
         		autoOpen: false,
         		modal: true,
         		title: "Strategic Fit",
         		dialogClass: 'titleColor',
         		width: 700,
-        		height: 550
+        		height: 550,
+        		close: function () {
+        			window.location.reload(true);
+        		}
         	});
         	$("#stategicFit .ViewReport").click(function () {
         		$.ajax({
@@ -34,8 +38,13 @@
         		title: "Disaster Recovery",
         		dialogClass: 'titleColor',
         		width: 700,
-        		height: 550
+        		height: 550,
+				close: function () {
+        			window.location.reload(true);
+        		}
+
         	});
+        	$('#dialog').dialog("refresh");
         	$("#disasterRecovery .ViewReport").click(function () {
         		$.ajax({
         			type: "POST",
@@ -45,6 +54,7 @@
         			success: function (response) {
         				$('#dialogDisasterRecovery').html(response);
         				$('#dialogDisasterRecovery').dialog('open');
+        				
         			},
         			failure: function (response) {
         				alert(response.responseText);
@@ -52,6 +62,7 @@
         			error: function (response) {
         				alert(response.responseText);
         			}
+
         		});
         	});
         });

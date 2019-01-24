@@ -10,10 +10,6 @@
 <script src="~/Scripts/dashbord.js"></script>
 <script src="~/Scripts/techo.js"></script>
 <script src="~/Scripts/dashbordreport.js"></script>
-	<script>
-		function getBusinessUnitDate(){
-		}
-	</script>
 }
 
 <div id="dialogStrategicFit" style="display: none"></div>
@@ -63,7 +59,24 @@
             column-width: 200px;
 }
 </style>
-
+<script type="text/javascript">
+	function searchByBusinessUnit()
+	{
+		var businessUnit = $('#businessUnit').val();
+		debugger;
+		console.log("Business Unit ", businessUnit);
+		$.ajax({
+			type: "GET",
+			url: "/Home/GetDeshbordStatus",
+			data: encodeURI("businessUnit=" + businessUnit),
+			contentType: "application/json; charset=utf-8",
+			dataType: "html",
+			success: function (response) {
+				$(this).html(response);
+			},
+		});
+	}
+</script>
 <br>
 <h3>T100R 27 Pillas</h3>
 <br>
@@ -75,7 +88,7 @@
 			 <td style="width: 1%; text-align: center">@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field", id = "businessUnit" })</td>
 		 </tr>
 		 <tr>
-       	   	<td style="width: 1%; text-align: center"><input type="submit" value="Search" style="width: 200%; text-align: center" onclick="getBusiness()" class="btn btn-circle btn-outline-dark" /></td>
+       	   	<td style="width: 1%; text-align: center"><input type="submit" value="Search" style="width: 200%; text-align: center" onclick="searchByBusinessUnit()" class="btn btn-circle btn-outline-dark" /></td>
 		 </tr>
 	 </table>
 	</div>
@@ -97,7 +110,7 @@
 			<canvas id="DR" style="margin-left: 18%;" width="250" height="240" data-val="0"></canvas>
 		</div>
 		<div class="card-footer" id="disasterRecovery">
-			<button class="ViewReport btn btn-sm btn-circle btn-secondary" style="margin-left: 35%; margin-right: 15px;" type="button" id="disasterRecovery" href="javascript:;">Disaster Recovery</button>
+			<button class="ViewReport btn btn-sm btn-circle btn-secondary btnRefresh" style="margin-left: 35%; margin-right: 15px;"  type="button" id="disasterRecovery" href="javascript:;">Disaster Recovery</button>
 		</div>
 	</div>
 	<div class="card">

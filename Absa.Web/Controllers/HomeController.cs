@@ -48,7 +48,7 @@ namespace Absa.Web.Controllers
 			return View(model);
 		}
 
-		public ActionResult GetDeshbordStatus()
+		public ActionResult GetDeshbordStatus(string businessUnit)
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
@@ -59,6 +59,8 @@ namespace Absa.Web.Controllers
 			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == data.RolesPermissionsID);
 
 			string rolePermissionType = Convert.ToString(permissions.Type);
+			ViewBag.RolePermission = rolePermissionType;
+			
 			var appData = context.GetAppStatus(data.BusinessUnitId);
 			foreach (var item in appData)
 			{
@@ -90,7 +92,6 @@ namespace Absa.Web.Controllers
 				model.SupportedDatabaseYes = Convert.ToInt32(item.SupportedDatabaseYes);
 				model.OpenVulnerabilitiesYes = Convert.ToInt32(item.OpenVulnerabilitiesYes);
 				model.NumberOfApps = Convert.ToInt32(numberOfAppWithinTheBusinessUnit.NumberOfApps);
-
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
