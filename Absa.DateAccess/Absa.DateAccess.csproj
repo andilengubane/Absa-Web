@@ -72,6 +72,9 @@
     <Compile Include="DataLookUp.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GerDisasterRecoveryByBusinesUnit_Result.cs">
+      <DependentUpon>AbsaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllUsersList_Result.cs">
       <DependentUpon>AbsaDataModel.tt</DependentUpon>
     </Compile>

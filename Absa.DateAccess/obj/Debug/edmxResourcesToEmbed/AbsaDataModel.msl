@@ -358,5 +358,15 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="AbsaDBModel.Store.UpdateUser" />
+    <FunctionImportMapping FunctionImportName="GerDisasterRecoveryByBusinesUnit" FunctionName="AbsaDBModel.Store.GerDisasterRecoveryByBusinesUnit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AbsaDBModel.GerDisasterRecoveryByBusinesUnit_Result">
+          <ScalarProperty Name="DisasterRecoverYes" ColumnName="DisasterRecoverYes" />
+          <ScalarProperty Name="DisasterRecoverNo" ColumnName="DisasterRecoverNo" />
+          <ScalarProperty Name="DisasterRecoverWarning" ColumnName="DisasterRecoverWarning" />
+          <ScalarProperty Name="DisasterRecoverOverRall" ColumnName="DisasterRecoverOverRall" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

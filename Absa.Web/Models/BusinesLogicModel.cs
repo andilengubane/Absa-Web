@@ -43,6 +43,14 @@ namespace Absa.Web.Models
 		public int UserID { get; set; }
 	}
 
+
+	public class DisasterRecoveryModel
+	{
+		public int DisasterRecoveryYes { get; set; }
+		public int DisasterRecoveryNo { get; set; }
+		public int DisasterRecoveryWarning { get; set; }
+		public int DisasterRecoverOverRall { get; set; }
+	}
 	public class DashBordModel
 	{
 		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
