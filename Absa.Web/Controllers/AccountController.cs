@@ -33,7 +33,6 @@ namespace Absa.Web.Controllers
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
-			// GET USER RolePermission Type 
 			var rolesPermission = context.Users.FirstOrDefault(x=>x.UserID == userId);
 			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
 			string rolePermissionType = Convert.ToString(permissions.Type);
@@ -229,6 +228,7 @@ namespace Absa.Web.Controllers
 		[HttpPost]
 		public ActionResult Delete(string userId)
 		{
+			
 			if (userId != null)
 			{
 				int id = Convert.ToInt32(userId);

@@ -42,9 +42,6 @@ namespace Absa.Web.Controllers
 					Text = x.BusinessUnitName
 				});
 			}
-
-			
-
 			return View(model);
 		}
 
@@ -97,37 +94,40 @@ namespace Absa.Web.Controllers
 				}
 				return Json(model, JsonRequestBehavior.AllowGet);
 			}
-			var appData = context.GetApplicationByBusinesUnitId(data.BusinessUnitId);
-			foreach (var item in appData)
+			else
 			{
-				model.StrategicFitYes = Convert.ToInt32(item.StrategicFitYes);
-				model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);
-				model.BackUpDataYes = Convert.ToInt32(item.BackUpDataYes);
-				model.BackUpConfigurationYes = Convert.ToInt32(item.BackUpConfigurationYes);
-				model.HighAvailabilityYes = Convert.ToInt32(item.HighAvailabilityYes);
-				model.OperationalMonitoringYes = Convert.ToInt32(item.OperationalMonitoringYes);
-				model.SecurityMonitoringYes = Convert.ToInt32(item.SecurityMonitoringYes);
-				model.SPOFYes = Convert.ToInt32(item.SPOFYes);
-				model.InternalOLAYes = Convert.ToInt32(item.InternalOLAYes);
-				model.ExternalSLAYes = Convert.ToInt32(item.ExternalSLAYes);
-				model.ArchitectureDocumentationYes = Convert.ToInt32(item.ArchitetureDocumentationYes);
-				model.OparationsDocumentationYes = Convert.ToInt32(item.OparationsDocumentationYes);
-				model.HighestDataClassificationYes = Convert.ToInt32(item.HighestDataClassificationYes);
-				model.DataRetentionRequirementYes = Convert.ToInt32(item.DataRetentionRequirementYes);
-				model.IntegratedToADYes = Convert.ToInt32(item.IntegratedToADYes);
-				model.JMLProcessYes = Convert.ToInt32(item.JMLProcessYes);
-				model.PrivilegedAccessManagementYes = Convert.ToInt32(item.PrivilegedAccessManagementYes);
-				model.RecertificationProcessYes = Convert.ToInt32(item.RecertificationProcessYes);
-				model.OSPatchingLevelYes = Convert.ToInt32(item.OSPatchingLevelYes);
-				model.ApplicationPatchingLevelYes = Convert.ToInt32(item.ApplicationPatchingLevelYes);
-				model.MiddlewarePatchingLevelYes = Convert.ToInt32(item.MiddlewarePatchingLevelYes);
-				model.SupportedApplicationYes = Convert.ToInt32(item.SupportedApplicationYes);
-				model.SupportedOperationSystemYes = Convert.ToInt32(item.SupportedOperationSystemYes);
-				model.SupportedJavaYes = Convert.ToInt32(item.SupportedJavaYes);
-				model.SupportedMiddlewareYes = Convert.ToInt32(item.SupportedMiddlewareYes);
-				model.SupportedDatabaseYes = Convert.ToInt32(item.SupportedDatabaseYes);
-				model.OpenVulnerabilitiesYes = Convert.ToInt32(item.OpenVulnerabilitiesYes);
-				model.NumberOfApps = Convert.ToInt32(numberOfAppWithinTheBusinessUnit.NumberOfApps);
+				var appData = context.GetApplicationByBusinesUnitId(data.BusinessUnitId);
+				foreach (var item in appData)
+				{
+					model.StrategicFitYes = Convert.ToInt32(item.StrategicFitYes);
+					model.DisasterRecoveryYes = Convert.ToInt32(item.DisasterRecoverYes);
+					model.BackUpDataYes = Convert.ToInt32(item.BackUpDataYes);
+					model.BackUpConfigurationYes = Convert.ToInt32(item.BackUpConfigurationYes);
+					model.HighAvailabilityYes = Convert.ToInt32(item.HighAvailabilityYes);
+					model.OperationalMonitoringYes = Convert.ToInt32(item.OperationalMonitoringYes);
+					model.SecurityMonitoringYes = Convert.ToInt32(item.SecurityMonitoringYes);
+					model.SPOFYes = Convert.ToInt32(item.SPOFYes);
+					model.InternalOLAYes = Convert.ToInt32(item.InternalOLAYes);
+					model.ExternalSLAYes = Convert.ToInt32(item.ExternalSLAYes);
+					model.ArchitectureDocumentationYes = Convert.ToInt32(item.ArchitetureDocumentationYes);
+					model.OparationsDocumentationYes = Convert.ToInt32(item.OparationsDocumentationYes);
+					model.HighestDataClassificationYes = Convert.ToInt32(item.HighestDataClassificationYes);
+					model.DataRetentionRequirementYes = Convert.ToInt32(item.DataRetentionRequirementYes);
+					model.IntegratedToADYes = Convert.ToInt32(item.IntegratedToADYes);
+					model.JMLProcessYes = Convert.ToInt32(item.JMLProcessYes);
+					model.PrivilegedAccessManagementYes = Convert.ToInt32(item.PrivilegedAccessManagementYes);
+					model.RecertificationProcessYes = Convert.ToInt32(item.RecertificationProcessYes);
+					model.OSPatchingLevelYes = Convert.ToInt32(item.OSPatchingLevelYes);
+					model.ApplicationPatchingLevelYes = Convert.ToInt32(item.ApplicationPatchingLevelYes);
+					model.MiddlewarePatchingLevelYes = Convert.ToInt32(item.MiddlewarePatchingLevelYes);
+					model.SupportedApplicationYes = Convert.ToInt32(item.SupportedApplicationYes);
+					model.SupportedOperationSystemYes = Convert.ToInt32(item.SupportedOperationSystemYes);
+					model.SupportedJavaYes = Convert.ToInt32(item.SupportedJavaYes);
+					model.SupportedMiddlewareYes = Convert.ToInt32(item.SupportedMiddlewareYes);
+					model.SupportedDatabaseYes = Convert.ToInt32(item.SupportedDatabaseYes);
+					model.OpenVulnerabilitiesYes = Convert.ToInt32(item.OpenVulnerabilitiesYes);
+					model.NumberOfApps = Convert.ToInt32(numberOfAppWithinTheBusinessUnit.NumberOfApps);
+				}
 			}
 			return Json(model, JsonRequestBehavior.AllowGet);
 		}
@@ -214,7 +214,6 @@ namespace Absa.Web.Controllers
 		{
 			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == model.ResilienceID);
 			data.StatusId = 4;
-			
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
 		}
@@ -233,7 +232,7 @@ namespace Absa.Web.Controllers
 			{
 				try
 				{
-					var data = context.ResilienceTracks.Where(m => m.ResilienceTrackID == id && m.BusinessUnitId == dataStatus.BusinessUnitId);
+					var data = context.ResilienceTracks.Where(m => m.ResilienceTrackID == id);
 					foreach (var result in data)
 					{
 						model.ResilienceTrackID = result.ResilienceTrackID;
@@ -343,7 +342,7 @@ namespace Absa.Web.Controllers
 			ViewBag.CurrentFilter = searchString;
 			if (!String.IsNullOrEmpty(searchString) || !String.IsNullOrEmpty(statusList))
 			{
-				data = data.Where(s => s.ApplicationID.Contains(searchString) || s.Description.Contains(statusList));
+				data = data.Where(s => s.ApplicationID.Contains(searchString));
 			}
 
 			foreach (var item in data)
