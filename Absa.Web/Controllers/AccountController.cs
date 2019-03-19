@@ -33,7 +33,6 @@ namespace Absa.Web.Controllers
 		{
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
-			// GET USER RolePermission Type 
 			var rolesPermission = context.Users.FirstOrDefault(x=>x.UserID == userId);
 			var permissions = context.RolesPermissions.FirstOrDefault(x => x.RolesPermissionsID == rolesPermission.RolesPermissionsID);
 			string rolePermissionType = Convert.ToString(permissions.Type);
@@ -86,20 +85,7 @@ namespace Absa.Web.Controllers
 			int pageNumber = (page ?? 1);
 			return this.View("UserList", model.ToPagedList(pageNumber, pageSize));
 		}
-
-		public ActionResult Register()
-		{
-			
-			var model = new UserModel()
-			{
-				BusinestUnitList = context.BusinessUnits.OrderBy(x=>x.BusinessUnitName).Select(x => new SelectListItem
-				{
-					Value = x.BusinessUnitId.ToString(),
-					Text = x.BusinessUnitName
-				})
-			};
-			return View(model);
-		}
+		
 
 		public ActionResult CreateUser()
 		{
