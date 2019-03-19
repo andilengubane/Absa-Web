@@ -48,7 +48,6 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.Deployment.xm
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.Web.WebPages.Razor.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Antlr3.Runtime.pdb
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Newtonsoft.Json.xml
-C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\Absa.Web.csprojResolveAssemblyReference.cache
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\Absa.Web.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\Absa.Web.pdb
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.DateAccess.dll
@@ -64,3 +63,4 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\PagedList.Mvc.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Microsoft.ReportViewer.WebForms.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.ValueTuple.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.ValueTuple.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\Absa.Web.csprojResolveAssemblyReference.cache

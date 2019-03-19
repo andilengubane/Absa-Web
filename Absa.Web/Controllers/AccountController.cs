@@ -85,20 +85,7 @@ namespace Absa.Web.Controllers
 			int pageNumber = (page ?? 1);
 			return this.View("UserList", model.ToPagedList(pageNumber, pageSize));
 		}
-
-		public ActionResult Register()
-		{
-			
-			var model = new UserModel()
-			{
-				BusinestUnitList = context.BusinessUnits.OrderBy(x=>x.BusinessUnitName).Select(x => new SelectListItem
-				{
-					Value = x.BusinessUnitId.ToString(),
-					Text = x.BusinessUnitName
-				})
-			};
-			return View(model);
-		}
+		
 
 		public ActionResult CreateUser()
 		{

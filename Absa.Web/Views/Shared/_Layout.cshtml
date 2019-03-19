@@ -63,10 +63,9 @@
 			<a class="navbar-brand" href="#"></a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					@*<img src="~/Content/image/CTO_5-Objectives_T100R.png" width="100" height="150" />*@
 				</li>
 				<li class="nav-item active">
-					<button class="btn btn-sm btn-circle btn-outline-secondarys" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">DASHBORD</button>
+					<button class="btn btn-sm btn-circle btn-outline-secondarys" type="button" id="userList" onclick="location.href='@Url.Action("Index", "Home")'">DASHBOARD</button>
 				</li>
 				<li class="nav-item active">
 				</li>
@@ -89,13 +88,7 @@
 			    </li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				@*@using (Html.BeginForm())
-			    {
-				<h5 class="card-title">Business Unit</h5>
-				<p>@Html.DropDownListFor(model => model.BusinessUnit, Model.BusinessUnitList, new { @class = "form-control text-field ", id = "businessUnit" })</p>
-				<br>
-				<input type="submit" value="Search" class="btn btn-circle btn-outline-dark" />
-			    }*@
+				
 			</form>
 			<button class="btn btn-circle btn-primary my-2 my-sm-0" style='margin-Left:16px' onclick="location.href='@Url.Action("Login", "Account")'">LOGOUT</button>
       </div>
