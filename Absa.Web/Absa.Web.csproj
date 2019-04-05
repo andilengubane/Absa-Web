@@ -406,6 +406,14 @@
       <Project>{80d662d0-7a21-4a64-986d-60fb4ccc30e7}</Project>
       <Name>Absa.DateAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Absa.DTO\Absa.DTO.csproj">
+      <Project>{5f585630-a265-4f5f-96f1-6f5fed121be8}</Project>
+      <Name>Absa.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Absa.Services\Absa.Services.csproj">
+      <Project>{c7823f44-25f2-457a-bdde-457e91935934}</Project>
+      <Name>Absa.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

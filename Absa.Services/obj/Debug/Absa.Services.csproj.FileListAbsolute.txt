@@ -1,0 +1,5 @@
+C:\Apps\Absa\Application\Absa.Web\Absa.Services\bin\Debug\Absa.Services.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Services\bin\Debug\Absa.Services.pdb
+C:\Apps\Absa\Application\Absa.Web\Absa.Services\obj\Debug\Absa.Services.csprojResolveAssemblyReference.cache
+C:\Apps\Absa\Application\Absa.Web\Absa.Services\obj\Debug\Absa.Services.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Services\obj\Debug\Absa.Services.pdb

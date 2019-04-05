@@ -157,44 +157,6 @@ namespace Absa.Web.Models
 		public int OpenVulnerabilitiesWarning { get; set; }
 		public int OpenVulnerabilitiesOverRall { get; set; }
 	}
-	public class ReportModel
-	{
-		[Key]
-		public int ID { get; set; }
-		public string BusinessUnit { get; set; }
-		public int BusinessUnitId { get; set; }
-		public IEnumerable<SelectListItem> BusinessUnitList { get; set; }
-	}
-	public class UserModel
-	{
-		public IEnumerable<SelectListItem> BusinestUnitList { get; set; }
-		public IEnumerable<SelectListItem> RolesPermissionList { get; set; }
-		[Key]
-		public int ID { get; set; }
-		[Required(ErrorMessage = "First Name is a required")]
-		[Display(Name = "First Name")]
-		public string FirstName { get; set; }
-		[Required(ErrorMessage = "Last Name is a required")]
-		[Display(Name = "Last Name")]
-		public string LastName { get; set; }
-		[Required(ErrorMessage = "Email Address is a required")]
-		[RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Please enter a valid email Address")]
-		[Display(Name = "Email")]
-		public string EmailAddress { get; set; }
-		[Required(ErrorMessage = "Username is a required")]
-		[Display(Name = "Username")]
-		public string UserName { get; set; }
-		[Required(ErrorMessage = "Password is a required")]
-		[Display(Name = "Password")]
-		[RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,15}", ErrorMessage = "Password should contain Upper And Lower Case , Numbers and Special characters.")]
-		public string Password { get; set; }
-		[RegularExpression(@"(?<!\d)\d{10}(?!\d)", ErrorMessage = "Please enter a valid phone number")]
-		[Display(Name = "Cellphone Number")]
-		public string ContactNumber { get; set; }
-		public bool IsActive { get; set; }
-		public string BusinessUnit { get; set; }
-		public string RolesPermission { get; set; }
-	}
 	public class ResilienceTrackModel
 	{
 		public IEnumerable<SelectListItem> StatusList { get; set; }

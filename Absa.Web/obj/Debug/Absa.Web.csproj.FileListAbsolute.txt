@@ -64,3 +64,7 @@ C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Microsoft.ReportViewer.WebForms.d
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.ValueTuple.dll
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\System.ValueTuple.xml
 C:\Apps\Absa\Application\Absa.Web\Absa.Web\obj\Debug\Absa.Web.csprojResolveAssemblyReference.cache
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.DTO.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.Services.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.DTO.pdb
+C:\Apps\Absa\Application\Absa.Web\Absa.Web\bin\Absa.Services.pdb

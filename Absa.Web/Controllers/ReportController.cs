@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Absa.DateAccess;
+using Absa.DTO;
 using Absa.Web.Models;
 namespace Absa.Web.Controllers
 {
@@ -16,7 +17,7 @@ namespace Absa.Web.Controllers
 			var id = this.Session["ID"];
 			int userId = Convert.ToInt32(id);
 			var data = context.Users.FirstOrDefault(u => u.UserID == userId);
-			var model = new ReportModel();
+			var model = new ReportDTO();
 
 			model.BusinessUnitList = context.BusinessUnits.Where(x => x.BusinessUnitId == data.BusinessUnitId).Select(x => new SelectListItem
 			{

@@ -1,21 +1,18 @@
 ﻿using System;
 using PagedList;
-using System.Web;
+using System.Text;
 using System.Linq;
+using Absa.DTO;
 using System.Web.Mvc;
-using PagedList.Mvc;
 using Absa.Web.Models;
-using System.Net.Mail;
-using System.Diagnostics;
 using Absa.DateAccess;
 using System.Security.Cryptography;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
+
 
 namespace Absa.Web.Controllers
 {
-    public class AccountController : Controller
+	public class AccountController : Controller
     {
 		AbsaDBEntities context = new AbsaDBEntities();
 	
@@ -38,14 +35,14 @@ namespace Absa.Web.Controllers
 			string rolePermissionType = Convert.ToString(permissions.Type);
 			ViewBag.RolePermission = rolePermissionType;
 
-			var model = new List<UserModel>();
+			var model = new List<UserDTO>();
 			try
 			{
 				if (rolePermissionType == "Manager") {
 					var data = context.GetAllUsersList();
 					foreach (var item in data)
 					{
-						model.Add(new UserModel()
+						model.Add(new UserDTO()
 						{
 							ID = item.UserID,
 							FirstName = item.FirstName,
@@ -62,7 +59,7 @@ namespace Absa.Web.Controllers
 					var data = context.GetUserById(userId);
 					foreach (var item in data)
 					{
-						model.Add(new UserModel()
+						model.Add(new UserDTO()
 						{
 							ID = item.UserID,
 							FirstName = item.FirstName,
@@ -89,7 +86,7 @@ namespace Absa.Web.Controllers
 
 		public ActionResult CreateUser()
 		{
-			UserModel model = new UserModel();
+			UserDTO model = new UserDTO();
 			model.BusinestUnitList = context.BusinessUnits.OrderBy(x => x.BusinessUnitName).Select(x => new SelectListItem
 			{
 				Value = x.BusinessUnitId.ToString(),
@@ -106,7 +103,7 @@ namespace Absa.Web.Controllers
 
 		public ActionResult EditUser(string userId)
 		{
-			var model = new UserModel();
+			var model = new UserDTO();
 			string number = System.Text.RegularExpressions.Regex.Replace(userId, @"\D+", string.Empty);
 			int id = Convert.ToInt16(number);
 			var items = context.DataLookUps.Where(x => x.LoopkUpID == 1).ToList();
@@ -151,7 +148,7 @@ namespace Absa.Web.Controllers
 			return PartialView(model);
 		}
 
-		public ActionResult AddUpdateUser(UserModel model)
+		public ActionResult AddUpdateUser(UserDTO model)
 		{
 			var numberOfChars = 8;
 			var upperCase = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
@@ -193,12 +190,12 @@ namespace Absa.Web.Controllers
 		public ActionResult DeleteUser(string userId)
 		{
 			var id = Convert.ToInt32(userId);
-			var model = new List<UserModel>();
+			var model = new List<UserDTO>();
 			try {
 				var data = context.Users.Where(x=>x.UserID == id);
 				foreach (var item in data)
 				{
-					model.Add(new UserModel()
+					model.Add(new UserDTO()
 					{
 						ID = item.UserID,
 						FirstName = item.FirstName,
@@ -227,7 +224,7 @@ namespace Absa.Web.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult GetUserAccess(UserModel model)
+		public ActionResult GetUserAccess(UserDTO model)
 		{
 			if (model.Password != null && model.UserName != null)
 			{

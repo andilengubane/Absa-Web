@@ -1,0 +1,16 @@
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\obj\Debug\Absa.DTO.csprojResolveAssemblyReference.cache
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\Absa.DTO.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\Absa.DTO.pdb
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.Mvc.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.Razor.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.WebPages.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.Mvc.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.Razor.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.WebPages.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\obj\Debug\Absa.DTO.dll
+C:\Apps\Absa\Application\Absa.Web\Absa.DTO\obj\Debug\Absa.DTO.pdb

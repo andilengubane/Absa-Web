@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Absa.Web", "Absa.Web\Absa.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Absa.DateAccess", "Absa.DateAccess\Absa.DateAccess.csproj", "{80D662D0-7A21-4A64-986D-60FB4CCC30E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Absa.Services", "Absa.Services\Absa.Services.csproj", "{C7823F44-25F2-457A-BDDE-457E91935934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Absa.DTO", "Absa.DTO\Absa.DTO.csproj", "{5F585630-A265-4F5F-96F1-6F5FED121BE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{80D662D0-7A21-4A64-986D-60FB4CCC30E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D662D0-7A21-4A64-986D-60FB4CCC30E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D662D0-7A21-4A64-986D-60FB4CCC30E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7823F44-25F2-457A-BDDE-457E91935934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7823F44-25F2-457A-BDDE-457E91935934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7823F44-25F2-457A-BDDE-457E91935934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7823F44-25F2-457A-BDDE-457E91935934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F585630-A265-4F5F-96F1-6F5FED121BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F585630-A265-4F5F-96F1-6F5FED121BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F585630-A265-4F5F-96F1-6F5FED121BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F585630-A265-4F5F-96F1-6F5FED121BE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
