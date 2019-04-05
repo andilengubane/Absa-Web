@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,17 +18,6 @@ namespace Absa.Web.Models
 		[DataType(DataType.MultilineText)]
 		public string Description { get; set; }
 		public string Email { get; set; }
-	}
-	public class BusinessUnitModel
-	{
-		[Key]
-		public int BusinessUnitId { get; set; }
-		public string BusinessUnitName { get; set; }
-		public bool IsActive { get; set; }
-		public DateTime DateLogged { get; set; }
-		public int NumberOfApps { get; set; }
-		public string Description { get; set; }
-		public int UserID { get; set; }
 	}
 	public class RolePermissionsModel
 	{

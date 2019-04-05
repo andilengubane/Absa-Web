@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using Absa.DTO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Absa.DateAccess;
-using Absa.DTO;
 using Absa.Web.Models;
 namespace Absa.Web.Controllers
 {
-    public class ReportController : Controller
+	public class ReportController : Controller
     {
 		AbsaDBEntities context = new AbsaDBEntities();
 		

@@ -42,6 +42,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Absa.DateAccess\Absa.DateAccess.csproj">
+      <Project>{80d662d0-7a21-4a64-986d-60fb4ccc30e7}</Project>
+      <Name>Absa.DateAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Absa.DTO\Absa.DTO.csproj">
+      <Project>{5f585630-a265-4f5f-96f1-6f5fed121be8}</Project>
+      <Name>Absa.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

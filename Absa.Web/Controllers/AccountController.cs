@@ -150,16 +150,10 @@ namespace Absa.Web.Controllers
 
 		public ActionResult AddUpdateUser(UserDTO model)
 		{
-			var numberOfChars = 8;
-			var upperCase = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-			var lowerCase = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-			var numbers = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-			var specialCharacters = new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')' , '_' , '+' };
-			var random = new Random();
-
-			var total = upperCase.Concat(lowerCase).Concat(numbers).Concat(specialCharacters).ToArray();
-			var chars = Enumerable.Repeat<int>(0, numberOfChars).Select(i => total[random.Next(total.Length)]).ToArray();
-			var password = new string(chars);
+			
+			DTO.Extentions.Password _paswword = new DTO.Extentions.Password();
+			var userPassword  = _paswword.RandomPassword();
+			
 			var userName = model.FirstName + model.LastName;
 
 			if (model.ID == 0)
@@ -170,8 +164,8 @@ namespace Absa.Web.Controllers
 				}
 				else{
 					context.AddUser(model.FirstName, model.LastName, model.EmailAddress, userName, model.ContactNumber, model.IsActive
-									, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
-					var userEmailNotification = new Email();
+									, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), Convert.ToString(userPassword));
+					var userEmailNotification = new DTO.Extentions.Email();
 					userEmailNotification.CreateUserAccountNotificationEmail(model.EmailAddress, userName, password);
 					return RedirectToAction("UserList", "Account");
 				}
@@ -180,7 +174,7 @@ namespace Absa.Web.Controllers
 			{
 				var _data = context.UpdateUser(model.ID, model.FirstName, model.LastName, model.EmailAddress, userName,
 										   model.ContactNumber, model.IsActive, int.Parse(model.RolesPermission), int.Parse(model.BusinessUnit), password);
-				var userEmailNotification = new Email();
+				var userEmailNotification = new DTO.Extentions.Email();
 				userEmailNotification.UpdateUserDetailsNotificationEmail(model.EmailAddress, userName, password);
 				return RedirectToAction("UserList", "Account");
 			}

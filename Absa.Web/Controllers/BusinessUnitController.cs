@@ -1,4 +1,5 @@
 ﻿using System;
+using Absa.DTO;
 using PagedList;
 using System.Web;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Absa.Web.Controllers
         {
 			var _Id = this.Session["ID"];
 			int userId = Convert.ToInt32(_Id);
-			var model = new List<BusinessUnitModel>();
+			var model = new List<BusinessUnitDTO>();
 			var data = context.BusinessUnits.ToList();
 
 			var rolesPermission = context.Users.FirstOrDefault(x => x.UserID == userId);
@@ -28,7 +29,7 @@ namespace Absa.Web.Controllers
 
 			foreach (var item in data)
 			{
-				model.Add(new BusinessUnitModel()
+				model.Add(new BusinessUnitDTO()
 				{
 				 BusinessUnitId = item.BusinessUnitId,
 				 BusinessUnitName = item.BusinessUnitName,
@@ -53,7 +54,7 @@ namespace Absa.Web.Controllers
 				id = Convert.ToInt16(number);
 			}
 
-			var model = new BusinessUnitModel();
+			var model = new BusinessUnitDTO();
 			if (id == 0)
 			{
 				return PartialView();
@@ -80,7 +81,7 @@ namespace Absa.Web.Controllers
 			}
 			return PartialView(model);
 		}
-		public ActionResult SaveUpdateBusinessUnit(BusinessUnitModel model)
+		public ActionResult SaveUpdateBusinessUnit(BusinessUnitDTO model)
 		{
 			if (model.BusinessUnitId == 0)
 			{

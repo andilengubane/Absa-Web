@@ -186,7 +186,7 @@ namespace Absa.Web.Controllers
 			int id = Convert.ToInt32(model.ResilienceID);
 			var data = context.ResilienceTracks.FirstOrDefault(x => x.ResilienceTrackID == id);
 			data.StatusId = 6;
-			var email = new Email();
+			var email = new DTO.Extentions.Email();
 			email.SendEmail(model.Email, model.Description, model.BusinessUnit, model.ApplicationId, model.FullName, model.BusinessUnitName);
 			context.SaveChanges();
 			return RedirectToAction("ResiliencTrackList", "Home");
